@@ -1,0 +1,26 @@
+
+Create Table grupo (
+    id int not NULL,
+    nome varchar(32) NOT NULL,
+    CONSTRAINT grupo_pkey PRIMARY KEY (id)
+);
+
+Create Table planta (
+    idecoflow int not NULL,
+    id_grupo_fk int NOT NULL,    
+    nome varchar(32) NOT NULL,
+    CONSTRAINT grupo_fk FOREIGN KEY (id_grupo_fk)REFERENCES grupo(id),
+    CONSTRAINT planta_pkey PRIMARY KEY (idecoflow)
+);
+
+Create Table unidade (
+    idecoflow int not NULL,
+    tempo timestamp NOT NULL,
+    id_planta_fk int NOT NULL,
+    nome varchar(8) NOT NULL,
+    medidor varchar(10),
+    servico int,
+    leitura float,
+    CONSTRAINT planta_fk FOREIGN KEY (id_planta_fk)REFERENCES planta(idecoflow),
+    CONSTRAINT unidade_pkey PRIMARY KEY (idecoflow,tempo)
+);
