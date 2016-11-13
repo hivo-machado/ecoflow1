@@ -7378,3 +7378,11 @@ textarea:focus {
    align-content: center;
    margin:5% 0 50px 0;
 }
+#chart_div{
+margin-left: 600px;
+}
+@media (max-width: 500px) {
+    #chart_div {
+      margin-top: 600px;
+    }
+  }

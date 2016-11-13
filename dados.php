@@ -77,7 +77,7 @@ protegePagina(); // Chama a função que protege a página
                     
                     <div class="logo-wrapper">
                         <h1 class="logo">
-                            <a href="login.php"><img src="img/logologin.png" alt="debugger">
+                            <a href="login.php"><img src="img/logologin.png" alt="ECOflow">
                             </a>
                         </h1>
                          <!-- /.row -->
@@ -87,81 +87,65 @@ protegePagina(); // Chama a função que protege a página
                         <ul class="menu">
                             <li><a class="show-1" href="#">Dados</a></li>
                             <li><a class="show-2" href="#">Gráfico</a></li>
-                            <li><a class="show-4" href="#">Relatórios</a></li>
+                            <li><a class="show-3" href="#">Relatórios</a></li>
                             <li><a href="login.php" target="_parent">Sair</a></li>
-                        </ul> <!-- /.menu -->
-                        <a href="#" class="toggle-menu"><i class="fa fa-bars"></i></a>
-                    </div> <!-- /.menu-wrapper -->
-                </div> <!-- /.sidebar-menu -->
-            </div> <!-- /.col-md-4 -->
+                        </ul> 
+                        <a href="" class="toggle-menu"><i class="fa fa-bars"></i></a>
+                    </div>
+                </div> 
+            </div> 
 
             <div class="">
                 
                 <div id="menu-container">
-
-                    <div id="menu-1" class="about content">
+                    <div id="menu-1" class="gallery content">
                         <div class="row">
-                            <input type="text" style="background-color: #fff width:50px; "" value="Não foi detectado pragas em sua plantação" width="1000" class="tecnico" readonly="readonly" >
-                            </br>
-                            Técnico Responsável: Jorge Augusto Camargo; Última Atualização: 22/05/2016 (15:00)
-                            </br>
-                            </br>
-                            <input type="text"  style="background-color: #fff width:50px" value="Os padrões de temperatura e umidade não indicam a possibilidade de surgimento de novas pragas" class="tecnico2" readonly="readonly" >
-                            </br>
-                            Técnico Responsável: Jorge Augusto Camargo; Última Atualização: 22/05/2016 (15:00)
-                        </div> <!-- /.row -->
-                        
-                    </div> <!-- /.about -->
-
-                    <div id="menu-2" class="services content">
+                            <h3>Empreendimento:</h3><p><div> Porto Cidade </div>
+                            <br>
+                            <h3>Prédio:</h3><p><div> Porto de Santos </div>   
+                            <br>
+                            <h3>Apartamento:</h3><p><div> TA001 </div>   
+                        </div> 
+                    </div>
+                    
+                    <div id="menu-2" class="services content" >
                         <div class="row">
-                           
-                           <iframe src="https://www.google.com/maps/d/embed?mid=1iKC9_v4ip4y71r7erM1mCMjmqCk" width="800" height="600"></iframe>
-                        </div> <!-- /.row -->
-                    </div> <!-- /.services -->
-                    <div id="menu-3" class="gallery content">
+                            <header class="style1">
+                            <p class="style1" id="chart_div"></p>
+                            </header>
+                        </div>
+                    </div> 
+                    <div id="menu-3" class="about content">
                         <div class="row">
-                         <p>Ultima Foto Capturada</p>
-                                <p><div id="data">Data e hora: </div>
-                                <p> <img  id="foto" src="" alt="" style="width:80%"></img></p>
-                             
-                            
-
-                        </div> <!-- /.row -->
-                    </div> <!-- /.gallery -->
+                            <input type="text" style="background-color: #fff width:50px; "" value="Em Desenvolvimento" width="1000" class="tecnico" readonly="readonly" >
+                        </div>
+                    </div> 
+                    
 
                     <div id="menu-4" class="contact content">
                         <div class="row">
-                        	<header class="style1">
-                                <p style="margin-left: 60%">Temperatura</p>
-                                <!--<p> <iframe id="graph1" src="" width="" class="grafico1" ></iframe></p>
-                                <iframe id="graph3" src="" width=""  height="" class="" ></iframe>-->
-                                <iframe width="800" height="250" src="https://thingspeak.com/channels/116940/charts/2?api_key=1YCU9YV3YLDOETMZ&bgcolor=%23ffffff&color=%2374aa00&dynamic=true&results=60&title=+&type=line&width=800&height=250"></iframe>
-                                <p style="margin-left: 60%">Umidade</p>
-                                <p> <iframe width="800" height="250" src="https://thingspeak.com/channels/116940/charts/1?api_key=1YCU9YV3YLDOETMZ&bgcolor=%23ffffff&color=%2374aa00&dynamic=true&results=60&title=+&type=line&width=800&height=250"></iframe></p>
-                                
-                        </header>      
-                        </div> <!-- /.row -->
-                    </div> <!-- /.contact -->
+                        	
+                        </div> 
+                    </div> 
 
-                </div> <!-- /#menu-container -->
+                </div> 
 
-            </div> <!-- /.col-md-8 -->
+            </div>
 
-        </div> <!-- /.row -->
-    </div> <!-- /.container-fluid -->
+        </div> 
+    </div> 
     
     <div class="container-fluid">   
         <div class="row">
             <div class="col-md-12 footer">
                 <p id="footer-text">
                 
-                	Copyright &copy; 2016 <a href="index.html">De.Bugger</a>
+                	Copyright &copy; 2016 <a href="index.html">Giovanni Caprio</a>
                  
                  </p>
-            </div><!-- /.footer --> 
+            </div>
         </div>
-    </div> <!-- /.container-fluid -->
+    </div> 
 
     <script src="js/js/vendor/jquery-1.10.1.min.js"></script>
     <script src="js/js/main.js"></script>

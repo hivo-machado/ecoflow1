@@ -339,6 +339,9 @@ h6 {
     background-color: white;
     text-align: center;
 }
+#chart_div{
+    display: block;
+}
 
 .menu-wrapper ul.menu li {
     border-top: 1px solid #c7cdd8;
@@ -586,6 +589,7 @@ form input, form textarea {
     color: white;
 }
 
+
 /*------------------------------------------------------
 	RESPONSIVE STYLES 
 --------------------------------------------------------*/
@@ -639,4 +643,3 @@ form input, form textarea {
 .tecnico2{
     width:700px;
     text-align: center;
-    
