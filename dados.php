@@ -105,14 +105,16 @@ protegePagina(); // Chama a função que protege a página
                             <h3>Prédio:</h3><p><div> Porto de Santos </div>   
                             <br>
                             <h3>Apartamento:</h3><p><div> TA001 </div>   
-                        </div> 
+                        </div> <
                     </div>
                     
                     <div id="menu-2" class="services content" >
                         <div class="row">
+                            <div class="col-md-offset-4">
                             <header class="style1">
                             <p class="style1" id="chart_div"></p>
                             </header>
+                            </div>
                         </div>
                     </div> 
                     <div id="menu-3" class="about content">

@@ -17,7 +17,7 @@
       <!-- == END CONTATOS==-->
         <div class="container" style="background-color: #ffffff">
             <div class="loginformataçao">
-              <center><img src="img/logo.jpg"></center>
+              <center><img src="img/logo.png"></center>
             </div>
             <div class="login">
                 <center>  
