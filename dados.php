@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <?php
-include("seguranca.php"); // Inclui o arquivo com o sistema de segurança
-protegePagina(); // Chama a função que protege a página
+//include("seguranca.php"); // Inclui o arquivo com o sistema de segurança
+//protegePagina(); // Chama a função que protege a página
+include("relatorio.php");
 ?>
 <html class="no-js lt-ie9 lt-ie8 lt-ie7"> 
 <html class="no-js lt-ie9 lt-ie8">
@@ -35,12 +36,13 @@ protegePagina(); // Chama a função que protege a página
           data.addColumn('number', 'Gasto');
 
           data.addRows([
-            [0, 50],   [1, 50],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-            [6, 11],  [7, 81],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-            [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
-            [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
-            [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-            [30, 55], [31, 60]
+            <?php 
+                for($i = 1; $i <= 31; $i++){
+                    $str = '['.$i.','.consumoDia($i).']';
+                    if($i != 31) $str = $str.',';
+                    echo $str;
+                }
+             ?>
           ]);
 
           var options = {
@@ -111,7 +113,9 @@ protegePagina(); // Chama a função que protege a página
                     <div id="menu-2" class="services content" >
                         <div class="row">
                             <header class="style1">
-                            <p class="style1" id="chart_div"></p>
+                            <div class="col-md-offset-3">
+                                <div id="chart_div"></div>
+                            </div>
                             </header>
                         </div>
                     </div> 

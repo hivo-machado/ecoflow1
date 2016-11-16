@@ -15,7 +15,7 @@
 		if(isset($unidadeAnt)){
 			$leituraAnt = $unidadeAnt->leitura;
 		}else{
-			$leituraAnt = 0;		
+			$leituraAnt = 0;					
 		}
 		
 		$tempo = $ano.'-'.$mes.'-'.$dia;
@@ -24,7 +24,11 @@
 		$unidade = mysqli_fetch_object($result);
 		//Caso não exista leitura o consumo 0
 		if(isset($unidade)){
-			$consumo = $unidade->leitura - $leituraAnt;	
+			if($leituraAnt != 0){
+				$consumo = $unidade->leitura - $leituraAnt;	
+			}else{
+				$consumo = 0;
+			} 
 		}else{
 			$consumo = 0;
 		}		
