@@ -112,9 +112,9 @@ include("relatorio.php");
                     
                     <div id="menu-2" class="services content" >
                         <div class="row">
-                            <div class="col-md-offset-4">
-                            <header class="style1">
                             <div class="col-md-offset-3">
+                            <header class="style1">
+                            <div class="col-md-offset-0">
                                 <div id="chart_div"></div>
                             </div>
                             </header>
