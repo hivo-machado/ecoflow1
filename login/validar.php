@@ -5,19 +5,24 @@
 	$login  = $_POST['login'];
 	$senha  = $_POST['senha'];
 
-	$result = mysqli_query($con, "SELECT * FROM usuario WHERE login = '$login' and senha = '$senha'") or die("Erro ao pesquisar login" . mysqli_error());
+	$resUsuario = mysqli_query($con, "SELECT * FROM usuario WHERE login = '$login' and senha = '$senha'");
 
-	if($registro = mysqli_fetch_assoc($result)){
-		$nome = $registro["nome"];
-		$login = $registro["login"];
-		$tipo = $registro["tipo"];
-		// Inicia a sessão com os dados
-		session_start();
-		$_SESSION["nome"] = $nome;
-		$_SESSION["login"] = $login;
-		$_SESSION["tipo"] = $tipo;			
-		
-		header("Location: ../relatorio/grafico.php");
+	$resUsuarioAtivo = mysqli_query($con, "SELECT * FROM usuario WHERE login = '$login' and senha = '$senha' and status = 'ativo'");
+
+	if( $usuario = mysqli_fetch_assoc($resUsuario)){
+		if($registro = mysqli_fetch_assoc($resUsuarioAtivo)){
+			$nome = $registro["nome"];
+			$login = $registro["login"];
+			$tipo = $registro["tipo"];
+			// Inicia a sessão com os dados
+			session_start();
+			$_SESSION["nome"] = $nome;
+			$_SESSION["login"] = $login;
+			$_SESSION["tipo"] = $tipo;						
+			header("Location: ../relatorio/grafico.php");
+		}else{
+			header("Location: login.php?error=Usuario desativado!");	
+		}
 	}else{
 		header("Location: login.php?error=Usuario e/ou senha inválidos!");
 	}

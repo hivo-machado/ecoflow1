@@ -1,5 +1,5 @@
 <?php	
-	//Retorna consumo diario de um mês
+	//Retorna string com consumo diario de um mês
 
 	function consumoDia($con, $mes, $ano, $id){
 
@@ -23,14 +23,14 @@
 		}
 
 		$str = null;
-		// Loop para calculo consumo do dia
+		// Loop para calculo consumo do dias do mes
 		for ($dia = 1; $dia <= $numDiaMes; $dia++){			
 			
 			$tempo = $ano.'-'.$mes.'-'.$dia;
 
 			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 			$unidade = mysqli_fetch_object($result);
-			//Caso não exista leitura o consumo 0
+			//Caso não exista leitura o consumo sera 0
 			if(isset($unidade)){
 				if($leituraAnt != 0){
 					$consumo = $unidade->leitura - $leituraAnt;
