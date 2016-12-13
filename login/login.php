@@ -1,5 +1,6 @@
 <?php include_once("../header.php") ?>
-
+		
+		<!-- menssagem de sucesso ou erro-->
 		<div class="mensagme text-center col-md-12">
 			<?php 
 
@@ -20,15 +21,14 @@
 			?>
 		</div>
 
+		<!-- Div para logo Ecoflow -->
 		<div class="row">		
 			<div class="col-md-3 col-md-offset-4">
 				<img src="../img/ECOFlow symbol.jpg" alt="Logo Ecoflow" class="img-responsive">
 			</div>			
 		</div>
 
-		<div class="row">
-		</div>
-
+		<!-- Div de formulario para login -->
 		<div class="row">	
 	    	<div class="col-md-5 col-md-offset-3">
 		        <div align="center" class="panel panel-default">        

@@ -11,6 +11,7 @@
 		$nome = $registro["nome"];
 		$login = $registro["login"];
 		$tipo = $registro["tipo"];
+		// Inicia a sessão com os dados
 		session_start();
 		$_SESSION["nome"] = $nome;
 		$_SESSION["login"] = $login;
