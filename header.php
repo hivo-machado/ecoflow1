@@ -1,5 +1,5 @@
 <?php include_once("conexao.php"); ?>
-<?php include_once("grafico/consumo.php"); ?>
+<?php include_once("relatorio/consumo.php"); ?>
 <?php 
 	session_start();
 	if(isset($_SESSION["login"]))$login = $_SESSION["login"];
@@ -65,9 +65,8 @@
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li>
-						<a href="../index.php" class="navbar-brand"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> HOME</a>
-					</li>
+					<li><a href="../index.php" class="navbar-brand"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> HOME</a></li>
+					<li><a href="../relatorio/grafico.php">Gráfico</a></li>
 					<!--
 					<li>
 						<li class="dropdown">

@@ -17,7 +17,7 @@
 		$_SESSION["login"] = $login;
 		$_SESSION["tipo"] = $tipo;			
 		
-		header("Location: ../grafico/grafico.php");
+		header("Location: ../relatorio/grafico.php");
 	}else{
 		header("Location: login.php?error=Usuario e/ou senha inválidos!");
 	}
