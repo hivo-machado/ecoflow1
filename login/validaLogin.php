@@ -25,6 +25,7 @@
 		<div class="row">		
 			<div class="col-md-3 col-md-offset-4">
 				<img src="../img/ECOFlow symbol.jpg" alt="Logo Ecoflow" class="img-responsive">
+				<br>
 			</div>			
 		</div>
 
@@ -33,7 +34,7 @@
 	    	<div class="col-md-5 col-md-offset-3">
 		        <div align="center" class="panel panel-default">        
 			        <div class="panel-body">
-				        <form class="form-horizontal" method="POST" action="validar.php">
+				        <form class="form-horizontal" method="POST" action="validarLogin.php">
 						  <div class="form-group">
 						    <label for="inputEmail3" class="col-md-2 col-md-offset-1 control-label">Login</label>
 						    <div class="col-md-7">

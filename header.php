@@ -1,22 +1,19 @@
 <?php include_once("conexao.php"); ?>
-<?php include_once("relatorio/consumo.php"); ?>
-<?php 
-	session_start();
-	if(isset($_SESSION["login"]))$login = $_SESSION["login"];
-
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="utf-8" />
 	<title>ECOflow</title>
 
+	<!-- Links para Bootsrap -->
 	<link rel="stylesheet"  href="../css/bootstrap.css">
 	<link rel="stylesheet"  href="../css/bootstrap-theme.css">
 
 	<!-- Script para API do google gera grafico -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
 </head>
 <body>
 

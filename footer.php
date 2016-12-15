@@ -1,6 +1,8 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="../js/bootstrap.js"></script>
-</div>
-</div>
+
+		<!-- Script para bootsrap -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="../js/bootstrap.js"></script>
+	</div>
+	</div>
 </body>
 </html>
