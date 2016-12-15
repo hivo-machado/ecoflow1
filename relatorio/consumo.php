@@ -1,7 +1,7 @@
 <?php
 	
-	include_once('../conexao.php');
-	echo consumoDia($con, 2150, 2016, 11);
+	//include_once('../conexao.php');
+	//echo consumoDia($con, 2150, 2016, 11);
 	
 	//Retorna string com consumo diario de um mês
 	function consumoDia($con, $id, $ano, $mes){

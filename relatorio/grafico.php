@@ -56,6 +56,7 @@
 }
 </script>
 
+  <p><?php echo consumoDia($con, $login, $ano, $mes); ?></p>
 <!-- Div do plota grafico -->
 <div id="chart_div"></div>
 
