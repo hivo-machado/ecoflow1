@@ -21,10 +21,10 @@
 			$_SESSION["tipo"] = $tipo;						
 			header("Location: ../relatorio/grafico.php");
 		}else{
-			header("Location: login.php?error=Usuario desativado!");	
+			header("Location: validaLogin.php?error=Usuario desativado!");	
 		}
 	}else{
-		header("Location: login.php?error=Usuario e/ou senha inválidos!");
+		header("Location: validaLogin.php?error=Usuario e/ou senha inválidos!");
 	}
 		
 ?>
