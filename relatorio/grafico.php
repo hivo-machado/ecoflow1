@@ -102,7 +102,7 @@
 <div class="row">
   <?php
     // Consumo Total do mês 
-    echo '<p>'.consumoMes($con, $login, $ano, $mes, $dia).'</p>';  
+    echo '<h4>'.consumoMes($con, $login, $ano, $mes, $dia).'</h4>';  
   ?>
 </div>
 
