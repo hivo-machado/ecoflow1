@@ -1,9 +1,5 @@
 <?php
 	
-	/*Teste*/
-	//include_once('../conexao.php');
-	//echo consumoDia($con, 2150, 2016, 11);
-	
 	//Retorna string com consumo diario de um mês
 	function consumoDia($con, $id, $ano, $mes){
 
@@ -75,6 +71,7 @@
 		return $str;		
 	}
 
+	// Função para consumo total do mês
 	function consumoMes($con, $id, $ano, $mes, $dia = 1){
 
 		// Converte a data para modelo do banco de dados 
@@ -116,15 +113,15 @@
 			$unidadeFim = mysqli_fetch_object($resUnidFim);
 		}while(!isset($unidadeFim));
 
-
+		//Verifica se data inicial existe
 		if(isset($unidadeInicio)){
 			$LeituraInicio = $unidadeInicio->leitura;
 			$leituraFim = $unidadeFim->leitura;
 			$consumoDoMes = $leituraFim - $LeituraInicio;
-			return  'Consumo do mes: '.$consumoDoMes;
+			return  'Consumo total do mes: '.$consumoDoMes;
 		}
 		
-		return 'O dia selecionado não disponivel';
+		return 'O dia selecionado não disponível';
 	}
 
  ?>

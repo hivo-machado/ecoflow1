@@ -3,10 +3,12 @@
 <?php include_once("consumo.php"); ?>
 
 <?php 
-  date_default_timezone_set('UTC');
-
+  // Variaveis da sessão
   $login = $_SESSION['login'];
+  $nome = $_SESSION['nome'];
 
+  //Mes e ano atual
+  date_default_timezone_set('UTC');
   if(isset($_GET['mes']) ){
     $mes = $_GET['mes'];
     $ano = date("Y");
@@ -14,7 +16,6 @@
     $mes = date("m");
     $ano = date("Y");
   }
-  //$mes = 11;
 ?>
 
 <!-- API  do google para criação de graficos-->
@@ -58,13 +59,15 @@
 </script>
 
 <?php 
-  echo '<h3> Unidade: '.$login.'</h3>';
+  //Nome da Unidade
+  echo '<h3> Unidade: '.$nome.'</h3>';
  ?>
 
 <!-- Div do plota grafico -->
 <div id="chart_div"></div>
 
-<?php 
+<?php
+  // Consumo Total do mês 
   echo '<p>'.consumoMes($con, $login, $ano, $mes, 1).'</p>';
 ?>
 
