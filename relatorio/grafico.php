@@ -2,8 +2,6 @@
 <?php include_once("../validar.php"); ?>
 <?php include_once("consumo.php"); ?>
 
-<script src="consumo.js"></script>
-
 <?php 
   // Variaveis da sessão
   $login = $_SESSION['login'];
@@ -11,34 +9,55 @@
 
   //Mes e ano atual
   date_default_timezone_set('UTC');
-  $mes = date("m");
-  $ano = date("Y");  
+  if(isset($_POST['mes'])){
+    $mes = $_POST['mes'];
+    $dia = $_POST['dia'];
+    $ano = date("Y");
+  }else{
+    $mes = date("m");
+    $ano = date("Y");  
+  }
 ?>
+<div class="row">
+  <?php 
+    //Nome da Unidade
+    echo '<h3> Unidade: '.$nome.'</h3>';
+   ?>
+</div>
 
-<?php 
-  //Nome da Unidade
-  echo '<h3> Unidade: '.$nome.'</h3>';
- ?>
-<div class="col-md-2">
-  <select class="form-control" name="mes" id="mes" onchange="selecionaMes();">
-    <option></option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-    <option value="11">11</option>
-    <option value="12">12</option>  
-  </select>
+<div class="row">
+  <form class="form-inline" method="POST" action="grafico.php">
+      <div class="form-group">
+        <label>Dia</label>
+        <select class="form-control" name="dia">
+          <?php echo '<option value="'.$dia.'">'.$dia.'</option>' ?>;
+          <?php
+            $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
+            for($i = 1; $i <= $numDiaMes; $i++){
+              echo '<option value="'.$i.'">'.$i.'</option>';
+            }
+           ?>
+        </select>      
+      </div>
+
+      <div class="form-group">
+        <label>Mês</label>
+        <select class="form-control" name="mes">
+          <?php echo '<option value="'.$mes.'">'.$mes.'</option>' ?>;
+          <?php 
+            for($i = 1; $i <= 12; $i++){
+              echo '<option value="'.$i.'">'.$i.'</option>';
+            }
+           ?>
+        </select>      
+      </div>
+
+      <button type="submit" class="btn btn-default">Aplicar</button>
+  </form>
 </div>
 
 <script>
-    //API  do google para criação de graficos
+  //API  do google para criação de graficos
   google.charts.load('current', {packages: ['corechart', 'line']});
   google.charts.setOnLoadCallback(drawBasic);
 
@@ -75,19 +94,15 @@
 </script>
 
 <!-- Div do plota grafico -->
-<div id="chart_div"></div>
-
-<div>
-  <?php
-    // Consumo Total do mês 
-    echo '<p>'.consumoMes($con, $login, $ano, $mes, 1).'</p>';  
-  ?>
+<div class="row">
+  <div id="chart_div"></div>
 </div>
 
-<p id="demo"></p>
-
-<script>
-  document.getElementById("demo").innerHTML = toCelsius(77);
-</script>
+<div class="row">
+  <?php
+    // Consumo Total do mês 
+    echo '<p>'.consumoMes($con, $login, $ano, $mes, $dia).'</p>';  
+  ?>
+</div>
 
 <?php include_once("../footer.php") ?>
