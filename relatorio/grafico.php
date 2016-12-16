@@ -14,6 +14,7 @@
     $dia = $_POST['dia'];
     $ano = date("Y");
   }else{
+    $dia = 1;
     $mes = date("m");
     $ano = date("Y");  
   }
