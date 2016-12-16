@@ -14,6 +14,7 @@
     $mes = date("m");
     $ano = date("Y");
   }
+  //$mes = 11;
 ?>
 
 <!-- API  do google para criação de graficos-->
@@ -36,10 +37,10 @@
   var options = {
     hAxis: {
       title: 'Dia',
-      baseline:31,
+      //baseline:31,
       
       gridlines: {
-        count:16,
+        count:15,
       }
     },
     vAxis: {
@@ -56,12 +57,15 @@
 }
 </script>
 
-  <p><?php echo consumoDia($con, $login, $ano, $mes); ?></p>
+<?php 
+  echo '<h3> Unidade: '.$login.'</h3>';
+ ?>
+
 <!-- Div do plota grafico -->
 <div id="chart_div"></div>
 
 <?php 
-  //echo '<p>'.consumoMes($con, $login, $ano, 11).'</p>';
+  echo '<p>'.consumoMes($con, $login, $ano, $mes, 1).'</p>';
 ?>
 
 

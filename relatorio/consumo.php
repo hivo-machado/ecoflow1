@@ -75,36 +75,56 @@
 		return $str;		
 	}
 
-	function consumoMes($con, $id, $ano, $mes, $dia = 18){
+	function consumoMes($con, $id, $ano, $mes, $dia = 1){
+
+		// Converte a data para modelo do banco de dados 
+		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
+		$date = date_create($data);
+		$tempo =  date_format($date, 'Y-m-d');
+
 		//Primerira leitura do mes
-		$tempo = $ano.'-'.$mes.'-'.$dia;
-		$resUnid = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
-		$unidade = mysqli_fetch_object($resUnid);
+		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
+		$unidadeInicio = mysqli_fetch_object($resUnidInicio);
 
-		//Primerira leitura do mes posterior
-		$cont = 0;
+		
+
+		//loop para ultima leitura do mes
 		$mes += 1;
+		$auxDia = $dia;
+		if($mes == 13){
+			$mes = 1;
+			$ano ++;
+		}
 		do{
-			if($dia < 1){
-				$dia = 31;
-				echo $mes--;
-				$cont = 0;
+			if($auxDia < 1){
+				$auxDia = 31;
+				if($mes == 1){
+					$mes = 12;
+					$ano --;
+				}else{
+					$mes--;
+				}
 			}
-			$auxDia = $dia - $cont;
-			$tempo = $ano.'-'.$mes.'-'.$auxDia;
-			$resUnidPos = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
-			$cont++;
-		}while($resUnidPos);
-		$unidadePos = mysqli_fetch_object($resUnidPos);
 
-		if(isset($unidade)){
-			echo 'pos'.$pos = $unidadePos->leitura;
-			echo 'atual'.$atual = $unidade->leitura;
-			$consumoDoMes = $pos - $atual;
+			// Converte a data para modelo do banco de dados 
+			$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$auxDia)));
+			$date = date_create($data);
+			$tempo =  date_format($date, 'Y-m-d');
+
+			$resUnidFim = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
+			$auxDia--;
+			$unidadeFim = mysqli_fetch_object($resUnidFim);
+		}while(!isset($unidadeFim));
+
+
+		if(isset($unidadeInicio)){
+			$LeituraInicio = $unidadeInicio->leitura;
+			$leituraFim = $unidadeFim->leitura;
+			$consumoDoMes = $leituraFim - $LeituraInicio;
 			return  'Consumo do mes: '.$consumoDoMes;
 		}
 		
-		return 0;
+		return 'O dia selecionado não disponivel';
 	}
 
  ?>
