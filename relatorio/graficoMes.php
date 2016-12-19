@@ -81,7 +81,7 @@
         }
       },
       vAxis: {
-        title: 'm³/s'
+        title: 'm³'
       },
       width: 900,
       height: 300,
@@ -102,7 +102,7 @@
 <div class="row">
   <?php
     // Consumo Total do mês 
-    echo '<h4>'.consumoMes($con, $login, $ano, $mes, $dia).'</h4>';  
+    echo '<h4>'.consumoTotalMes($con, $login, $ano, $mes, $dia).'</h4>';  
   ?>
 </div>
 

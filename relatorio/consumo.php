@@ -21,6 +21,7 @@
 		$date = date_create($data);
 		$tempo =  date_format($date, 'Y-m-d');
 
+		//1º leitura do dia
 		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 		$unidadeAnt = mysqli_fetch_object($result);
 
@@ -46,6 +47,7 @@
 			$date = date_create($data);
 			$tempo =  date_format($date, 'Y-m-d');
 
+			//1º leitura do dia
 			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 			$unidade = mysqli_fetch_object($result);
 			
@@ -64,22 +66,23 @@
 				$leituraAnt = 0; //possivel correção na logica
 			}
 
-			//Concatena os valores de consumo
+			//Concatena os valores de consumo para API de grafico
 			$str = $str.'['.$dia.','.$consumo.']';
             if($dia != 31) $str = $str.',';
 		}
 		return $str;		
 	}
 
+
 	// Função para consumo total do mês
-	function consumoMes($con, $id, $ano, $mes, $dia = 1){
+	function consumoTotalMes($con, $id, $ano, $mes, $dia = 1){
 
 		// Converte a data para modelo do banco de dados 
 		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
 		$date = date_create($data);
 		$tempo =  date_format($date, 'Y-m-d');
 
-		//Primerira leitura do mes
+		//1º leitura do mes
 		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 		$unidadeInicio = mysqli_fetch_object($resUnidInicio);		
 
@@ -91,6 +94,7 @@
 			$ano ++;
 		}
 		do{
+			//Se 1º dia do mes passa para mes anterior
 			if($auxDia < 1){
 				$auxDia = 31;
 				if($mes == 1){
@@ -106,6 +110,7 @@
 			$date = date_create($data);
 			$tempo =  date_format($date, 'Y-m-d');
 
+			//1º leitura do dia
 			$resUnidFim = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 			$auxDia--;
 			$unidadeFim = mysqli_fetch_object($resUnidFim);
@@ -120,5 +125,61 @@
 		}		
 		return 'O dia selecionado não disponível';
 	}
+
+
+	//Função para cosumo por mes
+	function consumoAno($con, $id, $ano){
+		$str = null; // String para retorno dos resultado
+		
+		for($mes = 1; $mes <= 12; $mes++){
+			// Converte a data para modelo do banco de dados 
+			$data = date("Y-m",strtotime(str_replace('/','-',$ano.'-'.$mes)));
+			$date = date_create($data);
+			$tempo =  date_format($date, 'Y-m');
+
+			//1º leitura do mes
+			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$tempo%' ORDER by tempo LIMIT 1");
+			$unidadePrimeiro = mysqli_fetch_object($result);
+
+			//Ultima leitura do mes
+			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$tempo%' ORDER by tempo DESC LIMIT 1");
+			$unidadeUltimo = mysqli_fetch_object($result);
+			
+			//Verifica se existe uma leitura no mes
+			if(isset($unidadePrimeiro)){
+				$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
+			}else{
+				$consumo = 0;
+			}
+
+			//Concatena os valores de consumo para API de grafico
+			$str = $str.'['.$mes.','.$consumo.']';
+            if($mes != 12) $str = $str.',';			
+		}
+
+		return $str;
+	}
+
+
+	//Função para consumo total do ano
+	function consumoTotalAno($con, $id, $ano){
+
+		//Primeira leitura do Ano
+		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$ano%' ORDER by tempo LIMIT 1");
+		$unidadePrimeiro = mysqli_fetch_object($result);
+
+		//Ultima leitura do mes
+		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$ano%' ORDER by tempo DESC LIMIT 1");
+		$unidadeUltimo = mysqli_fetch_object($result);
+
+		//calculo do consumo Total do ano
+		$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
+
+		return $consumo;
+	}
+
+	//include_once('../conexao.php');
+	//consumoAno($con, 2222, 2016);
+	//echo consumoTotalAno($con, 2222, 2016);
 
  ?>
