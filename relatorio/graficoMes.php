@@ -27,7 +27,7 @@
 </div>
 
 <div class="row">
-  <form class="form-inline" method="POST" action="grafico.php">
+  <form class="form-inline" method="POST" action="graficoMes.php">
       <div class="form-group">
         <label>Dia</label>
         <select class="form-control" name="dia">
