@@ -28,7 +28,7 @@
 		if(isset($unidadeAnt)){
 			$leituraAnt = $unidadeAnt->leitura;
 		}else{
-			$leituraAnt = 0;					
+			$leituraAnt = 0;	
 		}
 
 		//Numero de dias do mes
@@ -81,9 +81,7 @@
 
 		//Primerira leitura do mes
 		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
-		$unidadeInicio = mysqli_fetch_object($resUnidInicio);
-
-		
+		$unidadeInicio = mysqli_fetch_object($resUnidInicio);		
 
 		//loop para ultima leitura do mes
 		$mes += 1;
@@ -119,8 +117,7 @@
 			$leituraFim = $unidadeFim->leitura;
 			$consumoDoMes = $leituraFim - $LeituraInicio;
 			return  'Consumo total do mês: '.$consumoDoMes;
-		}
-		
+		}		
 		return 'O dia selecionado não disponível';
 	}
 

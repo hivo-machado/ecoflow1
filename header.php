@@ -24,19 +24,15 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li><a href="../index.php" class="navbar-brand"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> HOME</a></li>
-					<li><a href="../relatorio/grafico.php">Gráfico</a></li>
-					<!--
 					<li>
 						<li class="dropdown">
-				        	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuario <span class="caret"></span></a>
+				        	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gráfico <span class="caret"></span></a>
 				         	<ul class="dropdown-menu">
-				            <li><a href="../Usuario/buscaUsuario.php">Consultar</a></li>
-				            <li><a href="../Usuario/alterarUsuario.php">Alterar</a></li>
-				            <li><a href="../Usuario/desativarUsuario.php">Desativar</a></li>
+				            <li><a href="../relatorio/graficoMes.php">Mês</a></li>
+				            <li><a href="../relatorio/graficoAno.php">Ano</a></li>
 				          </ul>
 				        </li>
 					</li>
-					-->
 				</ul>				
 				<ul class="nav navbar-nav navbar-right">
 					<?php 

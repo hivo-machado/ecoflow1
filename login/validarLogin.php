@@ -19,7 +19,7 @@
 			$_SESSION["nome"] = $nome;
 			$_SESSION["login"] = $login;
 			$_SESSION["tipo"] = $tipo;						
-			header("Location: ../relatorio/grafico.php");
+			header("Location: ../relatorio/graficoMes.php");
 		}else{
 			header("Location: validaLogin.php?error=Usuario desativado!");	
 		}
