@@ -90,7 +90,7 @@
         //baseline:31,
         
         gridlines: {
-          count:15,
+          count:30,
         }
       },
       vAxis: {
