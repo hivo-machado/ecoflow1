@@ -3,6 +3,7 @@
 	//Retorna string com consumo diario de um mês
 	function consumoDia($con, $id, $ano, $mes){
 
+		//leitura do ultimo dia do mes anterior
 		if($mes == 1){
 			$numDiaMesAnt = cal_days_in_month(CAL_GREGORIAN, 12, $ano - 1);
 			$auxAno = $ano-1;
@@ -86,27 +87,29 @@
 		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 		$unidadeInicio = mysqli_fetch_object($resUnidInicio);		
 
-		//loop para ultima leitura do mes
-		$mes += 1;
+		//Se for dezembro passa para janeiro do proximo ano
+		$auxMes = $mes +  1;
 		$auxDia = $dia;
-		if($mes == 13){
-			$mes = 1;
+		if($auxMes == 13){
+			$auxMes = 1;
 			$ano ++;
 		}
+
+		//loop para ultima leitura do mes seguinde
 		do{
-			//Se 1º dia do mes passa para mes anterior
+			//Se for 1º dia do mes passa para mes anterior
 			if($auxDia < 1){
 				$auxDia = 31;
-				if($mes == 1){
-					$mes = 12;
+				if($auxMes == 1){
+					$auxMes = 12;
 					$ano --;
 				}else{
-					$mes--;
+					$auxMes--;
 				}
 			}
 
 			// Converte a data para modelo do banco de dados 
-			$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$auxDia)));
+			$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$auxMes.'-'.$auxDia)));
 			$date = date_create($data);
 			$tempo =  date_format($date, 'Y-m-d');
 
@@ -114,10 +117,10 @@
 			$resUnidFim = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 			$auxDia--;
 			$unidadeFim = mysqli_fetch_object($resUnidFim);
-		}while(!isset($unidadeFim));
+		}while( (!isset($unidadeFim) )&&($auxMes <= $mes) );
 
 		//Verifica se data inicial existe
-		if(isset($unidadeInicio)){
+		if( (isset($unidadeInicio) )&&(isset($unidadeFim)) ){
 			$LeituraInicio = $unidadeInicio->leitura;
 			$leituraFim = $unidadeFim->leitura;
 			$consumoDoMes = $leituraFim - $LeituraInicio;
@@ -172,8 +175,9 @@
 		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$ano%' ORDER by tempo DESC LIMIT 1");
 		$unidadeUltimo = mysqli_fetch_object($result);
 
-		//calculo do consumo Total do ano
+		//Verifica se existe uma leitura no mes
 		if(isset($unidadePrimeiro)){
+			//calculo do consumo Total do ano
 			$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
 		}else{
 			$consumo = 0;
