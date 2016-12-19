@@ -36,7 +36,7 @@
 				</ul>				
 				<ul class="nav navbar-nav navbar-right">
 					<?php 
-					if( !isset($_SESSION["login"])){
+					if( !isset($_SESSION["idecoflow"])){
 						?>
 					<li>
 						<a href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>

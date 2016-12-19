@@ -14,7 +14,7 @@ include_once("../conexao.php");
 				$selUsuario = mysqli_query($con,"SELECT * from usuario where login = '$usuario->idecoflow' ");
 				if(isset($selUsuario)){
 					//Insere novo usuario
-					mysqli_query($con, "INSERT INTO usuario (nome, login, senha, tipo, status) VALUES ('$usuario->nome', '$usuario->idecoflow', '$usuario->idecoflow', '$tipo', '$status')");
+					mysqli_query($con, "INSERT INTO usuario (login, senha, id, nome, tipo, status) VALUES ('$usuario->idecoflow', '$usuario->idecoflow', $usuario->idecoflow, '$usuario->nome', '$tipo', '$status')");
 					echo $usuario->idecoflow.'<br>';
 				}
 			}

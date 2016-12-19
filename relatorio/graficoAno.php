@@ -6,7 +6,7 @@
 
 <?php 
   // Variaveis da sessão
-  $login = $_SESSION['login'];
+  $id = $_SESSION['idecoflow'];
   $nome = $_SESSION['nome'];
 
   //Ano atual
@@ -55,7 +55,7 @@
     data.addColumn('number', 'Consumo');
 
     data.addRows([
-      <?php echo consumoAno($con, $login, $ano); ?>
+      <?php echo consumoAno($con, $id, $ano); ?>
     ]);
 
     var options = {
@@ -89,7 +89,7 @@
 <div class="row">
   <?php
     // Consumo Total do Ano
-    echo '<h4>Consumo Total do Ano: '.consumoTotalAno($con, $login, $ano).'</h4>';  
+    echo '<h4>Consumo Total do Ano: '.consumoTotalAno($con, $id, $ano).'</h4>';  
   ?>
 </div>
 

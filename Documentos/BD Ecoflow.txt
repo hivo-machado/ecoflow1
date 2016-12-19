@@ -17,10 +17,21 @@ Create Table unidade (
     idecoflow int not NULL,
     tempo timestamp NOT NULL,
     id_planta_fk int NOT NULL,
-    nome varchar(8) NOT NULL,
-    medidor varchar(10),
-    servico int,
+    nome varchar(20) NOT NULL,
+    medidor varchar(20),
+    servico tinyint(1),
     leitura float,
     CONSTRAINT planta_fk FOREIGN KEY (id_planta_fk)REFERENCES planta(idecoflow),
     CONSTRAINT unidade_pkey PRIMARY KEY (idecoflow,tempo)
+);
+
+Create Table usuario(
+    login varchar(20),
+    senha varchar(20) NOT NULL,
+    id int NOT NULL,
+    nome varchar(30),
+    email varchar(40),
+    tipo varchar(10),
+    status varchar(15),
+    CONSTRAINT login_pkey PRIMARY KEY (login) 
 );
