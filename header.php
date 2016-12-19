@@ -39,7 +39,7 @@
 					if( !isset($_SESSION["login"])){
 						?>
 					<li>
-						<a href="../login/login.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
+						<a href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
 					</li>
 					<?php }else{ ?>
 					<li>

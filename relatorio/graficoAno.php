@@ -1,6 +1,8 @@
-<?php include_once("../header.php"); ?> 
-<?php include_once("../validar.php"); ?>
-<?php include_once("consumo.php"); ?>
+<?php 
+  include_once("../header.php");
+  include_once("../validar.php");
+  include_once("consumo.php"); 
+?>
 
 <?php 
   // Variaveis da sessão

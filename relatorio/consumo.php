@@ -121,9 +121,9 @@
 			$LeituraInicio = $unidadeInicio->leitura;
 			$leituraFim = $unidadeFim->leitura;
 			$consumoDoMes = $leituraFim - $LeituraInicio;
-			return  'Consumo total do mês: '.$consumoDoMes;
+			return  $consumoDoMes;
 		}		
-		return 'O dia selecionado não disponível';
+		return 'dia não disponível';
 	}
 
 

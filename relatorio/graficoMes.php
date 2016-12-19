@@ -1,6 +1,8 @@
-<?php include_once("../header.php"); ?> 
-<?php include_once("../validar.php"); ?>
-<?php include_once("consumo.php"); ?>
+<?php 
+  include_once("../header.php");
+  include_once("../validar.php");
+  include_once("consumo.php"); 
+?>
 
 <?php 
   // Variaveis da sessão
@@ -19,9 +21,10 @@
     $ano = date("Y");  
   }
 ?>
+
+<!--Nome da Unidade-->
 <div class="row">
   <?php 
-    //Nome da Unidade
     echo '<h3> Unidade: '.$nome.'</h3>';
    ?>
 </div>
@@ -70,8 +73,8 @@
   </form>
 </div>
 
+<!--API  do google para criação de graficos-->
 <script>
-  //API  do google para criação de graficos
   google.charts.load('current', {packages: ['corechart', 'line']});
   google.charts.setOnLoadCallback(drawBasic);
 
@@ -112,10 +115,10 @@
   <div id="chart_div"></div>
 </div>
 
+<!--Consumo Total do mês-->
 <div class="row">
-  <?php
-    // Consumo Total do mês 
-    echo '<h4>'.consumoTotalMes($con, $login, $ano, $mes, $dia).'</h4>';  
+  <?php 
+    echo '<h4>Consumo total do mês: '.consumoTotalMes($con, $login, $ano, $mes, $dia).'</h4>';  
   ?>
 </div>
 
