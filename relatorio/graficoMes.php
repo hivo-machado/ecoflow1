@@ -12,7 +12,7 @@
   if(isset($_POST['mes'])){
     $mes = $_POST['mes'];
     $dia = $_POST['dia'];
-    $ano = date("Y");
+    $ano = $_POST['ano'];
   }else{
     $dia = 1;
     $mes = date("m");
@@ -31,11 +31,11 @@
       <div class="form-group">
         <label>Dia</label>
         <select class="form-control" name="dia">
-          <?php echo '<option value="'.$dia.'">'.$dia.'</option>' ?>;
           <?php
             $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
             for($i = 1; $i <= $numDiaMes; $i++){
-              echo '<option value="'.$i.'">'.$i.'</option>';
+              if($i == $dia) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
             }
            ?>
         </select>      
@@ -44,10 +44,23 @@
       <div class="form-group">
         <label>Mês</label>
         <select class="form-control" name="mes">
-          <?php echo '<option value="'.$mes.'">'.$mes.'</option>' ?>;
           <?php 
             for($i = 1; $i <= 12; $i++){
-              echo '<option value="'.$i.'">'.$i.'</option>';
+              if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
+            }
+           ?>
+        </select>      
+      </div>
+
+      <div class="form-group">
+        <label>Ano</label>
+        <select class="form-control" name="ano">
+          <?php
+            $numAno = date("Y");
+            for($i = 2016; $i <= $numAno; $i++){
+              if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
             }
            ?>
         </select>      

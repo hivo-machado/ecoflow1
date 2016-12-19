@@ -173,7 +173,11 @@
 		$unidadeUltimo = mysqli_fetch_object($result);
 
 		//calculo do consumo Total do ano
-		$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
+		if(isset($unidadePrimeiro)){
+			$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
+		}else{
+			$consumo = 0;
+		}
 
 		return $consumo;
 	}

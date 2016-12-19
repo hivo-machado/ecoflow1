@@ -9,7 +9,11 @@
 
   //Ano atual
   date_default_timezone_set('UTC');
-  $ano = date("Y");  
+  if(isset($_POST['ano'])){
+    $ano = $_POST['ano'];
+  }else{
+    $ano = date("Y");  
+  }
 
 ?>
 <div class="row">
@@ -17,6 +21,25 @@
     //Nome da Unidade
     echo '<h3> Unidade: '.$nome.'</h3>';
    ?>
+</div>
+
+<div class="row">
+  <form class="form-inline" method="POST" action="graficoAno.php">
+      <div class="form-group">
+        <label>Ano</label>
+        <select class="form-control" name="ano">
+          <?php
+            $numAno = date("Y");
+            for($i = 2016; $i <= $numAno; $i++){
+              if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
+            }
+           ?>
+        </select>      
+      </div>
+
+      <button type="submit" class="btn btn-default">Aplicar</button>
+  </form>
 </div>
 
 <script>
