@@ -81,7 +81,7 @@
   function drawBasic() {
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Dia');
-    data.addColumn('number', 'Consumo');
+    data.addColumn('number', 'Água fria');
 
     data.addRows([
       <?php echo consumoDia($con, $id, $ano, $mes); ?>

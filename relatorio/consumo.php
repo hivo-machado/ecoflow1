@@ -2,11 +2,15 @@
 	
 	//Retorna string com consumo diario de um mês
 	function consumoDia($con, $id, $ano, $mes){
+		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
+		$str = null; //String para retonar dias e consumo
+		$semLeitura = 0; // contador de dias sem leitura
+		$bandeira = false; // flag para começar a contar quanto existir a 1º leitura
 
 		//leitura do ultimo dia do mes anterior
 		if($mes == 1){
 			$numDiaMesAnt = cal_days_in_month(CAL_GREGORIAN, 12, $ano - 1);
-			$auxAno = $ano-1;
+			$auxAno = $ano - 1;
 
 			// Converte para data
 			$data = date("Y-m-d",strtotime(str_replace('/','-', $auxAno.'-'.'12'.'-'.$numDiaMesAnt)));
@@ -22,26 +26,19 @@
 		$date = date_create($data);
 		$tempo =  date_format($date, 'Y-m-d');
 
-		//1º leitura do dia
+		//1º leitura do ultimo dia do mes anterior
 		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 		$unidadeAnt = mysqli_fetch_object($result);
 
-		//Caso não exista leitura anterior assumi como 0
+		//Caso não exista 1º leitura do ultimo dia do mes anterior assumi como 0
 		if(isset($unidadeAnt)){
 			$leituraAnt = $unidadeAnt->leitura;
 		}else{
 			$leituraAnt = 0;	
 		}
 
-		//Numero de dias do mes
-		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
-
-		//String para retonar dias e consumo
-		$str = null;
-
 		// Loop para calculo consumo do dias do mes
 		for ($dia = 1; $dia <= $numDiasMes; $dia++){
-			$ant = $dia - 1;
 			
 			// Converte a data para modelo do banco de dados 
 			$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
@@ -52,25 +49,44 @@
 			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and tempo like '$tempo%' ORDER by tempo LIMIT 1");
 			$unidade = mysqli_fetch_object($result);
 			
-			//Caso não exista leitura o consumo 0
+			//Caso não exista leitura
 			if(isset($unidade)){
-				if($leituraAnt != 0){
-					$unidade->leitura;
-					$consumo = $unidade->leitura - $leituraAnt;
-					$leituraAnt = $unidade->leitura;
+				if($semLeitura == 0){
+					//Caso 1º do ultimo dia do mes anterior não exista consumo 0
+					if($leituraAnt != 0){
+						$unidade->leitura;
+						$consumo[$dia] = $unidade->leitura - $leituraAnt;
+						$leituraAnt = $unidade->leitura;
+					}else{
+						$consumo[$dia] = 0;
+						$leituraAnt = $unidade->leitura;
+					}
 				}else{
-					$consumo = 0;
+					$auxConsumo = ($unidade->leitura - $leituraAnt) / ($semLeitura + 1);
+					//loop para preenchimento dos dias sem leitura
+					for($i = $dia - $semLeitura; $i <= $dia; $i++){
+						$consumo[$i] = $auxConsumo;
+					}
+					$semLeitura = 0;
 					$leituraAnt = $unidade->leitura;
-				} 
+				}
+				$bandeira = true;
 			}else{
-				$consumo = 0;
-				$leituraAnt = 0; //possivel correção na logica
+				$consumo[$dia] = 0;
+				if($bandeira)$semLeitura++;
 			}
 
-			//Concatena os valores de consumo para API de grafico
-			$str = $str.'['.$dia.','.$consumo.']';
-            if($dia != 31) $str = $str.',';
 		}
+
+		//loop para preenchimento da string de retorno da função
+		for ($i = 1; $i <= $numDiasMes; $i++){
+			if($consumo[$i] == 0){
+				$consumo[$i] = 0;
+			}
+			$str = $str.'['.$i.','.$consumo[$i].']';
+		    if($i != $numDiasMes) $str = $str.',';
+		}
+
 		return $str;		
 	}
 
@@ -180,13 +196,14 @@
 			//calculo do consumo Total do ano
 			$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
 		}else{
-			$consumo = 0;
+			$consumo = 'não disponível';
 		}
 
 		return $consumo;
 	}
 
 	//include_once('../conexao.php');
+	//echo consumoDia($con, 2222, 2016, 11);
 	//consumoAno($con, 2222, 2016);
 	//echo consumoTotalAno($con, 2222, 2016);
 
