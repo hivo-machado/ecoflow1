@@ -35,12 +35,14 @@ foreach ($arquivos as $arquivo) {
 		    	$date = date_create($data);
 				$tempo =  date_format($date, 'Y-m-d H:i:s');
 
+				$hora = substr($unidade->timestamp,-5);
+
 				//Verifica o medidor se valido para inserção no banco de dados
 		   		if($unidade->medidor != 'null'){
 			    	$idecoflowUnidade = $unidade->{'id-ecoflow'};
 			    	$idecoflowPlanta = $planta->{'id-ecoflow'};
-				    $sql = "INSERT INTO unidade (idecoflow, tempo, id_planta_fk, nome, medidor, servico, leitura) 
-				    VALUES ('$idecoflowUnidade', '$tempo', '$idecoflowPlanta', '$unidade->nome', '$unidade->medidor', '$unidade->servico', '$unidade->leitura')";
+				    $sql = "INSERT INTO unidade (idecoflow, tempo, hora, id_planta_fk, nome, medidor, servico, leitura) 
+				    VALUES ('$idecoflowUnidade', '$tempo', '$hora', '$idecoflowPlanta', '$unidade->nome', '$unidade->medidor', '$unidade->servico', '$unidade->leitura')";
 					mysqli_query($con, $sql);
 		   		}
 		    }

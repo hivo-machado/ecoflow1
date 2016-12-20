@@ -16,6 +16,7 @@ Create Table planta (
 Create Table unidade (
     idecoflow int not NULL,
     tempo timestamp NOT NULL,
+    hora time NOT NULL,
     id_planta_fk int NOT NULL,
     nome varchar(20) NOT NULL,
     medidor varchar(20),

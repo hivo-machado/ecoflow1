@@ -100,7 +100,7 @@
 		$tempo =  date_format($date, 'Y-m-d');
 
 		//1º leitura do mes
-		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo like '$tempo%' ORDER by tempo LIMIT 1");
+		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo >= '$tempo' ORDER by tempo LIMIT 1");
 		$unidadeInicio = mysqli_fetch_object($resUnidInicio);		
 
 		//Se for dezembro passa para janeiro do proximo ano
