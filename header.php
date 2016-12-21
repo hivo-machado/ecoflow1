@@ -38,13 +38,21 @@
 					<?php 
 					if( !isset($_SESSION["idecoflow"])){
 						?>
-					<li>
-						<a href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
-					</li>
+						<li>
+							<a href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
+						</li>
 					<?php }else{ ?>
-					<li>
-						<a href="../sair.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair</a>
-					</li>
+						<li>
+							<li class="dropdown">
+					        	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $_SESSION["nome"] ?> <span class="caret"></span></a>
+					         	<ul class="dropdown-menu">
+					         	<li><a href="../login/alteraEmail.php"> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> E-mail</a></li>
+					            <li><a href="../login/alteraConta.php"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Conta</a></li>
+					            <li role="separator" class="divider"></li>
+					            <li><a href="../sair.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair</a></li>
+					          </ul>
+					        </li>
+						</li>
 					<?php } ?>
 				</ul>				
 			</div>
