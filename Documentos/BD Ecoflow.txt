@@ -15,15 +15,15 @@ Create Table planta (
 
 Create Table unidade (
     idecoflow int not NULL,
-    tempo timestamp NOT NULL,
+    tempo date NOT NULL,
     hora time NOT NULL,
     id_planta_fk int NOT NULL,
     nome varchar(20) NOT NULL,
     medidor varchar(20),
     servico tinyint(1),
     leitura float,
-    CONSTRAINT planta_fk FOREIGN KEY (id_planta_fk)REFERENCES planta(idecoflow),
-    CONSTRAINT unidade_pkey PRIMARY KEY (idecoflow,tempo)
+    CONSTRAINT fk_planta FOREIGN KEY (id_planta_fk)REFERENCES planta(idecoflow),
+    CONSTRAINT pk_unidade PRIMARY KEY (idecoflow,tempo, hora)
 );
 
 Create Table usuario(
@@ -36,3 +36,5 @@ Create Table usuario(
     status varchar(15),
     CONSTRAINT login_pkey PRIMARY KEY (login) 
 );
+
+INSERT INTO `unidade`(`idecoflow`, `tempo`, `hora`, `id_planta_fk`, `nome`, `medidor`, `servico`, `leitura`) SELECT idecoflow, SUBSTRING(tempo, 1, 10), SUBSTRING(tempo, -8), id_planta_fk, nome, medidor, servico, leitura FROM unidades

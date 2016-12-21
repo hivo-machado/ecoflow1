@@ -31,10 +31,11 @@ foreach ($arquivos as $arquivo) {
 			// loop para unidade
 		    foreach ($planta->unidades->unidade as $unidade) {
 		    	// Converte a data para modelo do banco de dados
-		    	$data = date("Y-m-d H:i:s",strtotime(str_replace('/','-',$unidade->timestamp)));
+		    	$data = date("Y-m-d",strtotime(str_replace('/','-',$unidade->timestamp)));
 		    	$date = date_create($data);
-				$tempo =  date_format($date, 'Y-m-d H:i:s');
+				$tempo =  date_format($date, 'Y-m-d');
 
+				//Converte para hora
 				$hora = substr($unidade->timestamp,-5);
 
 				//Verifica o medidor se valido para inserção no banco de dados
