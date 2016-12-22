@@ -47,7 +47,7 @@
 						</div>
 						<div class="form-group">
 				    		<div class="col-md-4 col-md-offset-8">
-								<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Atualizar Senha</button>
+								<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Atualizar e-mail</button>
 							</div>
 						</div>
 				</div>

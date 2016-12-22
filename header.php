@@ -44,7 +44,7 @@
 					<?php }else{ ?>
 						<li>
 							<li class="dropdown">
-					        	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $_SESSION["nome"] ?> <span class="caret"></span></a>
+					        	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $_SESSION["login"] ?> <span class="caret"></span></a>
 					         	<ul class="dropdown-menu">
 					         	<li><a href="../login/alteraEmail.php"> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> E-mail</a></li>
 					            <li><a href="../login/alteraConta.php"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Conta</a></li>

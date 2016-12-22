@@ -27,14 +27,14 @@ Create Table unidade (
 );
 
 Create Table usuario(
-    login varchar(20),
+    login varchar(20) NOT NULL,
     senha varchar(20) NOT NULL,
     id int NOT NULL,
-    nome varchar(30),
+    nome varchar(20),
     email varchar(40),
     tipo varchar(10),
     status varchar(15),
-    CONSTRAINT login_pkey PRIMARY KEY (login) 
+    CONSTRAINT id_pkey PRIMARY KEY (id) 
 );
 
 INSERT INTO `unidade`(`idecoflow`, `tempo`, `hora`, `id_planta_fk`, `nome`, `medidor`, `servico`, `leitura`) SELECT idecoflow, SUBSTRING(tempo, 1, 10), SUBSTRING(tempo, -8), id_planta_fk, nome, medidor, servico, leitura FROM unidades

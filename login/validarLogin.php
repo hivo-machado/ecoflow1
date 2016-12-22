@@ -11,11 +11,13 @@
 
 	if( $usuario = mysqli_fetch_assoc($resUsuario)){
 		if($registro = mysqli_fetch_assoc($resUsuarioAtivo)){
+			$login = $registro["login"];
 			$nome = $registro["nome"];
 			$id = $registro["id"];
 			$tipo = $registro["tipo"];
 			// Inicia a sessão com os dados
 			session_start();
+			$_SESSION["login"] = $login;
 			$_SESSION["nome"] = $nome;
 			$_SESSION["idecoflow"] = $id;
 			$_SESSION["tipo"] = $tipo;						
