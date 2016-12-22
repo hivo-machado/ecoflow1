@@ -10,11 +10,12 @@
 	if(isset($usuario)){
 		$assunto = "Recuperar senha";
 		$menssagem = 
-		"Login: '$usuario->login'\n
-		Senha: '$usuario->senha'\n\n
-		Site Ecoflow: http://ecoflow.esy.es/";
+		"Login: '$usuario->login'\nSenha: '$usuario->senha'\n\nSite Ecoflow: http://ecoflow.esy.es/";
 		$menssagem = wordwrap($menssagem, 70);
 		mail($email, $assunto, $menssagem);
+		header("Location: ../login/recuperaSenha.php?success=Senha enviada por e-mail.");
+	}else{
+		header("Location: ../login/recuperaSenha.php?error=E-mail não cadastrado.");
 	}
 
 
