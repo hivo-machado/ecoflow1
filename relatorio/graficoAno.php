@@ -27,7 +27,7 @@
   function drawBasic() {
     var data = new google.visualization.DataTable();
     data.addColumn('number', 'Mês');
-    data.addColumn('number', 'Água fria');
+    data.addColumn('number', 'Água');
 
     data.addRows([
       <?php echo consumoAno($con, $id, $ano); ?>
