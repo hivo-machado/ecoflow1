@@ -53,6 +53,7 @@
 						    </div>
 						  </div>
 						</form>
+						<a href="recuperaSenha.php">esqueceu sua senha?</a>
 			        </div>
 		        </div>
 	    	</div>
