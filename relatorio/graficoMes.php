@@ -22,11 +22,51 @@
   }
 ?>
 
+
+<!--API  do google para criação de graficos-->
+<script>
+  google.charts.load('current', {packages: ['corechart', 'line']});
+  google.charts.setOnLoadCallback(drawBasic);
+
+  function drawBasic() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('number', 'Dia');
+    data.addColumn('number', 'Água fria');
+
+    data.addRows([
+      <?php echo consumoDia($con, $id, $ano, $mes); ?>
+    ]);
+
+    var options = {
+      hAxis: {
+        title: 'Dia',
+        //baseline:31,
+        
+        gridlines: {
+          count:30,
+        }
+      },
+      vAxis: {
+        title: 'm³'
+      },
+      //width: 900,
+      //height: 300,
+      title:'Consumo Diário de Água do mês: <?php echo $mes ?>',
+    };  
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+    chart.draw(data, options);
+  }
+</script>
+
 <!--Nome da Unidade-->
 <div class="row">
-  <?php 
-    echo '<h3> Unidade: '.$nome.'</h3>';
-   ?>
+  <div class="col-md-4">
+      <?php 
+        echo '<h3> Unidade: '.$nome.'</h3>';
+       ?>  
+  </div>
 </div>
 
 <div class="row">
@@ -73,53 +113,20 @@
   </form>
 </div>
 
-<!--API  do google para criação de graficos-->
-<script>
-  google.charts.load('current', {packages: ['corechart', 'line']});
-  google.charts.setOnLoadCallback(drawBasic);
-
-  function drawBasic() {
-    var data = new google.visualization.DataTable();
-    data.addColumn('number', 'Dia');
-    data.addColumn('number', 'Água fria');
-
-    data.addRows([
-      <?php echo consumoDia($con, $id, $ano, $mes); ?>
-    ]);
-
-    var options = {
-      hAxis: {
-        title: 'Dia',
-        //baseline:31,
-        
-        gridlines: {
-          count:30,
-        }
-      },
-      vAxis: {
-        title: 'm³'
-      },
-      width: 900,
-      height: 300,
-      title:'Consumo Diário de Água do mês: <?php echo $mes ?>',
-    };  
-
-    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
-    chart.draw(data, options);
-  }
-</script>
-
 <!-- Div do plota grafico -->
 <div class="row">
-  <div id="chart_div"></div>
+  <div class="col-md-12">
+    <div id="chart_div"></div>
+  </div>
 </div>
 
 <!--Consumo Total do mês-->
 <div class="row">
-  <?php 
-    echo '<h4>Consumo total do mês: '.consumoTotalMes($con, $id, $ano, $mes, $dia).'</h4>';  
-  ?>
+  <div class="col-md-4">
+    <?php 
+      echo '<h4>Consumo total do mês: '.consumoTotalMes($con, $id, $ano, $mes, $dia).'</h4>';  
+    ?>
+  </div>
 </div>
 
 <?php include_once("../footer.php") ?>

@@ -7,7 +7,7 @@
 		$semLeitura = 0; // contador de dias sem leitura
 		$bandeira = false; // flag para começar a contar quanto existir a 1º leitura
 
-		// Converte a data para modelo do banco de dados
+		//1º dia do mes
 		$data = date("Y-m-d",strtotime(str_replace('/','-', $ano.'-'.$mes.'-'.'01')));
 		$date = date_create($data);
 		$tempo =  date_format($date, 'Y-m-d');
@@ -49,7 +49,7 @@
 					}
 				}else{
 					$auxConsumo = ($unidade->leitura - $leituraAnt) / ($semLeitura + 1);
-					//loop para preenchimento dos dias sem leitura
+					//loop para preenchimento do intervalo de dias sem leitura
 					for($i = $dia - $semLeitura; $i <= $dia; $i++){
 						$consumo[$i] = $auxConsumo;
 					}
@@ -59,6 +59,8 @@
 				$bandeira = true;
 			}else{
 				$consumo[$dia] = 0;
+
+				// verifica se houve um consumo antes de começar contar
 				if($bandeira)$semLeitura++;
 			}
 
@@ -88,14 +90,13 @@
 
 		//Se for 13 passa para janeiro do proximo ano
 		$auxMes = $mes +  1;
-		$auxDia = $dia;
 		if($auxMes == 13){
 			$auxMes = 1;
 			$ano ++;
 		}
 
 		// Converte a data para modelo do banco de dados 
-		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$auxMes.'-'.$auxDia)));
+		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$auxMes.'-'.$dia)));
 		$date = date_create($data);
 		$tempo =  date_format($date, 'Y-m-d');
 
@@ -173,25 +174,26 @@
 					$consumo = $unidade->leitura - $leituraAnt;
 					$leituraAnt = $unidade->leitura;
 				}
-			}else{
+			}else{// caso não encontre uma leitura
 
 				//Data do primeiro dia do mes
 				$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$auxMes.'-01')));
 				$date = date_create($data);
 				$tempo =  date_format($date, 'Y-m-d');
 
-				//Procura ultima leitura mais proxima
+				//Procura ultima leitura mais proxima com menor dia
 				$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo <= '$tempo' ORDER by tempo DESC, hora LIMIT 1");
 				$unidade = mysqli_fetch_object($result);
 
-				if( isset($unidade)){
+				//Senão encontrar uma leitura consumo = 0
+				if(isset($unidade)){
 					$consumo = $unidade->leitura - $leituraAnt;
 				}else{
 					$consumo = 0;
 				}
 			}
 
-			//Concatena os valores de consumo para API de grafica do google
+			//Concatena os valores de consumo para API de grafico do google
 			$str = $str.'['.($mes-1).','.$consumo.']';
             if($mes != 13) $str = $str.',';			
 		}

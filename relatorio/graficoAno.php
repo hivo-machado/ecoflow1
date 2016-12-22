@@ -18,31 +18,6 @@
   }
 
 ?>
-<div class="row">
-  <?php 
-    //Nome da Unidade
-    echo '<h3> Unidade: '.$nome.'</h3>';
-   ?>
-</div>
-
-<div class="row">
-  <form class="form-inline" method="POST" action="graficoAno.php">
-      <div class="form-group">
-        <label>Ano</label>
-        <select class="form-control" name="ano">
-          <?php
-            $numAno = date("Y");
-            for($i = 2016; $i <= $numAno; $i++){
-              if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
-              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-            }
-           ?>
-        </select>      
-      </div>
-
-      <button type="submit" class="btn btn-default">Aplicar</button>
-  </form>
-</div>
 
 <script>
   //API  do google para criação de graficos
@@ -70,8 +45,8 @@
       vAxis: {
         title: 'm³'
       },
-      width: 900,
-      height: 300,
+      //width: 900,
+      //height: 300,
       title:'Consumo Mensal de Água no Ano: <?php echo $ano ?>',
     };  
 
@@ -81,16 +56,48 @@
   }
 </script>
 
-<!-- Div do plota grafico -->
 <div class="row">
-  <div id="chart_div"></div>
+  <div class="col-md-4">
+    <?php 
+      //Nome da Unidade
+      echo '<h3> Unidade: '.$nome.'</h3>';
+     ?>
+  </div>
 </div>
 
 <div class="row">
-  <?php
-    // Consumo Total do Ano
-    echo '<h4>Consumo Total do Ano: '.consumoTotalAno($con, $id, $ano).'</h4>';  
-  ?>
+  <form class="form-inline" method="POST" action="graficoAno.php">
+      <div class="form-group">
+        <label>Ano</label>
+        <select class="form-control" name="ano">
+          <?php
+            $numAno = date("Y");
+            for($i = 2016; $i <= $numAno; $i++){
+              if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
+            }
+           ?>
+        </select>      
+      </div>
+
+      <button type="submit" class="btn btn-default">Aplicar</button>
+  </form>
+</div>
+
+<!-- Div do plota grafico -->
+<div class="row">
+  <div class="col-md-12">
+    <div id="chart_div"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <?php
+      // Consumo Total do Ano
+      echo '<h4>Consumo Total do Ano: '.consumoTotalAno($con, $id, $ano).'</h4>';  
+    ?>
+  </div>
 </div>
 
 <?php include_once("../footer.php") ?>
