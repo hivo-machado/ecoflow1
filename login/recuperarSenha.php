@@ -9,8 +9,7 @@
 
 	if(isset($usuario)){
 		$assunto = "Recuperar senha";
-		$menssagem = 
-		"Login: '$usuario->login'\nSenha: '$usuario->senha'\n\nSite Ecoflow: http://ecoflow.esy.es/";
+		$menssagem = "Nós recuperamos o login e senha para você.\n\nLogin: $usuario->login\nSenha: $usuario->senha\n\nentre no nosso site Ecoflow: http://ecoflow.esy.es/";
 		$menssagem = wordwrap($menssagem, 70);
 		mail($email, $assunto, $menssagem);
 		header("Location: ../login/recuperaSenha.php?success=Senha enviada por e-mail.");
