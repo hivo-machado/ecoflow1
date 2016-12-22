@@ -3,13 +3,23 @@
 
 	$email = $_POST['email'];
 
-	//busca usuario pelo id e senha
+	//busca usuario pelo e-mail
 	$result = mysqli_query($con,"SELECT * FROM usuario WHERE email = '$email' ");
 	$usuario = mysqli_fetch_object($result);
 
+	//Verifica se e-mail cadastrado
 	if(isset($usuario)){
+
+		//envia e-email com login e senha
 		$assunto = "Recuperar senha";
-		$menssagem = "Nós recuperamos o login e senha para você.<br><br> <strong>Login: </strong>$usuario->login<br> <strong>Senha: </strong>$usuario->senha<br><br>Entre no nosso site Ecoflow: http://ecoflow.esy.es/";
+		$menssagem = "
+		Nós recuperamos o login e senha para você.<br>
+		<br> 
+		<strong>Login: </strong>$usuario->login<br> 
+		<strong>Senha: </strong>$usuario->senha<br>
+		<br>
+		Entre no nosso site <a href='ecoflow.esy.es'>Ecoflow</a>
+		";
 		$menssagem = wordwrap($menssagem, 70);
 		$headers = "Content-type: text/html; charset=utf-8\r\n";
 		mail($email, $assunto, $menssagem, $headers);
