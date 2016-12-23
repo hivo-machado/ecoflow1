@@ -1,18 +1,18 @@
 <?php include_once("../header.php") ?>
 
 <div class="row">
-	<div class="mensagme text-center col-md-12">
+	<div class="mensagme text-center col-md-8 col-md-offset-2">
 		<?php 
 		if(isset($_GET['error']))
 		{
 			?> 
-			<p class="bg-danger" style="color:red"><?php echo $_GET['error'] ?></p>
+			<div class="alert alert-danger" role="alert"><?php echo $_GET['error'] ?></div>
 			<?php
 			} 
 			else if(isset($_GET['success']))
 			{
 			?> 
-				<p class="bg-success" style="color:green"><?php echo $_GET['success'] ?></p>
+				<div class="alert alert-success" role="alert"><?php echo $_GET['success'] ?></div>
 			<?php
 			}
 			?>

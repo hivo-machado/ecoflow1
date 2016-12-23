@@ -2,14 +2,18 @@
 <?php session_start(); ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ECOflow</title>
+	<link rel="icon" href="../img/ECOFlow.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="../img/ECOFlow.ico" type="image/x-icon" />
 
 	<!-- Links para Bootsrap -->
 	<link rel="stylesheet"  href="../css/bootstrap.css">
 	<link rel="stylesheet"  href="../css/bootstrap-theme.css">
+	<style> body { padding-top: 70px; } </style>
 
 	<!-- Script para API do google gera grafico -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -19,7 +23,7 @@
 
 <!-- Div para navbar -->
 <div>
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">

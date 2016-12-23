@@ -51,7 +51,7 @@
       },
       //width: 900,
       //height: 300,
-      title:'Consumo Diário de Água do mês: <?php echo $mes ?>',
+      title:'Consumo Diário de Água do mês.',
     };  
 
     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
@@ -69,11 +69,12 @@
   </div>
 </div>
 
+<!--Campo selecionaveis-->
 <div class="row">
   <form class="form-inline" method="POST" action="graficoMes.php">
       <div class="form-group">
-        <label>Dia</label>
-        <select class="form-control" name="dia">
+        <strong>Dia</strong>
+        <select class="form-control input-sm" name="dia">
           <?php
             $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
             for($i = 1; $i <= $numDiaMes; $i++){
@@ -81,12 +82,11 @@
               echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
             }
            ?>
-        </select>      
+        </select>          
       </div>
-
       <div class="form-group">
-        <label>Mês</label>
-        <select class="form-control" name="mes">
+        <strong>Mês</strong>
+        <select class="form-control input-sm" name="mes">
           <?php 
             for($i = 1; $i <= 12; $i++){
               if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
@@ -95,10 +95,9 @@
            ?>
         </select>      
       </div>
-
       <div class="form-group">
-        <label>Ano</label>
-        <select class="form-control" name="ano">
+        <strong>Ano</strong>
+        <select class="form-control input-sm" name="ano">
           <?php
             $numAno = date("Y");
             for($i = 2016; $i <= $numAno; $i++){
@@ -108,8 +107,7 @@
            ?>
         </select>      
       </div>
-
-      <button type="submit" class="btn btn-default">Aplicar</button>
+      <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
   </form>
 </div>
 
@@ -124,7 +122,7 @@
 <div class="row">
   <div class="col-md-4">
     <?php 
-      echo '<h4>Consumo total do mês: '.consumoTotalMes($con, $id, $ano, $mes, $dia).'</h4>';  
+      echo '<h5> <strong>Consumo total do mês: </strong>'.consumoTotalMes($con, $id, $ano, $mes, $dia).' m³</h5>';  
     ?>
   </div>
 </div>

@@ -1,62 +1,65 @@
 <?php include_once("../header.php") ?>
 		
 		<!-- menssagem de sucesso ou erro-->
-		<div class="mensagme text-center col-md-12">
-			<?php 
-
-			if(isset($_GET['error']))
-			{
-				?> 
-					<p class="bg-danger" style="color:red"><?php echo $_GET['error'] ?></p>
-				<?php
+<div class="row">
+	<div class="mensagme text-center col-md-5 col-md-offset-3">
+		<?php 
+		if(isset($_GET['error']))
+		{
+			?> 
+			<div class="alert alert-danger" role="alert"><?php echo $_GET['error'] ?></div>
+			<?php
 			} 
 			else if(isset($_GET['success']))
 			{
-				?> 
-					<p class="bg-success" style="color:green"><?php echo $_GET['success'] ?></p>
-				<?php
+			?> 
+				<div class="alert alert-success" role="alert"><?php echo $_GET['success'] ?></div>
+			<?php
 			}
-
-
 			?>
-		</div>
+	</div>
+</div>
 
-		<!-- Div para logo Ecoflow -->
-		<div class="row">		
-			<div class="col-md-3 col-md-offset-4">
-				<img src="../img/ECOFlow symbol.jpg" alt="Logo Ecoflow" class="img-responsive">
-				<br>
-			</div>			
-		</div>
+<!-- Div para logo Ecoflow -->
+<div class="row">		
+	<div class="col-md-3 col-md-offset-4">
+		<img src="../img/ECOFlow symbol.jpg" alt="Logo Ecoflow" class="img-responsive">
+		<br>
+	</div>			
+</div>
 
-		<!-- Div de formulario para login -->
-		<div class="row">	
-	    	<div class="col-md-5 col-md-offset-3">
-		        <div align="center" class="panel panel-default">        
-			        <div class="panel-body">
-				        <form class="form-horizontal" method="POST" action="validarLogin.php">
-						  <div class="form-group">
-						    <label for="inputEmail3" class="col-md-2 col-md-offset-1 control-label">Login</label>
-						    <div class="col-md-7">
-						      <input type="text" class="form-control" name="login" placeholder="Nome">
-						    </div>
-						  </div>
-						  <div class="form-group">
-						    <label for="inputPassword3" class="col-md-2 col-md-offset-1 control-label">Senha</label>
-						    <div class="col-md-7">
-						      <input type="password" class="form-control" name="senha" placeholder="Senha">
-						    </div>
-						  </div>
-						  <div class="form-group">
-						    <div class="col-md-3 col-md-offset-3">
-						      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</button>
-						    </div>
-						  </div>
-						</form>
-						<a href="recuperaSenha.php">esqueceu sua senha?</a>
-			        </div>
-		        </div>
-	    	</div>
-		</div>
+<!-- Div de formulario para login -->
+<div class="row">	
+	<div class="col-md-5 col-md-offset-3">
+        <div align="center" class="panel panel-default">        
+	        <div class="panel-body">
+	        	<div class="row">
+			        <form class="form-horizontal" method="POST" action="validarLogin.php">
+					  <div class="form-group">
+					    <label for="inputEmail3" class="col-md-2 col-md-offset-1 control-label">Login</label>
+					    	<div class="col-md-8">
+					      	<input type="text" class="form-control" name="login" placeholder="Nome">
+					    	</div>
+					  	</div>
+					  	<div class="form-group">
+					    	<label for="inputPassword3" class="col-md-2 col-md-offset-1 control-label">Senha</label>
+					    	<div class="col-md-8">
+					      		<input type="password" class="form-control" name="senha" placeholder="Senha">
+					    	</div>
+					  	</div>
+					  	<div class="col-md-3 col-md-offset-3">
+					    	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</button>
+					    </div>
+					</form>			        		
+				    <div class="col-md-6">
+						<a href="recuperaSenha.php"><small>esqueceu sua senha?</small></a>
+					</div>
+	        	</div>
+	        	<div class="row">
+	        	</div>
+	        </div>
+        </div>
+	</div>
+</div>
 
 <?php include_once("../footer.php") ?>

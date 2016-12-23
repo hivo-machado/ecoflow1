@@ -27,7 +27,7 @@
 			header("Location: ../login/alteraEmail.php?error=E-mail Diferentes! confirmar novamente e-mail.");
 		}
 	}else{
-		header("Location: ../login/alteraEmail.php?error=E-mail invalido. $valida");
+		header("Location: ../login/alteraEmail.php?error=E-mail inválido. $valida");
 	}
 
  ?>

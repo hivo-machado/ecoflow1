@@ -65,11 +65,12 @@
   </div>
 </div>
 
+<!--Campo Selecionavel-->
 <div class="row">
   <form class="form-inline" method="POST" action="graficoAno.php">
       <div class="form-group">
-        <label>Ano</label>
-        <select class="form-control" name="ano">
+        <strong>Ano</strong>
+        <select class="form-control input-sm" name="ano">
           <?php
             $numAno = date("Y");
             for($i = 2016; $i <= $numAno; $i++){
@@ -79,8 +80,7 @@
            ?>
         </select>      
       </div>
-
-      <button type="submit" class="btn btn-default">Aplicar</button>
+      <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
   </form>
 </div>
 
@@ -95,7 +95,7 @@
   <div class="col-md-4">
     <?php
       // Consumo Total do Ano
-      echo '<h4>Consumo Total do Ano: '.consumoTotalAno($con, $id, $ano).'</h4>';  
+      echo '<h5><strong>Consumo Total do Ano: </strong>'.consumoTotalAno($con, $id, $ano).' m³</h5>';  
     ?>
   </div>
 </div>
