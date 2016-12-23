@@ -18,7 +18,7 @@
 		<strong>Login: </strong>$usuario->login<br> 
 		<strong>Senha: </strong>$usuario->senha<br>
 		<br>
-		Entre no nosso site <a href='ecoflow.esy.es'>Ecoflow</a>
+		Entre em nosso site <a href='ecoflow.esy.es'>Ecoflow</a>
 		<br>
 		<a href='ecoflow.esy.es'>
 			<img src='http://ecoflow.esy.es/img/ECOFlow.jpg' alt='Logo Ecoflow' height='34.5' width='199'>
