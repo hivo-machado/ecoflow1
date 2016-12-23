@@ -1,5 +1,13 @@
-<?php include_once("../header.php") ?>
-<?php include_once("../validar.php") ?>
+<?php 
+include_once("../header.php");
+include_once("../validar.php");
+include_once("funcoes.php");
+?>
+
+<?php 
+	//variavel de sessão
+	$id = $_SESSION['idecoflow'];
+ ?>
 
 <div class="row">
 	<div class="mensagme text-center col-sm-8 col-sm-offset-2">
@@ -26,14 +34,22 @@
 			<div class="panel panel-primary">
 				<div class="panel-heading"> <strong> Alterar E-mail </strong></div>
 				<div class="panel-body">
+						<?php if($email = buscaEmail($con, $id)){ ?>
 						<div class="form-group">
-							<label class="col-sm-4 control-label">E-mail</label>
+						    <label class="col-sm-4 control-label">E-mail Cadastrado</label>
+						    <div class="col-sm-8">
+						      <p class="form-control-static"><?php echo $email ?></p>
+						    </div>
+						</div>
+						<?php } ?>
+						<div class="form-group">
+							<label class="col-sm-4 control-label">Novo E-mail</label>
 							<div class="col-sm-8">
 								<input type="email" class="form-control" name="email" placeholder="email@email.com">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-4 control-label">Confirmar E-mail</label>
+							<label class="col-sm-4 control-label">Confirmar Novo E-mail</label>
 							<div class="col-sm-8">
 								<input type="email" class="form-control" name="confEmail" placeholder="Repetir e-mail">
 							</div>
