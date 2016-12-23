@@ -82,13 +82,13 @@
 
 <!-- Div do plota grafico -->
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-md-12">
     <div id="chart_div"></div>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-xs-5">
+  <div class="col-md-5">
     <?php
       // Consumo Total do Ano
       echo '<h5><strong>Consumo Total do Ano: </strong>'.consumoTotalAno($con, $id, $ano).' m³</h5>';  

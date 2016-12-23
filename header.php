@@ -72,7 +72,7 @@
 </div>
 
 <div class="container">
-	<div class="col-xs-10 col-xs-offset-1">
+	<div class="col-md-10 col-md-offset-1">
 	
 	
 
