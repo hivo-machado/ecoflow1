@@ -56,13 +56,9 @@
   }
 </script>
 
-<div class="row">
-  <div class="col-md-4">
-    <?php 
-      //Nome da Unidade
-      echo '<h3> Unidade: '.$nome.'</h3>';
-     ?>
-  </div>
+<!--Cabeçalho da pagina-->
+<div class="page-header">
+  <h2>Consumo de <?php echo $ano ?><small> unidade: <?php echo $nome ?></small></h2>
 </div>
 
 <!--Campo Selecionavel-->
@@ -92,7 +88,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-5">
     <?php
       // Consumo Total do Ano
       echo '<h5><strong>Consumo Total do Ano: </strong>'.consumoTotalAno($con, $id, $ano).' m³</h5>';  

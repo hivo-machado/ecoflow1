@@ -22,12 +22,12 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<form class="form-horizontal" method="POST" action="recuperarSenha.php" >				
-			<div class="panel panel-default">
+			<div class="panel panel-primary">
 				<div class="panel-heading"> <strong> Esqueceu Senha </strong></div>
 				<div class="panel-body">
 						<div class="row">
 							<div class="col-md-12 col-md-offset-1">
-								<p>Esqueceu a senha eviaremos um e-mail com sua senha.</p>
+								<p>Esqueceu a senha eviaremos um e-mail com seu login e senha.</p>
 							</div>
 						</div>
 						<div class="form-group">
@@ -39,7 +39,7 @@
 						<br>
 						<div class="form-group">
 				    		<div class="col-md-3 col-md-offset-9">
-								<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Enviar</button>
+								<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send" aria-hidden="true"></span> Enviar</button>
 							</div>
 						</div>
 				</div>

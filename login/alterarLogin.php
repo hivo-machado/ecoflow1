@@ -6,6 +6,8 @@
 	$id = $_SESSION['idecoflow'];
 	$login = $_POST['login'];
 
+	$login = ucfirst(strtolower($login));
+
 
 	//valida formatação do nome de login
 	if(validaLogin($login)){
@@ -21,7 +23,7 @@
 			header("Location: ../login/alteraConta.php?error=Nome de login já existe.");
 		}
 	}else{
-		header("Location: ../login/alteraConta.php?error=Caracteres válidos a-z, A-Z 0-9 com no maximo 20 caracteres.");
+		header("Location: ../login/alteraConta.php?error=Nome de login inválido. Verifique os caracteres válidos a-z, A-Z 0-9 com no maximo 20 caracteres.");
 	}
 
 

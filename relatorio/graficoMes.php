@@ -9,6 +9,22 @@
   $id = $_SESSION['idecoflow'];
   $nome = $_SESSION['nome'];
 
+  //vetor nome dos meses
+  $meses = array(
+    1 =>'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  );
+
   //Mes e ano atual
   date_default_timezone_set('UTC');
   if(isset($_POST['mes'])){
@@ -60,13 +76,9 @@
   }
 </script>
 
-<!--Nome da Unidade-->
-<div class="row">
-  <div class="col-md-4">
-      <?php 
-        echo '<h3> Unidade: '.$nome.'</h3>';
-       ?>  
-  </div>
+<!--Cabeçalho da pagina-->
+<div class="page-header">
+  <h2>Consumo de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
 </div>
 
 <!--Campo selecionaveis-->
@@ -120,7 +132,7 @@
 
 <!--Consumo Total do mês-->
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-5">
     <?php 
       echo '<h5> <strong>Consumo total do mês: </strong>'.consumoTotalMes($con, $id, $ano, $mes, $dia).' m³</h5>';  
     ?>

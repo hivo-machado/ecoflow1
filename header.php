@@ -25,18 +25,25 @@
 <div>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a href="../index.php" class="navbar-brand"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a>
+		    </div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="../index.php" class="navbar-brand"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> HOME</a></li>
-					<li>
-						<li class="dropdown">
-				        	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gráfico <span class="caret"></span></a>
-				         	<ul class="dropdown-menu">
-				            <li><a href="../relatorio/graficoMes.php">Mês</a></li>
-				            <li><a href="../relatorio/graficoAno.php">Ano</a></li>
-				          </ul>
-				        </li>
-					</li>
+					<li class="dropdown">
+			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gráfico <span class="caret"></span></a>
+			          <ul class="dropdown-menu">
+			            <li><a href="../relatorio/graficoMes.php">Mês</a></li>
+			            <li><a href="../relatorio/graficoAno.php">Ano</a></li>
+			          </ul>
+			        </li>
 				</ul>				
 				<ul class="nav navbar-nav navbar-right">
 					<?php 
@@ -48,12 +55,12 @@
 					<?php }else{ ?>
 						<li>
 							<li class="dropdown">
-					        	<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $_SESSION["login"] ?> <span class="caret"></span></a>
-					         	<ul class="dropdown-menu">
-					         	<li><a href="../login/alteraEmail.php"> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> E-mail</a></li>
-					            <li><a href="../login/alteraConta.php"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Conta</a></li>
-					            <li role="separator" class="divider"></li>
-					            <li><a href="../sair.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair</a></li>
+					          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <?php echo $_SESSION["login"] ?> <span class="caret"></span></a>
+					          <ul class="dropdown-menu">
+					            <li><a href="../login/alteraEmail.php"> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> E-mail</a></li>
+						        <li><a href="../login/alteraConta.php"> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Conta</a></li>
+						        <li role="separator" class="divider"></li>
+						        <li><a href="../sair.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Sair</a></li>
 					          </ul>
 					        </li>
 						</li>

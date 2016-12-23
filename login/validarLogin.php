@@ -5,6 +5,8 @@
 	$login  = $_POST['login'];
 	$senha  = $_POST['senha'];
 
+	$login = ucfirst(strtolower($login));
+
 	$resUsuario = mysqli_query($con, "SELECT * FROM usuario WHERE login = '$login' and senha = '$senha'");
 
 	$resUsuarioAtivo = mysqli_query($con, "SELECT * FROM usuario WHERE login = '$login' and senha = '$senha' and status = 'ativo'");
