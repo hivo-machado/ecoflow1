@@ -2,7 +2,7 @@
 		
 		<!-- menssagem de sucesso ou erro-->
 <div class="row">
-	<div class="mensagme text-center col-md-5 col-md-offset-3">
+	<div class="mensagme text-center col-sm-5 col-sm-offset-3">
 		<?php 
 		if(isset($_GET['error']))
 		{
@@ -22,7 +22,7 @@
 
 <!-- Div para logo Ecoflow -->
 <div class="row">		
-	<div class="col-md-3 col-md-offset-4">
+	<div class="col-sm-3 col-sm-offset-4">
 		<img src="../img/ECOFlow symbol.jpg" alt="Logo Ecoflow" class="img-responsive">
 		<br>
 	</div>			
@@ -30,28 +30,28 @@
 
 <!-- Div de formulario para login -->
 <div class="row">	
-	<div class="col-md-5 col-md-offset-3">
+	<div class="col-sm-5 col-sm-offset-3">
         <div align="center" class="panel panel-default">        
 	        <div class="panel-body">
 	        	<div class="row">
 			        <form class="form-horizontal" method="POST" action="validarLogin.php">
 					  <div class="form-group">
-					    <label for="inputEmail3" class="col-md-2 col-md-offset-1 control-label">Login</label>
-					    	<div class="col-md-8">
+					    <label for="inputEmail3" class="col-sm-2 col-sm-offset-1 control-label">Login</label>
+					    	<div class="col-sm-8">
 					      	<input type="text" class="form-control" name="login" placeholder="Nome">
 					    	</div>
 					  	</div>
 					  	<div class="form-group">
-					    	<label for="inputPassword3" class="col-md-2 col-md-offset-1 control-label">Senha</label>
-					    	<div class="col-md-8">
+					    	<label for="inputPassword3" class="col-sm-2 col-sm-offset-1 control-label">Senha</label>
+					    	<div class="col-sm-8">
 					      		<input type="password" class="form-control" name="senha" placeholder="Senha">
 					    	</div>
 					  	</div>
-					  	<div class="col-md-3 col-md-offset-3">
+					  	<div class="col-sm-3 col-sm-offset-3">
 					    	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</button>
 					    </div>
 					</form>			        		
-				    <div class="col-md-6">
+				    <div class="col-sm-6">
 						<a href="recuperaSenha.php"><small>esqueceu sua senha?</small></a>
 					</div>
 	        	</div>
