@@ -33,7 +33,7 @@
     $ano = $_POST['ano'];
   }else{
     $dia = 1;
-    $mes = date("m");
+    $mes = date("n"); // mes sem 0 a esquerda
     $ano = date("Y");  
   }
 ?>
