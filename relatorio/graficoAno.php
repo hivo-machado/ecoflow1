@@ -1,7 +1,7 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-  include_once("consumo.php"); 
+  include_once("consumo.php"); //php com funções
 ?>
 
 <?php 
@@ -93,7 +93,7 @@
   <div class="col-sm-12">
     <?php
       // Consumo Total do Ano
-      echo '<h5><strong>Consumo Total do Ano: </strong>'.consumoTotalAno($con, $id, $ano).' m³</h5>';  
+      echo '<h5><strong>Consumo Total do Ano: </strong>'.consumoTotalAno($con, $id, $ano).'</h5>';  
     ?>
   </div>
 </div>
