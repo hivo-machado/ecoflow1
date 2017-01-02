@@ -47,7 +47,7 @@
       },
       //width: 900,
       //height: 300,
-      title:'Consumo Mensal de Água no Ano: <?php echo $ano ?>',
+      title:'Consumo Mensal de Água no Ano de <?php echo $ano ?>',
     };  
 
     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));

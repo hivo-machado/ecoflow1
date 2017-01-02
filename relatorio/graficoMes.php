@@ -68,7 +68,7 @@
       },
       //width: 620,
       //height: 300,
-      title:'Consumo Diário de Água do mês.',
+      title:'Consumo Diário de Água do mês de <?php echo $meses[$mes] ?>',
     };  
 
     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
