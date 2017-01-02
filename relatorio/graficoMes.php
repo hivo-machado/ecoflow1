@@ -136,7 +136,7 @@
 <div class="row">
   <div class="col-sm-12">
     <?php 
-      echo '<h5> <strong>Consumo total do mês: </strong>'.consumoTotalMes($con, $id, $ano, $mes, $dia).' m³</h5>';  
+      echo '<h5> <strong>Consumo total do mês: </strong>'.number_format(consumoTotalMes($con, $id, $ano, $mes, $dia), 3, ',', '.').' m³</h5>';  
     ?>
   </div>
 </div>

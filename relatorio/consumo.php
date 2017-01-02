@@ -6,22 +6,7 @@
 		$str = null; //String para retonar dias e consumo
 		$semLeitura = 0; // contador de dias sem leitura
 		$bandeira = false; // flag para começar a contar quanto existir a 1º leitura
-
-		//1º dia do mes
-		$data = date("Y-m-d",strtotime(str_replace('/','-', $ano.'-'.$mes.'-'.'01')));
-		$date = date_create($data);
-		$tempo =  date_format($date, 'Y-m-d');
-
-		//1º leitura do ultimo dia do mes anterior
-		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo < '$tempo' ORDER by tempo DESC, hora LIMIT 1");
-		$unidadeAnt = mysqli_fetch_object($result);
-
-		//Caso não exista 1º leitura do ultimo dia do mes anterior assumi como 0
-		if(isset($unidadeAnt)){
-			$leituraAnt = $unidadeAnt->leitura;
-		}else{
-			$leituraAnt = 0;	
-		}
+		$leituraAnt = 0;
 
 		// Loop para calculo consumo do dias do mes
 		for ($dia = 1; $dia <= $numDiasMes; $dia++){
@@ -38,19 +23,22 @@
 			//Caso não exista leitura
 			if(isset($unidade)){
 				if($semLeitura == 0){
-					//Caso 1º do ultimo dia do mes anterior não exista consumo 0
+					//Verifica se existe leitura do dia anterior
 					if($leituraAnt != 0){
 						$unidade->leitura;
-						$consumo[$dia] = $unidade->leitura - $leituraAnt;
+						$auxDia = $dia - 1;
+						$consumo[$auxDia] = $unidade->leitura - $leituraAnt;
 						$leituraAnt = $unidade->leitura;
 					}else{
-						$consumo[$dia] = 0;
+						$auxDia = $dia - 1;
+						$consumo[$auxDia] = 0;
 						$leituraAnt = $unidade->leitura;
 					}
 				}else{
 					$auxConsumo = ($unidade->leitura - $leituraAnt) / ($semLeitura + 1);
-					//loop para preenchimento do intervalo de dias sem leitura
-					for($i = $dia - $semLeitura; $i <= $dia; $i++){
+					$auxDia = $dia - 1;
+					//loop para preenchimento do intervalo de Dias sem leitura
+					for($i = $auxDia - $semLeitura; $i < $dia; $i++){
 						$consumo[$i] = $auxConsumo;
 					}
 					$semLeitura = 0;
@@ -58,14 +46,39 @@
 				}
 				$bandeira = true;
 			}else{
-				$consumo[$dia] = 0;
+				$auxDia = $dia - 1;
+				$consumo[$auxDia] = 0;
 
 				// verifica se houve um consumo antes de começar contar
 				if($bandeira)$semLeitura++;
 			}
 
 		}
+		
+		//mes seguinte
+		$mes++;
+		//Caso o mes atual seja 12 pula para o proximo ano
+		if($mes == 13){
+			$mes = 1;
+			$ano++;
+		}
 
+		// Converte a data para modelo do banco de dados 
+		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.'01')));
+		$date = date_create($data);
+		$tempo =  date_format($date, 'Y-m-d');
+
+		//1º leitura do mes seguinte
+		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo = '$tempo' ORDER by hora LIMIT 1");
+		$unidade = mysqli_fetch_object($result);
+
+		//verifica se existe 1º leitura do mes seguinte
+		if(isset($unidade)){
+			$consumo[$numDiasMes] = $unidade->leitura - $leituraAnt;
+		}else{
+			$consumo[$numDiasMes] = 0;
+		}
+		
 		//loop para preenchimento da string de retorno da função
 		for ($i = 1; $i <= $numDiasMes; $i++){
 			$str = $str.'['.$i.','.$consumo[$i].']';
@@ -85,7 +98,7 @@
 		$tempo =  date_format($date, 'Y-m-d');
 
 		//1º leitura do mes
-		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = 0 and tempo >= '$tempo' ORDER by tempo, hora LIMIT 1");
+		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo >= '$tempo' ORDER by tempo, hora LIMIT 1");
 		$unidadeInicio = mysqli_fetch_object($resUnidInicio);		
 
 		//Se for 13 passa para janeiro do proximo ano
@@ -174,20 +187,33 @@
 					$consumo = $unidade->leitura - $leituraAnt;
 					$leituraAnt = $unidade->leitura;
 				}
-			}else{// caso não encontre uma leitura
+			}else{// caso não encontre uma leitura procura ultima leitura do mes
+
+				if($auxMes != 1){
+					$aux2Mes = $auxMes - 1;
+				}else{
+					$aux2Mes = 12;
+				}
 
 				//Data do primeiro dia do mes
-				$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$auxMes.'-01')));
+				$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$aux2Mes.'-01')));
 				$date = date_create($data);
-				$tempo =  date_format($date, 'Y-m-d');
+				$tempoInicio =  date_format($date, 'Y-m-d');
 
-				//Procura ultima leitura mais proxima com menor dia
-				$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo <= '$tempo' ORDER by tempo DESC, hora LIMIT 1");
-				$unidade = mysqli_fetch_object($result);
+				//Ultimo dia do mes
+				$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $aux2Mes, $ano);
+				$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$aux2Mes.'-'.$numDiasMes)));
+				$date = date_create($data);
+				$tempoFim =  date_format($date, 'Y-m-d');
+
+				//Procura ultima leitura do mes atual
+				$resUltimo = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo BETWEEN '$tempoInicio' and '$tempoFim' ORDER by tempo DESC, hora DESC LIMIT 1");
+				$unidadeUltimo = mysqli_fetch_object($resUltimo);
 
 				//Senão encontrar uma leitura consumo = 0
-				if(isset($unidade)){
-					$consumo = $unidade->leitura - $leituraAnt;
+				if(isset($unidadeUltimo)){
+					$consumo = $unidadeUltimo->leitura - $leituraAnt;
+					$leituraAnt = 0;
 				}else{
 					$consumo = 0;
 				}
@@ -225,8 +251,8 @@
 	}
 
 	//include_once('../conexao.php');
-	//echo consumoDia($con, 2222, 2016, 11);
-	//echo consumoAno($con, 2222, 2016);
+	//echo consumoDia($con, 2222, 2016, 12);
+	//echo consumoAno($con, 2222, 2017);
 	//echo consumoTotalAno($con, 2222, 2016);
 
  ?>
