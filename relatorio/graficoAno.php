@@ -93,7 +93,7 @@
   <div class="col-sm-12">
     <?php
       // Consumo Total do Ano
-      echo '<h5><strong>Consumo Total do Ano: </strong>'.$nombre_format_francais = number_format(consumoTotalAno($con, $id, $ano), 3, ',', '.').' m³</h5>';  
+      echo '<h5><strong>Consumo Total do Ano: </strong>'.consumoTotalAno($con, $id, $ano).' m³</h5>';  
     ?>
   </div>
 </div>

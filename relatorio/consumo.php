@@ -122,7 +122,7 @@
 			$LeituraInicio = $unidadeInicio->leitura;
 			$leituraFim = $unidadeFim->leitura;
 			$consumoDoMes = $leituraFim - $LeituraInicio;
-			return  $consumoDoMes;
+			return  number_format($consumoDoMes, 3, ',', '.');
 		}		
 		return 'dia não disponível';
 	}
@@ -247,7 +247,7 @@
 			$consumo = 'não disponível';
 		}
 
-		return $consumo;
+		return number_format($consumo, 3, ',', '.');
 	}
 
 	//include_once('../conexao.php');

@@ -56,16 +56,17 @@
     var options = {
       hAxis: {
         title: 'Dia',
-        //baseline:31,
-        
+        //baseline:30,
+        /*
         gridlines: {
-          count:30,
+          count:15,
         }
+        */
       },
       vAxis: {
         title: 'm³'
       },
-      //width: 900,
+      //width: 620,
       //height: 300,
       title:'Consumo Diário de Água do mês.',
     };  
@@ -136,7 +137,7 @@
 <div class="row">
   <div class="col-sm-12">
     <?php 
-      echo '<h5> <strong>Consumo total do mês: </strong>'.number_format(consumoTotalMes($con, $id, $ano, $mes, $dia), 3, ',', '.').' m³</h5>';  
+      echo '<h5> <strong>Consumo total do mês: </strong>'.consumoTotalMes($con, $id, $ano, $mes, $dia).' m³</h5>';  
     ?>
   </div>
 </div>
