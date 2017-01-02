@@ -22,7 +22,7 @@
 
 <!-- Div para logo Ecoflow -->
 <div class="row">		
-	<div class="col-sm-3 col-sm-offset-4">
+	<div class="col-xs-3 col-xs-offset-5 col-sm-offset-4">
 		<img src="../img/ECOFlow symbol.jpg" alt="Logo Ecoflow" class="img-responsive">
 		<br>
 	</div>			
@@ -36,14 +36,14 @@
 	        	<div class="row">
 			        <form class="form-horizontal" method="POST" action="validarLogin.php">
 					  <div class="form-group">
-					    <label for="inputEmail3" class="col-sm-2 col-sm-offset-1 control-label">Login</label>
-					    	<div class="col-sm-8">
+					    <label for="inputEmail3" class="col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1 control-label">Login</label>
+					    	<div class="col-sm-8 col-xs-8">
 					      	<input type="text" class="form-control" name="login" placeholder="Nome">
 					    	</div>
 					  	</div>
 					  	<div class="form-group">
-					    	<label for="inputPassword3" class="col-sm-2 col-sm-offset-1 control-label">Senha</label>
-					    	<div class="col-sm-8">
+					    	<label for="inputPassword3" class="col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1 control-label">Senha</label>
+					    	<div class="col-sm-8 col-xs-8">
 					      		<input type="password" class="form-control" name="senha" placeholder="Senha">
 					    	</div>
 					  	</div>
