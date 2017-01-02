@@ -1,6 +1,6 @@
 <?php 
 
-$con = mysqli_connect("localhost", "root", "");
+$con = mysqli_connect("mysql427.umbler.com", "ecoflow", "v1n1c1u5");
 
 if(!$con)
 {
