@@ -1,9 +1,21 @@
 <?php
-	
-	//Retorna string com consumo diario de um mês
-	function consumoDia($con, $id, $ano, $mes){
+	//Retorna string com os dias do mes
+	function qtdDias($ano, $mes){
+		$str = '[';
 		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
-		$str = null; //String para retonar dias e consumo
+		for($i = 1; $i <= $numDiasMes; $i++){
+			$str = $str.$i;
+			if($i != $numDiasMes) $str = $str.',';
+			else $str = $str.']';
+		}
+		return $str;
+	}	
+
+
+	//Retorna string com consumo diario de um mês
+	function consumoMes($con, $id, $ano, $mes){
+		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
+		$str = '['; //String para retonar dias e consumo
 		$semLeitura = 0; // contador de dias sem leitura
 		$bandeira = false; // flag para começar a contar quanto existir a 1º leitura
 		$leituraAnt = 0;
@@ -81,8 +93,9 @@
 		
 		//loop para preenchimento da string de retorno da função
 		for ($i = 1; $i <= $numDiasMes; $i++){
-			$str = $str.'['.$i.','.$consumo[$i].']';
+			$str = $str.$consumo[$i];
 		    if($i != $numDiasMes) $str = $str.',';
+		    else $str = $str.']';
 		}
 
 		return $str;		
@@ -130,7 +143,7 @@
 
 	//Função para cosumo por mes
 	function consumoAno($con, $id, $ano){
-		$str = null; // String para retorno dos resultado
+		$str = '['; // String para retorno dos resultado
 
 		//Data do primeiro dia do mes
 		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-01-01')));
@@ -220,8 +233,9 @@
 			}
 
 			//Concatena os valores de consumo para API de grafico do google
-			$str = $str.'['.($mes-1).','.$consumo.']';
-            if($mes != 13) $str = $str.',';			
+			$str = $str.$consumo;
+            if($mes != 13) $str = $str.',';
+            else $str = $str.']';			
 		}
 
 		return $str;

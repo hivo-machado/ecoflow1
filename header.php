@@ -6,7 +6,9 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<title>ECOflow</title>
+	<!-- Icone de pagina-->
 	<link rel="icon" href="../img/ECOFlow.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="../img/ECOFlow.ico" type="image/x-icon" />
 
@@ -15,9 +17,8 @@
 	<link rel="stylesheet"  href="../css/bootstrap-theme.css">
 	<style> body { padding-top: 70px; } </style>
 
-	<!-- Script para API do google gera grafico -->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	
+	<!--Links para grafico Chart-->
+	<script src="../js/Chart.min.js"></script>	
 </head>
 <body>
 
