@@ -41,7 +41,7 @@
 <!--Função Grafico Chart-->
 <script type="text/javascript">
   var options = {
-      responsive:true
+    responsive:true
   };
 
   var data = {
@@ -49,12 +49,12 @@
       datasets: [
           {
               label: "Dados agua fria",
-              fillColor: "rgba(0,170,255,0.2)",
-              strokeColor: "rgba(151,187,205,1)",
-              pointColor: "rgba(151,187,205,1)",
+              fillColor: "rgba(77,144,254,0.3)",
+              strokeColor: "#4d90fe",
+              pointColor: "#4d90fe",
               pointStrokeColor: "#fff",
               pointHighlightFill: "#fff",
-              pointHighlightStroke: "rgba(151,187,205,1)",
+              pointHighlightStroke: "#4d90fe",
               data: <?php echo consumoMes($con, $id, $ano, $mes); ?>
           }
       ]
