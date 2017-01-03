@@ -15,7 +15,9 @@ foreach ($arquivos as $arquivo) {
 	// loop para grupos
 	foreach ($xml->grupo as $grupo){
 		// verifica se grupo ja existe, senão existir adiciona o novo grupo
-		if(mysqli_query($con, "SELECT * FROM grupo WHERE nome = '$grupo->nome'")){
+		$resGrupo = mysqli_query($con, "SELECT * FROM grupo WHERE nome = '$grupo->nome'");
+		$objGrupo = mysqli_fetch_object($resGrupo);
+		if(!isset($objGrupo)){
 		    $sql = "INSERT INTO grupo (id, nome) VALUES ('$grupo->id', '$grupo->nome')";
 			mysqli_query($con, $sql);
 		}
@@ -23,7 +25,9 @@ foreach ($arquivos as $arquivo) {
 		// loop para planta
 	    foreach ($grupo->plantas->planta as $planta) {
 	    	// verifica se planta já existe, senão existir adicionar a nova planta
-		   	if(mysqli_query($con, "SELECT * FROM planta WHERE nome = '$planta->nome'")){
+	    	$resPlanta = mysqli_query($con, "SELECT * FROM planta WHERE nome = '$planta->nome'");
+	    	$objPlanta = mysqli_fetch_object($resPlanta);
+		   	if(!isset($objPlanta)){
 				$idecoflowPlanta = $planta->{'id-ecoflow'};
 			    $sql = "INSERT INTO planta (idecoflow, id_grupo_fk, nome) VALUES ('$idecoflowPlanta', '$grupo->id', '$planta->nome')";
 				mysqli_query($con, $sql);
