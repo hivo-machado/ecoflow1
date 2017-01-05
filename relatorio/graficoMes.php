@@ -48,21 +48,34 @@
       labels: <?php echo qtdDias($ano, $mes); ?>,
       datasets: [
           {
-              label: "Dados agua fria",
-              fillColor: "rgba(77,144,254,0.3)",
-              strokeColor: "#4d90fe",
-              pointColor: "#4d90fe",
-              pointStrokeColor: "#fff",
-              pointHighlightFill: "#fff",
-              pointHighlightStroke: "#4d90fe",
-              data: <?php echo consumoMes($con, $id, $ano, $mes); ?>
-          }
+            label: "Água",
+            fill: true,
+            fillColor: "rgba(77,144,254,0.3)",
+            lineTension: 0.1,
+            backgroundColor: "rgba(77,144,254,0.4)",
+            borderColor: "rgba(77,144,254,1)",
+            borderCapStyle: 'butt',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: "rgba(77,144,254,1)",
+            pointBackgroundColor: "#ffffff",
+            pointBorderWidth: 1,
+            pointHoverRadius: 5,
+            pointHoverBackgroundColor: "rgba(255,255,255,1)",
+            pointHoverBorderColor: "rgba(77,144,254,1)",
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: <?php echo consumoMes($con, $id, $ano, $mes); ?>,
+            spanGaps: false,
+        }
       ]
   };
 
   window.onload = function(){
-      var ctx = document.getElementById("GraficoLine").getContext("2d");
-      var LineChart = new Chart(ctx).Line(data, options);
+    var ctx = document.getElementById("GraficoLine").getContext("2d");
+    var LineChart = new Chart.Line(ctx, {data: data, options: options});
   };
   </script>
 

@@ -93,7 +93,7 @@
 		
 		//loop para preenchimento da string de retorno da função
 		for ($i = 1; $i <= $numDiasMes; $i++){
-			$str = $str.$consumo[$i];
+			$str = $str.number_format($consumo[$i], 3, '.', '');
 		    if($i != $numDiasMes) $str = $str.',';
 		    else $str = $str.']';
 		}
@@ -233,7 +233,7 @@
 			}
 
 			//Concatena os valores de consumo para API de grafico do google
-			$str = $str.$consumo;
+			$str = $str.number_format($consumo, 3, '.', '');
             if($mes != 13) $str = $str.',';
             else $str = $str.']';			
 		}

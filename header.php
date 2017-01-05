@@ -18,7 +18,7 @@
 	<style> body { padding-top: 70px; } </style>
 
 	<!--Links para grafico Chart-->
-	<script src="../js/Chart.min.js"></script>	
+	<script src="../js/Chart.js"></script>	
 </head>
 <body>
 
