@@ -22,7 +22,11 @@
 <!--Função Grafico Chart-->
 <script type="text/javascript">
   var options = {
-      responsive:true
+      responsive:true,
+      legend: {
+        display: true,
+        position: "bottom",
+    }
   };
 
   var data = {
@@ -31,7 +35,6 @@
           {
             label: "Água",
             fill: true,
-            fillColor: "rgba(77,144,254,0.3)",
             lineTension: 0.1,
             backgroundColor: "rgba(77,144,254,0.4)",
             borderColor: "rgba(77,144,254,1)",
@@ -48,6 +51,7 @@
             pointHoverBorderWidth: 2,
             pointRadius: 1,
             pointHitRadius: 10,
+            pointStyle: "circle",
             data: <?php echo consumoAno($con, $id, $ano); ?>,
             spanGaps: false,
           }
