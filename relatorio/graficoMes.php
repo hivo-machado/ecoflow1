@@ -147,7 +147,7 @@
 <div class="row">
   <div class="col-sm-12">
     <?php 
-      echo '<h5> <strong>Consumo total do mês: </strong>'.consumoTotalMes($con, $id, $ano, $mes, $dia).'</h5>';  
+      echo '<h5> <strong>Consumo total do mês: </strong>'.consumoTotalMes($con, $id, $ano, $mes).'</h5>';  
     ?>
   </div>
 </div>

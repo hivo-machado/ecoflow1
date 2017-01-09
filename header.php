@@ -37,7 +37,7 @@
 
 		      <a href="../index.php" class="navbar-brand">
 		      	<p>
-		      		<img alt="Brand" src="../img/ECOFlow.ico" width="30">
+		      		<img alt="Brand" src="../img/ECOFlow.ico" height="30">
 		      		<strong>ECO</strong>flow
 		      	</p>
 		      </a>
@@ -46,7 +46,7 @@
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
 			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			          	Gráfico 
+			          	Relatório
 			          	<span class="caret"></span>
 			          </a>
 			          <ul class="dropdown-menu">
