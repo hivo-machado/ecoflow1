@@ -2,20 +2,21 @@
 //Conexão com banco de dados
 include_once("../conexao.php");
 
-// Tempo de execução maxima do programa 300 seg.
-ini_set('max_execution_time',300);
 
 // lista com links para arquvios xml
 $arquivos = array( 'http://ecoflow.ind.br/rest?groupId=2&login=suportti&password=suportti','http://ecoflow.ind.br/rest?groupId=3&login=vector&password=vector1234');
 
 // loop para os links
 foreach ($arquivos as $arquivo) {
+		// Tempo de execução maxima do programa 120 seg.
+		ini_set('max_execution_time',120);
+
 		$xml = simplexml_load_file($arquivo);
 	
 	// loop para grupos
 	foreach ($xml->grupo as $grupo){
 		// verifica se grupo ja existe, senão existir adiciona o novo grupo
-		$resGrupo = mysqli_query($con, "SELECT * FROM grupo WHERE nome = '$grupo->nome'");
+		$resGrupo = mysqli_query($con, "SELECT * FROM grupo WHERE id = '$grupo->id'");
 		$objGrupo = mysqli_fetch_object($resGrupo);
 		if(!isset($objGrupo)){
 		    $sql = "INSERT INTO grupo (id, nome) VALUES ('$grupo->id', '$grupo->nome')";
