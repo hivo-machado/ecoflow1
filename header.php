@@ -15,6 +15,7 @@
 	<!-- Links para Bootsrap -->
 	<link rel="stylesheet"  href="../css/bootstrap.css">
 	<link rel="stylesheet"  href="../css/bootstrap-theme.css">
+	<link rel="stylesheet"  href="../css/meutema.css">
 
 	<!--Links para grafico Chart-->
 	<script src="../js/Chart.js"></script>	
