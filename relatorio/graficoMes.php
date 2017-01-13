@@ -139,7 +139,7 @@
 <!-- Div do plota grafico -->
 <div class="row">
   <div class="col-sm-12">
-    <canvas id="GraficoLine" width="100%"></canvas>
+    <canvas id="GraficoLine"></canvas>
   </div>
 </div>
 
