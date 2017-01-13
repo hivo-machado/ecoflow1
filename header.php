@@ -15,16 +15,16 @@
 	<!-- Links para Bootsrap -->
 	<link rel="stylesheet"  href="../css/bootstrap.css">
 	<link rel="stylesheet"  href="../css/bootstrap-theme.css">
-	<style> body { padding-top: 70px; } </style>
 
 	<!--Links para grafico Chart-->
 	<script src="../js/Chart.js"></script>	
 </head>
 <body>
 
+<div id="tudo">
 <!-- Div para navbar -->
-<div>
-	<nav class="navbar navbar-default navbar-fixed-top">
+<div id="topo">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
@@ -38,7 +38,9 @@
 		      <a href="../index.php" class="navbar-brand">
 		      	<p>
 		      		<img alt="Brand" src="../img/ECOFlow.ico" height="30">
-		      		<strong>ECO</strong>flow
+		      		<span id="brand">
+		      			<strong>ECO</strong>flow
+		      		</span>
 		      	</p>
 		      </a>
 		    </div>
@@ -104,8 +106,10 @@
 	</nav>
 </div>
 
+
+<div id="conteudo">
 <div class="container">
-	<div class="col-sm-10 col-sm-offset-1">
+	<div class="col-sm-10 col-sm-offset-1" id="corpo">
 	
 	
 
