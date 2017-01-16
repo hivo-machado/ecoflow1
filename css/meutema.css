@@ -14,16 +14,16 @@ html, body {
 }
 
 #conteudo{
-	padding: 10px;
 	padding-top: 60px;
-	padding-bottom: 40px;
+	padding-bottom: 70px;
 }
 
 #rodape {
 	position: absolute;
-	bottom: 0;
-	height: 40px;
+	bottom: 0px;
+	height: 70px;
 	width: 100%;
+	padding: 5px;
 	text-align: center;
 	color: #fff;
 	background-color: rgb(48,48,48);

@@ -5,7 +5,11 @@
 	<div id="rodape">
 		<div class="container">
 			<div class="col-sm-12 col-sm-offset-0">
-				<p>Todos os direitos reservados.</p>	
+				<p>
+					Rua rua 0000 - bairro - CEP 12345-789 - Cidade/Estado - CNPJ:1324567/1234-12<br>
+					Endereço eletronico: e-mail@email.com.br<br>
+					Ecoflow&#174; - Todos os direitos reservados.
+				</p>	
 			</div>
 		</div>
 	</div>
