@@ -5,13 +5,13 @@
 	<div id="rodape">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-6">
+				<div class="col-sm-6 col-xs-6">
 					<address>
 					  <strong>Nome completo</strong><br>
 					  <a href="mailto:#">first.last@example.com</a>
 					</address>	
 				</div>			
-				<div class="col-sm-6">
+				<div class="col-sm-6 col-xs-6">
 					<address>
 					  1355 Market Street, Suite 900<br>
 					  San Francisco, CA 94103<br>
@@ -20,7 +20,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-sm-12">
+				<div class="col-sm-12 col-xs-12">
 					<strong>Ecoflow</strong>&#174; - Todos os direitos reservados.<br>
 				</div>
 			</div>
