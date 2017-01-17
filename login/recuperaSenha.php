@@ -1,25 +1,6 @@
 <?php include_once("../header.php") ?>
 
 <div class="row">
-	<div class="mensagme text-center col-sm-8 col-sm-offset-2">
-		<?php 
-		if(isset($_GET['error']))
-		{
-			?> 
-			<div class="alert alert-danger" role="alert"><?php echo $_GET['error'] ?></div>
-			<?php
-			} 
-			else if(isset($_GET['success']))
-			{
-			?> 
-				<div class="alert alert-success" role="alert"><?php echo $_GET['success'] ?></div>
-			<?php
-			}
-			?>
-	</div>
-</div>
-
-<div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
 		<form class="form-horizontal" method="POST" action="recuperarSenha.php" >				
 			<div class="panel panel-primary">

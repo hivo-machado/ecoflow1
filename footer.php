@@ -15,7 +15,7 @@
 					<address>
 					  1355 Market Street, Suite 900<br>
 					  San Francisco, CA 94103<br>
-					  <abbr title="Phone">P:</abbr> (123) 456-7890
+					  <abbr title="Phone">Tel.:</abbr> (123) 456-7890
 					</address>
 				</div>
 			</div>

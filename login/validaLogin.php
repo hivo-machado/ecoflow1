@@ -1,24 +1,4 @@
 <?php include_once("../header.php") ?>
-		
-		<!-- menssagem de sucesso ou erro-->
-<div class="row">
-	<div class="mensagme text-center col-sm-5 col-sm-offset-3">
-		<?php 
-		if(isset($_GET['error']))
-		{
-			?> 
-			<div class="alert alert-danger" role="alert"><?php echo $_GET['error'] ?></div>
-			<?php
-			} 
-			else if(isset($_GET['success']))
-			{
-			?> 
-				<div class="alert alert-success" role="alert"><?php echo $_GET['success'] ?></div>
-			<?php
-			}
-			?>
-	</div>
-</div>
 
 <!-- Div para logo Ecoflow -->
 <div class="row">		
