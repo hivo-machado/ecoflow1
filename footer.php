@@ -4,12 +4,25 @@
 
 	<div id="rodape">
 		<div class="container">
-			<div class="col-sm-12 col-sm-offset-0">
-				<p>
-					Rua rua 0000 - bairro - CEP 12345-789 - Cidade/Estado - CNPJ:1324567/1234-12<br>
-					Endereço eletronico: e-mail@email.com.br<br>
-					Ecoflow&#174; - Todos os direitos reservados.
-				</p>	
+			<div class="row">
+				<div class="col-sm-6">
+					<address>
+					  <strong>Nome completo</strong><br>
+					  <a href="mailto:#">first.last@example.com</a>
+					</address>	
+				</div>			
+				<div class="col-sm-6">
+					<address>
+					  1355 Market Street, Suite 900<br>
+					  San Francisco, CA 94103<br>
+					  <abbr title="Phone">P:</abbr> (123) 456-7890
+					</address>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<strong>Ecoflow</strong>&#174; - Todos os direitos reservados.<br>
+				</div>
 			</div>
 		</div>
 	</div>

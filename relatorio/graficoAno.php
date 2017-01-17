@@ -1,7 +1,7 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-  include_once("consumo.php"); //php com funções
+  include_once("funcao.php"); //php com funções
 ?>
 
 <?php 
@@ -17,9 +17,31 @@
     $ano = date("Y");  
   }
 
+  //Total consumo do ano
+  $total = consumoTotalAno($con, $id, $ano);
+
+  //Vetor consumo do ano
+  $consumos = consumoAno($con, $id, $ano);
+
+  //vetor nome dos meses
+  $meses = array(
+    1 =>'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  );
+
 ?>
 
-<!--Função Grafico Chart-->
+<!--Configuração do Grafico Chart-->
 <script type="text/javascript">
   var options = {
       responsive:true,
@@ -52,7 +74,7 @@
             pointRadius: 1,
             pointHitRadius: 10,
             pointStyle: "circle",
-            data: <?php echo consumoAno($con, $id, $ano); ?>,
+            data: <?php echo consumoAnoGrafico($con, $id, $ano); ?>,
             spanGaps: false,
           }
       ]
@@ -64,10 +86,10 @@
   };
   </script>
 
-<!--Cabeçalho da pagina-->
+<!--Cabeçalho do gráfico-->
 <div class="row">
   <div class="page-header">
-    <h2>Consumo de <?php echo $ano ?><small> unidade: <?php echo $nome ?></small></h2>
+    <h2>Gráfico de <?php echo $ano ?><small> unidade: <?php echo $nome ?></small></h2>
   </div>
 </div>
 
@@ -94,6 +116,7 @@
 <div class="row">
   <h4><strong> Consumo Mensal de Água no Ano de <?php echo $ano ?></strong></h4>
 </div>
+
 <!-- Div do plota grafico -->
 <div class="row">
   <div class="col-sm-12">
@@ -101,12 +124,75 @@
   </div>
 </div>
 
+<!--Consumo Total do Ano-->
 <div class="row">
   <div class="col-sm-12">
     <?php
-      // Consumo Total do Ano
-      echo '<h5><strong>Consumo Total do Ano: </strong>'.consumoTotalAno($con, $id, $ano).'</h5>';  
+      echo '<h5><strong>Consumo Total do Ano: </strong>'.$total.'</h5>';  
     ?>
+  </div>
+</div>
+
+<!--Cabeçalho da tabela-->
+<div class="row">
+  <div class="page-header">
+    <h2>Tabela de <?php echo $ano ?><small> unidade: <?php echo $nome ?></small></h2>
+  </div>
+</div>
+
+<!--Campo Selecionavel-->
+<div class="row">
+  <form class="form-inline" method="POST" action="graficoAno.php">
+      <div class="form-group form-group-sm">
+        <label>Ano</label>
+        <select class="form-control" name="ano">
+          <?php
+            $numAno = date("Y");
+            for($i = 2016; $i <= $numAno; $i++){
+              if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
+            }
+           ?>
+        </select>      
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
+  </form>
+</div>
+
+<br>
+
+<!--Tabela de consumo do ano-->
+<div class="row">
+  <div class="col-sm-10 col-sm-offset-1">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><strong>Consumo Mensal de Água no Ano de <?php echo $ano ?></strong></div>
+      <!-- Tabela -->
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <tr>
+            <th>Mês</th>
+            <th>Nome do mês</th> 
+            <th>Consumo (m³)</th>
+          </tr>
+
+          <?php
+            for($i = 1; $i < 13; $i++){
+          ?>
+          <tr>
+            <td><?php echo $i ?></td>
+            <td><?php echo $meses[$i] ?></td> 
+            <td><?php echo $consumos[$i] ?></td>
+          </tr>
+          <?php
+           } 
+          ?>
+          <tr>
+            <td colspan="2"><strong>TOTAL</strong></td>
+            <td><?php echo $total ?></td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 

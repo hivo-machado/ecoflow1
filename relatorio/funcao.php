@@ -143,14 +143,13 @@
 
 	//Função para cosumo por mes
 	function consumoAno($con, $id, $ano){
-		$str = '['; // String para retorno dos resultado
 
 		//Data do primeiro dia do mes
 		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-01-01')));
 		$date = date_create($data);
 		$tempoInicio =  date_format($date, 'Y-m-d');
 
-		//Ultimo dia do mes
+		//Data do ultimo dia do mes
 		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, 01, $ano);
 		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-01-'.$numDiasMes)));
 		$date = date_create($data);
@@ -166,6 +165,8 @@
 			$leituraAnt = 0;
 		}
 		
+		$cont = 1; // contador do mes
+
 		for($mes = 2; $mes <= 13; $mes++){
 			$auxMes = $mes;
 
@@ -180,7 +181,7 @@
 			$date = date_create($data);
 			$tempoInicio =  date_format($date, 'Y-m-d');
 
-			//Ultimo dia do mes
+			//Data do ultimo dia do mes
 			$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $auxMes, $ano);
 			$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$auxMes.'-'.$numDiasMes)));
 			$date = date_create($data);
@@ -213,7 +214,7 @@
 				$date = date_create($data);
 				$tempoInicio =  date_format($date, 'Y-m-d');
 
-				//Ultimo dia do mes
+				//Data do ultimo dia do mes
 				$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $aux2Mes, $ano);
 				$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$aux2Mes.'-'.$numDiasMes)));
 				$date = date_create($data);
@@ -233,12 +234,27 @@
 			}
 
 			//Concatena os valores de consumo para API de grafico do google
-			$str = $str.number_format($consumo, 3, '.', '');
-            if($mes != 13) $str = $str.',';
-            else $str = $str.']';			
+			$consumos[$cont] = number_format($consumo, 3, '.', '');
+			$cont++;	
 		}
 
-		return $str;
+		return $consumos;
+	}
+
+	//Função para cosumo por mes para desenho do grafico
+	function consumoAnoGrafico($con, $id, $ano){
+		$str = '['; // String para retorno dos resultado
+
+		$consumo = consumoAno($con, $id, $ano);
+
+		//Concatena os valores de consumo para API de grafico do google
+		for($i = 1; $i < 13; $i++){
+			$str = $str.number_format($consumo[$i], 3, '.', '');
+	        if($i != 12) $str = $str.',';
+	        else $str = $str.']';
+		}
+
+    	return $str;
 	}
 
 
@@ -249,7 +265,7 @@
 		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo like '$ano%' ORDER by tempo, hora LIMIT 1");
 		$unidadePrimeiro = mysqli_fetch_object($result);
 
-		//Ultima leitura do mes
+		//Ultima leitura do ano
 		$ano++;
 		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo like '$ano%' ORDER by tempo, hora LIMIT 1");
 		$unidadeUltimo = mysqli_fetch_object($result);
@@ -259,7 +275,7 @@
 			//calculo do consumo Total do ano
 			$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
 		}else{
-			//Data do primeiro dia do ano
+			//Data do primeiro dia do ano seguinte
 			$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-01-01')));
 			$date = date_create($data);
 			$tempo =  date_format($date, 'Y-m-d');
@@ -279,7 +295,8 @@
 
 	//include_once('../conexao.php');
 	//echo consumoDia($con, 2222, 2016, 12);
-	//echo consumoAno($con, 2222, 2017);
+	//print_r( consumoAno($con, 2222, 2017) );
+	//echo consumoAnoGrafico($con, 2222, 2017);
 	//echo consumoTotalAno($con, 2222, 2016);
 
  ?>

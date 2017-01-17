@@ -1,7 +1,7 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-  include_once("consumo.php"); // php com funções
+  include_once("funcao.php"); // php com funções
 ?>
 
 <?php 
@@ -86,7 +86,7 @@
 <!--Cabeçalho da pagina-->
 <div class="row">
   <div class="page-header">
-    <h2>Consumo de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
+    <h2>Gráfico de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
   </div>
 </div>
 
