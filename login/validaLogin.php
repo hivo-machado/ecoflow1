@@ -31,7 +31,7 @@
 					    	<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</button>
 					    </div>
 					</form>			        		
-				    <div class="col-sm-6">
+				    <div class="col-sm-12 col-sm-offset-0">
 						<a href="recuperaSenha.php"><small>esqueceu sua senha?</small></a>
 					</div>
 	        	</div>

@@ -29,9 +29,22 @@ html, body {
 	background-color: rgb(48,48,48);
 }
 
-#corpo{	
-}
-
 #brand{
 	color: #fff;
+}
+
+.tabela{
+	text-align: right;
+}
+
+.tabela-titulo{
+	text-align: center;
+}
+
+.tabela-nome-coluna{
+	text-align: right;
+}
+
+.marge-tabela{
+	margin-top: 10px;
 }
