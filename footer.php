@@ -1,9 +1,9 @@
+			</div>
 		</div>
-	</div>
 	</div>
 
 	<div id="rodape">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-sm-6 col-xs-6">
 					<address>
