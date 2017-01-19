@@ -23,12 +23,12 @@ html, body {
 	bottom: 0px;
 	padding-top: 10px;
 	text-align: center;
-	color: #ffffff;
+	color: #cdcdcd;
 	background-color: rgb(48,48,48);
 }
 
 /*Navbar*/
-#brand{
+#barnav{
 	color: #ffffff;
 }
 
@@ -48,4 +48,15 @@ html, body {
 .marge-tabela{
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+/*a hef e-mail*/
+a.email-rodape:link, a.email-rodape:visited{
+	color: #cdcdcd;
+	text-decoration: none;
+}
+
+a.email-rodape:hover, a.email-rodape:active{
+	color: #ffffff;
+	text-decoration: underline;
 }

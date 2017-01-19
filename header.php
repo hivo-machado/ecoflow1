@@ -37,7 +37,7 @@
 		      </button>
 
 		      <a href="../index.php" class="navbar-brand">
-		      	<div id="brand">
+		      	<div id="barnav">
 		      		<img alt="Brand" src="../img/ECOFlow.ico" height="30">
 		      		<strong>ECO</strong>flow
 		      	</div>
@@ -46,7 +46,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
-			          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			          <a href="#" class="dropdown-toggle" id="barnav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 			          	Relatório
 			          	<span class="caret"></span>
 			          </a>
@@ -65,12 +65,12 @@
 					if( !isset($_SESSION["idecoflow"])){
 						?>
 						<li>
-							<a href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
+							<a id="barnav" href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
 						</li>
 					<?php }else{ ?>
 						<li>
 							<li class="dropdown">
-					          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+					          <a id="barnav" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
 					          	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
 					          	<?php echo $_SESSION["login"] ?> 
 					          	<span class="caret"></span>
