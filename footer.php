@@ -21,7 +21,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12 col-xs-12">
-					<strong>Ecoflow</strong>&#174; - Todos os direitos reservados.<br>
+					<strong>ECOflow</strong> - Todos os direitos reservados.<br>
 				</div>
 			</div>
 		</div>

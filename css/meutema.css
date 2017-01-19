@@ -1,16 +1,14 @@
 html, body {
-	margin:0;
-	padding:0;
 	height:100%;
 }
 
+/* Estrutura Principal da pagina*/
 #tudo{
 	min-height: 100%;
 	position: relative;
 }
 
 #topo{
-	padding: 0px;
 }
 
 #conteudo{
@@ -20,19 +18,21 @@ html, body {
 
 #rodape {
 	position: absolute;
-	bottom: 0px;
 	height: 150px;
 	width: 100%;
+	bottom: 0px;
 	padding-top: 10px;
 	text-align: center;
-	color: #fff;
+	color: #ffffff;
 	background-color: rgb(48,48,48);
 }
 
+/*Navbar*/
 #brand{
-	color: #fff;
+	color: #ffffff;
 }
 
+/*Tabelas*/
 .tabela{
 	text-align: right;
 }

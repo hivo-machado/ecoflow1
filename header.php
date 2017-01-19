@@ -37,12 +37,10 @@
 		      </button>
 
 		      <a href="../index.php" class="navbar-brand">
-		      	<p>
+		      	<div id="brand">
 		      		<img alt="Brand" src="../img/ECOFlow.ico" height="30">
-		      		<span id="brand">
-		      			<strong>ECO</strong>flow
-		      		</span>
-		      	</p>
+		      		<strong>ECO</strong>flow
+		      	</div>
 		      </a>
 		    </div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
