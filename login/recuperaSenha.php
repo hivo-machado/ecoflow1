@@ -18,7 +18,7 @@
 			<div class="form-group">
 				<label for="email" class="col-sm-4 control-label">E-mail</label>
 				<div class="col-sm-8">
-					<input type="email" class="form-control" id="email" name="email" placeholder="email@email.com">
+					<input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" required autofocus>
 				</div>
 			</div>
 			<br>

@@ -30,20 +30,20 @@ include_once("funcoes.php");
 			<div class="form-group">
 				<label for="email" class="col-sm-4 control-label">Novo E-mail</label>
 				<div class="col-sm-8">
-					<input type="email" class="form-control" id="email" name="email" placeholder="email@email.com">
+					<input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" required autofocus>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="confEmail" class="col-sm-4 control-label">Confirmar Novo E-mail</label>
 				<div class="col-sm-8">
-					<input type="email" class="form-control" id="confEmail" name="confEmail" placeholder="Repetir e-mail">
+					<input type="email" class="form-control" id="confEmail" name="confEmail" placeholder="Repetir e-mail" required>
 				</div>
 			</div>
 			<br>
 			<div class="form-group">
 				<label for="senha" class="col-sm-4 control-label">Senha</label>
 				<div class="col-sm-8">
-					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
+					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
 				</div>
 			</div>
 			<div class="form-group">

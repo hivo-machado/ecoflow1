@@ -36,7 +36,7 @@ include_once("funcoes.php");
 			<div class="form-group">
 				<label for="login" class="col-sm-4 control-label">Login</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login">
+					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login" required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -61,20 +61,20 @@ include_once("funcoes.php");
 			<div class="form-group">
 				<label for="senhaNova" class="col-sm-4 control-label">Nova Senha</label>
 				<div class="col-sm-8">
-					<input type="password" class="form-control" id="senhaNova" name="senhaNova" placeholder="Nova Senha">
+					<input type="password" class="form-control" id="senhaNova" name="senhaNova" placeholder="Nova Senha" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="repetirSenha" class="col-sm-4 control-label">Confirmar Nova Senha</label>
 				<div class="col-sm-8">
-					<input type="password" class="form-control" id="repetirSenha" name="repetirSenha" placeholder="Repetir Nova Senha">
+					<input type="password" class="form-control" id="repetirSenha" name="repetirSenha" placeholder="Repetir Nova Senha" required>
 				</div>
 			</div>
 			<br>
 			<div class="form-group">
 				<label for="senha" class="col-sm-4 control-label">Senha</label>
-				<div class="col-sm-8">
-					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha Atual">
+				<div class="col-sm-8"> 
+					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha Atual" required>
 				</div>
 			</div>
 			<div class="form-group">

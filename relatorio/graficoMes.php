@@ -101,8 +101,8 @@
 <div class="row hidden-print">
   <form class="form-inline" method="POST" action="graficoMes.php">
       <div class="form-group form-group-sm hidden">
-        <label>Dia</label>
-        <select class="form-control" name="dia">
+        <label for="dia">Dia</label>
+        <select class="form-control" id="dia" name="dia">
           <?php
             $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
             for($i = 1; $i <= $numDiaMes; $i++){
@@ -113,8 +113,8 @@
         </select>          
       </div>
       <div class="form-group form-group-sm">
-        <label>Mês</label>
-        <select class="form-control" name="mes">
+        <label for="mes">Mês</label>
+        <select class="form-control" id="mes" name="mes">
           <?php 
             for($i = 1; $i <= 12; $i++){
               if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
@@ -124,8 +124,8 @@
         </select>      
       </div>
       <div class="form-group form-group-sm">
-        <label>Ano</label>
-        <select class="form-control" name="ano">
+        <label for="ano">Ano</label>
+        <select class="form-control" id="ano" name="ano">
           <?php
             $numAno = date("Y");
             for($i = 2016; $i <= $numAno; $i++){
@@ -170,8 +170,8 @@
 <div class="row hidden-print">
   <form class="form-inline" method="POST" action="graficoMes.php">
       <div class="form-group form-group-sm">
-        <label>Dia</label>
-        <select class="form-control" name="dia">
+        <label for="dia1">Dia</label>
+        <select class="form-control" id="dia1" name="dia">
           <?php
             $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
             for($i = 1; $i <= $numDiaMes; $i++){
@@ -182,8 +182,8 @@
         </select>          
       </div>
       <div class="form-group form-group-sm">
-        <label>Mês</label>
-        <select class="form-control" name="mes">
+        <label for="mes1">Mês</label>
+        <select class="form-control" id="mes1" name="mes">
           <?php 
             for($i = 1; $i <= 12; $i++){
               if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
@@ -193,8 +193,8 @@
         </select>      
       </div>
       <div class="form-group form-group-sm">
-        <label>Ano</label>
-        <select class="form-control" name="ano">
+        <label for="ano1">Ano</label>
+        <select class="form-control" id="ano1" name="ano">
           <?php
             $numAno = date("Y");
             for($i = 2016; $i <= $numAno; $i++){
