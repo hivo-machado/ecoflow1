@@ -8,15 +8,12 @@ html, body {
 	position: relative;
 }
 
-#topo{
-}
-
 #conteudo{
 	padding-top: 60px;
 	padding-bottom: 175px;
 }
 
-#rodape {
+footer{
 	position: absolute;
 	height: 150px;
 	width: 100%;

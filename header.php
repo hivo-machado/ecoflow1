@@ -18,13 +18,18 @@
 	<link rel="stylesheet"  href="../css/meutema.css">
 
 	<!--Links para grafico Chart-->
-	<script src="../js/Chart.js"></script>	
+	<script src="../js/Chart.js"></script>
+
+	<!--[if lt IE 9]>
+    	<script src="js/html5shiv.js"></script>
+	<![endif]-->
+
 </head>
 <body>
 
 <div id="tudo">
-<!-- Div para navbar -->
-<div id="topo">
+
+	<!-- Div para navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -103,31 +108,26 @@
 			</div>
 		</div>
 	</nav>
-</div>
 
 
-<div id="conteudo">
-	<div class="container-fluid">
-		<div class="col-sm-10 col-sm-offset-1">
-			<div class="row">
-				<div class="mensagme text-center col-sm-8 col-sm-offset-2">
-					<?php 
-					if(isset($_GET['error']))
-					{
-						?> 
-						<div class="alert alert-danger" role="alert"><?php echo $_GET['error'] ?></div>
-						<?php
-						} 
-						else if(isset($_GET['success']))
+	<div id="conteudo">
+		<div class="container-fluid">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="row">
+					<div class="mensagme text-center col-sm-8 col-sm-offset-2">
+						<?php 
+						if(isset($_GET['error']))
 						{
-						?> 
-							<div class="alert alert-success" role="alert"><?php echo $_GET['success'] ?></div>
-						<?php
-						}
-						?>
+							?> 
+							<div class="alert alert-danger" role="alert"><?php echo $_GET['error'] ?></div>
+							<?php
+							} 
+							else if(isset($_GET['success']))
+							{
+							?> 
+								<div class="alert alert-success" role="alert"><?php echo $_GET['success'] ?></div>
+							<?php
+							}
+							?>
+					</div>
 				</div>
-			</div>
-
-
-	
-
