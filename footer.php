@@ -14,12 +14,12 @@
 				<div class="col-sm-6 col-xs-6">
 					<address>
 					  Av. Coronel Carneiro Júnior, 57 SL903<br>
-					  37511-018 - Itjubá- MG - Brasil<br>
+					  37511-018 - Itajubá- MG - Brasil<br>
 					  <abbr title="Telefone">Tel.:</abbr> (12)12345-6789
 					</address>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row hidden-print">
 				<div class="col-sm-12 col-xs-12">
 					<strong>ECOflow</strong> - Todos os direitos reservados.<br>
 				</div>

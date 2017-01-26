@@ -23,8 +23,8 @@ html, body {
 	bottom: 0px;
 	padding-top: 10px;
 	text-align: center;
-	color: #cdcdcd;
-	background-color: rgb(48,48,48);
+	color: #eee;
+	background-color: #222;
 }
 
 /*Navbar*/
@@ -52,11 +52,11 @@ html, body {
 
 /*a hef e-mail*/
 a.email-rodape:link, a.email-rodape:visited{
-	color: #cdcdcd;
+	color: #eee;
 	text-decoration: none;
 }
 
 a.email-rodape:hover, a.email-rodape:active{
-	color: #ffffff;
+	color: #fff;
 	text-decoration: underline;
 }

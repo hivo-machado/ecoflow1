@@ -91,14 +91,14 @@
   </script>
 
 <!--Cabeçalho da pagina-->
-<div class="row">
+<div class="row hidden-print">
   <div class="page-header">
     <h2>Gráfico de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
   </div>
 </div>
 
 <!--Campo selecionaveis-->
-<div class="row">
+<div class="row hidden-print">
   <form class="form-inline" method="POST" action="graficoMes.php">
       <div class="form-group form-group-sm hidden">
         <label>Dia</label>
@@ -140,18 +140,18 @@
 </div>
 
 <!--Titulo do grafico-->
-<div class="row">
+<div class="row hidden-print">
   <h4><strong> Consumo Diário de Água no Mês de <?php echo $meses[$mes] ?></strong></h4>
 </div>
 <!-- Div do plota grafico -->
-<div class="row">
+<div class="row hidden-print">
   <div class="col-sm-12">
     <canvas id="GraficoLine"></canvas>
   </div>
 </div>
 
 <!--Consumo Total do mês-->
-<div class="row">
+<div class="row hidden-print">
   <div class="col-sm-12">
     <?php 
       echo '<h5> <strong>Consumo total do mês: </strong>'.$total.'</h5>';  
@@ -167,7 +167,7 @@
 </div>
 
 <!--Campo selecionaveis-->
-<div class="row">
+<div class="row hidden-print">
   <form class="form-inline" method="POST" action="graficoMes.php">
       <div class="form-group form-group-sm">
         <label>Dia</label>

@@ -144,7 +144,7 @@
 			$LeituraInicio = $unidadeInicio->leitura;
 			$leituraFim = $unidadeFim->leitura;
 			$consumoDoMes = $leituraFim - $LeituraInicio;
-			return  number_format($consumoDoMes, 3, ',', '.').' m³';
+			return  number_format($consumoDoMes, 3, '.', ',').' m³';
 		}		
 		return 'dia não disponível';
 	}
@@ -299,7 +299,7 @@
 			}
 		}
 
-		return number_format($consumo, 3, ',', '.').' m³';
+		return number_format($consumo, 3, '.', ',').' m³';
 	}
 
 	//Chamada de funções para teste
