@@ -166,10 +166,10 @@
       <div class="panel-heading tabela-titulo"><strong>Consumo Mensal de Água no Ano de <?php echo $ano ?></strong></div>
       <!-- Tabela -->
       <div class="table-responsive">
-        <table class="table table-bordered tabela">
+        <table class="table table-bordered table-striped tabela table-hover table-condensed">
           <tr>
-            <th class="tabela-nome-coluna">Mês</th>
-            <th class="tabela-nome-coluna">Nome do mês</th> 
+            <th class="tabela-nome-coluna"></th>
+            <th class="tabela-nome-coluna">Mês</th> 
             <th class="tabela-nome-coluna">Consumo (m³)</th>
           </tr>
 
