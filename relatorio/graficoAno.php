@@ -97,7 +97,15 @@
   <form class="form-inline" method="POST" action="graficoAno.php">
       <div class="form-group form-group-sm">
         <label for="ano">Ano</label>
-          <input type="number" class="form-control" id="ano" name="ano" min="2016" max=<?php echo $numAno = date("Y"); ?> value=<?php echo $ano ?>>    
+        <select class="form-control" id="ano" name="ano">
+          <?php
+            $numAno = date("Y");
+            for($i = 2016; $i <= $numAno; $i++){
+              if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
+            }
+           ?>
+        </select>      
       </div>
       <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
   </form>
@@ -135,8 +143,8 @@
 <div class="row hidden-print">
   <form class="form-inline" method="POST" action="graficoAno.php">
       <div class="form-group form-group-sm">
-        <label>Ano</label>
-        <select class="form-control" name="ano">
+        <label for="ano1">Ano</label>
+        <select class="form-control" id="ano1" name="ano">
           <?php
             $numAno = date("Y");
             for($i = 2016; $i <= $numAno; $i++){
