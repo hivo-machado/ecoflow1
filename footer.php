@@ -4,7 +4,7 @@
 
 	<div id="rodape">
 		<div class="container-fluid">
-			<div class="row">
+			<div class="row hidden-print">
 				<div class="col-sm-6 col-xs-6">
 					<address>
 					  <strong>Suporte ECOFlow</strong><br>
@@ -22,6 +22,17 @@
 			<div class="row hidden-print">
 				<div class="col-sm-12 col-xs-12">
 					<strong>ECOflow</strong> - Todos os direitos reservados.<br>
+				</div>
+			</div>
+			<div class="row visible-print-block">
+				<div class="col-sm-12">
+					<address>
+					<strong>Contato ECOFlow</strong><br>
+					ecoflow@example.com<br>
+					Av. Coronel Carneiro Júnior, 57 SL903<br>
+					37511-018 - Itajubá- MG - Brasil<br>
+					Tel.: (12)12345-6789
+					</address>
 				</div>
 			</div>
 		</div>
