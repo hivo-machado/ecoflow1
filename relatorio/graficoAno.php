@@ -119,7 +119,7 @@
 <!-- Div do plota grafico -->
 <div class="row hidden-print">
   <div class="col-sm-12">
-    <canvas id="GraficoLine"></canvas>
+    <canvas id="GraficoLine" height="150"></canvas>
   </div>
 </div>
 

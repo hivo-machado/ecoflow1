@@ -12,7 +12,7 @@
 		<form class="form-horizontal" method="POST" action="recuperarSenha.php" >
 			<div class="row">
 				<div class="col-sm-12 col-sm-offset-0">
-					<p>Esqueceu a senha eviaremos um e-mail com seu login e senha.</p>
+					<p>Esqueceu a senha ou login eviaremos um e-mail com seu login e senha.</p>
 				</div>
 			</div>
 			<div class="form-group">

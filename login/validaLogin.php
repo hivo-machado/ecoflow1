@@ -32,7 +32,7 @@
 					    </div>
 					</form>			        		
 				    <div class="col-sm-12 col-sm-offset-0">
-						<a href="recuperaSenha.php"><small>esqueceu sua senha?</small></a>
+						<a href="recuperaSenha.php"><small>esqueceu sua senha ou login?</small></a>
 					</div>
 	        	</div>
 	        	<div class="row">
