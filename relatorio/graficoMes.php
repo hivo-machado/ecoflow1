@@ -36,6 +36,13 @@
     $mes = date("n"); // mes sem 0 a esquerda
     $ano = date("Y");  
   }
+
+  //Consumo Total do mes
+  $total = consumoTotalMes($con, $id, $ano, $mes);
+  //Numero de dias do mes
+  $numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
+  //Consumo de dias
+  $consumos = consumoMes($con, $id, $ano, $mes);
 ?>
 
 <!--Função Grafico Chart-->
@@ -71,7 +78,7 @@
             pointRadius: 1,
             pointHitRadius: 10,
             pointStyle: "circle",
-            data: <?php echo consumoMes($con, $id, $ano, $mes); ?>,
+            data: <?php echo consumoMesGrafico($con, $id, $ano, $mes); ?>,
             spanGaps: false,
         }
       ]
@@ -93,7 +100,7 @@
 <!--Campo selecionaveis-->
 <div class="row">
   <form class="form-inline" method="POST" action="graficoMes.php">
-      <div class="form-group form-group-sm">
+      <div class="form-group form-group-sm hidden">
         <label>Dia</label>
         <select class="form-control" name="dia">
           <?php
@@ -147,8 +154,90 @@
 <div class="row">
   <div class="col-sm-12">
     <?php 
-      echo '<h5> <strong>Consumo total do mês: </strong>'.consumoTotalMes($con, $id, $ano, $mes).'</h5>';  
+      echo '<h5> <strong>Consumo total do mês: </strong>'.$total.'</h5>';  
     ?>
+  </div>
+</div>
+
+<!--Cabeçalho da tabela-->
+<div class="row">
+  <div class="page-header">
+    <h2>Tabela de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
+  </div>
+</div>
+
+<!--Campo selecionaveis-->
+<div class="row">
+  <form class="form-inline" method="POST" action="graficoMes.php">
+      <div class="form-group form-group-sm">
+        <label>Dia</label>
+        <select class="form-control" name="dia">
+          <?php
+            $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
+            for($i = 1; $i <= $numDiaMes; $i++){
+              if($i == $dia) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
+            }
+           ?>
+        </select>          
+      </div>
+      <div class="form-group form-group-sm">
+        <label>Mês</label>
+        <select class="form-control" name="mes">
+          <?php 
+            for($i = 1; $i <= 12; $i++){
+              if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
+            }
+           ?>
+        </select>      
+      </div>
+      <div class="form-group form-group-sm">
+        <label>Ano</label>
+        <select class="form-control" name="ano">
+          <?php
+            $numAno = date("Y");
+            for($i = 2016; $i <= $numAno; $i++){
+              if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
+              echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
+            }
+           ?>
+        </select>      
+      </div>
+      <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
+  </form>
+</div>
+
+<!--Tabela de consumo do ano-->
+<div class="row marge-tabela">
+  <div class="col-sm-6 col-sm-offset-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading tabela-titulo"><strong>Consumo Diário de Água no Mês de <?php echo $meses[$mes] ?></strong></div>
+      <!-- Tabela -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped tabela table-hover table-condensed">
+          <tr>
+            <th class="tabela-nome-coluna">Dia</th>
+            <th class="tabela-nome-coluna">Consumo (m³)</th>
+          </tr>
+
+          <?php
+            for($i = 1; $i <= $numDiasMes; $i++){
+          ?>
+          <tr>
+            <td><?php echo $i ?></td>
+            <td><?php echo $consumos[$i] ?></td>
+          </tr>
+          <?php
+           } 
+          ?>
+          <tr>
+            <td><strong>TOTAL</strong></td>
+            <td><?php echo $total ?></td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 

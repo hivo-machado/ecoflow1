@@ -15,7 +15,6 @@
 	//Retorna string com consumo diario de um mês
 	function consumoMes($con, $id, $ano, $mes){
 		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
-		$str = '['; //String para retonar dias e consumo
 		$semLeitura = 0; // contador de dias sem leitura
 		$bandeira = false; // flag para começar a contar quanto existir a 1º leitura
 		$leituraAnt = 0;
@@ -39,7 +38,7 @@
 					if($leituraAnt != 0){
 						$unidade->leitura;
 						$auxDia = $dia - 1;
-						$consumo[$auxDia] = $unidade->leitura - $leituraAnt;
+						$consumo[$auxDia] = number_format($unidade->leitura - $leituraAnt, 3, '.', '');
 						$leituraAnt = $unidade->leitura;
 					}else{
 						$auxDia = $dia - 1;
@@ -51,7 +50,7 @@
 					$auxDia = $dia - 1;
 					//loop para preenchimento do intervalo de Dias sem leitura
 					for($i = $auxDia - $semLeitura; $i < $dia; $i++){
-						$consumo[$i] = $auxConsumo;
+						$consumo[$i] = number_format($auxConsumo, 3, '.', '');
 					}
 					$semLeitura = 0;
 					$leituraAnt = $unidade->leitura;
@@ -86,11 +85,21 @@
 
 		//verifica se existe 1º leitura do mes seguinte
 		if(isset($unidade)){
-			$consumo[$numDiasMes] = $unidade->leitura - $leituraAnt;
+			$consumo[$numDiasMes] = number_format($unidade->leitura - $leituraAnt, 3, '.', '');
 		}else{
 			$consumo[$numDiasMes] = 0;
-		}
-		
+		}	
+
+		return $consumo;		
+	}
+
+	//Retorna string com consumo diario de um mês para grafico
+	function consumoMesGrafico($con, $id, $ano, $mes){
+		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
+		$str = '['; //String para retonar dias e consumo
+
+		$consumo = consumoMes($con, $id, $ano, $mes);
+
 		//loop para preenchimento da string de retorno da função
 		for ($i = 1; $i <= $numDiasMes; $i++){
 			$str = $str.number_format($consumo[$i], 3, '.', '');
@@ -98,7 +107,7 @@
 		    else $str = $str.']';
 		}
 
-		return $str;		
+		return $str;
 	}
 
 
@@ -293,8 +302,11 @@
 		return number_format($consumo, 3, ',', '.').' m³';
 	}
 
+	//Chamada de funções para teste
+
 	//include_once('../conexao.php');
-	//echo consumoDia($con, 2222, 2016, 12);
+	//print_r(consumoMes($con, 2222, 2017, 01));
+	//echo consumoMesGrafico($con, 2222, 2017, 01);
 	//print_r( consumoAno($con, 2222, 2017) );
 	//echo consumoAnoGrafico($con, 2222, 2017);
 	//echo consumoTotalAno($con, 2222, 2016);

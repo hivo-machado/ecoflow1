@@ -34,7 +34,7 @@ html, body {
 
 /*Tabelas*/
 .tabela{
-	text-align: right;
+	text-align: center;
 }
 
 .tabela-titulo{
@@ -42,7 +42,7 @@ html, body {
 }
 
 .tabela-nome-coluna{
-	text-align: right;
+	text-align: center;
 }
 
 .marge-tabela{

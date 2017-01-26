@@ -161,7 +161,7 @@
 
 <!--Tabela de consumo do ano-->
 <div class="row marge-tabela">
-  <div class="col-sm-8 col-sm-offset-2">
+  <div class="col-sm-6 col-sm-offset-3">
     <div class="panel panel-primary">
       <div class="panel-heading tabela-titulo"><strong>Consumo Mensal de Água no Ano de <?php echo $ano ?></strong></div>
       <!-- Tabela -->
