@@ -16,15 +16,15 @@
 	        	<div class="row">
 			        <form class="form-horizontal" method="POST" action="validarLogin.php">
 					  <div class="form-group">
-					    <label for="inputEmail3" class="col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1 control-label">Login</label>
+					    <label for="login" class="col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1 control-label">Login</label>
 					    	<div class="col-sm-8 col-xs-8">
-					      	<input type="text" class="form-control" name="login" placeholder="Nome">
+					      	<input type="text" class="form-control" id="login" name="login" placeholder="Nome">
 					    	</div>
 					  	</div>
 					  	<div class="form-group">
-					    	<label for="inputPassword3" class="col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1 control-label">Senha</label>
+					    	<label for="senha" class="col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1 control-label">Senha</label>
 					    	<div class="col-sm-8 col-xs-8">
-					      		<input type="password" class="form-control" name="senha" placeholder="Senha">
+					      		<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
 					    	</div>
 					  	</div>
 					  	<div class="col-sm-3 col-sm-offset-3">

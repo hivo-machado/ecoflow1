@@ -4,9 +4,9 @@
 	session_start();
 
 	$id = $_SESSION['idecoflow'];
-	$senha = $_POST['senha'];
+	$senha = $_POST['senhaNova'];
 	$repetirSenha = $_POST['repetirSenha'];
-	$senhaAtual = $_POST['senhaAtual'];
+	$senhaAtual = $_POST['senha'];
 
 	//verifica formato da senha
 	if(validaSenha($senha)){

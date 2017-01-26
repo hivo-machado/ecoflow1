@@ -34,9 +34,9 @@ include_once("funcoes.php");
 			    </div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-4 control-label">Login</label>
+				<label for="login" class="col-sm-4 control-label">Login</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" name="login" placeholder="Novo Login">
+					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login">
 				</div>
 			</div>
 			<div class="form-group">
@@ -59,22 +59,22 @@ include_once("funcoes.php");
 	<div class="col-sm-10 col-sm-offset-1">
 		<form class="form-horizontal" method="POST" action="alterarSenha.php" >
 			<div class="form-group">
-				<label class="col-sm-4 control-label">Nova Senha</label>
+				<label for="senhaNova" class="col-sm-4 control-label">Nova Senha</label>
 				<div class="col-sm-8">
-					<input type="password" class="form-control" name="senha" placeholder="Nova Senha">
+					<input type="password" class="form-control" id="senhaNova" name="senhaNova" placeholder="Nova Senha">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="col-sm-4 control-label">Confirmar Nova Senha</label>
+				<label for="repetirSenha" class="col-sm-4 control-label">Confirmar Nova Senha</label>
 				<div class="col-sm-8">
-					<input type="password" class="form-control" name="repetirSenha" placeholder="Repetir Nova Senha">
+					<input type="password" class="form-control" id="repetirSenha" name="repetirSenha" placeholder="Repetir Nova Senha">
 				</div>
 			</div>
 			<br>
 			<div class="form-group">
-				<label class="col-sm-4 control-label">Senha</label>
+				<label for="senha" class="col-sm-4 control-label">Senha</label>
 				<div class="col-sm-8">
-					<input type="password" class="form-control" name="senhaAtual" placeholder="Senha Atual">
+					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha Atual">
 				</div>
 			</div>
 			<div class="form-group">
