@@ -69,7 +69,15 @@ nav.navbar-transparente{
 }
 
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-brand:hover{
-	color: rgb(0, 154, 185);
+	color: #5bc0de;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
+	color: #5bc0de;
+}
+
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover{
+	color: black;
 }
 
 .divisor{
