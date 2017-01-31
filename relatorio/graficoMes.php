@@ -38,11 +38,11 @@
   }
 
   //Consumo Total do mes
-  $total = consumoTotalMes($con, $id, $ano, $mes);
+  $total = consumoTotalMes($con, $id, $ano, $mes, $dia);
   //Numero de dias do mes
   $numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
   //Consumo de dias
-  $consumos = consumoMes($con, $id, $ano, $mes);
+  $consumos = consumoMes($con, $id, $ano, $mes, $dia);
 ?>
 
 <!--Função Grafico Chart-->
@@ -56,7 +56,7 @@
   };
 
   var data = {
-      labels: <?php echo qtdDias($ano, $mes); ?>,
+      labels: <?php echo qtdDias($consumos, $ano, $mes ); ?>,
       datasets: [
           {
             label: "Água",
@@ -78,7 +78,7 @@
             pointRadius: 1,
             pointHitRadius: 10,
             pointStyle: "circle",
-            data: <?php echo consumoMesGrafico($con, $id, $ano, $mes); ?>,
+            data: <?php echo consumoMesGrafico($consumos, $ano, $mes ); ?>,
             spanGaps: false,
         }
       ]
@@ -100,7 +100,7 @@
 <!--Campo selecionaveis-->
 <div class="row hidden-print">
   <form class="form-inline" method="POST" action="graficoMes.php">
-      <div class="form-group form-group-sm hidden">
+      <div class="form-group form-group-sm">
         <label for="dia">Dia</label>
         <select class="form-control" id="dia" name="dia">
           <?php
@@ -225,19 +225,28 @@
             for($i = 1; $i <= $numDiasMes; $i++){
           ?>
           <tr>
-            <td><?php echo $i ?></td>
-            <td><?php echo $consumos[$i] ?></td>
+            <td><?php echo date('d-m-Y',strtotime($consumos[1][$i]) ) ?></td>
+            <td><?php echo $consumos[0][$i] ?></td>
           </tr>
           <?php
            } 
           ?>
-          <tr>
+          <tr class="info">
             <td><strong>TOTAL</strong></td>
             <td><?php echo $total ?></td>
           </tr>
         </table>
       </div>
     </div>
+  </div>
+</div>
+
+<!--Botão imprimir-->
+<div class="row hidden-print">
+  <div class="col-sm-2 col-sm-offset-8 col-xs-1 col-xs-offset-8">
+    <form>
+      <button type="button" class="btn btn-primary" name="imprimir" value="Imprimir" onclick="window.print();"><span class="glyphicon glyphicon-print" arian-hidden="true"></span> Imprimir</button>
+    </form>
   </div>
 </div>
 

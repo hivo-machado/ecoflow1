@@ -1,28 +1,32 @@
-<?php include_once("conexao.php"); ?>
+<?php include_once("conexao.php"); //conexão para banco de dados ?>
 <?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>ECOflow</title>
+
 	<!-- Icone de pagina-->
 	<link rel="icon" href="../img/ECOFlow.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="../img/ECOFlow.ico" type="image/x-icon" />
 
 	<!-- Links para Bootsrap -->
-	<link rel="stylesheet"  href="../css/bootstrap.css">
-	<link rel="stylesheet"  href="../css/bootstrap-theme.css">
-	<link rel="stylesheet"  href="../css/meutema.css">
+	<link rel="stylesheet"  href="../css/bootstrap.min.css">
+	<link rel="stylesheet"  href="../css/bootstrap-theme.min.css">
 
-	<!--Links para grafico Chart-->
-	<script src="../js/Chart.js"></script>
+	<!--CSS do site-->
+	<link rel="stylesheet"  href="../css/estilo.css">
 
-	<!--[if lt IE 9]>
-    	<script src="js/html5shiv.js"></script>
-	<![endif]-->
+	<!-- HTML5 shim e Respond.js para suporte no IE8 de elementos HTML5 e media queries -->
+    <!-- ALERTA: Respond.js não funciona se você visualizar uma página file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 </head>
 <body>
@@ -30,28 +34,30 @@
 <div id="tudo">
 
 	<!-- Div para navbar -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top navbar-transparente">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
 		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-		        <span class="sr-only"></span>
+		        <span class="sr-only">Menu</span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
 
 		      <a href="../index.php" class="navbar-brand">
-		      	<div id="barnav">
-		      		<img alt="Brand" src="../img/ECOFlow.ico" height="30">
+		      	<div id="barnav-link">
+		      		<img alt="Brand" src="../img/ECOFlow.ico" id="imgbrand">
 		      		<strong>ECO</strong>flow
 		      	</div>
 		      </a>
 		    </div>
+
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
+					<li class="hidden-xs divisor" role="separator"></li>
 					<li class="dropdown">
-			          <a href="#" class="dropdown-toggle" id="barnav" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+			          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 			          	Relatório
 			          	<span class="caret"></span>
 			          </a>
@@ -70,12 +76,12 @@
 					if( !isset($_SESSION["idecoflow"])){
 						?>
 						<li>
-							<a id="barnav" href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
+							<a id="barnav-link" href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
 						</li>
 					<?php }else{ ?>
 						<li>
 							<li class="dropdown">
-					          <a id="barnav" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+					          <a id="barnav-link" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
 					          	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
 					          	<?php echo $_SESSION["login"] ?> 
 					          	<span class="caret"></span>
@@ -109,25 +115,33 @@
 		</div>
 	</nav>
 
-
-	<div id="conteudo">
-		<div class="container-fluid">
-			<div class="col-sm-10 col-sm-offset-1">
-				<div class="row">
-					<div class="mensagme text-center col-sm-8 col-sm-offset-2">
-						<?php 
-						if(isset($_GET['error']))
+	<div class="container-fluid">
+		<div class="col-sm-10 col-sm-offset-1">
+			<section id="conteudo">
+			
+			<div class="row">
+				<div class="mensagme text-center col-sm-8 col-sm-offset-2">
+					<?php 
+					if(isset($_GET['error']))
+					{
+						?> 
+						<div class="alert alert-danger alert-dismissible" role="alert"><?php echo $_GET['error'] ?>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<?php
+						} 
+						else if(isset($_GET['success']))
 						{
-							?> 
-							<div class="alert alert-danger" role="alert"><?php echo $_GET['error'] ?></div>
-							<?php
-							} 
-							else if(isset($_GET['success']))
-							{
-							?> 
-								<div class="alert alert-success" role="alert"><?php echo $_GET['success'] ?></div>
-							<?php
-							}
-							?>
-					</div>
+						?> 
+							<div class="alert alert-success alert-dismissible" role="alert"><?php echo $_GET['success'] ?>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						<?php
+						}
+						?>
 				</div>
+			</div>

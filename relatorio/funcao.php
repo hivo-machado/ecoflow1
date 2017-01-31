@@ -1,115 +1,104 @@
 <?php
-	//Retorna string com os dias do mes
-	function qtdDias($ano, $mes){
-		$str = '[';
-		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
-		for($i = 1; $i <= $numDiasMes; $i++){
-			$str = $str.$i;
-			if($i != $numDiasMes) $str = $str.',';
-			else $str = $str.']';
-		}
-		return $str;
-	}	
-
 
 	//Retorna string com consumo diario de um mês
-	function consumoMes($con, $id, $ano, $mes){
+	function consumoMes($con, $id, $ano, $mes, $dia = 1){
 		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
-		$semLeitura = 0; // contador de dias sem leitura
-		$bandeira = false; // flag para começar a contar quanto existir a 1º leitura
-		$leituraAnt = 0;
+		$unidadeAnt  = null; //Unidade anterior
+		$cont = 1; //contador de dias
 
-		// Loop para calculo consumo do dias do mes
-		for ($dia = 1; $dia <= $numDiasMes; $dia++){
-			
-			// Converte a data para modelo do banco de dados 
-			$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
-			$date = date_create($data);
-			$tempo =  date_format($date, 'Y-m-d');
+		//Data do Inicio do intervalo
+		$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
+		$dateInicio = date_create($dataInicio);
+		$tempoInicio =  date_format($dateInicio, 'Y-m-d');
 
-			//1º leitura do dia
-			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo = '$tempo' ORDER by hora LIMIT 1");
-			$unidade = mysqli_fetch_object($result);
+		//Data de Fim do intervalo
+		$dateFim = $dateInicio;
+		$dateFim->add(new DateInterval("P1M")); // Soma um mes
+		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
+
+		//Seleciona as leituras com tempo menor que 02:00:00 de cada dia no invtervalo
+		$result = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$id' AND hora < '01:59:59' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo");
+		
+		//Percorre todos os resultado do SELECT
+		while( $unidade = mysqli_fetch_object($result) ){
+			//Verifica se existe leitura anterior para calculo
+			if($unidadeAnt != null){
+				$listaData[$cont] = date('Y-m-d',strtotime($unidadeAnt->tempo)); //lista com datas
+				$listaConsumo[$cont] = number_format($unidade->leitura - $unidadeAnt->leitura, 3, '.', ''); //lista de consumo
+				if($listaConsumo[$cont] < 0) $listaConsumo[$cont] = 0; //Caso tenha consumo negativo por bug na remota antiga
 			
-			//Caso não exista leitura
-			if(isset($unidade)){
-				if($semLeitura == 0){
-					//Verifica se existe leitura do dia anterior
-					if($leituraAnt != 0){
-						$unidade->leitura;
-						$auxDia = $dia - 1;
-						$consumo[$auxDia] = number_format($unidade->leitura - $leituraAnt, 3, '.', '');
-						$leituraAnt = $unidade->leitura;
-					}else{
-						$auxDia = $dia - 1;
-						$consumo[$auxDia] = 0;
-						$leituraAnt = $unidade->leitura;
+				$dataAnt = strtotime($unidadeAnt->tempo);
+				$dateAnt = strtotime('+1 day', $dataAnt);
+				$proxDataPre = date('Y-m-d',$dateAnt); //Proxima data prevista
+
+				$data = strtotime($unidade->tempo);
+				$proxData = date('Y-m-d',$data);//Proxima data
+
+				if($proxDataPre != $proxData){
+					$date1=date_create($proxDataPre);
+					$date2=date_create($proxData);
+					$diff=date_diff($date1,$date2);
+					$dias = $diff->format("%a"); //quantidade de dias sem leitura
+					$consumoAux = $listaConsumo[$cont] / ($dias + 1);
+					for($i = 0; $i <= $dias; $i++){
+						$listaConsumo[($cont + $i)] = $consumoAux;
+						//dia
+						if($i != 0){
+							$data = strtotime($listaData[($cont + $i - 1)]);
+							$date = strtotime('+1 day', $data);
+							$listaData[($cont + $i)] = date('Y-m-d',$date);
+						}
 					}
-				}else{
-					$auxConsumo = ($unidade->leitura - $leituraAnt) / ($semLeitura + 1);
-					$auxDia = $dia - 1;
-					//loop para preenchimento do intervalo de Dias sem leitura
-					for($i = $auxDia - $semLeitura; $i < $dia; $i++){
-						$consumo[$i] = number_format($auxConsumo, 3, '.', '');
-					}
-					$semLeitura = 0;
-					$leituraAnt = $unidade->leitura;
+					$cont = $cont + $dias;
 				}
-				$bandeira = true;
-			}else{
-				$auxDia = $dia - 1;
-				$consumo[$auxDia] = 0;
 
-				// verifica se houve um consumo antes de começar contar
-				if($bandeira)$semLeitura++;
+				$cont++; // soma +1 contador de dias
 			}
 
-		}
-		
-		//mes seguinte
-		$mes++;
-		//Caso o mes atual seja 12 pula para o proximo ano
-		if($mes == 13){
-			$mes = 1;
-			$ano++;
+			$unidadeAnt = $unidade;
 		}
 
-		// Converte a data para modelo do banco de dados 
-		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.'01')));
-		$date = date_create($data);
-		$tempo =  date_format($date, 'Y-m-d');
+		for($j = $cont; $j <= $numDiasMes; $j++){
+			$listaConsumo[$j] = 0;
+			$data = strtotime($listaData[($j - 1)]);
+			$date = strtotime('+1 day', $data);
+			$listaData[$j] = date('Y-m-d',$date);
+		}
 
-		//1º leitura do mes seguinte
-		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo = '$tempo' ORDER by hora LIMIT 1");
-		$unidade = mysqli_fetch_object($result);
-
-		//verifica se existe 1º leitura do mes seguinte
-		if(isset($unidade)){
-			$consumo[$numDiasMes] = number_format($unidade->leitura - $leituraAnt, 3, '.', '');
-		}else{
-			$consumo[$numDiasMes] = 0;
-		}	
-
-		return $consumo;		
+		return $cosumo = array($listaConsumo, $listaData);
 	}
 
 	//Retorna string com consumo diario de um mês para grafico
-	function consumoMesGrafico($con, $id, $ano, $mes){
+	function consumoMesGrafico($consumo, $ano, $mes){
 		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
 		$str = '['; //String para retonar dias e consumo
 
-		$consumo = consumoMes($con, $id, $ano, $mes);
-
 		//loop para preenchimento da string de retorno da função
 		for ($i = 1; $i <= $numDiasMes; $i++){
-			$str = $str.number_format($consumo[$i], 3, '.', '');
-		    if($i != $numDiasMes) $str = $str.',';
-		    else $str = $str.']';
+			$str = $str.number_format($consumo[0][$i], 3, '.', '');
+		    if($i != $numDiasMes ) $str = $str.',';
 		}
-
+		$str = $str.']';
 		return $str;
 	}
 
+	//Retorna string com os dias do mes
+	function qtdDias($consumo, $ano, $mes){
+		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
+		$str = '['; //String para retonar dias e consumo
+		
+		for($i = 1; $i <= $numDiasMes; $i++){
+			$str = $str.date('d',strtotime($consumo[1][$i]) );
+			if($i != $numDiasMes) $str = $str.',';
+		}
+		$str = $str.']';
+		return $str;
+	}
+
+	//include_once('../conexao.php');
+	//print_r(consumoMes($con, 2222, 2017, 01, 05) );
+	//echo qtdDias(consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
+	//echo consumoMesGrafico( consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
 
 	// Função para consumo total do mês
 	function consumoTotalMes($con, $id, $ano, $mes, $dia = 1){

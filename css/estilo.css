@@ -1,0 +1,104 @@
+/*
+*
+* @autor Vinicius Horiguchi
+*@version 0.1
+*/
+
+
+/*========================================= Layout =========================================*/
+html, body, #conteudo {
+	height:100%;
+}
+
+@media (min-width: 768px) {
+	body{
+		background: url('../img/fundo.jpg') no-repeat;
+		background-size: 100%;
+		background-position: bottom;
+		background-attachment: fixed;
+	}
+}
+
+/*---------------------Estrutura Principal da pagina---------------------*/
+#tudo{
+	min-height: 100%;
+	position: relative;
+}
+
+#conteudo{
+	height: 100%;
+	padding: 60px 30px 205px 30px;
+	background-color: white;
+}
+
+footer{
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	color: #eee;
+	background-color: #222;
+}
+
+/*--------------------------------Navbar--------------------------------*/
+nav.navbar-transparente{
+	background: rgba(0, 0, 0, 0.7);
+	border: none;
+}
+
+.navbar-brand{
+	padding: 10px;
+}
+
+/*Icone da navbar*/
+#imgbrand{
+	height: 35px;
+}
+
+/* Link da navbar*/
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand{
+	color: white;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-brand:hover{
+	color: rgb(0, 154, 185);
+}
+
+.divisor{
+	width: 1px;
+	height: 16px;
+	background: white;
+	margin: 16px 10px;
+}
+
+/*--------------------------------Rodapé--------------------------------*/
+a.email-rodape:link, a.email-rodape:visited{
+	color: #fff;
+	text-decoration: none;
+}
+
+a.email-rodape:hover, a.email-rodape:active{
+	color: rgb(0, 154, 185);
+	text-decoration: underline;
+}
+
+/*--------------------------------Tabelas--------------------------------*/
+.tabela{
+	text-align: center;
+}
+
+.tabela-titulo{
+	text-align: center;
+}
+
+.tabela-nome-coluna{
+	text-align: center;
+}
+
+.marge-tabela{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/*========================================= Tipografia =========================================*/

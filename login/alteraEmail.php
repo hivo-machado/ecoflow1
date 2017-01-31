@@ -23,7 +23,7 @@ include_once("funcoes.php");
 			<div class="form-group">
 			    <label class="col-sm-4 control-label">E-mail Cadastrado</label>
 			    <div class="col-sm-8">
-			      <p class="form-control-static"><?php echo $email ?></p>
+			    	<input class="form-control" type="text" placeholder=<?php echo $email ?> readonly>
 			    </div>
 			</div>
 			<?php } ?>
@@ -44,6 +44,7 @@ include_once("funcoes.php");
 				<label for="senha" class="col-sm-4 control-label">Senha</label>
 				<div class="col-sm-8">
 					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+					<span id="helpBlock" class="help-block">Confirmação de senha atual necessária para alteração.</span>
 				</div>
 			</div>
 			<div class="form-group">

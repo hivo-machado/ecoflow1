@@ -30,7 +30,7 @@ include_once("funcoes.php");
 			<div class="form-group">
 			    <label class="col-sm-4 control-label">Login Cadastrado</label>
 			    <div class="col-sm-8">
-			      <p class="form-control-static"><?php echo $login ?></p>
+			    	<input class="form-control" type="text" placeholder=<?php echo $login ?> readonly>
 			    </div>
 			</div>
 			<div class="form-group">
@@ -75,6 +75,7 @@ include_once("funcoes.php");
 				<label for="senha" class="col-sm-4 control-label">Senha</label>
 				<div class="col-sm-8"> 
 					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha Atual" required>
+					<span id="helpBlock" class="help-block">Confirmação de senha atual necessária para alteração.</span>
 				</div>
 			</div>
 			<div class="form-group">

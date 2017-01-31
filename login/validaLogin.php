@@ -2,7 +2,7 @@
 
 <!-- Div para logo Ecoflow -->
 <div class="row">		
-	<div class="col-sm-3 col-sm-offset-4 col-xs-6 col-xs-offset-3">
+	<div class="col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
 		<img src="../img/ECOFlow symbol.jpg" alt="Logo Ecoflow" class="img-responsive">
 		<br>
 	</div>			
@@ -10,7 +10,7 @@
 
 <!-- Div de formulario para login -->
 <div class="row">	
-	<div class="col-sm-5 col-sm-offset-3">
+	<div class="col-sm-6 col-sm-offset-3">
         <div align="center" class="panel panel-default">        
 	        <div class="panel-body">
 	        	<div class="row">
