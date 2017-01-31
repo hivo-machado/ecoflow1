@@ -145,7 +145,7 @@
 </div>
 <!-- Div do plota grafico -->
 <div class="row hidden-print">
-  <div class="col-sm-12">
+  <div class="col-sm-12 col-xs-12">
     <canvas id="GraficoLine"></canvas>
   </div>
 </div>
@@ -242,8 +242,8 @@
 </div>
 
 <!--Botão imprimir-->
-<div class="row hidden-print">
-  <div class="col-sm-2 col-sm-offset-8 col-xs-1 col-xs-offset-8">
+<div class="row hidden-print hidden-xs">
+  <div class="col-sm-2 col-sm-offset-8">
     <form>
       <button type="button" class="btn btn-primary" name="imprimir" value="Imprimir" onclick="window.print();"><span class="glyphicon glyphicon-print" arian-hidden="true"></span> Imprimir</button>
     </form>
