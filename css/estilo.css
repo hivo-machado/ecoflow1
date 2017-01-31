@@ -72,12 +72,10 @@ nav.navbar-transparente{
 	color: #5bc0de;
 }
 
-.navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
-	color: #5bc0de;
-}
-
-.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover{
-	color: black;
+@media(max-width: 768px){
+	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
+		color: white;
+	}
 }
 
 .divisor{
