@@ -27,8 +27,10 @@ html, body, #conteudo {
 
 #conteudo{
 	height: 100%;
-	padding: 60px 30px 205px 30px;
+	width: 100%;
+	padding: 60px 0px 205px 0px;
 	background-color: white;
+	border: 1px solid red;
 }
 
 footer{
@@ -39,6 +41,12 @@ footer{
 	text-align: center;
 	color: #eee;
 	background-color: #222;
+}
+
+@media (min-width: 768px) {
+	#conteudo{
+		padding: 60px 30px 205px 30px;
+	}
 }
 
 /*--------------------------------Navbar--------------------------------*/

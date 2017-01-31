@@ -116,7 +116,7 @@
 	</nav>
 
 	<div class="container-fluid">
-		<div class="col-sm-10 col-sm-offset-1">
+		<div class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
 			<section id="conteudo">
 			
 			<div class="row">
