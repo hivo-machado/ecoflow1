@@ -22,8 +22,27 @@
 		
 		//Percorre todos os resultado do SELECT
 		while( $unidade = mysqli_fetch_object($result) ){
+
 			//Verifica se existe leitura anterior para calculo
 			if($unidadeAnt != null){
+				//Caso não exista leitura no começo do intervalo preenche a lista com consumo 0
+				if( ($cont == 1)&&($tempoInicio != $unidadeAnt->tempo) ){
+					$date1 = date_create($tempoInicio);
+					$date2 = date_create(date('Y-m-d',strtotime($unidadeAnt->tempo)));
+					$diff = date_diff($date1,$date2);
+					$dias = $diff->format("%a"); //quantidade de dias sem leitura
+					$listaData[0] = date('Y-m-d', strtotime('-1 day', strtotime($tempoInicio)));
+					for($i = 1; $i <= $dias; $i++){
+						$listaConsumo[$i] = 0;
+						if($i != 0){
+							$data = strtotime($listaData[($i - 1)]);
+							$date = strtotime('+1 day', $data);
+							$listaData[$i] = date('Y-m-d',$date);
+						}
+					}
+					$cont = $cont + $dias;
+				}
+
 				$listaData[$cont] = date('Y-m-d',strtotime($unidadeAnt->tempo)); //lista com datas
 				$listaConsumo[$cont] = number_format($unidade->leitura - $unidadeAnt->leitura, 3, '.', ''); //lista de consumo
 				if($listaConsumo[$cont] < 0) $listaConsumo[$cont] = 0; //Caso tenha consumo negativo por bug na remota antiga
@@ -36,14 +55,13 @@
 				$proxData = date('Y-m-d',$data);//Proxima data
 
 				if($proxDataPre != $proxData){
-					$date1=date_create($proxDataPre);
-					$date2=date_create($proxData);
-					$diff=date_diff($date1,$date2);
+					$date1 = date_create($proxDataPre);
+					$date2 = date_create($proxData);
+					$diff = date_diff($date1,$date2);
 					$dias = $diff->format("%a"); //quantidade de dias sem leitura
-					$consumoAux = $listaConsumo[$cont] / ($dias + 1);
+					$consumoAux = number_format($listaConsumo[$cont] / ($dias + 1), 3, '.', '');
 					for($i = 0; $i <= $dias; $i++){
 						$listaConsumo[($cont + $i)] = $consumoAux;
-						//dia
 						if($i != 0){
 							$data = strtotime($listaData[($cont + $i - 1)]);
 							$date = strtotime('+1 day', $data);
@@ -67,7 +85,8 @@
 				$date = strtotime('+1 day', $data);
 				$listaData[$j] = date('Y-m-d',$date);
 			}			
-		}else{
+		}else{ //caso não exista valor suficiente no SELECT do BD para calcular consumo
+
 			//Iniciando os vetore listaData e listaConsumo
 			$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.'01')));
 			$dateInicio = date_create($dataInicio);

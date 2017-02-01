@@ -75,6 +75,6 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `tipo` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `login` (`id_unidade`),
+  UNIQUE KEY `id_unidade` (`id_unidade`),
   UNIQUE KEY `login` (`login`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
