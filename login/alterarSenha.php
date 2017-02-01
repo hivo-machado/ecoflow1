@@ -3,7 +3,7 @@
 	include_once('../regexp/regexp.php');
 	session_start();
 
-	$id = $_SESSION['idecoflow'];
+	$id = $_SESSION['id'];
 	$senha = $_POST['senhaNova'];
 	$repetirSenha = $_POST['repetirSenha'];
 	$senhaAtual = $_POST['senha'];

@@ -66,13 +66,15 @@ CREATE TABLE IF NOT EXISTS `unidade` (
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
+  `id` int(11) AUTO_INCREMENT NOT NULL,
+  `id_unidade` int(11),
   `login` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `senha` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
-  `id` int(11) NOT NULL,
   `nome` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tipo` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `login` (`id_unidade`),
   UNIQUE KEY `login` (`login`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

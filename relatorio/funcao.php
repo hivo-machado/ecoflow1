@@ -5,6 +5,7 @@
 		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
 		$unidadeAnt  = null; //Unidade anterior
 		$cont = 1; //contador de dias
+		$listaConsumo = null; //inicializando variavel
 
 		//Data do Inicio do intervalo
 		$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
@@ -19,67 +20,67 @@
 		//Seleciona as leituras com tempo menor que 02:00:00 de cada dia no invtervalo
 		$result = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$id' AND hora < '01:59:59' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo");
 		
-		//Verifica se o select retorno um valor
-		if(mysqli_fetch_object($result)){
-			//Percorre todos os resultado do SELECT
-			while( $unidade = mysqli_fetch_object($result) ){
-				//Verifica se existe leitura anterior para calculo
-				if($unidadeAnt != null){
-					$listaData[$cont] = date('Y-m-d',strtotime($unidadeAnt->tempo)); //lista com datas
-					$listaConsumo[$cont] = number_format($unidade->leitura - $unidadeAnt->leitura, 3, '.', ''); //lista de consumo
-					if($listaConsumo[$cont] < 0) $listaConsumo[$cont] = 0; //Caso tenha consumo negativo por bug na remota antiga
-				
-					$dataAnt = strtotime($unidadeAnt->tempo);
-					$dateAnt = strtotime('+1 day', $dataAnt);
-					$proxDataPre = date('Y-m-d',$dateAnt); //Proxima data prevista
+		//Percorre todos os resultado do SELECT
+		while( $unidade = mysqli_fetch_object($result) ){
+			//Verifica se existe leitura anterior para calculo
+			if($unidadeAnt != null){
+				$listaData[$cont] = date('Y-m-d',strtotime($unidadeAnt->tempo)); //lista com datas
+				$listaConsumo[$cont] = number_format($unidade->leitura - $unidadeAnt->leitura, 3, '.', ''); //lista de consumo
+				if($listaConsumo[$cont] < 0) $listaConsumo[$cont] = 0; //Caso tenha consumo negativo por bug na remota antiga
+			
+				$dataAnt = strtotime($unidadeAnt->tempo);
+				$dateAnt = strtotime('+1 day', $dataAnt);
+				$proxDataPre = date('Y-m-d',$dateAnt); //Proxima data prevista
 
-					$data = strtotime($unidade->tempo);
-					$proxData = date('Y-m-d',$data);//Proxima data
+				$data = strtotime($unidade->tempo);
+				$proxData = date('Y-m-d',$data);//Proxima data
 
-					if($proxDataPre != $proxData){
-						$date1=date_create($proxDataPre);
-						$date2=date_create($proxData);
-						$diff=date_diff($date1,$date2);
-						$dias = $diff->format("%a"); //quantidade de dias sem leitura
-						$consumoAux = $listaConsumo[$cont] / ($dias + 1);
-						for($i = 0; $i <= $dias; $i++){
-							$listaConsumo[($cont + $i)] = $consumoAux;
-							//dia
-							if($i != 0){
-								$data = strtotime($listaData[($cont + $i - 1)]);
-								$date = strtotime('+1 day', $data);
-								$listaData[($cont + $i)] = date('Y-m-d',$date);
-							}
+				if($proxDataPre != $proxData){
+					$date1=date_create($proxDataPre);
+					$date2=date_create($proxData);
+					$diff=date_diff($date1,$date2);
+					$dias = $diff->format("%a"); //quantidade de dias sem leitura
+					$consumoAux = $listaConsumo[$cont] / ($dias + 1);
+					for($i = 0; $i <= $dias; $i++){
+						$listaConsumo[($cont + $i)] = $consumoAux;
+						//dia
+						if($i != 0){
+							$data = strtotime($listaData[($cont + $i - 1)]);
+							$date = strtotime('+1 day', $data);
+							$listaData[($cont + $i)] = date('Y-m-d',$date);
 						}
-						$cont = $cont + $dias;
 					}
-
-					$cont++; // soma +1 contador de dias
+					$cont = $cont + $dias;
 				}
 
-				$unidadeAnt = $unidade;
+				$cont++; // soma +1 contador de dias
 			}
 
+			$unidadeAnt = $unidade;
+		}
+
+
+		if( $listaConsumo != null){
 			for($j = $cont; $j <= $numDiasMes; $j++){
 				$listaConsumo[$j] = 0;
 				$data = strtotime($listaData[($j - 1)]);
 				$date = strtotime('+1 day', $data);
 				$listaData[$j] = date('Y-m-d',$date);
+			}			
+		}else{
+			//Iniciando os vetore listaData e listaConsumo
+			$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.'01')));
+			$dateInicio = date_create($dataInicio);
+			$listaData[1] =  date_format($dateInicio, 'Y-m-d');
+			$listaConsumo[1] = 0;
+			//Preenche a lista toda com consumo 0
+			for($j = 2; $j <= $numDiasMes; $j++){
+					$listaConsumo[$j] = 0;
+					$data = strtotime($listaData[($j - 1)]);
+					$date = strtotime('+1 day', $data);
+					$listaData[$j] = date('Y-m-d',$date);
 			}
-	}else{//Caso não exista dias suficiente para calcular o consumo 
-		//Iniciando os vetore listaData e listaConsumo
-		$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.'01')));
-		$dateInicio = date_create($dataInicio);
-		$listaData[1] =  date_format($dateInicio, 'Y-m-d');
-		$listaConsumo[1] = 0;
-		//Preenche a lista toda com consumo 0
-		for($j = 2; $j <= $numDiasMes; $j++){
-				$listaConsumo[$j] = 0;
-				$data = strtotime($listaData[($j - 1)]);
-				$date = strtotime('+1 day', $data);
-				$listaData[$j] = date('Y-m-d',$date);
 		}
-	}
 
 		return $cosumo = array($listaConsumo, $listaData);
 	}
@@ -112,7 +113,7 @@
 	}
 
 	//include_once('../conexao.php');
-	//print_r(consumoMes($con, 2222, 2017, 01, 05) );
+	//print_r(consumoMes($con, 2222, 2017, 01, 01) );
 	//echo qtdDias(consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
 	//echo consumoMesGrafico( consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
 

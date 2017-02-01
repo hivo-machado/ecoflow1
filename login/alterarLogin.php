@@ -3,7 +3,7 @@
 	include_once('../regexp/regexp.php');
 	session_start();
 
-	$id = $_SESSION['idecoflow'];
+	$id = $_SESSION['id'];
 	$login = $_POST['login'];
 
 	$login = ucfirst(strtolower($login));
