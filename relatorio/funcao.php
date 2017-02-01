@@ -18,7 +18,7 @@
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
 		//Seleciona as leituras com tempo menor que 02:00:00 de cada dia no invtervalo
-		$result = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$id' AND hora < '01:59:59' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo");
+		$result = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$id' AND servico = '0' AND hora < '01:59:59' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo");
 		
 		//Percorre todos os resultado do SELECT
 		while( $unidade = mysqli_fetch_object($result) ){
@@ -131,49 +131,17 @@
 		return $str;
 	}
 
-	//include_once('../conexao.php');
-	//print_r(consumoMes($con, 2222, 2017, 01, 01) );
-	//echo qtdDias(consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
-	//echo consumoMesGrafico( consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
-
 	// Função para consumo total do mês
-	function consumoTotalMes($con, $id, $ano, $mes, $dia = 1){
+	function consumoTotalMes($consumo, $ano, $mes){
+		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
+		$total = 0; //String para retonar dias e consumo
 
-		// Converte a data para modelo do banco de dados 
-		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
-		$date = date_create($data);
-		$tempo =  date_format($date, 'Y-m-d');
-
-		//1º leitura do mes
-		$resUnidInicio = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo >= '$tempo' ORDER by tempo, hora LIMIT 1");
-		$unidadeInicio = mysqli_fetch_object($resUnidInicio);		
-
-		//Se for 13 passa para janeiro do proximo ano
-		$auxMes = $mes +  1;
-		if($auxMes == 13){
-			$auxMes = 1;
-			$ano ++;
+		//loop para preenchimento da string de retorno da função
+		for ($i = 1; $i <= $numDiasMes; $i++){
+			$total = $total + $consumo[0][$i];
 		}
-
-		// Converte a data para modelo do banco de dados 
-		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$auxMes.'-'.$dia)));
-		$date = date_create($data);
-		$tempo =  date_format($date, 'Y-m-d');
-
-		//1º leitura do mes seguinte
-		$resUnidFim = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo <= '$tempo' ORDER by tempo DESC, hora LIMIT 1");
-		$unidadeFim = mysqli_fetch_object($resUnidFim);
-
-		//Verifica se data inicial e final existe
-		if( (isset($unidadeInicio) )&&(isset($unidadeFim)) ){
-			$LeituraInicio = $unidadeInicio->leitura;
-			$leituraFim = $unidadeFim->leitura;
-			$consumoDoMes = $leituraFim - $LeituraInicio;
-			return  number_format($consumoDoMes, 3, '.', ',').' m³';
-		}		
-		return 'não disponível';
+		return $total;
 	}
-
 
 	//Função para cosumo por mes
 	function consumoAno($con, $id, $ano){
@@ -291,7 +259,18 @@
     	return $str;
 	}
 
+	//Função para consumo total do ano
+	function consumoTotalAno($consumo){
+		$total = 0; //String para retonar dias e consumo
 
+		//Concatena os valores de consumo para API de grafico do google
+		for($i = 1; $i < 13; $i++){
+			$total = $total + $consumo[$i];
+		}
+    	return $total;
+	}
+
+	/*
 	//Função para consumo total do ano
 	function consumoTotalAno($con, $id, $ano){
 
@@ -326,14 +305,16 @@
 
 		return number_format($consumo, 3, '.', ',').' m³';
 	}
+	*/
 
 	//Chamada de funções para teste
 
 	//include_once('../conexao.php');
-	//print_r(consumoMes($con, 2222, 2017, 01));
-	//echo consumoMesGrafico($con, 2222, 2017, 01);
 	//print_r( consumoAno($con, 2222, 2017) );
 	//echo consumoAnoGrafico($con, 2222, 2017);
 	//echo consumoTotalAno($con, 2222, 2016);
+	//print_r(consumoMes($con, 2222, 2017, 01, 01) );
+	//echo qtdDias(consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
+	//echo consumoMesGrafico( consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
 
  ?>

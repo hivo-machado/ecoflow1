@@ -17,11 +17,11 @@
     $ano = date("Y");  
   }
 
-  //Total consumo do ano
-  $total = consumoTotalAno($con, $id, $ano);
-
   //Vetor consumo do ano
   $consumos = consumoAno($con, $id, $ano);
+
+  //Total consumo do ano
+  $total = consumoTotalAno($consumos);
 
   //vetor nome dos meses
   $meses = array(

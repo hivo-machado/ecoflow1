@@ -37,12 +37,13 @@
     $ano = date("Y");  
   }
 
-  //Consumo Total do mes
-  $total = consumoTotalMes($con, $id, $ano, $mes, $dia);
   //Numero de dias do mes
   $numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
   //Consumo de dias
   $consumos = consumoMes($con, $id, $ano, $mes, $dia);
+  //Consumo Total do mes
+  $total = consumoTotalMes($consumos, $ano, $mes);
+
 ?>
 
 <!--Função Grafico Chart-->
