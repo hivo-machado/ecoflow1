@@ -78,6 +78,10 @@ nav.navbar-transparente{
 	}
 }
 
+.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover{
+		color: #5bc0de;
+	}
+
 .divisor{
 	width: 1px;
 	height: 16px;
