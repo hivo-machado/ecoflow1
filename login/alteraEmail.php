@@ -38,7 +38,7 @@ include_once("funcoes.php");
 
 <!--Cabeçalho da pagina-->
 <div class="row">
-	<div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 	  <div class="page-header">
 	    <h2>Alterar E-mail</h2>
 	  </div>

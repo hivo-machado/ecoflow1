@@ -96,7 +96,7 @@
 
   <!--Cabeçalho da pagina-->
   <div class="row">
-    <div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
         <h2>Gráfico de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
       </div>
@@ -105,7 +105,7 @@
 
   <!--Campo selecionaveis-->
   <div class="row hidden-print">
-    <div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <form class="form-inline" method="POST" action="graficoMes.php">
           <div class="form-group form-group-sm">
             <label for="dia">Dia</label>
@@ -156,7 +156,7 @@
 
   <!--Consumo Total do mês-->
   <div class="row">
-    <div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <?php 
         echo '<h5> <strong>Consumo total do mês: </strong>'.$total.'</h5>';  
       ?>
@@ -171,7 +171,7 @@
 
   <!--Cabeçalho da tabela-->
   <div class="row">
-    <div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
         <h2>Tabela de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
       </div>
@@ -180,7 +180,7 @@
 
   <!--Campo selecionaveis-->
   <div class="row hidden-print">
-    <div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
+    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <form class="form-inline" method="POST" action="graficoMes.php">
           <div class="form-group form-group-sm">
             <label for="dia1">Dia</label>
