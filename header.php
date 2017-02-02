@@ -45,7 +45,7 @@
 		        <span class="icon-bar"></span>
 		      </button>
 
-		      <a href="../index.php" class="navbar-brand">
+		      <a href="../home/home.php" class="navbar-brand">
 		      	<div id="barnav-link">
 		      		<img alt="Brand" src="../img/ECOFlow.ico" id="imgbrand">
 		      		<strong>ECO</strong>flow
@@ -115,5 +115,4 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid">
-		<div class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0" id="conteudo">
+	<div class="container" id="conteudo">

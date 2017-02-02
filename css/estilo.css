@@ -40,10 +40,11 @@ footer{
 	background-color: #222;
 }
 
+
 @media(max-width: 768px){
 	#conteudo{
 		margin: 0px;
-		padding: 60px 0px 205px 0px;
+		padding: 60px 5px 205px 5px;
 	}
 }
 
@@ -120,8 +121,7 @@ a.email-rodape:hover, a.email-rodape:active{
 /*--------------------------------Grafico--------------------------------*/
 
 .marge-grafico{
-	margin-top: 10px;
-	margin-bottom: 10px;
+	margin-top: 15px;
 }
 
 /*--------------------------------Imprimir--------------------------------*/
@@ -130,6 +130,12 @@ a.email-rodape:hover, a.email-rodape:active{
     .area-grafico, .area-tabela{ 
     	page-break-inside: avoid; 
     }
+}
+
+/*--------------------------------Home--------------------------------*/
+
+#grupo{
+	margin: 20px 0px 20px 0px;
 }
 
 /*========================================= Tipografia =========================================*/

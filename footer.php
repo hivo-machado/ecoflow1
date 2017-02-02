@@ -1,4 +1,3 @@
-			</div><!--Fecha div col-sm-10 -->
 		</div><!--Fecha div container-fluid-->
 
 		<footer>
