@@ -36,7 +36,6 @@ footer{
 	width: 100%;
 	bottom: 0px;
 	padding: 10px 0px 10px 0px;
-	text-align: center;
 	color: #eee;
 	background-color: #222;
 }
@@ -125,7 +124,12 @@ a.email-rodape:hover, a.email-rodape:active{
 	margin-bottom: 10px;
 }
 
-/*--------------------------------Home--------------------------------*/
+/*--------------------------------Imprimir--------------------------------*/
 
+@media print{
+    .area-grafico, .area-tabela{ 
+    	page-break-inside: avoid; 
+    }
+}
 
 /*========================================= Tipografia =========================================*/

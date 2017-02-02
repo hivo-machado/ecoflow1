@@ -28,25 +28,39 @@
 </div>
 
 <div class="row">
-	<div class="col-sm-12 col-sm-offset-0 col-xs-10 col-xs-offset-1">
-		<div class="page-header">
-		  <h1>Nome do Grupo</h1>
-		</div>
-	</div>
-</div>
 
-<div class="row">
 	<div class="col-sm-8 col-xs-12">
 		<img src="../img/predio1.jpg" alt="Nome do Empredimento" class="img-responsive img-thumbnail">
 	</div>
+
 	<div class="col-sm-4 col-xs-12">
-		<address>
-		  <strong>Endereço</strong><br>
-		  1355 Market Street<br>
-		  San Francisco, CA 94103<br>
-		  <abbr title="Phone">P:</abbr> (123) 456-7890
-		</address>
+
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<div class="page-header">
+				  <h1>Nome do Grupo</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<address>
+				  <strong>Endereço</strong><br>
+				  1355 Market Street<br>
+				  San Francisco, CA 94103<br>
+				  <abbr title="Phone">P:</abbr> (123) 456-7890
+				</address>
+			</div>			
+		</div>
+
 	</div>
 </div>	
+
+<div class="row">
+	<div class="col-sm-12 col-xs-12">
+		
+	</div>
+</div>
 
 <?php include_once("../footer.php") ?>
