@@ -1,3 +1,3 @@
 <?php 
-	header("Location: login/validaLogin.php");
+	header("Location: home/home.php");
  ?>

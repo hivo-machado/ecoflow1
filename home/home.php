@@ -1,5 +1,11 @@
 <?php include_once("../header.php") ?>
 
+<?php 
+	if(! isset ($_SESSION["idecoflow"])){	
+		header("Location: ../login/validaLogin.php");		
+	}
+ ?>
+
 <div class="row">
 	<div class="mensagme text-center col-sm-8 col-sm-offset-2">
 		<?php 
