@@ -1,4 +1,4 @@
-		</div><!--Fecha div container-fluid-->
+		</div><!--Fecha div container-->
 
 		<footer>
 			<div class="container-fluid">
