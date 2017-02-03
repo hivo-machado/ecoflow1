@@ -138,4 +138,8 @@ a.email-rodape:hover, a.email-rodape:active{
 	margin: 20px 0px 20px 0px;
 }
 
+#img-grupo{
+	max-height: 400px;
+}
+
 /*========================================= Tipografia =========================================*/

@@ -1,61 +1,92 @@
-<?php include_once("../header.php") ?>
-
 <?php 
+include_once("../header.php"); 
+include_once('../conexao.php');
+?>
+
+<?php
+	//Valida se usuario esta logado 
 	if(! isset ($_SESSION["idecoflow"])){	
 		header("Location: ../login/validaLogin.php");		
 	}
  ?>
 
+ <?php
+ 	//Varival de sessão
+	$idecoflow = $_SESSION['idecoflow'];
+
+	//Select para informações do grupo
+	$result = mysqli_query($con, "SELECT * FROM grupo LEFT JOIN planta on planta.id_grupo_fk = grupo.id LEFT JOIN unidade on unidade.id_planta_fk = planta.idecoflow WHERE unidade.idecoflow = '$idecoflow' LIMIT 1");
+	
+	//variaveis
+	if( $grupo = mysqli_fetch_object($result) ){
+		$nome = $grupo->nome_grupo;
+		$rua = $grupo->rua;
+		$numero = $grupo->numero;
+		$bairro = $grupo->bairro;
+		$cidade = $grupo->cidade;
+		$estado = $grupo->estado;
+		$cep = $grupo->cep;
+		$telefone = $grupo->telefone;
+		$imagem = $grupo->imagem;
+	}
+
+  ?>
+
+<!--Div para menssagem de alerta-->
 <div class="row">
 	<div class="mensagme text-center col-sm-8 col-sm-offset-2">
 		<?php 
 		if(isset($_GET['error']))
 		{
-			?> 
+		?> 
 			<div class="alert alert-danger alert-dismissible" role="alert"><?php echo $_GET['error'] ?>
 				<button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<?php
-			} 
-			else if(isset($_GET['success']))
-			{
-			?> 
-				<div class="alert alert-success alert-dismissible" role="alert"><?php echo $_GET['success'] ?>
-					<button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-			<?php
-			}
-			?>
+		<?php
+		} 
+		else if(isset($_GET['success']))
+		{
+		?> 
+			<div class="alert alert-success alert-dismissible" role="alert"><?php echo $_GET['success'] ?>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Fechar">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		<?php
+		}
+		?>
 	</div>
 </div>
 
+
+<!--Cabeçalho da pagina-->
 <div class="row">
 	<div class="col-sm-12 col-xs-12">
 		<div class="page-header">
-		  <h2>Nome do Grupo</h2>
+		  <h2><?php echo $nome ?></h2>
 		</div>
 	</div>
 </div>
 
+<!--Informações do grupo-->
 <div class="row" id="grupo">
 
-	<div class="col-sm-8 col-xs-7">
-	<a href="../relatorio/graficoMes.php">
-		<img src="../img/predio1.jpg" alt="Nome do Empredimento" class="img-responsive img-thumbnail">
-	</a>
-		
+	<!--Coluna da imagem do grupo-->
+	<div class="col-sm-7 col-xs-7">
+		<a href="../relatorio/graficoMes.php">
+			<img src=<?php if($imagem == null) echo '../img/sem-imagem.jpg'; else echo $imagem; ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
+		</a>		
 	</div>
 
-	<div class="col-sm-4 col-xs-5">
+	<!--Coluna de endereço do grupo-->
+	<div class="col-sm-5 col-xs-5">
 		<address>
 			<strong>Endereço</strong><br>
-			1355 Market Street<br>
-			San Francisco, CA 94103<br>
-			<abbr title="Telefone">Tel.:</abbr> (12) 3456-7890
+			<?php echo $rua.' '.$numero ?><br>
+			<?php echo $cidade.', '.$estado.' '.$cep ?><br>
+			<abbr title="Telefone">Tel.:</abbr> <?php echo $telefone ?>
 		</address>
 	</div>
 

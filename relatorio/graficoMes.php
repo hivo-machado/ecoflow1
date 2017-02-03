@@ -1,7 +1,7 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-  include_once("funcao.php"); // php com funções
+  include_once("funcoes.php"); // php com funções
 ?>
 
 <?php 

@@ -270,43 +270,6 @@
     	return $total;
 	}
 
-	/*
-	//Função para consumo total do ano
-	function consumoTotalAno($con, $id, $ano){
-
-		//Primeira leitura do Ano
-		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo like '$ano%' ORDER by tempo, hora LIMIT 1");
-		$unidadePrimeiro = mysqli_fetch_object($result);
-
-		//Ultima leitura do ano
-		$ano++;
-		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo like '$ano%' ORDER by tempo, hora LIMIT 1");
-		$unidadeUltimo = mysqli_fetch_object($result);
-
-		//Verifica se existe uma leitura no mes
-		if( (isset($unidadePrimeiro))&&(isset($unidadeUltimo)) ){
-			//calculo do consumo Total do ano
-			$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
-		}else{
-			//Data do primeiro dia do ano seguinte
-			$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-01-01')));
-			$date = date_create($data);
-			$tempo =  date_format($date, 'Y-m-d');
-
-			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo <= '$tempo' ORDER by tempo DESC, hora DESC LIMIT 1");
-			$unidadeUltimo = mysqli_fetch_object($result);
-
-			if(isset($unidadeUltimo)){
-				$consumo = $unidadeUltimo->leitura - $unidadePrimeiro->leitura;
-			}else{
-				return 'não disponível';
-			}
-		}
-
-		return number_format($consumo, 3, '.', ',').' m³';
-	}
-	*/
-
 	//Chamada de funções para teste
 
 	//include_once('../conexao.php');
