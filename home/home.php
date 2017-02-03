@@ -13,6 +13,16 @@ include_once('../conexao.php');
  <?php
  	//Varival de sessão
 	$idecoflow = $_SESSION['idecoflow'];
+	//Inicializando Variavel
+	$nome = 'Sem nome';
+	$rua = 'Sem rua';
+	$numero = '000';
+	$bairro = 'Sem bairro';
+	$cidade = 'Sem cidade';
+	$estado = 'Sem estado';
+	$cep = '00000-000';
+	$telefone = '(00) 12345-6789';;
+	$imagem = '../img/sem-imagem.jpg';
 
 	//Select para informações do grupo
 	$result = mysqli_query($con, "SELECT * FROM grupo LEFT JOIN planta on planta.id_grupo_fk = grupo.id LEFT JOIN unidade on unidade.id_planta_fk = planta.idecoflow WHERE unidade.idecoflow = '$idecoflow' LIMIT 1");
@@ -76,7 +86,7 @@ include_once('../conexao.php');
 	<!--Coluna da imagem do grupo-->
 	<div class="col-sm-7 col-xs-7">
 		<a href="../relatorio/graficoMes.php">
-			<img src=<?php if($imagem == null) echo '../img/sem-imagem.jpg'; else echo $imagem; ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
+			<img src=<?php echo $imagem; ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
 		</a>		
 	</div>
 
