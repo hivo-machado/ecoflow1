@@ -21,7 +21,7 @@ include_once('../conexao.php');
 	$cidade = 'Sem cidade';
 	$estado = 'Sem estado';
 	$cep = '00000-000';
-	$telefone = '(00) 12345-6789';;
+	$telefone = '(00) 00000-0000';;
 	$imagem = '../img/sem-imagem.jpg';
 
 	//Select para informações do grupo
@@ -29,15 +29,15 @@ include_once('../conexao.php');
 	
 	//variaveis
 	if( $grupo = mysqli_fetch_object($result) ){
-		$nome = $grupo->nome_grupo;
-		$rua = $grupo->rua;
-		$numero = $grupo->numero;
-		$bairro = $grupo->bairro;
-		$cidade = $grupo->cidade;
-		$estado = $grupo->estado;
-		$cep = $grupo->cep;
-		$telefone = $grupo->telefone;
-		$imagem = $grupo->imagem;
+		if($grupo->nome_grupo != null) $nome = $grupo->nome_grupo;
+		if($grupo->rua != null) $rua = $grupo->rua;
+		if($grupo->numero != null) $numero = $grupo->numero;
+		if($grupo->bairro != null) $bairro = $grupo->bairro;
+		if($grupo->cidade != null) $cidade = $grupo->cidade;
+		if($grupo->estado != null) $estado = $grupo->estado;
+		if($grupo->cep != null) $cep = $grupo->cep;
+		if($grupo->telefone != null) $telefone = $grupo->telefone;
+		if($grupo->imagem != null) $imagem = $grupo->imagem;
 	}
 
   ?>
