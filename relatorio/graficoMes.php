@@ -239,7 +239,7 @@
               for($i = 1; $i <= $numDiasMes; $i++){
             ?>
             <tr>
-              <td><?php echo date('d-m-Y',strtotime($consumos[1][$i]) ) ?></td>
+              <td><?php echo date('d/m/Y',strtotime($consumos[1][$i]) ) ?></td>
               <td><?php echo $consumos[0][$i] ?></td>
             </tr>
             <?php

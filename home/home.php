@@ -21,7 +21,7 @@ include_once('../conexao.php');
 	$cidade = 'Sem cidade';
 	$estado = 'Sem estado';
 	$cep = '00000-000';
-	$telefone = '(00) 00000-0000';;
+	$telefone = '(00) 00000-0000';
 	$imagem = '../img/sem-imagem.jpg';
 
 	//Select para informações do grupo
@@ -86,7 +86,7 @@ include_once('../conexao.php');
 	<!--Coluna da imagem do grupo-->
 	<div class="col-sm-7 col-xs-7">
 		<a href="../relatorio/graficoMes.php">
-			<img src=<?php echo $imagem; ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
+			<img src=<?php echo $imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
 		</a>		
 	</div>
 

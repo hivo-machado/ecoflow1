@@ -2,6 +2,7 @@
 
 		<footer>
 			<div class="container-fluid">
+				<!--Rodape´da pagina web-->
 				<div class="row hidden-print">
 					<div class="col-sm-6 col-xs-6">
 						<address class="text-center">
@@ -17,11 +18,14 @@
 						</address>
 					</div>
 				</div>
+
 				<div class="row hidden-print">
 					<div class="col-sm-12 col-xs-12 text-center">
 						<strong>ECOflow</strong> - Todos os direitos reservados.<br>
 					</div>
 				</div>
+				
+				<!--Rodapé para impressão-->
 				<div class="row visible-print-block">
 					<div class="col-sm-12">
 						<address class="text-center">

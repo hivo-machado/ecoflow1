@@ -33,18 +33,19 @@
 
 <div id="tudo">
 
-	<!-- Div para navbar -->
+	<!-- Tag para navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top navbar-transparente">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
+		    <!--botão do menu mobile-->
 		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 		        <span class="sr-only">Menu</span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-
+		      <!--Logo e link na brand-->
 		      <a href="../home/home.php" class="navbar-brand">
 		      	<div id="barnav-link">
 		      		<img alt="Brand" src="../img/ECOFlow.ico" id="imgbrand">
@@ -53,9 +54,14 @@
 		      </a>
 		    </div>
 
+		    <!--Menu da navbar-->
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
 				<ul class="nav navbar-nav">
+
+					<!--desenha divisor entre brand e menu-->
 					<li class="hidden-xs divisor" role="separator"></li>
+					<!--Opção relatorio-->
 					<li class="dropdown">
 			          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 			          	Relatório
@@ -69,16 +75,23 @@
 			            	<a href="../relatorio/graficoAno.php">Ano</a>
 			            </li>
 			          </ul>
-			        </li>
-				</ul>				
+			        </li><!--Fecha li relatorio-->
+
+				</ul>
+
+				<!--Navbar a direita-->
 				<ul class="nav navbar-nav navbar-right">
+					<!--Muda menu se esta logado ou deslogado-->
 					<?php 
 					if( !isset($_SESSION["idecoflow"])){
-						?>
+					?>
+						<!--Menu para deslogado-->
 						<li>
 							<a id="barnav-link" href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
 						</li>
+
 					<?php }else{ ?>
+						<!--Menu para logado-->
 						<li>
 							<li class="dropdown">
 					          <a id="barnav-link" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
@@ -108,11 +121,14 @@
 						        </li>
 					          </ul>
 					        </li>
-						</li>
-					<?php } ?>
-				</ul>				
-			</div>
-		</div>
-	</nav>
+						</li><!--Fecha menu logado-->
 
+					<?php } ?>
+				</ul><!--Fecha ul da navbar-right-->
+
+			</div><!--Fecha menu da navbar-->
+		</div><!--Fecha container-fluid-->
+	</nav> <!--Fim da navbar-->
+
+	<!--Tag para o conteudo da pagina-->
 	<div class="container" id="conteudo">
