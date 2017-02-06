@@ -6,7 +6,12 @@ include_once("funcoes.php");
 
 <?php 
 	//variavel de sessão
+	$id = $_SESSION['id'];
 	$login = $_SESSION['login'];
+
+	if(!buscaEmail($con, $id)){
+		echo '<meta http-equiv="refresh" content="0;URL=alteraEmail.php?error=Cadastre um e-mail primeiro." />';
+	}
  ?>
 
 <div class="row">
