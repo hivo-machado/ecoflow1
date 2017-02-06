@@ -9,17 +9,16 @@
 
 	$resUsuario = mysqli_query($con, "SELECT * FROM usuario WHERE login = '$login' and senha = '$senha'");
 
-	$resUsuarioAtivo = mysqli_query($con, "SELECT * FROM usuario WHERE login = '$login' and senha = '$senha' and status = 'ativo'");
-
-	if( $usuario = mysqli_fetch_assoc($resUsuario)){
-		if($registro = mysqli_fetch_assoc($resUsuarioAtivo)){
+	if( $usuario = mysqli_fetch_assoc($resUsuario)){ //Verifica login e senha
+		if($usuario["status"] == 'ativo'){ //verifica se usuario e ativo
 			// Inicia a sessão com os dados
 			session_start();
-			$_SESSION["id"] = $registro["id"];
-			$_SESSION["idecoflow"] = $registro["id_unidade"];
-			$_SESSION["login"] = $registro["login"];
-			$_SESSION["nome"] = $registro["nome"];
-			$_SESSION["tipo"] = $registro["tipo"];			
+			$_SESSION["id"] = $usuario["id"];
+			$_SESSION["idecoflow"] = $usuario["id_unidade"];
+			$_SESSION["login"] = $usuario["login"];
+			$_SESSION["nome"] = $usuario["nome"];
+			$_SESSION["tipo"] = $usuario["tipo"];
+			
 			header("Location: ../home/home.php");
 		}else{
 			header("Location: validaLogin.php?error=Usuario desativado!");	

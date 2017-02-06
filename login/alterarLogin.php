@@ -8,7 +8,11 @@
 
 	$login = ucfirst(strtolower($login));
 
+	$result = mysqli_query($con, "SELECT * FROM usuario where id = '$id'");
+	$usuario = mysqli_fetch_object($result);
 
+//Altera o login se tiver e-mail cadastrado
+if(isset($usuario->email)){
 	//valida formatação do nome de login
 	if(validaLogin($login)){
 		//busca o nome de login
@@ -25,6 +29,8 @@
 	}else{
 		header("Location: ../login/alteraConta.php?error=Nome de login inválido. Verifique os caracteres válidos a-z, A-Z 0-9 com no maximo 20 caracteres.");
 	}
-
+}else{
+	header("Location: alteraEmail.php?error=Cadastre um e-mail primeiro.");
+}
 
  ?>

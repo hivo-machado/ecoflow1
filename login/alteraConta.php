@@ -6,13 +6,7 @@ include_once("funcoes.php");
 
 <?php 
 	//variavel de sessão
-	$id = $_SESSION['id'];
 	$login = $_SESSION['login'];
-
-	//Verificar se existe e-mail cadastrado
-	if(!buscaEmail($con, $id)){
-		header("Location: alteraEmail.php?error=Cadastre um e-mail primeiro.");
-	}
  ?>
 
 <div class="row">

@@ -8,6 +8,11 @@
 	$repetirSenha = $_POST['repetirSenha'];
 	$senhaAtual = $_POST['senha'];
 
+	$result = mysqli_query($con, "SELECT * FROM usuario where id = '$id'");
+	$usuario = mysqli_fetch_object($result);
+
+//Altera o login se tiver e-mail cadastrado
+if(isset($usuario->email)){
 	//verifica formato da senha
 	if(validaSenha($senha)){
 		//Confirma senhas iguais
@@ -29,5 +34,8 @@
 	}else{
 		header("Location: ../login/alteraConta.php?error=Senha inválida! verifique se a senha possui tamanho de 6 a 20 caracteres sem espaço em branco.");
 	}
+}else{
+	header("Location: alteraEmail.php?error=Cadastre um e-mail primeiro.");
+}
 
- ?>
+?>
