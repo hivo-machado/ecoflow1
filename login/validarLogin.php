@@ -14,7 +14,7 @@
 			// Inicia a sessão com os dados
 			session_start();
 			$_SESSION["id"] = $usuario["id"];
-			$_SESSION["idecoflow"] = $usuario["id_unidade"];
+			$_SESSION["idecoflow"] = $usuario["idecoflow"];
 			$_SESSION["login"] = $usuario["login"];
 			$_SESSION["nome"] = $usuario["nome"];
 			$_SESSION["tipo"] = $usuario["tipo"];

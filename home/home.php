@@ -13,6 +13,8 @@ include_once('../conexao.php');
  <?php
  	//Varival de sessão
 	$idecoflow = $_SESSION['idecoflow'];
+	$tipo = $_SESSION['tipo'];
+
 	//Inicializando Variavel
 	$nome = 'Sem nome';
 	$rua = 'Sem rua';
@@ -24,9 +26,13 @@ include_once('../conexao.php');
 	$telefone = '(00) 00000-0000';
 	$imagem = '../img/sem-imagem.jpg';
 
-	//Select para informações do grupo
-	$result = mysqli_query($con, "SELECT * FROM grupo LEFT JOIN planta on planta.id_grupo_fk = grupo.id LEFT JOIN unidade on unidade.id_planta_fk = planta.idecoflow WHERE unidade.idecoflow = '$idecoflow' LIMIT 1");
-	
+	if($tipo == 'usuario'){
+		//Select para informações do grupo
+		$result = mysqli_query($con, "SELECT * FROM grupo LEFT JOIN planta on planta.id_grupo_fk = grupo.id LEFT JOIN unidade on unidade.id_planta_fk = planta.idecoflow WHERE unidade.idecoflow = '$idecoflow' LIMIT 1");
+	}else{
+		$result = mysqli_query($con, "SELECT * FROM grupo where id = '$idecoflow'");
+	}
+
 	//variaveis
 	if( $grupo = mysqli_fetch_object($result) ){
 		if($grupo->nome_grupo != null) $nome = $grupo->nome_grupo;
@@ -86,18 +92,30 @@ include_once('../conexao.php');
 	<!--Coluna da imagem do grupo-->
 	<div class="col-sm-7 col-xs-7">
 		<a href="../relatorio/graficoMes.php">
-			<img src=<?php echo $imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
+			<img src=<?php echo '../img/grupo/'.$imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
 		</a>		
 	</div>
 
 	<!--Coluna de endereço do grupo-->
 	<div class="col-sm-5 col-xs-5">
-		<address>
-			<strong>Endereço</strong><br>
-			<?php echo $rua.' '.$numero ?><br>
-			<?php echo $cidade.', '.$estado.' '.$cep ?><br>
-			<abbr title="Telefone">Tel.:</abbr> <?php echo $telefone ?>
-		</address>
+
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<address>
+					<strong>Endereço</strong><br>
+					<?php echo $rua.' '.$numero ?><br>
+					<?php echo $cidade.', '.$estado.' '.$cep ?><br>
+					<abbr title="Telefone">Tel.:</abbr> <?php echo $telefone ?>
+				</address>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<a class="btn btn-primary" href="../grupo/alteraGrupo.php" role="button">Alterar dados</a>
+			</div>
+		</div>
+
 	</div>
 
 </div>
