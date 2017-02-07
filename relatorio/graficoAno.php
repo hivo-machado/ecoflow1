@@ -100,9 +100,10 @@
   <div class="row hidden-print">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <form class="form-inline" method="POST" action="graficoAno.php">
+
           <div class="form-group form-group-sm">
             <label for="ano">Ano</label>
-            <select class="form-control" id="ano" name="ano">
+            <select class="form-control" id="ano" name="ano" onchange="this.form.submit()">
               <?php
                 $numAno = date("Y");
                 for($i = 2016; $i <= $numAno; $i++){
@@ -112,7 +113,7 @@
                ?>
             </select>      
           </div>
-          <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
+
       </form>
     </div>
   </div>
@@ -150,9 +151,10 @@
   <div class="row hidden-print">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <form class="form-inline" method="POST" action="graficoAno.php">
+
           <div class="form-group form-group-sm">
-            <label for="ano1">Ano</label>
-            <select class="form-control" id="ano1" name="ano">
+            <label for="ano">Ano</label>
+            <select class="form-control" id="ano" name="ano" onchange="this.form.submit()">
               <?php
                 $numAno = date("Y");
                 for($i = 2016; $i <= $numAno; $i++){
@@ -162,7 +164,7 @@
                ?>
             </select>      
           </div>
-          <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
+
       </form>
     </div>
   </div>

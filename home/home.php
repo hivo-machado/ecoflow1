@@ -16,15 +16,15 @@ include_once('../conexao.php');
 	$tipo = $_SESSION['tipo'];
 
 	//Inicializando Variavel
-	$nome = 'Sem nome';
-	$rua = 'Sem rua';
+	$nome = 'Nome';
+	$rua = 'Rua';
 	$numero = '000';
-	$bairro = 'Sem bairro';
-	$cidade = 'Sem cidade';
-	$estado = 'Sem estado';
+	$bairro = 'Bairro';
+	$cidade = 'Cidade';
+	$estado = 'UF';
 	$cep = '00000-000';
 	$telefone = '(00) 00000-0000';
-	$imagem = '../img/sem-imagem.jpg';
+	$imagem = 'sem-imagem.jpg';
 
 	if($tipo == 'usuario'){
 		//Select para informações do grupo
@@ -103,18 +103,25 @@ include_once('../conexao.php');
 			<div class="col-sm-12 col-xs-12">
 				<address>
 					<strong>Endereço</strong><br>
-					<?php echo $rua.' '.$numero ?><br>
+					<?php echo $rua.' '.$numero.' - '.$bairro?><br>
 					<?php echo $cidade.', '.$estado.' '.$cep ?><br>
 					<abbr title="Telefone">Tel.:</abbr> <?php echo $telefone ?>
 				</address>
 			</div>
 		</div>
 
-		<div class="row">
-			<div class="col-sm-12 col-xs-12">
-				<a class="btn btn-primary" href="../grupo/alteraGrupo.php" role="button">Alterar dados</a>
+		<!--Verifica se esta logado como administrador-->
+		<?php 
+			if($tipo == 'admin'){
+		?>
+			<div class="row">
+				<div class="col-sm-12 col-xs-12">
+					<a class="btn btn-primary" href="../grupo/alteraGrupo.php" role="button">Alterar dados</a>
+				</div>
 			</div>
-		</div>
+		 <?php
+			}
+		?>
 
 	</div>
 

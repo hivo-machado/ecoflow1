@@ -59,13 +59,19 @@ include_once("funcoes.php");
 			<div class="form-group">
 				<label for="email" class="col-sm-4 control-label">Novo E-mail</label>
 				<div class="col-sm-8">
-					<input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" required autofocus>
+					<input type="email" class="form-control" id="email" name="email" placeholder="email@email.com" 
+					minlength="5" maxlength="40" required autofocus
+					pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+					title="E-mail inválido.">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="confEmail" class="col-sm-4 control-label">Confirmar Novo E-mail</label>
 				<div class="col-sm-8">
-					<input type="email" class="form-control" id="confEmail" name="confEmail" placeholder="Repetir e-mail" required>
+					<input type="email" class="form-control" id="confEmail" name="confEmail" placeholder="Repetir e-mail" 
+					minlength="5" maxlength="40" required
+					pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+					title="E-mail inválido.">
 				</div>
 			</div>
 			<br>

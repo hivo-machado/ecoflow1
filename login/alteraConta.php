@@ -64,7 +64,9 @@ include_once("funcoes.php");
 			<div class="form-group">
 				<label for="login" class="col-sm-4 control-label">Login</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login" required>
+					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login" maxlength="20" required 
+					pattern="/^[A-Za-z0-9_]{1,20}$/" 
+					title="Verifique os caracteres válidos a-z, A-Z 0-9 com no maximo 20 caracteres.">
 				</div>
 			</div>
 			<div class="form-group">
@@ -91,13 +93,19 @@ include_once("funcoes.php");
 			<div class="form-group">
 				<label for="senhaNova" class="col-sm-4 control-label">Nova Senha</label>
 				<div class="col-sm-8">
-					<input type="password" class="form-control" id="senhaNova" name="senhaNova" placeholder="Nova Senha" required>
+					<input type="password" class="form-control" id="senhaNova" name="senhaNova" placeholder="Nova Senha" 
+					minlength="6" maxlength="20" required
+					pattern="/^[\S]{6,20}$/"
+					title="verifique se a senha possui tamanho de 6 a 20 caracteres sem espaço em branco.">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="repetirSenha" class="col-sm-4 control-label">Confirmar Nova Senha</label>
 				<div class="col-sm-8">
-					<input type="password" class="form-control" id="repetirSenha" name="repetirSenha" placeholder="Repetir Nova Senha" required>
+					<input type="password" class="form-control" id="repetirSenha" name="repetirSenha" placeholder="Repetir Nova Senha" 
+					minlength="6" maxlength="20" required
+					pattern="/^[\S]{6,20}$/"
+					title="verifique se a senha possui tamanho de 6 a 20 caracteres sem espaço em branco.">
 				</div>
 			</div>
 			<br>

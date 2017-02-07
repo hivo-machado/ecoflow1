@@ -5,7 +5,6 @@
 	//iniciar sessão
 	session_start();
 	//variavel de sessão
-	$id = $_SESSION['id'];
 	$idecoflow = $_SESSION['idecoflow'];
 
 	//Variavel formulario

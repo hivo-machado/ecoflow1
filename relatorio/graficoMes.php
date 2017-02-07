@@ -109,7 +109,7 @@
       <form class="form-inline" method="POST" action="graficoMes.php">
           <div class="form-group form-group-sm">
             <label for="dia">Dia</label>
-            <select class="form-control" id="dia" name="dia">
+            <select class="form-control" id="dia" name="dia" onchange="this.form.submit()">
               <?php
                 $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
                 for($i = 1; $i <= $numDiaMes; $i++){
@@ -121,7 +121,7 @@
           </div>
           <div class="form-group form-group-sm">
             <label for="mes">Mês</label>
-            <select class="form-control" id="mes" name="mes">
+            <select class="form-control" id="mes" name="mes" onchange="this.form.submit()">
               <?php 
                 for($i = 1; $i <= 12; $i++){
                   if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
@@ -132,7 +132,7 @@
           </div>
           <div class="form-group form-group-sm">
             <label for="ano">Ano</label>
-            <select class="form-control" id="ano" name="ano">
+            <select class="form-control" id="ano" name="ano" onchange="this.form.submit()">
               <?php
                 $numAno = date("Y");
                 for($i = 2016; $i <= $numAno; $i++){
@@ -142,7 +142,7 @@
                ?>
             </select>      
           </div>
-          <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
+          
       </form>
     </div>
   </div>
@@ -182,9 +182,10 @@
   <div class="row hidden-print">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <form class="form-inline" method="POST" action="graficoMes.php">
+      
           <div class="form-group form-group-sm">
             <label for="dia1">Dia</label>
-            <select class="form-control" id="dia1" name="dia">
+            <select class="form-control" id="dia1" name="dia" onchange="this.form.submit()">
               <?php
                 $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
                 for($i = 1; $i <= $numDiaMes; $i++){
@@ -194,9 +195,10 @@
                ?>
             </select>          
           </div>
+
           <div class="form-group form-group-sm">
             <label for="mes1">Mês</label>
-            <select class="form-control" id="mes1" name="mes">
+            <select class="form-control" id="mes1" name="mes" onchange="this.form.submit()">
               <?php 
                 for($i = 1; $i <= 12; $i++){
                   if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
@@ -205,9 +207,10 @@
                ?>
             </select>      
           </div>
+
           <div class="form-group form-group-sm">
             <label for="ano1">Ano</label>
-            <select class="form-control" id="ano1" name="ano">
+            <select class="form-control" id="ano1" name="ano" onchange="this.form.submit()">
               <?php
                 $numAno = date("Y");
                 for($i = 2016; $i <= $numAno; $i++){
@@ -217,7 +220,7 @@
                ?>
             </select>      
           </div>
-          <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
+          
       </form>
     </div>
   </div>

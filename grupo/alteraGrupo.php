@@ -8,6 +8,9 @@ include_once("../validar.php");
 	$id = $_SESSION['id'];
  ?>
 
+ <!--Link para mascara dos input-->
+<script src="../js/mascara.js"></script>
+
 <!--Menssagem de Alerta-->
  <div class="row">
 	<div class="mensagme text-center col-sm-8 col-sm-offset-2">
@@ -35,20 +38,6 @@ include_once("../validar.php");
 			?>
 	</div>
 </div>
-
-<!--Função para formatação dos inputs-->
-<script>
-function formatar(mascara, documento){
-  var i = documento.value.length;
-  var saida = mascara.substring(0,1);
-  var texto = mascara.substring(i)
-  
-  if (texto.substring(0,1) != saida){
-            documento.value += texto.substring(0,1);
-  }
-  
-}
-</script>
 
 <!--Cabeçalho da pagina-->
 <div class="row">
@@ -105,7 +94,7 @@ function formatar(mascara, documento){
 			<div class="form-group">
 				<label for="rua" class="col-sm-4 control-label">Rua</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="rua" name="rua" required>
+					<input type="text" class="form-control" id="rua" name="rua" maxlength="255" required>
 				</div>
 			</div>
 
@@ -119,14 +108,21 @@ function formatar(mascara, documento){
 			<div class="form-group">
 				<label for="cidade" class="col-sm-4 control-label">Cidade</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="cidade" name="cidade" required>
+					<input type="text" class="form-control" id="cidade" name="cidade" maxlength="255" required>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="bairro" class="col-sm-4 control-label">Bairro</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" required>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="uf" class="col-sm-4 control-label">UF</label>
 				<div class="col-sm-3">
-					<select name="uf" id="uf" class="form-control">
+					<select name="uf" id="uf" class="form-control" required>
 						<option value="">Selecione</option>
 						<option value="AC">AC</option>
 						<option value="AL">AL</option>
@@ -162,14 +158,14 @@ function formatar(mascara, documento){
 			<div class="form-group">
 				<label for="cep" class="col-sm-4 control-label">CEP</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="cep" name="cep" required maxlength="9" OnKeyPress="formatar('#####-###', this)">
+					<input type="text" class="form-control" id="cep" name="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)" required>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<label for="telefone" class="col-sm-4 control-label">Telefone</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="telefone" name="telefone" required maxlength="13" OnKeyPress="formatar('## ####-#####', this)">
+					<input type="text" class="form-control" id="telefone" name="telefone" maxlength="15" OnKeyPress="mascara( this, mtel );">
 				</div>
 			</div>
 
