@@ -54,7 +54,7 @@ include_once("../validar.php");
 		<form class="form-horizontal" method="POST" action="alterarNome.php" enctype="multipart/form-data">
 
 			<div class="form-group">
-				<label for="nome" class="col-sm-4 control-label">Nome</label>
+				<label for="nome" class="col-sm-4 control-label">Nome*</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="nome" name="nome" required autofocus>
 				</div>
@@ -77,6 +77,12 @@ include_once("../validar.php");
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-sm-12 col-xs-12">
+		<span id="helpBlock" class="help-block text-right">* Campos obrigatórios.</span>
+	</div>	
+</div>
+
 <!--Cabeçalho da pagina-->
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
@@ -92,35 +98,35 @@ include_once("../validar.php");
 		<form class="form-horizontal" method="POST" action="alterarEndereco.php" >
 				
 			<div class="form-group">
-				<label for="rua" class="col-sm-4 control-label">Rua</label>
+				<label for="rua" class="col-sm-4 control-label">Rua*</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="rua" name="rua" maxlength="255" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="numero" class="col-sm-4 control-label">Numero</label>
+				<label for="numero" class="col-sm-4 control-label">Numero*</label>
 				<div class="col-sm-3">
 					<input type="number" class="form-control" id="numero" name="numero" min="1" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="cidade" class="col-sm-4 control-label">Cidade</label>
+				<label for="cidade" class="col-sm-4 control-label">Cidade*</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="cidade" name="cidade" maxlength="255" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="bairro" class="col-sm-4 control-label">Bairro</label>
+				<label for="bairro" class="col-sm-4 control-label">Bairro*</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="bairro" name="bairro" maxlength="255" required>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="uf" class="col-sm-4 control-label">UF</label>
+				<label for="uf" class="col-sm-4 control-label">UF*</label>
 				<div class="col-sm-3">
 					<select name="uf" id="uf" class="form-control" required>
 						<option value="">Selecione</option>
@@ -156,9 +162,12 @@ include_once("../validar.php");
 			</div>
 
 			<div class="form-group">
-				<label for="cep" class="col-sm-4 control-label">CEP</label>
+				<label for="cep" class="col-sm-4 control-label">CEP*</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="cep" name="cep" maxlength="9" OnKeyPress="formatar('#####-###', this)" required>
+					<input type="text" class="form-control" id="cep" name="cep" 
+					maxlength="9" OnKeyPress="formatar('#####-###', this)" required
+					pattern="[0-9]{5}-\[0-9]{3}"
+					title="Verifique o CEP com seguinte formato XXXXX-XXX">
 				</div>
 			</div>
 
@@ -177,6 +186,12 @@ include_once("../validar.php");
 
 		</form>
 	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12 col-xs-12">
+		<span id="helpBlock" class="help-block text-right">* Campos obrigatórios.</span>
+	</div>	
 </div>
 
 

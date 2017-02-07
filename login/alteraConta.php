@@ -66,7 +66,7 @@ include_once("funcoes.php");
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login" maxlength="20" required 
 					pattern="/^[A-Za-z0-9_]{1,20}$/" 
-					title="Verifique os caracteres válidos a-z, A-Z 0-9 com no maximo 20 caracteres.">
+					title="Verifique os caracteres válidos a-z, A-Z, 0-9 e '_' com no maximo 20 caracteres.">
 				</div>
 			</div>
 			<div class="form-group">
