@@ -1,18 +1,17 @@
 <?php 
 include_once("../header.php"); 
+include_once('../validar.php');
 include_once('../conexao.php');
 ?>
 
-<?php
-	//Valida se usuario esta logado 
-	if(! isset ($_SESSION["idecoflow"])){	
-		header("Location: ../login/validaLogin.php");		
-	}
+<?php 
+	//função para verificar se esta logado
+	valida();
  ?>
 
  <?php
  	//Varival de sessão
-	$idecoflow = $_SESSION['idecoflow'];
+	$id_unidade = $_SESSION['id_unidade'];
 	$tipo = $_SESSION['tipo'];
 
 	//Inicializando Variavel
@@ -28,9 +27,9 @@ include_once('../conexao.php');
 
 	if($tipo == 'usuario'){
 		//Select para informações do grupo
-		$result = mysqli_query($con, "SELECT * FROM grupo LEFT JOIN planta on planta.id_grupo_fk = grupo.id LEFT JOIN unidade on unidade.id_planta_fk = planta.idecoflow WHERE unidade.idecoflow = '$idecoflow' LIMIT 1");
+		$result = mysqli_query($con, "SELECT * FROM grupo LEFT JOIN planta on planta.id_grupo_fk = grupo.id LEFT JOIN unidade on unidade.id_planta_fk = planta.idecoflow WHERE unidade.idecoflow = '$id_unidade' LIMIT 1");
 	}else{
-		$result = mysqli_query($con, "SELECT * FROM grupo where id = '$idecoflow'");
+		$result = mysqli_query($con, "SELECT * FROM grupo where id = '$id_unidade'");
 	}
 
 	//variaveis
@@ -87,7 +86,7 @@ include_once('../conexao.php');
 </div>
 
 <!--Informações do grupo-->
-<div class="row" id="grupo">
+<div class="row" id="grupo-info">
 
 	<!--Coluna da imagem do grupo-->
 	<div class="col-sm-7 col-xs-7">
@@ -112,7 +111,7 @@ include_once('../conexao.php');
 
 		<!--Verifica se esta logado como administrador-->
 		<?php 
-			if($tipo == 'admin'){
+			if($tipo == 'sind'){
 		?>
 			<div class="row">
 				<div class="col-sm-12 col-xs-12">

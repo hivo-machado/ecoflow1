@@ -5,6 +5,11 @@ include_once("funcoes.php");
 ?>
 
 <?php 
+	//função para verificar se esta logado
+	valida();
+ ?>
+
+<?php 
 	//variavel de sessão
 	$id = $_SESSION['id'];
  ?>

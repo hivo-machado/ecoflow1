@@ -5,8 +5,13 @@
 ?>
 
 <?php 
+  //função para verificar se esta logado
+  valida();
+ ?>
+
+<?php 
   // Variaveis da sessão
-  $id = $_SESSION['idecoflow'];
+  $id_unidade = $_SESSION['id_unidade'];
   $nome = $_SESSION['nome'];
 
   //Ano atual
@@ -18,7 +23,7 @@
   }
 
   //Vetor consumo do ano
-  $consumos = consumoAno($con, $id, $ano);
+  $consumos = consumoAno($con, $id_unidade, $ano);
 
   //Total consumo do ano
   $total = consumoTotalAno($consumos);
@@ -73,7 +78,7 @@
             pointRadius: 1,
             pointHitRadius: 10,
             pointStyle: "circle",
-            data: <?php echo consumoAnoGrafico($con, $id, $ano); ?>,
+            data: <?php echo consumoAnoGrafico($con, $consumos, $ano); ?>,
             spanGaps: false,
           }
       ]

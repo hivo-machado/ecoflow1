@@ -5,6 +5,11 @@ include_once("funcoes.php");
 ?>
 
 <?php 
+	//função para verificar se esta logado
+	valida();
+ ?>
+
+<?php 
 	//variavel de sessão
 	$id = $_SESSION['id'];
 	$login = $_SESSION['login'];
@@ -65,8 +70,8 @@ include_once("funcoes.php");
 				<label for="login" class="col-sm-4 control-label">Login</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login" maxlength="20" required 
-					pattern="/^[A-Za-z0-9_]{1,20}$/" 
-					title="Verifique os caracteres válidos a-z, A-Z, 0-9 e '_' com no maximo 20 caracteres.">
+					pattern="[A-Za-z0-9._]{1,20}$" 
+					title="Verifique os caracteres válidos a-z, A-Z, 0-9, '.' e '_'.">
 				</div>
 			</div>
 			<div class="form-group">
@@ -95,7 +100,7 @@ include_once("funcoes.php");
 				<div class="col-sm-8">
 					<input type="password" class="form-control" id="senhaNova" name="senhaNova" placeholder="Nova Senha" 
 					minlength="6" maxlength="20" required
-					pattern="/^[\S]{6,20}$/"
+					pattern="[\S]{6,20}$"
 					title="verifique se a senha possui tamanho de 6 a 20 caracteres sem espaço em branco.">
 				</div>
 			</div>
@@ -104,7 +109,7 @@ include_once("funcoes.php");
 				<div class="col-sm-8">
 					<input type="password" class="form-control" id="repetirSenha" name="repetirSenha" placeholder="Repetir Nova Senha" 
 					minlength="6" maxlength="20" required
-					pattern="/^[\S]{6,20}$/"
+					pattern="[\S]{6,20}$"
 					title="verifique se a senha possui tamanho de 6 a 20 caracteres sem espaço em branco.">
 				</div>
 			</div>

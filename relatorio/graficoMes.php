@@ -5,8 +5,13 @@
 ?>
 
 <?php 
+  //função para verificar se esta logado
+  valida();
+ ?>
+
+<?php 
   // Variaveis da sessão
-  $id = $_SESSION['idecoflow'];
+  $id_unidade = $_SESSION['id_unidade'];
   $nome = $_SESSION['nome'];
 
   //vetor nome dos meses
@@ -40,7 +45,7 @@
   //Numero de dias do mes
   $numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
   //Consumo de dias
-  $consumos = consumoMes($con, $id, $ano, $mes, $dia);
+  $consumos = consumoMes($con, $id_unidade, $ano, $mes, $dia);
   //Consumo Total do mes
   $total = consumoTotalMes($consumos, $ano, $mes);
 

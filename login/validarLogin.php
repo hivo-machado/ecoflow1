@@ -1,6 +1,10 @@
 <?php include_once("../conexao.php") ?>
 
 <?php 
+
+	session_unset();
+	session_destroy();
+	session_start();
 	
 	$login  = $_POST['login'];
 	$senha  = $_POST['senha'];
@@ -14,7 +18,8 @@
 			// Inicia a sessão com os dados
 			session_start();
 			$_SESSION["id"] = $usuario["id"];
-			$_SESSION["idecoflow"] = $usuario["idecoflow"];
+			$_SESSION["id_unidade"] = $usuario["id_unidade"];
+			$_SESSION["id_grupo"] = $usuario["id_grupo"];
 			$_SESSION["login"] = $usuario["login"];
 			$_SESSION["nome"] = $usuario["nome"];
 			$_SESSION["tipo"] = $usuario["tipo"];

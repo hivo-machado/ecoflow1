@@ -83,7 +83,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<!--Muda menu se esta logado ou deslogado-->
 					<?php 
-					if( !isset($_SESSION["idecoflow"])){
+					if( !isset($_SESSION["id"])){
 					?>
 						<!--Menu para deslogado-->
 						<li>

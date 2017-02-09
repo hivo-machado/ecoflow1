@@ -244,10 +244,8 @@
 	}
 
 	//Função para cosumo por mes para desenho do grafico
-	function consumoAnoGrafico($con, $id, $ano){
+	function consumoAnoGrafico($con, $consumo, $ano){
 		$str = '['; // String para retorno dos resultado
-
-		$consumo = consumoAno($con, $id, $ano);
 
 		//Concatena os valores de consumo para API de grafico do google
 		for($i = 1; $i < 13; $i++){
