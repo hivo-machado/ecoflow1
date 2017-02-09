@@ -79,6 +79,7 @@
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 				          	Relatório
+				          	<span class="caret"></span>
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
@@ -99,7 +100,8 @@
 						<!--Opção Usuarios-->
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				          	Usuários				          
+				          	Usuários
+				          	<span class="caret"></span>			          
 				          	</a>
 				          <ul class="dropdown-menu">
 				            <li>
@@ -137,6 +139,7 @@
 					          <a id="barnav-link" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
 					          	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
 					          	<?php echo $_SESSION["login"] ?>
+					          	<span class="caret"></span>
 					          </a>
 					          <ul class="dropdown-menu">
 					            <li>

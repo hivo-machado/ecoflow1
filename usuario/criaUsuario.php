@@ -47,7 +47,7 @@ include_once("../validar.php");
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 	  <div class="page-header">
-	    <h2>Criar Usuário</h2>
+	    <h2>Criar Novo Usuário <small>Síndico ou Administrador</small></h2>
 	  </div>
   	</div>
 </div>
@@ -136,13 +136,41 @@ include_once("../validar.php");
 			</div>
 
 			<div class="form-group">
-	    		<div class="col-sm-4 col-sm-offset-8">
-					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span> Salvar Usuário</button>
+	    		<div class="col-sm-4 col-sm-offset-4">
+					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span> Salvar Novo Usuário</button>
 				</div>
 			</div>
 
 		</form>
 	</div>
 </div>
+
+<!--Cabeçalho da pagina-->
+<div class="row">
+	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+	  <div class="page-header">
+	    <h2>Criar Novos Usuários <small>Unidades</small></h2>
+	  </div>
+  	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-10 col-sm-offset-1">
+
+		<div class="row">
+			<div class="col-sm-8 col-sm-offset-4">
+				<p>Criar usuarios automaticamente para novas unidades. (Todos os usuarios são criados com login e senha igual a idecoflow respectivos)</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+				<a class="btn btn-primary" href="criarUsuarios.php" role="button"><span class="glyphicon glyphicon-saved" aria-hidden="true"></span> Criar Novos Usúarios</a>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
 
  <?php include_once("../footer.php") ?>
