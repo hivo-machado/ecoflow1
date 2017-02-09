@@ -6,6 +6,8 @@ include_once("../validar.php");
 <?php 
 	//função para verificar se esta logado
 	valida();
+	//função para verificar se esta logado como administrador
+	validaAdmin();
  ?>
 
 <?php

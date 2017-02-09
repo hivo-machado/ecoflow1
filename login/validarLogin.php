@@ -24,7 +24,11 @@
 			$_SESSION["nome"] = $usuario["nome"];
 			$_SESSION["tipo"] = $usuario["tipo"];
 			
-			header("Location: ../home/home.php");
+			if($usuario["tipo"] != 'admin'){
+				header("Location: ../home/home.php");
+			}else{
+				header("Location: ../home/homeAdmin.php");
+			}
 		}else{
 			header("Location: validaLogin.php?error=Usuario desativado!");	
 		}

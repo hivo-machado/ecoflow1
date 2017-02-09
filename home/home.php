@@ -109,7 +109,7 @@ include_once('../conexao.php');
 			</div>
 		</div>
 
-		<!--Verifica se esta logado como administrador-->
+		<!--Verifica se esta logado como sindico-->
 		<?php 
 			if($tipo == 'sind'){
 		?>

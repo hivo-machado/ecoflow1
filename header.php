@@ -1,6 +1,12 @@
 <?php include_once("conexao.php"); //conexão para banco de dados ?>
 <?php session_start(); ?>
 
+<?php 
+	if ( !isset($_SESSION['tipo']) ){
+		$_SESSION['tipo'] = null;
+	}
+ ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -46,7 +52,11 @@
 		        <span class="icon-bar"></span>
 		      </button>
 		      <!--Logo e link na brand-->
-		      <a href="../home/home.php" class="navbar-brand">
+		      <?php if($_SESSION['tipo'] != 'admin'){ ?>
+		      	<a href="../home/home.php" class="navbar-brand">
+		      <?php }else{ ?>
+		      	<a href="../home/homeAdmin.php" class="navbar-brand">
+		      <?php } ?>
 		      	<div id="barnav-link">
 		      		<img alt="Brand" src="../img/ECOFlow.ico" id="imgbrand">
 		      		<strong>ECO</strong>flow
@@ -61,21 +71,51 @@
 
 					<!--desenha divisor entre brand e menu-->
 					<li class="hidden-xs divisor" role="separator"></li>
-					<!--Opção relatorio-->
-					<li class="dropdown">
-			          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-			          	Relatório
-			          	<span class="caret"></span>
-			          </a>
-			          <ul class="dropdown-menu">
-			            <li>
-			            	<a href="../relatorio/graficoMes.php">Mês</a>
-			            </li>
-			            <li>
-			            	<a href="../relatorio/graficoAno.php">Ano</a>
-			            </li>
-			          </ul>
-			        </li><!--Fecha li relatorio-->
+
+					<?php 
+						if($_SESSION['tipo'] == 'usuario'){
+					 ?>
+						<!--Opção relatorio-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Relatório
+				          </a>
+				          <ul class="dropdown-menu">
+				            <li>
+				            	<a href="../relatorio/graficoMes.php">Mês</a>
+				            </li>
+				            <li>
+				            	<a href="../relatorio/graficoAno.php">Ano</a>
+				            </li>
+				          </ul>
+				        </li><!--Fecha li relatorio-->
+			       <?php 
+			       		}
+			        ?>
+
+			        <?php 
+						if($_SESSION['tipo'] == 'admin'){
+					 ?>
+						<!--Opção Usuarios-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Usuários				          
+				          	</a>
+				          <ul class="dropdown-menu">
+				            <li>
+				            	<a href="../usuario/criaUsuario.php">Criar novo usuário</a>
+				            </li>
+				            <li>
+				            	<a href="../usuario/buscaUsuario.php">Buscar e alterar usuário</a>
+				            </li>
+				            <li>
+				            	<a href="#">Novo</a>
+				            </li>
+				          </ul>
+				        </li><!--Fecha li usuarios-->
+			       <?php 
+			       		}
+			        ?>
 
 				</ul>
 
@@ -96,8 +136,7 @@
 							<li class="dropdown">
 					          <a id="barnav-link" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
 					          	<span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
-					          	<?php echo $_SESSION["login"] ?> 
-					          	<span class="caret"></span>
+					          	<?php echo $_SESSION["login"] ?>
 					          </a>
 					          <ul class="dropdown-menu">
 					            <li>

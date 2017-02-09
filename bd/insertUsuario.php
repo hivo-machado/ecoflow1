@@ -6,7 +6,7 @@ include_once("../conexao.php");
 	$status = 'ativo';
 	
 	//Busca todos os usuarios
-	$todosUsuario = mysqli_query($con,"SELECT DISTINCT idecoflow, nome from unidade");
+	$todosUsuario = mysqli_query($con,"SELECT DISTINCT un.idecoflow, un.nome, gr.id FROM unidade un, planta pl, grupo gr WHERE un.id_planta_fk = pl.idecoflow AND pl.id_grupo_fk = gr.id");
 
 	if(isset($todosUsuario)){
 			while ($usuario = mysqli_fetch_object($todosUsuario)) {
@@ -15,8 +15,9 @@ include_once("../conexao.php");
 				$objUsuario = mysqli_fetch_object($resUsuario);
 				if(!isset($objUsuario)){
 					//Insere novo usuario
-					mysqli_query($con, "INSERT INTO usuario (login, senha, id_unidade, nome, tipo, status) VALUES ('$usuario->idecoflow', '$usuario->idecoflow', $usuario->idecoflow, '$usuario->nome', '$tipo', '$status')");
-					echo $usuario->idecoflow.'<br>';
+					mysqli_query($con, "INSERT INTO usuario( id_unidade, id_grupo, login, senha, nome, tipo, status) VALUES ('$usuario->idecoflow', '$usuario->id', '$usuario->idecoflow', '$usuario->idecoflow', '$usuario->nome', '$tipo', '$status')");
+
+					echo $usuario->id.' '.$usuario->idecoflow.' '.$usuario->nome.'<br>';
 				}
 			}
 	}else{
