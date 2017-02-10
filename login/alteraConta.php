@@ -34,13 +34,13 @@ include_once("funcoes.php");
 	<div class="col-sm-10 col-sm-offset-1">
 		<form class="form-horizontal" method="POST" action="alterarLogin.php" >
 			<div class="form-group">
-			    <label class="col-sm-4 control-label">Login Cadastrado</label>
+			    <label class="col-sm-4 control-label">Login</label>
 			    <div class="col-sm-8">
 			    	<input class="form-control" type="text" placeholder=<?php echo $login ?> readonly>
 			    </div>
 			</div>
 			<div class="form-group">
-				<label for="login" class="col-sm-4 control-label">Login</label>
+				<label for="login" class="col-sm-4 control-label">Novo Login</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login" maxlength="20" required 
 					pattern="[A-Za-z0-9._]{1,20}$" 

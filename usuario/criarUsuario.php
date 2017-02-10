@@ -35,7 +35,7 @@
 		}
 
 	}else{
-		header("Location: criaUsuario.php?error=Senhas distintas.");
+		header("Location: criaUsuario.php?error=Senhas distintas! confirmar novamente senha");
 	}
 
 	

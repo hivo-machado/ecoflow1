@@ -21,7 +21,7 @@
 			header("Location: ../login/alteraConta.php?error=Senha inválida!");
 		}
 	}else{
-		header("Location: ../login/alteraConta.php?error=Senhas Diferentes! confirmar novamente senha");
+		header("Location: ../login/alteraConta.php?error=Senhas distintas! confirmar novamente senha");
 	}
 	
 

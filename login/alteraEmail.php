@@ -28,7 +28,7 @@ include_once("funcoes.php");
 		<form class="form-horizontal" method="POST" action="alterarEmail.php" >
 			<?php if($email = buscaEmail($con, $id)){ ?>
 			<div class="form-group">
-			    <label class="col-sm-4 control-label">E-mail Cadastrado</label>
+			    <label class="col-sm-4 control-label">E-mail</label>
 			    <div class="col-sm-8">
 			    	<input class="form-control" type="text" placeholder=<?php echo $email ?> readonly>
 			    </div>
@@ -57,7 +57,7 @@ include_once("funcoes.php");
 				<label for="senha" class="col-sm-4 control-label">Senha</label>
 				<div class="col-sm-8">
 					<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
-					<span id="helpBlock" class="help-block">Confirmação de senha atual necessária para alteração.</span>
+					<span id="helpBlock" class="help-block">Confirmação de senha necessária para alteração.</span>
 				</div>
 			</div>
 			<div class="form-group">

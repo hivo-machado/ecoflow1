@@ -14,6 +14,7 @@ body{
 	overflow-x: hidden;
 }
 
+/*Imagem para background
 @media (min-width: 768px) {
 	body{
 		background: url('../img/fundo.jpg');
@@ -21,6 +22,7 @@ body{
 		background-attachment: fixed;
 	}
 }
+*/
 
 /*---------------------Estrutura Principal da pagina---------------------*/
 #tudo{
@@ -119,6 +121,15 @@ a.email-rodape:hover, a.email-rodape:active{
 .marge-tabela{
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+a.link-td:link, a.link-td:visited{
+	color: #000;
+	text-decoration: none;
+}
+
+a.link-td:hover, a.link-td:active{
+	color: rgb(0, 154, 185);
 }
 
 /*--------------------------------Grafico--------------------------------*/
