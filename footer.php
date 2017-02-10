@@ -4,20 +4,13 @@
 			<div class="container-fluid">
 				<!--Rodape´da pagina web-->
 				<div class="row hidden-print">
-					<div class="col-sm-6 col-xs-6">
+					<div class="col-sm-12 col-xs-12">
 						<address class="text-center">
 						  <strong>Suporte ECOFlow</strong><br>
-						  <a class="email-rodape" href="mailto:ecoflow@example.com"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span> contato@ecoflow.net.br</a>
+						  <a class="email-rodape" href="mailto:ecoflow@example.com"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span> contato@ecoflow.net.br</a><br>
+						  <abbr title="Telefone">Tel.:</abbr> (35) 3622-7522
 						</address>	
-					</div>			
-					<div class="col-sm-6 col-xs-6">
-						<address class="text-center">
-						  Av. Coronel Carneiro Júnior, 57 SL903<br>
-						  37511-018 - Itajubá- MG - Brasil<br>
-						  <span class="glyphicon glyphicon-earphone" arian-hidden="true"></span> <abbr title="Telefone">Tel.:</abbr> (35) 3622-7522
-						</address>
 					</div>
-				</div>
 
 				<div class="row hidden-print">
 					<div class="col-sm-12 col-xs-12 text-center">
@@ -31,8 +24,6 @@
 						<address class="text-center">
 						<strong>Contato ECOFlow</strong><br>
 						contato@ecoflow.net.br<br>
-						Av. Coronel Carneiro Júnior, 57 SL903<br>
-						37511-018 - Itajubá- MG - Brasil<br>
 						Tel.: (12)12345-6789
 						</address>
 					</div>
