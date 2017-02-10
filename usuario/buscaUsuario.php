@@ -25,15 +25,19 @@ include_once("../validar.php");
  ?>
 
 <div class="row">
-	<div class="col-sm-8 col-sm-offset-4 col-xs-12 col-xs-offset-0">
-		<form class="form-inline" method="GET" action="buscaUsuario.php">
+	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+		<form method="GET" action="buscaUsuario.php">
+        
+      <label for="busca" class="col-sm-2 col-xs-12">Pesquisar</label>
 
-			<div class="form-group">
-				<label for="busca">Pesquisar</label>
-				<input type="search" class="form-control" id="busca" name="busca" placeholder="ID, Idecolfow, Nome, Login, Planta, Grupo" autofocus>
-			</div>
-
-			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Pesquisar</button>
+      <div class="col-sm-10 col-xs-12">
+        <div class="input-group">
+          <input type="search" class="form-control" id="busca" name="busca" placeholder="Buscar por ID, Idecolfow, Nome, Login, Planta, Grupo" autofocus>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+          </span>
+        </div>        
+      </div>
 
 		</form>
 	</div>

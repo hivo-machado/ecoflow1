@@ -18,7 +18,7 @@ include_once("../validar.php");
 	 }
   ?>
 
-<!--Cabeçalho da pagina-->
+<!--Cabeçalho-->
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 	  <div class="page-header">
@@ -95,7 +95,7 @@ include_once("../validar.php");
 	</div>
 </div>
 
-<!--Cabeçalho da pagina-->
+<!--Cabeçalho-->
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 	  <div class="page-header">
@@ -130,6 +130,21 @@ include_once("../validar.php");
 				</form>
 			</div>
 		</div>
+		
+	</div>
+</div>
+
+<!--Cabeçalho-->
+<div class="row">
+	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+	  <div class="page-header">
+	    <h2>Ativar ou desativar usuario <small><?php echo $usuario->nome ?></small></h2>
+	  </div>
+  	</div>
+</div>
+
+<div class="row">
+	<div class="col-sm-12 col-xs-12">
 		
 	</div>
 </div>
