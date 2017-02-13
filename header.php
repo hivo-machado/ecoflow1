@@ -93,6 +93,7 @@
 			       <?php } ?>
 
 			        <?php if($_SESSION['tipo'] == 'admin'){ ?>
+
 						<!--Opção Usuarios-->
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -108,9 +109,7 @@
 				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
-			       <?php } ?>
-
-			       <?php if($_SESSION['tipo'] == 'admin'){ ?>
+			      
 						<!--Opção Grupos-->
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -122,10 +121,28 @@
 				            	<a href="../grupo/buscaGrupo.php">Buscar e Alterar grupo</a>
 				            </li>
 				          </ul>
-				        </li><!--Fecha li usuarios-->
+				        </li><!--Fecha li grupo-->
+
+				        <!--Opção relatorio-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Relatório
+				          	<span class="caret"></span>
+				          </a>
+				          <ul class="dropdown-menu">
+				            <li>
+				            	<a href="../relatorio/buscaGrupo.php">Mês</a>
+				            </li>
+				            <li>
+				            	<a href="#">Novo</a>
+				            </li>
+				          </ul>
+				        </li><!--Fecha li relatorio-->
+
 			       <?php } ?>
 
 			       <?php if($_SESSION['tipo'] == 'sind'){ ?>
+
 						<!--Opção Grupos-->
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -138,6 +155,23 @@
 				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
+
+				         <!--Opção relatorio-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Relatório
+				          	<span class="caret"></span>
+				          </a>
+				          <ul class="dropdown-menu">
+				            <li>
+				            	<a href="../relatorio/buscaPlanta.php">Mês</a>
+				            </li>
+				            <li>
+				            	<a href="#">Novo</a>
+				            </li>
+				          </ul>
+				        </li><!--Fecha li relatorio-->
+
 			       <?php } ?>
 
 				</ul>

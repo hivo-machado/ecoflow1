@@ -49,7 +49,7 @@ include_once("../validar.php");
 	</div>
 </div>
 
-  <!--Tabela de consumo do ano-->
+  <!--Tabela de resultado da busca-->
   <div class="row marge-tabela">
     <div class="col-sm-12 col-xs-12">
       <div class="panel panel-primary">
