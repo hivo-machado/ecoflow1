@@ -164,7 +164,7 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="../relatorio/buscaPlanta.php">Mês</a>
+				            	<a href="../relatorio/listaPlanta.php">Mês</a>
 				            </li>
 				            <li>
 				            	<a href="#">Novo</a>

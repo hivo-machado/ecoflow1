@@ -103,7 +103,7 @@
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
-        <h2>Gráfico de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
+        <h1><?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h1>
       </div>
     </div>
   </div>
@@ -163,7 +163,7 @@
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <?php 
-        echo '<h5> <strong>Consumo total do mês: </strong>'.$total.'</h5>';  
+        echo '<h2> <strong>Consumo total do mês: </strong>'.$total.'</h2>';  
       ?>
     </div>
   </div>
@@ -178,7 +178,7 @@
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
-        <h2>Tabela de <?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h2>
+        <h1><?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h1>
       </div>
     </div>
   </div>
