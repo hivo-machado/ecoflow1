@@ -6,7 +6,7 @@
 				<div class="row hidden-print">
 					<div class="col-sm-12 col-xs-12">
 						<address class="text-center">
-						  <strong>Suporte ECOFlow</strong><br>
+						  <strong>Contato ECOFlow</strong><br>
 						  <a class="email-rodape" href="mailto:ecoflow@example.com"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span> contato@ecoflow.net.br</a><br>
 						  <abbr title="Telefone">Tel.:</abbr> (35) 3622-7522
 						</address>	
@@ -24,7 +24,7 @@
 						<address class="text-center">
 						<strong>Contato ECOFlow</strong><br>
 						contato@ecoflow.net.br<br>
-						Tel.: (12)12345-6789
+						Tel.: (35) 3622-7522
 						</address>
 					</div>
 				</div>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Fev-2017 às 12:24
+-- Generation Time: 13-Fev-2017 às 12:55
 -- Versão do servidor: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -35,8 +35,8 @@ CREATE TABLE `grupo` (
   `bairro` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `cidade` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
   `estado` char(2) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cep` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `telefone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cep` varchar(9) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `telefone` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL,
   `imagem` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -78,6 +78,7 @@ CREATE TABLE `unidade` (
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `id_unidade` int(11) DEFAULT NULL,
+  `id_planta` int(11) DEFAULT NULL,
   `id_grupo` int(11) DEFAULT NULL,
   `login` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `senha` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
@@ -116,7 +117,8 @@ ALTER TABLE `unidade`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `login` (`login`);
+  ADD UNIQUE KEY `login` (`login`),
+  ADD UNIQUE KEY `id_unidade` (`id_unidade`);
 
 --
 -- AUTO_INCREMENT for dumped tables

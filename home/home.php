@@ -12,6 +12,7 @@ include_once('../conexao.php');
  <?php
  	//Varival de sessão
 	$id_unidade = $_SESSION['id_unidade'];
+	$id_grupo = $_SESSION['id_grupo'];
 	$tipo = $_SESSION['tipo'];
 
 	//Inicializando Variavel
@@ -29,7 +30,7 @@ include_once('../conexao.php');
 		//Select para informações do grupo
 		$result = mysqli_query($con, "SELECT * FROM grupo LEFT JOIN planta on planta.id_grupo_fk = grupo.id LEFT JOIN unidade on unidade.id_planta_fk = planta.idecoflow WHERE unidade.idecoflow = '$id_unidade' LIMIT 1");
 	}else{
-		$result = mysqli_query($con, "SELECT * FROM grupo where id = '$id_unidade'");
+		$result = mysqli_query($con, "SELECT * FROM grupo where id = '$id_grupo'");
 	}
 
 	//variaveis
@@ -61,9 +62,13 @@ include_once('../conexao.php');
 
 	<!--Coluna da imagem do grupo-->
 	<div class="col-sm-7 col-xs-7">
-		<a href="../relatorio/graficoMes.php">
+		<?php  if($tipo == 'usuario'){ ?>
+			<a href="../relatorio/graficoMes.php">
+				<img src=<?php echo '../img/grupo/'.$imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
+			</a>
+		<?php }else{ ?>
 			<img src=<?php echo '../img/grupo/'.$imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
-		</a>		
+		<?php } ?>
 	</div>
 
 	<!--Coluna de endereço do grupo-->

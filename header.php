@@ -110,9 +110,6 @@
 				            <li>
 				            	<a href="../usuario/buscaUsuario.php">Buscar e alterar usuário</a>
 				            </li>
-				            <li>
-				            	<a href="#">Novo</a>
-				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
 			       <?php 

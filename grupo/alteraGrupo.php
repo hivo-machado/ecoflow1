@@ -1,7 +1,6 @@
 <?php 
 include_once("../header.php");
 include_once("../validar.php");
-include_once("../validaAdmin.php");
 ?>
 
 <?php 
