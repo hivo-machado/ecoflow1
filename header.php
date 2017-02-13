@@ -46,10 +46,12 @@
 		    <div class="navbar-header">
 		    <!--botão do menu mobile-->
 		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+
 		        <span class="sr-only">Menu</span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
+
 		      </button>
 		      <!--Logo e link na brand-->
 		      <?php if($_SESSION['tipo'] != 'admin'){ ?>
@@ -72,9 +74,7 @@
 					<!--desenha divisor entre brand e menu-->
 					<li class="hidden-xs divisor" role="separator"></li>
 
-					<?php 
-						if($_SESSION['tipo'] == 'usuario'){
-					 ?>
+					<?php if($_SESSION['tipo'] == 'usuario'){ ?>
 						<!--Opção relatorio-->
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -90,13 +90,9 @@
 				            </li>
 				          </ul>
 				        </li><!--Fecha li relatorio-->
-			       <?php 
-			       		}
-			        ?>
+			       <?php } ?>
 
-			        <?php 
-						if($_SESSION['tipo'] == 'admin'){
-					 ?>
+			        <?php if($_SESSION['tipo'] == 'admin'){ ?>
 						<!--Opção Usuarios-->
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -112,18 +108,50 @@
 				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
-			       <?php 
-			       		}
-			        ?>
+			       <?php } ?>
+
+			       <?php if($_SESSION['tipo'] == 'admin'){ ?>
+						<!--Opção Grupos-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Grupo
+				          	<span class="caret"></span>			          
+				          	</a>
+				          <ul class="dropdown-menu">
+				            <li>
+				            	<a href="#">novo</a>
+				            </li>
+				            <li>
+				            	<a href="#">novo</a>
+				            </li>
+				          </ul>
+				        </li><!--Fecha li usuarios-->
+			       <?php } ?>
+
+			       <?php if($_SESSION['tipo'] == 'sind'){ ?>
+						<!--Opção Grupos-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Grupo
+				          	<span class="caret"></span>			          
+				          	</a>
+				          <ul class="dropdown-menu">
+				            <li>
+				            	<a href="../grupo/alteraGrupo.php">Alterar Grupo</a>
+				            </li>
+				            <li>
+				            	<a href="#">novo</a>
+				            </li>
+				          </ul>
+				        </li><!--Fecha li usuarios-->
+			       <?php } ?>
 
 				</ul>
 
 				<!--Navbar a direita-->
 				<ul class="nav navbar-nav navbar-right">
 					<!--Muda menu se esta logado ou deslogado-->
-					<?php 
-					if( !isset($_SESSION["id"])){
-					?>
+					<?php if( !isset($_SESSION["id"])){ ?>
 						<!--Menu para deslogado-->
 						<li>
 							<a id="barnav-link" href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>

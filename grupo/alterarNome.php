@@ -2,12 +2,8 @@
 	//conexão com BD
 	include_once("../conexao.php");
 
-	//iniciar sessão
-	session_start();
-	//variavel de sessão
-	$idecoflow = $_SESSION['idecoflow'];
-
 	//Variavel formulario
+	$id_grupo = $_POST['id_grupo'];
 	$nome = $_POST['nome'];
 
 	
@@ -36,18 +32,18 @@
 			}
 			// Faz a verificação do tamanho do arquivo
 			if ($_UP['tamanho'] < $_FILES['arquivo']['size']) {
-			  echo "O arquivo enviado é muito grande, envie arquivos de até 2Mb.";
+			  echo "O arquivo enviado é muito grande, envie arquivos de até 5Mb.";
 			  exit;
 			}
 			// O arquivo passou em todas as verificações, hora de tentar movê-lo para a pasta
 			// Trocar o nome do arquivo
-			$nome_final = $idecoflow.'.'.$extensao;
+			$nome_final = $id_grupo.'.'.$extensao;
 			
 			  
 			// Depois verifica se é possível mover o arquivo para a pasta escolhida
 			if (move_uploaded_file($_FILES['arquivo']['tmp_name'], $_UP['pasta'] . $nome_final)) {
 			  // Upload efetuado com sucesso, exibe uma mensagem e um link para o arquivo				
-				mysqli_query($con, "UPDATE grupo SET nome_grupo = '$nome', imagem = '$nome_final' where  id = '$idecoflow'");
+				mysqli_query($con, "UPDATE grupo SET nome_grupo = '$nome', imagem = '$nome_final' where  id = '$id_grupo'");
 
 				header("Location: ../home/home.php?success=Alterado com sucesso.");
 				#  echo "Upload efetuado com sucesso!";
@@ -58,7 +54,7 @@
 			}
 		}else{// if arquivo
 
-			mysqli_query($con, "UPDATE grupo SET nome_grupo = '$nome' where  id = '$idecoflow'");
+			mysqli_query($con, "UPDATE grupo SET nome_grupo = '$nome' where  id = '$id_grupo'");
 			header("Location: ../home/home.php?success=Nome alterado com sucesso.");
 		}
 

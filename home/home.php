@@ -92,6 +92,7 @@ include_once('../conexao.php');
 			<div class="row">
 				<div class="col-sm-12 col-xs-12">
 					<a class="btn btn-primary" href="../grupo/alteraGrupo.php" role="button">Alterar dados</a>
+					<span id="helpBlock" class="help-block">Alterar nome, foto e endereço.</span>
 				</div>
 			</div>
 		 <?php

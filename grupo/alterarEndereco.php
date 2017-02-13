@@ -4,9 +4,9 @@
 
 	//iniciar sessão
 	session_start();
-	//variavel de sessão
-	$idecoflow = $_SESSION['idecoflow'];
 
+	//varivavel POST
+	$id_grupo = $_POST['id_grupo'];
 	$rua = $_POST['rua'];
 	$numero = $_POST['numero'];
 	$bairro = $_POST['bairro'];
@@ -16,10 +16,10 @@
 	$telefone = $_POST['telefone'];
 	
 	if($telefone != null){
-		mysqli_query($con, "UPDATE grupo SET rua = '$rua', numero = '$numero', bairro = '$bairro', cidade = '$cidade', estado = '$uf', cep = '$cep', telefone = '$telefone' where  id = '$idecoflow'");
+		mysqli_query($con, "UPDATE grupo SET rua = '$rua', numero = '$numero', bairro = '$bairro', cidade = '$cidade', estado = '$uf', cep = '$cep', telefone = '$telefone' where  id = '$id_grupo'");
 		header("Location: ../home/home.php?success=Endereço alterado com sucesso.");
 	}else{
-		mysqli_query($con, "UPDATE grupo SET rua = '$rua', numero = '$numero', bairro = '$bairro', cidade = '$cidade', estado = '$uf', cep = '$cep' where  id = '$idecoflow'");
+		mysqli_query($con, "UPDATE grupo SET rua = '$rua', numero = '$numero', bairro = '$bairro', cidade = '$cidade', estado = '$uf', cep = '$cep' where  id = '$id_grupo'");
 		header("Location: ../home/home.php?success=Endereço alterado com sucesso.");
 	}
 

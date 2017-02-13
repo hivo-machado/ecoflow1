@@ -13,6 +13,7 @@ include_once("../validar.php");
 <?php 
 	//variavel de sessão
 	$id = $_SESSION['id'];
+	$id_grupo = $_SESSION['id_grupo'];
  ?>
 
  <!--Link para mascara dos input-->
@@ -32,13 +33,23 @@ include_once("../validar.php");
 	<div class="col-sm-10 col-sm-offset-1">
 		<form class="form-horizontal" method="POST" action="alterarNome.php" enctype="multipart/form-data">
 
+			<!--Input text oculta com id do grupo-->
+			<div class="form-group sr-only">
+				<label for="id_grupo" class="col-sm-4 control-label">ID Grupo*</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="id_grupo" name="id_grupo"
+					placeholder=<?php echo $id_grupo ?> value=<?php echo $id_grupo ?>>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<label for="nome" class="col-sm-4 control-label">Nome*</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="nome" name="nome" required autofocus
 					maxlength="32" 
 					pattern="[A-Za-z\s]{1,32}$" 
-					title="Verifique os caracteres válidos a-z, A-Z.">
+					title="Verifique os caracteres válidos a-z, A-Z."
+					placeholder="Nome do Grupo">
 					<span id="helpBlock" class="help-block">* Campo obrigatório.</span>
 				</div>
 			</div>
@@ -73,11 +84,21 @@ include_once("../validar.php");
 <div class="row">
 	<div class="col-sm-10 col-sm-offset-1">
 		<form class="form-horizontal" method="POST" action="alterarEndereco.php" >
+
+			<!--Input text oculta com id do grupo-->
+			<div class="form-group sr-only">
+				<label for="id_grupo" class="col-sm-4 control-label">ID Grupo*</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="id_grupo" name="id_grupo"
+					placeholder=<?php echo $id_grupo ?> value=<?php echo $id_grupo ?>>
+				</div>
+			</div>
 				
 			<div class="form-group">
 				<label for="rua" class="col-sm-4 control-label">Rua*</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="rua" name="rua" maxlength="64" required>
+					<input type="text" class="form-control" id="rua" name="rua" maxlength="64" required
+					placeholder="Rua do grupo">
 				</div>
 			</div>
 
@@ -87,18 +108,20 @@ include_once("../validar.php");
 					<input type="number" class="form-control" id="numero" name="numero" min="1" required>
 				</div>
 			</div>
-
+			
 			<div class="form-group">
-				<label for="cidade" class="col-sm-4 control-label">Cidade*</label>
+				<label for="bairro" class="col-sm-4 control-label">Bairro*</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="cidade" name="cidade" maxlength="64" required>
+					<input type="text" class="form-control" id="bairro" name="bairro" maxlength="64" required
+					placeholder="Bairro do grupo">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="bairro" class="col-sm-4 control-label">Bairro*</label>
+				<label for="cidade" class="col-sm-4 control-label">Cidade*</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="bairro" name="bairro" maxlength="64" required>
+					<input type="text" class="form-control" id="cidade" name="cidade" maxlength="64" required
+					placeholder="Cidada do grupo">
 				</div>
 			</div>
 
@@ -144,7 +167,8 @@ include_once("../validar.php");
 					<input type="text" class="form-control" id="cep" name="cep" 
 					maxlength="9" OnKeyPress="formatar('#####-###', this)" required
 					pattern="[0-9]{5}-[0-9]{3}$"
-					title="Verifique o CEP com seguinte formato XXXXX-XXX">
+					title="Verifique o CEP com seguinte formato XXXXX-XXX"
+					placeholder="XXXXX-XXX">
 				</div>
 			</div>
 
@@ -153,6 +177,7 @@ include_once("../validar.php");
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="telefone" name="telefone" maxlength="15" 
 					title="Verifique o telefone com seguinte formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX"
+					placeholder="(XX) XXXX-XXXX ou (XX) 9XXXX-XXXX" 
 					OnKeyPress="mascara( this, mtel );">
 				<span id="helpBlock" class="help-block">* Campos obrigatórios.</span>
 				</div>
