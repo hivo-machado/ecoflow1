@@ -21,4 +21,11 @@
 		}
 	}
 
+	//verifica-se esta logado como administrador e síndico
+	function validaAdminSind(){
+		if (!( ($_SESSION["tipo"] == 'sind')||($_SESSION["tipo"] == 'admin') ) ){
+			echo '<meta http-equiv="refresh" content="0;URL=../home/home.php?error=Usuario inválido." />';
+		}
+	}
+
  ?>

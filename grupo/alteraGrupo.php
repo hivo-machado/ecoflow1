@@ -3,27 +3,35 @@ include_once("../header.php");
 include_once("../validar.php");
 ?>
 
+ <!--Link para mascara dos input-->
+<script src="../js/mascara.js"></script>
+
 <?php 
 	//função para verificar se esta logado
 	valida();
 	//função para verificar se esta logado como síndico
-	validaSind();
+	validaAdminSind();
  ?>
 
 <?php 
 	//variavel de sessão
 	$id = $_SESSION['id'];
-	$id_grupo = $_SESSION['id_grupo'];
- ?>
 
- <!--Link para mascara dos input-->
-<script src="../js/mascara.js"></script>
+	if( isset($_GET['id_grupo']) ){
+		$id_grupo = $_GET['id_grupo'];
+	}else{
+		$id_grupo = $_SESSION['id_grupo'];
+	}
+
+	$result = mysqli_query($con,"SELECT * FROM grupo WHERE id = '$id_grupo'");
+	$grupo = mysqli_fetch_object($result);
+ ?>
 
 <!--Cabeçalho da pagina-->
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 	  <div class="page-header">
-	    <h2>Alterar Nome e Foto do Grupo</h2>
+	    <h2>Alterar Nome e Foto do Grupo <small><?php echo $grupo->nome ?></small></h2>
 	  </div>
   	</div>
 </div>
@@ -47,8 +55,8 @@ include_once("../validar.php");
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="nome" name="nome" required autofocus
 					maxlength="32" 
-					pattern="[A-Za-z\s]{1,32}$" 
-					title="Verifique os caracteres válidos a-z, A-Z."
+					pattern="[A-Za-z0-9\s]{1,32}$" 
+					title="Verifique os caracteres válidos a-z, A-Z e 0-9."
 					placeholder="Nome do Grupo">
 					<span id="helpBlock" class="help-block">* Campo obrigatório.</span>
 				</div>
@@ -75,7 +83,7 @@ include_once("../validar.php");
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 	  <div class="page-header">
-	    <h2>Alterar Endereço do Grupo</h2>
+	    <h2>Alterar Endereço do Grupo <small><?php echo $grupo->nome ?></small></h2>
 	  </div>
   	</div>
 </div>
@@ -193,5 +201,66 @@ include_once("../validar.php");
 		</form>
 	</div>
 </div>
+
+<!--Verifica se usuário e do perfil administrador-->
+<?php if($_SESSION['tipo']=='admin'){ ?>
+	<!--Cabeçalho da pagina-->
+	<div class="row">
+		<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+		  <div class="page-header">
+		    <h2>Ativar ou Desativar usuários do Grupo <small><?php echo $grupo->nome ?></small></h2>
+		  </div>
+	  	</div>
+	</div>
+
+	<!--Formulario ativar ou desativar usuarios do grupo-->
+	<div class="row">
+		<div class="col-sm-10 col-sm-offset-1"><!--Div para ajuste de tela pequena-->
+
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-4">
+					<p>Ativa ou desativa usuários do grupo no sistema. (Caso usuário seja desativado ele será impedido de se logar.)</p>
+				</div>
+			</div>
+
+			<div class=" col-sm-8 col-sm-offset-4">
+				<form class="form-horizontal" method="post" action="statusUsuarios.php">
+					
+					<div class="form-group">
+
+						<!--Input text oculta com id do grupo-->
+						<div class="form-group sr-only">
+							<label for="id_grupo" class="col-sm-4 control-label">ID Grupo*</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="id_grupo" name="id_grupo"
+								placeholder=<?php echo $id_grupo ?> value=<?php echo $id_grupo ?>>
+							</div>
+						</div>
+
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="status" id="optionsRadios1" value="ativo" checked>
+						    Ativar usuários.
+						  </label>
+						</div>
+
+						<div class="radio">
+						  <label>
+						    <input type="radio" name="status" id="optionsRadios2" value="desativo">
+						    Desativar usuários.
+						  </label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> Atualizar Usúarios</button>
+					</div>
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+<?php } ?>
 
 <?php include_once("../footer.php") ?>

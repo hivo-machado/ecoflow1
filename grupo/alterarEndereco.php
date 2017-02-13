@@ -17,10 +17,10 @@
 	
 	if($telefone != null){
 		mysqli_query($con, "UPDATE grupo SET rua = '$rua', numero = '$numero', bairro = '$bairro', cidade = '$cidade', estado = '$uf', cep = '$cep', telefone = '$telefone' where  id = '$id_grupo'");
-		header("Location: ../home/home.php?success=Endereço alterado com sucesso.");
+		header("Location: alteraGrupo.php?success=Endereço alterado com sucesso.&id_grupo=$id_grupo");
 	}else{
 		mysqli_query($con, "UPDATE grupo SET rua = '$rua', numero = '$numero', bairro = '$bairro', cidade = '$cidade', estado = '$uf', cep = '$cep' where  id = '$id_grupo'");
-		header("Location: ../home/home.php?success=Endereço alterado com sucesso.");
+		header("Location: alteraGrupo.php?success=Endereço alterado com sucesso.&id_grupo=$id_grupo");
 	}
 
 

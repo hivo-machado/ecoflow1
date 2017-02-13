@@ -45,17 +45,17 @@
 			  // Upload efetuado com sucesso, exibe uma mensagem e um link para o arquivo				
 				mysqli_query($con, "UPDATE grupo SET nome_grupo = '$nome', imagem = '$nome_final' where  id = '$id_grupo'");
 
-				header("Location: ../home/home.php?success=Alterado com sucesso.");
+				header("Location: alteraGrupo.php?success=Alterado com sucesso.&id_grupo=$id_grupo");
 				#  echo "Upload efetuado com sucesso!";
 				#  echo '<a href="' . $_UP['pasta'] . $nome_final . '">Clique aqui para acessar o arquivo</a>';
 			} else {
 			  // Não foi possível fazer o upload, provavelmente a pasta está incorreta
-			  header("Location: cadastroProjeto.php?error=Imagem invalida!");
+			  header("Location: alteraGrupo.php?error=Imagem invalida!&id_grupo=$id_grupo");
 			}
 		}else{// if arquivo
 
 			mysqli_query($con, "UPDATE grupo SET nome_grupo = '$nome' where  id = '$id_grupo'");
-			header("Location: ../home/home.php?success=Nome alterado com sucesso.");
+			header("Location: alteraGrupo.php?success=Alterado com sucesso.&id_grupo=$id_grupo");
 		}
 
 	}// if nome

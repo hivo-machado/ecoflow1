@@ -114,12 +114,12 @@
 						<!--Opção Grupos-->
 						<li class="dropdown">
 				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				          	Grupo
+				          	Grupos
 				          	<span class="caret"></span>			          
 				          	</a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="#">novo</a>
+				            	<a href="../grupo/buscaGrupo.php">Buscar e Alterar grupo</a>
 				            </li>
 				            <li>
 				            	<a href="#">novo</a>

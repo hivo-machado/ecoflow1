@@ -11,11 +11,6 @@ include_once("../validar.php");
  ?>
 
 <?php 
-	//variavel de sessão
-	$id = $_SESSION['id'];
- ?>
-
-<?php 
 
 	if (isset($_GET['busca'])) {
 		$busca = $_GET['busca'];
@@ -24,6 +19,17 @@ include_once("../validar.php");
 
  ?>
 
+ <!--Cabeçalho da pagina-->
+<div class="row">
+  <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+    <div class="page-header">
+      <h2>Pesquisar Usuários</h2>
+    </div>
+    </div>
+</div>
+
+
+<!--Input da pesquisa-->
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 		<form method="GET" action="buscaUsuario.php">
