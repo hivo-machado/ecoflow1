@@ -37,7 +37,7 @@ include_once("../validar.php");
 				<label for="id_usuario" class="col-sm-4 control-label">ID Usuario*</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="id_usuario" name="id_usuario"
-					placeholder=<?php echo $id_usuario ?> value=<?php echo $id_usuario ?>>
+					value=<?php echo $id_usuario ?>>
 				</div>
 			</div>
 
@@ -113,7 +113,7 @@ include_once("../validar.php");
 						<label for="id_usuario" class="col-sm-4 control-label">ID Usuario*</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" id="id_usuario" name="id_usuario"
-							placeholder=<?php echo $id_usuario ?> value=<?php echo $id_usuario ?>>
+							value=<?php echo $id_usuario ?>>
 						</div>
 					</div>
 
@@ -169,7 +169,7 @@ include_once("../validar.php");
 						<label for="id_usuario" class="col-sm-4 control-label">ID Usuario*</label>
 						<div class="col-sm-8">
 							<input type="text" class="form-control" id="id_usuario" name="id_usuario"
-							placeholder=<?php echo $id_usuario ?> value=<?php echo $id_usuario ?>>
+							value=<?php echo $id_usuario ?>>
 						</div>
 					</div>
 

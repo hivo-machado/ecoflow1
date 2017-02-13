@@ -46,7 +46,7 @@ include_once("../validar.php");
 				<label for="id_grupo" class="col-sm-4 control-label">ID Grupo*</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="id_grupo" name="id_grupo"
-					placeholder=<?php echo $id_grupo ?> value=<?php echo $id_grupo ?>>
+					value=<?php echo $id_grupo ?>>
 				</div>
 			</div>
 
@@ -98,7 +98,7 @@ include_once("../validar.php");
 				<label for="id_grupo" class="col-sm-4 control-label">ID Grupo*</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="id_grupo" name="id_grupo"
-					placeholder=<?php echo $id_grupo ?> value=<?php echo $id_grupo ?>>
+					value=<?php echo $id_grupo ?>>
 				</div>
 			</div>
 				
@@ -233,7 +233,7 @@ include_once("../validar.php");
 							<label for="id_grupo" class="col-sm-4 control-label">ID Grupo*</label>
 							<div class="col-sm-8">
 								<input type="text" class="form-control" id="id_grupo" name="id_grupo"
-								placeholder=<?php echo $id_grupo ?> value=<?php echo $id_grupo ?>>
+								value=<?php echo $id_grupo ?>>
 							</div>
 						</div>
 

@@ -121,9 +121,6 @@
 				            <li>
 				            	<a href="../grupo/buscaGrupo.php">Buscar e Alterar grupo</a>
 				            </li>
-				            <li>
-				            	<a href="#">novo</a>
-				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
 			       <?php } ?>
@@ -138,9 +135,6 @@
 				          <ul class="dropdown-menu">
 				            <li>
 				            	<a href="../grupo/alteraGrupo.php">Alterar Grupo</a>
-				            </li>
-				            <li>
-				            	<a href="#">novo</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
