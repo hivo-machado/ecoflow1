@@ -19,6 +19,13 @@ include_once("../validar.php");
 
  ?>
 
+ <!--Criar celula da tabela como botão--> 
+<script>
+  function listaPlanta(id){
+    window.location.href = "listaPlanta.php?id_grupo="+id;
+  }
+</script>
+
  <!--Cabeçalho da pagina-->
 <div class="row">
   <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
@@ -69,11 +76,11 @@ include_once("../validar.php");
                 while($grupos = mysqli_fetch_object($result)){
             ?>
             <tr>              
-              <td><a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->id ?></a></td>
-              <td><a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->nome ?></a></td>
-              <td><a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->nome_grupo ?></a></td>
-              <td><a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->cidade ?></a></td>
-              <td><a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->estado ?></a></td>
+              <td onclick="listaPlanta(<?php echo  $grupos->id ?>);"><?php echo $grupos->id ?></td>
+              <td onclick="listaPlanta(<?php echo  $grupos->id ?>);"><?php echo $grupos->nome ?></td>
+              <td onclick="listaPlanta(<?php echo  $grupos->id ?>);"><?php echo $grupos->nome_grupo ?></td>
+              <td onclick="listaPlanta(<?php echo  $grupos->id ?>);"><?php echo $grupos->cidade ?></td>
+              <td onclick="listaPlanta(<?php echo  $grupos->id ?>);"><?php echo $grupos->estado ?></td>
               <td>
                 <a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
                   <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir

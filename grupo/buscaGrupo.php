@@ -19,6 +19,13 @@ include_once("../validar.php");
 
  ?>
 
+<!--Criar celula da tabela como botão--> 
+<script>
+  function alteraGrupo(id){
+    window.location.href = "alteraGrupo.php?id_grupo="+id;
+  }
+</script>
+
  <!--Cabeçalho da pagina-->
 <div class="row">
   <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
@@ -74,16 +81,16 @@ include_once("../validar.php");
               while($grupos = mysqli_fetch_object($result)){
           ?>
           <tr>              
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->id ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->nome ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->nome_grupo ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->rua ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->numero ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->bairro ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->cidade ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->estado ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->cep ?></a></td>
-            <td><a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->telefone ?></a></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->id ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->nome ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->nome_grupo ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->rua ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->numero ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->bairro ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->cidade ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->estado ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->cep ?></td>
+            <td onclick="alteraGrupo(<?php echo $grupos->id ?>)"><?php echo $grupos->telefone ?></td>
             <td>
               <a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

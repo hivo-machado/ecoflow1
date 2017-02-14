@@ -124,15 +124,6 @@ a.email-rodape:hover, a.email-rodape:active{
 	margin-bottom: 10px;
 }
 
-a.link-td:link, a.link-td:visited{
-	color: #000;
-	text-decoration: none;
-}
-
-a.link-td:hover, a.link-td:active{
-	color: rgb(0, 154, 185);
-}
-
 /*--------------------------------Grafico--------------------------------*/
 
 .marge-grafico{

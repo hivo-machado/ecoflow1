@@ -19,6 +19,13 @@ include_once("../validar.php");
 
  ?>
 
+<!--Criar celula da tabela como botão--> 
+<script>
+  function alteraUsuario(id){
+    window.location.href = "alteraUsuario.php?id_usuario="+id;
+  }
+</script>
+
  <!--Cabeçalho da pagina-->
 <div class="row">
   <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
@@ -73,14 +80,14 @@ include_once("../validar.php");
                 while($usuarios = mysqli_fetch_object($result)){
             ?>
             <tr>              
-              <td><a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="link-td"><?php echo $usuarios->id ?></a></td>
-              <td><a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="link-td"><?php echo $usuarios->id_unidade ?></a></td>
-              <td><a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="link-td"><?php echo $usuarios->nome ?></a></td>
-              <td><a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="link-td"><?php echo $usuarios->login ?></a></td>
-              <td><a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="link-td"><?php echo $usuarios->planta ?></a></td>
-              <td><a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="link-td"><?php echo $usuarios->grupo ?></a></td>
-              <td><a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="link-td"><?php echo $usuarios->tipo ?></a></td>
-              <td><a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="link-td"><?php echo $usuarios->status ?></a></td>
+              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->id ?></td>
+              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->id_unidade ?></td>
+              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->nome ?></td>
+              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->login ?></td>
+              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->planta ?></td>
+              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->grupo ?></td>
+              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->tipo ?></td>
+              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->status ?></td>
               <td>
                 <a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="btn btn-primary btn-xs">
                   <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

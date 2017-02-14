@@ -22,7 +22,14 @@ include_once("../validar.php");
 	$grupo = mysqli_fetch_object($result);
 
 	$result = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id_grupo'");
- ?>
+?>
+
+<!--Criar celula da tabela como botão--> 
+<script>
+  function plantaMes(id){
+    window.location.href = "plantaMes.php?id_planta="+id;
+  }
+</script>
 
  <!--Cabeçalho da pagina-->
 <div class="row">
@@ -48,8 +55,8 @@ include_once("../validar.php");
 
             <?php while($planta = mysqli_fetch_object($result)){ ?>
             <tr>              
-              <td><a href="plantaMes.php?id_planta=<?php echo $planta->idecoflow ?>" class="link-td"><?php echo $planta->idecoflow ?></a></td>
-              <td><a href="plantaMes.php?id_planta=<?php echo $planta->idecoflow ?>" class="link-td"><?php echo $planta->nome ?></a></td>
+              <td onclick="plantaMes(<?php echo $planta->idecoflow ?>)"><?php echo $planta->idecoflow ?></td>
+              <td onclick="plantaMes(<?php echo $planta->idecoflow ?>)"><?php echo $planta->nome ?></td>
               <td>
                 <a href="plantaMes.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
                   <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir
