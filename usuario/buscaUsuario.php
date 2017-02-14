@@ -3,11 +3,14 @@ include_once("../header.php");
 include_once("../validar.php");
 ?>
 
+<!--Link para funções-->
+<script type="text/javascript" src="../js/funcoes.js"></script>
+
 <?php 
-	//função para verificar se esta logado
-	valida();
-	//função para verificar se esta logado como administrador
-	validaAdmin();
+  //função para verificar se esta logado
+  valida();
+  //função para verificar se esta logado como administrador
+  validaAdmin();
  ?>
 
 <?php 
@@ -18,13 +21,6 @@ include_once("../validar.php");
   }
 
  ?>
-
-<!--Criar celula da tabela como botão--> 
-<script>
-  function alteraUsuario(id){
-    window.location.href = "alteraUsuario.php?id_usuario="+id;
-  }
-</script>
 
  <!--Cabeçalho da pagina-->
 <div class="row">
@@ -80,14 +76,14 @@ include_once("../validar.php");
                 while($usuarios = mysqli_fetch_object($result)){
             ?>
             <tr>              
-              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->id ?></td>
-              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->id_unidade ?></td>
-              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->nome ?></td>
-              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->login ?></td>
-              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->planta ?></td>
-              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->grupo ?></td>
-              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->tipo ?></td>
-              <td onclick="alteraUsuario(<?php echo  $usuarios->id ?>);"><?php echo $usuarios->status ?></td>
+              <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->id ?></td>
+              <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->id_unidade ?></td>
+              <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->nome ?></td>
+              <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->login ?></td>
+              <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->planta ?></td>
+              <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->grupo ?></td>
+              <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->tipo ?></td>
+              <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->status ?></td>
               <td>
                 <a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="btn btn-primary btn-xs">
                   <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

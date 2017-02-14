@@ -3,6 +3,9 @@ include_once("../header.php");
 include_once("../validar.php");
 ?>
 
+<!--Link para funções-->
+<script type="text/javascript" src="../js/funcoes.js"></script>
+
 <?php 
 	//função para verificar se esta logado
 	valida();
@@ -23,13 +26,6 @@ include_once("../validar.php");
 
 	$result = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id_grupo'");
 ?>
-
-<!--Criar celula da tabela como botão--> 
-<script>
-  function plantaMes(id){
-    window.location.href = "plantaMes.php?id_planta="+id;
-  }
-</script>
 
  <!--Cabeçalho da pagina-->
 <div class="row">
@@ -55,8 +51,8 @@ include_once("../validar.php");
 
             <?php while($planta = mysqli_fetch_object($result)){ ?>
             <tr>              
-              <td onclick="plantaMes(<?php echo $planta->idecoflow ?>)"><?php echo $planta->idecoflow ?></td>
-              <td onclick="plantaMes(<?php echo $planta->idecoflow ?>)"><?php echo $planta->nome ?></td>
+              <td onclick="botao('<?php echo "plantaMes.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->idecoflow ?></td>
+              <td onclick="botao('<?php echo "plantaMes.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->nome ?></td>
               <td>
                 <a href="plantaMes.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
                   <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir
