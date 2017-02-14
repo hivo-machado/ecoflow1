@@ -40,7 +40,7 @@
 <div id="tudo">
 
 	<!-- Tag para navbar -->
-	<nav class="navbar navbar-inverse navbar-fixed-top navbar-transparente">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-transparente">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">

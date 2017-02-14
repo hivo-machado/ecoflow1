@@ -50,9 +50,8 @@ include_once("../validar.php");
 
   <!--Tabela de Resultado da pesquisa-->
   <div class="row marge-tabela">
-    <div class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-      <div class="panel panel-primary">
-        <div class="panel-heading tabela-titulo"><strong>Resultado da busca</strong></div>
+    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+
         <!-- Tabela -->
         <div class="table-responsive">
           <table class="table table-bordered table-striped tabela table-hover table-condensed">
@@ -62,7 +61,7 @@ include_once("../validar.php");
               <th class="tabela-nome-coluna">Nome Grupo</th>
               <th class="tabela-nome-coluna">Cidade</th>
               <th class="tabela-nome-coluna">UF</th>
-              <th class="tabela-nome-coluna"></th>
+              <th class="tabela-nome-coluna">Ação</th>
             </tr>
 
             <?php
@@ -77,8 +76,7 @@ include_once("../validar.php");
               <td><a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="link-td"><?php echo $grupos->estado ?></a></td>
               <td>
                 <a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
-                  <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                  Entrar
+                  <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir
                 </a>
               </td>            
             </tr>
@@ -88,7 +86,7 @@ include_once("../validar.php");
             ?>
           </table>
         </div>
-      </div>
+
     </div>
   </div>
 

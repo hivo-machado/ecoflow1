@@ -41,8 +41,8 @@ footer{
 	width: 100%;
 	bottom: 0px;
 	padding: 10px 0px 10px 0px;
-	color: #eee;
-	background-color: #222;
+	color: white;
+	background-color: #2a6496;
 }
 
 
@@ -54,10 +54,10 @@ footer{
 }
 
 /*--------------------------------Navbar--------------------------------*/
-nav.navbar-transparente{
-	background: rgba(0, 0, 0, 0.7);
+/*nav.navbar-transparente{
+	background: rgba(245, 245, 245, 0.7);
 	border: none;
-}
+}*/
 
 .navbar-brand{
 	padding: 10px;
@@ -69,6 +69,7 @@ nav.navbar-transparente{
 }
 
 /* Link da navbar*/
+/*
 .navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand{
 	color: white;
 }
@@ -79,7 +80,7 @@ nav.navbar-transparente{
 
 @media(max-width: 768px){
 	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a{
-		color: white;
+		color: black;
 	}
 }
 
@@ -93,7 +94,7 @@ nav.navbar-transparente{
 	background: white;
 	margin: 16px 10px;
 }
-
+*/
 /*--------------------------------Rodapé--------------------------------*/
 a.email-rodape:link, a.email-rodape:visited{
 	color: #fff;
@@ -101,7 +102,7 @@ a.email-rodape:link, a.email-rodape:visited{
 }
 
 a.email-rodape:hover, a.email-rodape:active{
-	color: rgb(0, 154, 185);
+	color: #000;
 	text-decoration: underline;
 }
 

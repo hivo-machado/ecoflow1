@@ -35,9 +35,8 @@ include_once("../validar.php");
 
   <!--Tabela plantas-->
   <div class="row marge-tabela">
-    <div class="col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-      <div class="panel panel-primary">
-        <div class="panel-heading tabela-titulo"><strong>Tabela de torres</strong></div>
+    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+    
         <!-- Tabela -->
         <div class="table-responsive">
           <table class="table table-bordered table-striped tabela table-hover table-condensed">
@@ -53,15 +52,14 @@ include_once("../validar.php");
               <td><a href="plantaMes.php?id_planta=<?php echo $planta->idecoflow ?>" class="link-td"><?php echo $planta->nome ?></a></td>
               <td>
                 <a href="plantaMes.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
-                  <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
-                  Entrar
+                  <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir
                 </a>
               </td>            
             </tr>
             <?php } ?>
           </table>
         </div>
-      </div>
+
     </div>
   </div>
 

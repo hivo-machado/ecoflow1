@@ -52,8 +52,7 @@ include_once("../validar.php");
   <!--Tabela de resultado da busca-->
   <div class="row marge-tabela">
     <div class="col-sm-12 col-xs-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading tabela-titulo"><strong>Resultado da busca</strong></div>
+
         <!-- Tabela -->
         <div class="table-responsive">
           <table class="table table-bordered table-striped tabela table-hover table-condensed">
@@ -66,7 +65,7 @@ include_once("../validar.php");
               <th class="tabela-nome-coluna">Grupo</th>
               <th class="tabela-nome-coluna">Perfil</th>
               <th class="tabela-nome-coluna">Status</th>
-              <th class="tabela-nome-coluna"></th>
+              <th class="tabela-nome-coluna">Ação</th>
             </tr>
 
             <?php
@@ -95,7 +94,7 @@ include_once("../validar.php");
             ?>
           </table>
         </div>
-      </div>
+
     </div>
   </div>
 
