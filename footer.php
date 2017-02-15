@@ -12,12 +12,13 @@
 						</address>	
 					</div>
 
-				<div class="row hidden-print">
-					<div class="col-sm-12 col-xs-12 text-center">
-						<strong>ECOflow</strong> - Todos os direitos reservados.<br>
+					<div class="row hidden-print">
+						<div class="col-sm-12 col-xs-12 text-center">
+							<strong>ECOflow</strong> - Todos os direitos reservados.<br>
+						</div>
 					</div>
 				</div>
-				
+
 				<!--Rodapé para impressão-->
 				<div class="row visible-print-block">
 					<div class="col-sm-12">

@@ -64,11 +64,11 @@ include_once('../conexao.php');
 	<div class="col-sm-7 col-xs-7">
 		<?php  if($tipo == 'usuario'){ ?>
 			<a href="../relatorio/graficoMes.php">
-				<img src=<?php echo '../img/grupo/'.$imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
-			</a>
 		<?php }else{ ?>
-			<img src=<?php echo '../img/grupo/'.$imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
+			<a href="../relatorio/listaPlanta.php">
 		<?php } ?>
+			<img src=<?php echo '../img/grupo/'.$imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
+		</a>
 	</div>
 
 	<!--Coluna de endereço do grupo-->
