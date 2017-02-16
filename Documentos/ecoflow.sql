@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 13-Fev-2017 às 12:55
+-- Generation Time: 16-Fev-2017 às 13:45
 -- Versão do servidor: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -128,16 +128,9 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1074;
 --
 -- Constraints for dumped tables
 --
-
---
--- Limitadores para a tabela `planta`
---
-ALTER TABLE `planta`
-  ADD CONSTRAINT `grupo_fk` FOREIGN KEY (`id_grupo_fk`) REFERENCES `grupo` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
