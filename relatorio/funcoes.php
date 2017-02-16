@@ -18,7 +18,7 @@
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
 		//Seleciona as leituras com tempo menor que 02:00:00 de cada dia no invtervalo
-		$result = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$id' AND servico = '0' AND hora < '01:59:59' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo");
+		$result = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$id' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' GROUP BY tempo ORDER BY tempo ASC");
 		
 		//Percorre todos os resultado do SELECT
 		while( $unidade = mysqli_fetch_object($result) ){

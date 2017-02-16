@@ -31,7 +31,7 @@
 
 		while ( $planta = mysqli_fetch_object($plantas) ) {
 
-			$result = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = '$planta->idecoflow' AND tempo = '$dataAnt' GROUP BY idecoflow");
+			$result = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = '$planta->idecoflow' AND tempo = '$dataAnt' GROUP BY idecoflow LIMIT 1");
 			
 			if( mysqli_fetch_object($result) ) {
 				$str = $str.'Torre: [ON] - '.$planta->nome.'<br>';
