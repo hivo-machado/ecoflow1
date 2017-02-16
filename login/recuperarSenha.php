@@ -27,6 +27,7 @@
 			";
 			$menssagem = wordwrap($menssagem, 70);
 			$headers = "Content-type: text/html; charset=utf-8\r\n";
+			$headers .= "From: Ecoflow <no_replay@ecoflow.gratis>\r\n";
 			mail($email, $assunto, $menssagem, $headers);
 		}
 		

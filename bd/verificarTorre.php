@@ -42,20 +42,23 @@
 
 		}
 		
-		//envia e-email
-		$assunto = "Torres Offline";
-		$menssagem = "
-		O sistema verificou torres offline.<br>
-		Data: $dataAnt<br>
-		<br> 
-		$str
-		<br>
-		Entre em nosso site <a href='ecoflow-gratis.umbler.net'>Ecoflow</a>
-		<br>
-		";
-		$menssagem = wordwrap($menssagem, 70);
-		$headers = "Content-type: text/html; charset=utf-8\r\n";
-		mail($email, $assunto, $menssagem, $headers);
+		if($flag){
+			//envia e-email
+			$assunto = "Torres Offline";
+			$menssagem = "
+			O sistema verificou torres offline.<br>
+			Data: $dataAnt<br>
+			<br> 
+			$str
+			<br>
+			Entre em nosso site <a href='ecoflow-gratis.umbler.net'>Ecoflow</a>
+			<br>
+			";
+			$menssagem = wordwrap($menssagem, 70);
+			$headers = "Content-type: text/html; charset=utf-8\r\n";
+			$headers .= "From: Ecoflow <no_replay@ecoflow.gratis>\r\n";
+			mail($email, $assunto, $menssagem, $headers);
+		}
 
 		echo $menssagem;
 		
