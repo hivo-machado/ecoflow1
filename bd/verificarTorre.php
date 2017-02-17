@@ -8,8 +8,10 @@
 	$email = 'v1n1c1u5_1@hotmail.com';
 	//$email = 'v1n1c1u5_1@hotmail.com, v1n3k0@outlook.com';
 
-	//Data atual
+	//Fuso horario
   	date_default_timezone_set('America/Sao_Paulo');
+	
+	//Data atual
   	$tempoAtual = strtotime( date('Y-m-d') );
 	
 	//Data do dia anterior
@@ -23,14 +25,16 @@
 		//flag para enviar ou não enviar e-mail
 		$flag = false;
 		$flagUnidade = false;
+
+		//String com idetinficação das torres e unidades
 		$str = null;
 		$strUni = null;
 
 		$str .= '<strong>Grupo: '.$grupo->nome.'</strong><br>';
 		
-		//Percorre todas as plantas
 		$plantas = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$grupo->id'");
 
+		//Percorre todas as plantas
 		while ( $planta = mysqli_fetch_object($plantas) ) {
 
 			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = '$planta->idecoflow' AND tempo = '$dataAnt' GROUP BY idecoflow");
@@ -60,7 +64,7 @@
 					}
 
 					if($flagUsuario){
-						$strUni .= $grupo->nome.' - '.$planta->nome.' - '.$usuario->id_unidade.', '.$usuario->nome.'<br>';
+						$strUni .= '<strong>Grupo:'.$grupo->nome.'<br> Planta: '.$planta->nome.'<br> Unidade: '.$usuario->id_unidade.' - '.$usuario->nome.'</strong><br><br>';
 						$flagUnidade = true;
 					}
 				}
@@ -73,7 +77,7 @@
 
 		}//Fecha while planta
 		
-		//Envia e-mail se pelo menos uma torre esteja offline
+		//Envia e-mail se pelo menos uma torre estiver offline
 		if($flag){
 			//envia e-email
 			$assunto = "Torres Offline";
@@ -94,7 +98,7 @@
 			echo $menssagem;
 		}
 
-		//Enviar e-mail se pelo menos uma unidade esteja offline 
+		//Enviar e-mail se pelo menos uma unidade estiver offline 
 		if($flagUnidade){
 			//envia e-email
 			$assunto = "Unidades Offline";
@@ -103,7 +107,6 @@
 			Data: $dataAnt<br>
 			<br> 
 			$strUni
-			<br>
 			Entre em nosso site <a href='ecoflow-gratis.umbler.net'>Ecoflow</a>
 			<br>
 			";
