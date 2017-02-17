@@ -1,7 +1,7 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-  include_once("funcoes.php"); //php com funções
+  include_once("funcaoAno.php"); //php com funções
 ?>
 
 <?php 
@@ -24,10 +24,10 @@
   }
 
   //Vetor consumo do ano
-  $consumos = consumoAno($con, $id_unidade, $ano);
+  $consumos = consumo($con, $id_unidade, $ano);
 
   //Total consumo do ano
-  $total = consumoTotalAno($consumos);
+  $total = consumoTotal($consumos);
 
   //vetor nome dos meses
   $meses = array(
@@ -79,7 +79,7 @@
             pointRadius: 1,
             pointHitRadius: 10,
             pointStyle: "circle",
-            data: <?php echo consumoAnoGrafico($con, $consumos, $ano); ?>,
+            data: <?php echo consumoGrafico($con, $consumos, $ano); ?>,
             spanGaps: false,
           }
       ]

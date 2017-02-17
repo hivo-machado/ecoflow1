@@ -37,7 +37,7 @@
 		//Percorre todas as plantas
 		while ( $planta = mysqli_fetch_object($plantas) ) {
 
-			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = '$planta->idecoflow' AND tempo = '$dataAnt' GROUP BY idecoflow");
+			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE servico = '0' AND  id_planta_fk = '$planta->idecoflow' AND tempo = '$dataAnt' GROUP BY idecoflow");
 			
 			//Verifica se houve alguma leitura no dia
 			if( mysqli_num_rows($unidades) ) {

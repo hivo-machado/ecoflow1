@@ -1,7 +1,7 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-  include_once("funcoes.php"); // php com funções
+  include_once("funcaoMes.php"); // php com funções
 ?>
 
 <?php 
@@ -46,9 +46,9 @@
   //Numero de dias do mes
   $numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
   //Consumo de dias
-  $consumos = consumoMes($con, $id_unidade, $ano, $mes, $dia);
+  $consumos = consumo($con, $id_unidade, $ano, $mes, $dia);
   //Consumo Total do mes
-  $total = consumoTotalMes($consumos, $ano, $mes);
+  $total = consumoTotal($consumos, $ano, $mes);
 
 ?>
 
@@ -85,7 +85,7 @@
             pointRadius: 1,
             pointHitRadius: 10,
             pointStyle: "circle",
-            data: <?php echo consumoMesGrafico($consumos, $ano, $mes ); ?>,
+            data: <?php echo consumoGrafico($consumos, $ano, $mes ); ?>,
             spanGaps: false,
         }
       ]
