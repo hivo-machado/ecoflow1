@@ -14,8 +14,9 @@
   $id_unidade = $_SESSION['id_unidade'];
   $nome = $_SESSION['nome'];
 
-  //Ano atual
-  date_default_timezone_set('UTC');
+  //Iniciar time zone
+  date_default_timezone_set('America/Sao_Paulo');
+
   if(isset($_POST['ano'])){
     $ano = $_POST['ano'];
   }else{

@@ -2,10 +2,14 @@
 
 	//Retorna string com consumo diario de um mês
 	function consumoMes($con, $id, $ano, $mes, $dia = 1){
+		//Iniciar time zone
+		date_default_timezone_set('America/Sao_Paulo');
+		//iniciar variavel
 		$numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano); //Numero de dias do mes
 		$unidadeAnt  = null; //Unidade anterior
 		$cont = 1; //contador de dias
 		$listaConsumo = null; //inicializando variavel
+		
 
 		//Data do Inicio do intervalo
 		$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
@@ -145,7 +149,9 @@
 
 	//Função para cosumo por mes
 	function consumoAno($con, $id, $ano){
-
+		//Iniciar time zone
+		date_default_timezone_set('America/Sao_Paulo');
+		
 		//Data do primeiro dia do mes
 		$data = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-01-01')));
 		$date = date_create($data);
@@ -267,15 +273,5 @@
 		}
     	return $total;
 	}
-
-	//Chamada de funções para teste
-
-	//include_once('../conexao.php');
-	//print_r( consumoAno($con, 2222, 2017) );
-	//echo consumoAnoGrafico($con, 2222, 2017);
-	//echo consumoTotalAno($con, 2222, 2016);
-	//print_r(consumoMes($con, 2222, 2017, 01, 01) );
-	//echo qtdDias(consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
-	//echo consumoMesGrafico( consumoMes($con, 2222, 2016, 12, 05), 2016, 12);
 
  ?>

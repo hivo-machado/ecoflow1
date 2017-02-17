@@ -30,8 +30,9 @@
     'Dezembro'
   );
 
-  //Mes e ano atual
-  date_default_timezone_set('UTC');
+  //Iniciar time zone
+  date_default_timezone_set('America/Sao_Paulo');
+
   if(isset($_POST['mes'])){
     $mes = $_POST['mes'];
     $dia = $_POST['dia'];
