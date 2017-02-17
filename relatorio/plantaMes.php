@@ -43,6 +43,10 @@
 		if(!isset($planta)){
 			echo '<meta http-equiv="refresh" content="0;URL=listaPlanta.php?error=Acesso indevido." />';
 		}
+	}else{
+		//Seleciona planta
+		$result = mysqli_query($con, "SELECT * FROM planta WHERE idecoflow = '$id_planta'");
+		$planta = mysqli_fetch_object($result);
 	}
 	
 	//Iniciar time zone
