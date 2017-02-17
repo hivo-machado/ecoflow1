@@ -134,9 +134,7 @@
   <!--Consumo Total do Ano-->
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-      <?php
-        echo '<h2><strong>Consumo Total do Ano: </strong>'.$total.'</h2>';  
-      ?>
+      <h3>Consumo Total do Ano: <?php echo $total ?></h3>
     </div>
   </div>
 

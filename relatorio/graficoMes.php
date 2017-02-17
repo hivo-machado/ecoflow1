@@ -163,9 +163,7 @@
   <!--Consumo Total do mês-->
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-      <?php 
-        echo '<h2> <strong>Consumo total do mês: </strong>'.$total.'</h2>';  
-      ?>
+      <h3> Consumo total do mês: <?php echo $total ?> </h3>
     </div>
   </div>
   

@@ -87,14 +87,14 @@ footer{
 .navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover{
 		color: #5bc0de;
 }
-
+*/
 .divisor{
 	width: 1px;
 	height: 16px;
-	background: white;
+	background: black;
 	margin: 16px 10px;
 }
-*/
+
 /*--------------------------------Rodapé--------------------------------*/
 a.email-rodape:link, a.email-rodape:visited{
 	color: #fff;

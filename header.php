@@ -76,20 +76,12 @@
 
 					<?php if($_SESSION['tipo'] == 'usuario'){ ?>
 						<!--Opção relatorio-->
-						<li class="dropdown">
-				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-				          	Relatório
-				          	<span class="caret"></span>
-				          </a>
-				          <ul class="dropdown-menu">
-				            <li>
-				            	<a href="../relatorio/graficoMes.php">Mês</a>
-				            </li>
-				            <li>
-				            	<a href="../relatorio/graficoAno.php">Ano</a>
-				            </li>
-				          </ul>
-				        </li><!--Fecha li relatorio-->
+				        <li>
+				           	<a href="../relatorio/graficoMes.php">Mês</a>
+				        </li>
+				        <li>
+				            <a href="../relatorio/graficoAno.php">Ano</a>
+				        </li>
 			       <?php } ?>
 
 			        <?php if($_SESSION['tipo'] == 'admin'){ ?>
