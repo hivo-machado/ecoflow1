@@ -19,7 +19,7 @@
 		$dateFim->add(new DateInterval("P1M")); // Soma um mes
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
-		$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = '$id' AND servico = '0' AND tempo = '$tempoInicio' GROUP BY idecoflow ORDER BY hora");
+		$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = $id AND servico = '0' AND tempo >= '$tempoInicio' GROUP BY idecoflow ORDER BY tempo ASC");
 
 		//Percorre todas as unidade da planta
 		while ( $unidade = mysqli_fetch_object($unidades) ) {
@@ -42,10 +42,11 @@
 	function consumoTotal($consumo){
 		$total = 0; //String para retonar dias e consumo
 
-		//loop para preenchimento da string de retorno da função
+		//loop para soma total
 		for($i = 0; $i < count($consumo[0]); $i++){
 			$total = $total + $consumo[1][$i];
 		}
+		
 		return $total;
 	}
 
