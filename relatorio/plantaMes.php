@@ -163,10 +163,52 @@
   </div>
 
   <!--Botão imprimir-->
-  <div class="row hidden-print hidden-xs">
-    <div class="col-sm-2 col-sm-offset-8">
+  <div class="row hidden-print">
+    <div class="col-sm-2 col-sm-offset-6 hidden-xs">
       <form>
         <button type="button" class="btn btn-primary" name="imprimir" value="Imprimir" onclick="window.print();"><span class="glyphicon glyphicon-print" arian-hidden="true"></span> Imprimir</button>
+      </form>
+    </div>
+    <div class="col-sm-2">
+    	<form  method="POST" action="downloadTabela.php">
+
+    		<!--Input text oculta com id do usuario-->
+			<div class="form-group sr-only">
+				<label for="id_planta" class="col-sm-4 control-label">ID Planta*</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="id_planta" name="id_planta"
+					value=<?php echo $id_planta ?>>
+				</div>
+			</div>
+
+			<!--Input text oculta com id do usuario-->
+			<div class="form-group sr-only">
+				<label for="dia_D" class="col-sm-4 control-label">Dia*</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="dia_D" name="dia"
+					value=<?php echo $dia ?>>
+				</div>
+			</div>
+
+			<!--Input text oculta com id do usuario-->
+			<div class="form-group sr-only">
+				<label for="mes_D" class="col-sm-4 control-label">Mês*</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="mes_D" name="mes"
+					value=<?php echo $mes ?>>
+				</div>
+			</div>
+
+			<!--Input text oculta com id do usuario-->
+			<div class="form-group sr-only">
+				<label for="ano_D" class="col-sm-4 control-label">Ano*</label>
+				<div class="col-sm-8">
+					<input type="text" class="form-control" id="ano_D" name="ano"
+					value=<?php echo $ano ?>>
+				</div>
+			</div>
+
+	  		<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt" arian-hidden="true"></span> Download</button>
       </form>
     </div>
   </div>

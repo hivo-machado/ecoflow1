@@ -20,9 +20,16 @@
 	<link rel="icon" href="../img/ECOFlow.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="../img/ECOFlow.ico" type="image/x-icon" />
 
-	<!-- Links para Bootsrap -->
+	<!-- CSS para Bootsrap -->
 	<link rel="stylesheet"  href="../css/bootstrap.min.css">
 	<link rel="stylesheet"  href="../css/bootstrap-theme.min.css">
+	
+	<!-- JQuery para bootsrap -->
+	<script src="../js/jquery-3.1.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+
+	<!--Links para grafico Chart-->
+	<script src="../js/Chart.min.js"></script>
 
 	<!--CSS do site-->
 	<link rel="stylesheet"  href="../css/estilo.css">

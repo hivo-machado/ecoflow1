@@ -15,6 +15,20 @@ include_once("../validar.php");
 	$result = mysqli_query($con, "SELECT * FROM grupo");
  ?>
 
+ <script>
+ 	//JQuery para mostrar campo somente valido para perfil sindico
+ 	$(document).ready( function(){
+ 		$('#tipo').change( function(){
+ 			var perfil = $('#tipo').val();
+ 			if(perfil == "sind"){
+ 				$("#grupos").fadeIn();
+ 			}else{
+ 				$("#grupos").fadeOut();
+ 			}
+ 		});
+ 	});
+ </script>
+
 <!--Cabeçalho da pagina-->
 <div class="row">
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
@@ -74,7 +88,18 @@ include_once("../validar.php");
 			</div>
 
 			<div class="form-group">
-				<label for="grupo" class="col-sm-4 control-label">Grupo</label>
+				<label for="tipo" class="col-sm-4 control-label">Perfil*</label>
+				<div class="col-sm-4">
+					<select name="tipo" id="tipo" class="form-control" required>
+						<option value="">Selecione</option>
+						<option value="admin">Administrador</option>
+						<option value="sind">Síndico</option>
+					 </select>
+				</div>
+			</div>
+
+			<div class="form-group" id="grupos" style="display: none">
+				<label for="grupo" class="col-sm-4 control-label">Grupo*</label>
 				<div class="col-sm-4" >
 					<select name="grupo" id="grupo" class="form-control">
 						<option value="">Selecione</option>
@@ -83,18 +108,6 @@ include_once("../validar.php");
 								echo '<option value="'.$grupos->id.'">'.$grupos->nome.'</option>';
 							}
 						 ?>
-					 </select>
-					 <span id="helpBlock" class="help-block">Não necessario para perfil Administrador.</span>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label for="tipo" class="col-sm-4 control-label">Perfil*</label>
-				<div class="col-sm-4">
-					<select name="tipo" id="tipo" class="form-control" required>
-						<option value="">Selecione</option>
-						<option value="admin">Administrador</option>
-						<option value="sind">Síndico</option>
 					 </select>
 				</div>
 			</div>

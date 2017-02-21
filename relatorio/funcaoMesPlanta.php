@@ -39,17 +39,16 @@
 	}
 
 	// Função para consumo total do mês
-	function consumoTotal($consumo){
-		$total = 0; //String para retonar dias e consumo
+	function consumoTotal($consumos){
+		$total = 0; //String para retonar dias e consumos
 
 		//loop para soma total
-		for($i = 0; $i < count($consumo[0]); $i++){
-			$total = $total + $consumo[1][$i];
+		for($i = 0; $i < count($consumos[0]); $i++){
+			$total = $total + $consumos[1][$i];
 		}
-		
+
 		return $total;
 	}
-
 
 	//include('../conexao.php');
 	//var_dump( consumo($con, 9, 2017, 01, 2) );
