@@ -81,6 +81,7 @@
 					<!--desenha divisor entre brand e menu-->
 					<li class="hidden-xs divisor" role="separator"></li>
 
+					<!--Menu Usuario-->
 					<?php if($_SESSION['tipo'] == 'usuario'){ ?>
 						<!--Opção relatorio-->
 				        <li>
@@ -89,8 +90,9 @@
 				        <li>
 				            <a href="../relatorio/graficoAno.php">Ano</a>
 				        </li>
-			       <?php } ?>
+			       	<?php } ?>
 
+			       	<!--Menu ADM-->
 			        <?php if($_SESSION['tipo'] == 'admin'){ ?>
 
 						<!--Opção Usuarios-->
@@ -130,7 +132,7 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="../relatorio/buscaGrupo.php">Mês</a>
+				            	<a href="../relatorio/buscaGrupo.php">Consumo</a>
 				            </li>
 				            <li>
 				            	<a href="#">Novo</a>
@@ -140,6 +142,7 @@
 
 			       <?php } ?>
 
+			       <!--Menu Sindico-->
 			       <?php if($_SESSION['tipo'] == 'sind'){ ?>
 
 						<!--Opção Grupos-->
@@ -163,7 +166,7 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="../relatorio/listaPlanta.php">Mês</a>
+				            	<a href="../relatorio/listaPlanta.php">Consumo</a>
 				            </li>
 				            <li>
 				            	<a href="#">Novo</a>

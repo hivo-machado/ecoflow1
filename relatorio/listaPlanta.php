@@ -51,10 +51,10 @@ include_once("../validar.php");
 
             <?php while($planta = mysqli_fetch_object($result)){ ?>
             <tr>              
-              <td onclick="botao('<?php echo "plantaMes.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->idecoflow ?></td>
-              <td onclick="botao('<?php echo "plantaMes.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->nome ?></td>
+              <td onclick="botao('<?php echo "plantaConsumo.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->idecoflow ?></td>
+              <td onclick="botao('<?php echo "plantaConsumo.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->nome ?></td>
               <td>
-                <a href="plantaMes.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
+                <a href="plantaConsumo.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
                   <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir
                 </a>
               </td>            

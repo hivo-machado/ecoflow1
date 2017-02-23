@@ -4,24 +4,27 @@
 
 	 //Variavel POST
 	$id = $_POST['id_planta'];
-	$ano = $_POST['ano'];
-	$mes = $_POST['mes'];
-	$dia = $_POST['dia'];
+	$anoInicio = $_POST['anoInicio'];
+	$mesInicio = $_POST['mesInicio'];
+	$diaInicio = $_POST['diaInicio'];
+	$anoFim = $_POST['anoFim'];
+	$mesFim = $_POST['mesFim'];
+	$diaFim = $_POST['diaFim'];
 
 
 	//Consulta o Banco de dados e retorna vetor com nome da unidade e consumo
-	$consumos = consumo($con, $id, $ano, $mes, $dia);
+	$consumos = consumo($con, $id, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
 
 	//Total de consumo da consulta
 	$total = consumoTotal($consumos);
 
 	// Nome do Arquivo do Excel que será gerado
-	$arquivo = 'Planta_'.$id.'_'.$dia.'-'.$mes.'-'.$ano.'.xls';
+	$arquivo = 'Planta_'.$id.'_'.$diaInicio.'-'.$mesInicio.'-'.$anoInicio.'_'.$diaFim.'-'.$mesFim.'-'.$anoFim.'.xls';
 
 	// Criamos uma tabela HTML com o formato da planilha para excel
 	$tabela = '<table border="1">';
 	$tabela .= '<tr>';
-	$tabela .= '<td colspan="2">Tabela de Consumo '.$dia.'/'.$mes.'/'.$ano.'</tr>';
+	$tabela .= '<td colspan="2">Tabela de Consumo '.$diaInicio.'/'.$mesInicio.'/'.$anoInicio.' - '.$diaFim.'/'.$mesFim.'/'.$anoFim.'</tr>';
 	$tabela .= '</tr>';
 	$tabela .= '<tr>';
 	$tabela .= '<td><b>Unidade</b></td>';

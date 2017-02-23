@@ -1,5 +1,5 @@
 <?php 
-	function consumo($con, $id, $ano, $mes, $dia = 1){
+	function consumo($con, $id, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim){
 		//Iniciar time zone
 		date_default_timezone_set('America/Sao_Paulo');
 
@@ -10,25 +10,34 @@
 		$cont = 0;
 
 		//Data do Inicio do intervalo
-		$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
+		$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$anoInicio.'-'.$mesInicio.'-'.$diaInicio)));
 		$dateInicio = date_create($dataInicio);
 		$tempoInicio =  date_format($dateInicio, 'Y-m-d');// Formato de data para BD
 
 		//Data de Fim do intervalo
-		$dateFim = $dateInicio;
-		$dateFim->add(new DateInterval("P1M")); // Soma um mes
+		$dataFim = date("Y-m-d",strtotime(str_replace('/','-',$anoFim.'-'.$mesFim.'-'.$diaFim)));
+		$dateFim = date_create($dataFim);
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
-		$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = $id AND servico = '0' AND tempo >= '$tempoInicio' GROUP BY idecoflow ORDER BY tempo ASC");
+		$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE id_planta = $id");
 
 		//Percorre todas as unidade da planta
-		while ( $unidade = mysqli_fetch_object($unidades) ) {
+		while ( $usuario = mysqli_fetch_object($usuarios) ) {
 			//Seleciona a leitura final da unidade
-			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$unidade->idecoflow' AND servico = '0' AND tempo <= '$tempoFim' ORDER BY tempo DESC, hora ASC LIMIT 1");
+			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo ASC, hora ASC LIMIT 1");
+			$unidadeInicio = mysqli_fetch_object($resInicio);
+
+			//Seleciona a leitura final da unidade
+			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo DESC, hora ASC LIMIT 1");
 			$unidadeFim = mysqli_fetch_object($resFim);
 
-			$listUniNome[$cont] = $unidade->nome;
-			$listUniConsumo[$cont] = number_format($unidadeFim->leitura - $unidade->leitura, 3, '.', '');
+
+			$listUniNome[$cont] = $usuario->nome;
+			if (isset($unidadeFim)||(isset($unidadeInicio))) {
+				$listUniConsumo[$cont] = number_format($unidadeFim->leitura - $unidadeInicio->leitura, 3, '.', '');
+			}else{
+				$listUniConsumo[$cont] = number_format(0, 3, '.', '');;
+			}
 
 			$cont++;
 
