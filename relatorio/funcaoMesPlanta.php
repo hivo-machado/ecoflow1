@@ -23,7 +23,7 @@
 
 		//Percorre todas as unidade da planta
 		while ( $usuario = mysqli_fetch_object($usuarios) ) {
-			//Seleciona a leitura final da unidade
+			//Seleciona a leitura inicial da unidade
 			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo ASC, hora ASC LIMIT 1");
 			$unidadeInicio = mysqli_fetch_object($resInicio);
 
@@ -40,8 +40,6 @@
 			}
 
 			$cont++;
-
-			//echo $unidade->idecoflow.'<br>';
 		}
 
 		return $listConsumo = array($listUniNome, $listUniConsumo);
@@ -58,7 +56,4 @@
 
 		return $total;
 	}
-
-	//include('../conexao.php');
-	//var_dump( consumo($con, 9, 2017, 01, 2) );
 ?>

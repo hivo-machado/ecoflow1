@@ -5,7 +5,7 @@
 	include_once("../conexao.php");
 
 	//E-mail
-	$email = 'v1n1c1u5_1@hotmail.com';
+	$email = 'v1n1c1u5_1@hotmail.com, americo@vector.eng.br, lucineia@vector.eng.br';
 	//$email = 'v1n1c1u5_1@hotmail.com, v1n3k0@outlook.com';
 
 	//Fuso horario
