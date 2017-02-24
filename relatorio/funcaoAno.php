@@ -95,9 +95,9 @@
 
 		//Concatena os valores de consumo para API de grafico do google
 		for($i = 1; $i < 13; $i++){
-			$str = $str.number_format($consumo[$i], 3, '.', '');
-	        if($i != 12) $str = $str.',';
-	        else $str = $str.']';
+			$str .= number_format($consumo[$i], 3, '.', '');
+	        if($i != 12) $str .= ',';
+	        else $str .= ']';
 		}
 
     	return $str;
@@ -109,7 +109,7 @@
 
 		//Somo todos os valores
 		for($i = 1; $i < 13; $i++){
-			$total = $total + $consumo[$i];
+			$total += $consumo[$i];
 		}
     	return $total;
 	}

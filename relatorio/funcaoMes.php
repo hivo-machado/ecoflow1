@@ -115,10 +115,10 @@
 
 		//loop para preenchimento da string de retorno da função
 		for ($i = 1; $i <= $numDiasMes; $i++){
-			$str = $str.number_format($consumo[0][$i], 3, '.', '');
-		    if($i != $numDiasMes ) $str = $str.',';
+			$str .= number_format($consumo[0][$i], 3, '.', '');
+		    if($i != $numDiasMes ) $str .= ',';
 		}
-		$str = $str.']';
+		$str .= ']';
 		return $str;
 	}
 
@@ -128,10 +128,10 @@
 		$str = '['; //String para retonar dias e consumo
 		
 		for($i = 1; $i <= $numDiasMes; $i++){
-			$str = $str.date('d',strtotime($consumo[1][$i]) );
-			if($i != $numDiasMes) $str = $str.',';
+			$str .= date('d',strtotime($consumo[1][$i]) );
+			if($i != $numDiasMes) $str .= ',';
 		}
-		$str = $str.']';
+		$str .= ']';
 		return $str;
 	}
 
@@ -142,7 +142,7 @@
 
 		//loop para preenchimento da string de retorno da função
 		for ($i = 1; $i <= $numDiasMes; $i++){
-			$total = $total + $consumo[0][$i];
+			$total += $consumo[0][$i];
 		}
 		return $total;
 	}
