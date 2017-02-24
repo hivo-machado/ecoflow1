@@ -41,7 +41,7 @@ include_once("../validar.php");
 
       <div class="col-sm-10 col-xs-12">
         <div class="input-group">
-          <input type="search" class="form-control" id="busca" name="busca" placeholder="Buscar por ID, Idecolfow, Nome, Login, Planta, Grupo" autofocus value = <?php if(isset($_GET['busca']) ) echo $_GET['busca'] ?> >
+          <input type="search" class="form-control" id="busca" name="busca" placeholder="Buscar por ID, Idecolfow, Nome, Login, Planta, Grupo" autofocus value = "<?php if(isset($_GET['busca']) ) echo $_GET['busca'] ?>" >
           <span class="input-group-btn">
             <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
           </span>

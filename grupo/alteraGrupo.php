@@ -219,7 +219,7 @@ include_once("../validar.php");
 
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-4">
-					<p>Ativa ou desativa usuários do grupo no sistema. (Caso usuário seja desativado ele será impedido de se logar.)</p>
+					<p>Ativa ou desativa usuários do grupo no sistema. (Usuário desativado será impedido de se logar no sistema.)</p>
 				</div>
 			</div>
 

@@ -148,7 +148,7 @@ include_once("../validar.php");
 
 		<div class="row">
 			<div class="col-sm-8 col-sm-offset-4">
-				<p>Criar usuarios automaticamente para novas unidades. (Todos os usuarios são criados com login e senha igual a idecoflow respectivos)</p>
+				<p>Criar usuarios automaticamente para novas unidades. (Todos os usuarios são criados com login e senha iguais ao seus idecoflow)</p>
 			</div>
 		</div>
 
