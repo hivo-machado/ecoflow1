@@ -28,4 +28,16 @@
 		}
 	}
 
+	//verifica-se logado
+	function logado(){
+		if(isset ($_SESSION['id']) && isset($_SESSION['login']) && isset( $_SESSION['tipo']) ){
+			if( ($_SESSION["tipo"] == 'sind')||($_SESSION["tipo"] == 'usuario') ){
+				echo '<meta http-equiv="refresh" content="0;URL=../home/home.php" />';
+			}
+			if($_SESSION["tipo"] == 'admin'){
+				echo '<meta http-equiv="refresh" content="0;URL=../home/homeAdmin.php" />';
+			}
+		}
+	}
+
  ?>

@@ -1,4 +1,8 @@
 <?php include_once("../header.php") ?>
+<?php 
+	include_once("../validar.php");
+	logado();
+?>
 
 <!-- Div para logo Ecoflow -->
 <div class="row">		
