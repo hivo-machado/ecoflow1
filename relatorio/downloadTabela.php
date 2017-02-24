@@ -35,13 +35,13 @@
 	for($i = 0; $i < count($consumos[0]); $i++){
 		$tabela .= '<tr>';
 		$tabela .= '<td>'.$consumos[0][$i].'</td>';
-		$tabela .= '<td>'.number_format($consumos[1][$i], 3, '', '').'</td>';
+		$tabela .= '<td>'.number_format($consumos[1][$i], 3, ',', '').'</td>';
 		$tabela .= '</tr>';
 	}
 
 	$tabela .= '<tr>';
 	$tabela .= '<td>Total</td>';
-	$tabela .= '<td>'.$total.'</td>';
+	$tabela .= '<td>'.number_format($total, 3, ',', '').'</td>';
 	$tabela .= '</tr>';
 	$tabela .= '</table>';
 
