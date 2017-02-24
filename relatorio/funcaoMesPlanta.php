@@ -51,7 +51,7 @@
 
 		//loop para soma total
 		for($i = 0; $i < count($consumos[0]); $i++){
-			$total = $total + $consumos[1][$i];
+			$total += $consumos[1][$i];
 		}
 
 		return $total;
