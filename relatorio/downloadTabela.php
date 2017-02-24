@@ -24,11 +24,11 @@
 	// Criamos uma tabela HTML com o formato da planilha para excel
 	$tabela = '<table border="1">';
 	$tabela .= '<tr>';
-	$tabela .= '<td colspan="2">Tabela de Consumo '.$diaInicio.'/'.$mesInicio.'/'.$anoInicio.' - '.$diaFim.'/'.$mesFim.'/'.$anoFim.'</tr>';
+	$tabela .= '<td colspan="2"><strong>Tabela de Consumo '.$diaInicio.'/'.$mesInicio.'/'.$anoInicio.' - '.$diaFim.'/'.$mesFim.'/'.$anoFim.'</strong></td>';
 	$tabela .= '</tr>';
 	$tabela .= '<tr>';
-	$tabela .= '<td><b>Unidade</b></td>';
-	$tabela .= '<td><b>Consumo</b></td>';
+	$tabela .= '<td><strong>Unidade</strong></td>';
+	$tabela .= '<td><strong>Consumo</strong></td>';
 	$tabela .= '</tr>';
 
 	//loop para soma total
@@ -40,8 +40,8 @@
 	}
 
 	$tabela .= '<tr>';
-	$tabela .= '<td>Total</td>';
-	$tabela .= '<td>'.number_format($total, 3, ',', '').'</td>';
+	$tabela .= '<td><strong>Total</strong></td>';
+	$tabela .= '<td><strong>'.number_format($total, 3, ',', '').'</strong></td>';
 	$tabela .= '</tr>';
 	$tabela .= '</table>';
 
