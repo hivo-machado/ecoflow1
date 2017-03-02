@@ -23,14 +23,20 @@
 
 <script>
 
-  $(function(){
+  $(document).ready(function(){
     $('#ano').change(function() {
-        $.ajax({
+      $.ajax({
         url:'graficoAno.php',
         type: 'POST',
         data: $('#data').serialize(),
         success: function(data){
           $('#relatorio').html(data);
+        },
+        beforeSend: function(){
+          $('#carregando').css({display:"block"});
+        },
+        complete: function(){
+          $('#carregando').css({display:"none"});
         }
       });
       return false;
@@ -44,6 +50,12 @@
       data: $('#data').serialize(),
       success: function(data){
         $('#relatorio').html(data);
+      },
+      beforeSend: function(){
+        $('#carregando').css({display:"block"});
+      },
+      complete: function(){
+        $('#carregando').css({display:"none"});
       }
     });
     return false;
@@ -82,7 +94,9 @@
   </div>
 </div>
 
-<div id="relatorio"></div>
+<div id="relatorio">
+  <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
+</div>
 
 <!--Botão imprimir-->
 <div class="row hidden-print hidden-xs">
