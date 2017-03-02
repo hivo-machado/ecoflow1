@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<meta charset="utf-8"/>
+<html>
+	<head>
+		<title>ECOflow</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="js/jquery.js"></script>
+	    <script src="js/bootstrap.js"></script>
+		<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700italic,400,300,700' rel='stylesheet' type='text/css'>
+		 <link href="css/estilos.css" rel="stylesheet">
+		 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<link rel="shortcut icon" href="images/ECOFlow.ico" type="image/x-icon"/>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=0.5,maximum-scale=4">
+	</head>
+	<body class="left-sidebar">
+
+	<!-- Header -->
+		<div id="header">
+			<div class="container">
+					
+				<!-- Logo -->
+					<div id="logo">
+						<h1><a href="index.html"><img src="images/logonovo.png"></a></h1>
+					</div>
+				
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li class="active"><a href="apresentação.html" >Apresentação</a></li>
+							<div class="nav_mobile">
+								<li><a href="lei.html">Lei 13.312</a></li>
+								<li><a href="economia.html">Economia</a></li>
+								<li><a href="equipamentos.html">Equipamentos</a></li>
+								<li><a href="exemplos.html">Leitura</a></li>
+								<li><a href="vantagens.html">Vantagens</a></li>
+							</div>
+							<li><a href="#footerchamada">Contato</a></li>
+							<li><a href="http://ecoflow-gratis.umbler.net/login/validaLogin.php">LOGIN</a></li>
+						</ul>
+					</nav>
+
+			</div>
+		</div>
+<!-- Header -->
+		
+	<!-- Banner -->
+		<div >
+			<section id="sliderhome">
+	            <div id="meuSlider" class="carousel slide" data-interval="5000" data-ride="carousel">
+	                <ol class="carousel-indicators">
+	                    <li data-target="#meuSlider" data-slide-to="0" class="active"></li>
+	                    <li data-target="#meuSlider" data-slide-to="1"></li>
+	                    <li data-target="#meuSlider" data-slide-to="2"></li>
+	                    <li data-target="#meuSlider" data-slide-to="3"></li>
+	                    <li data-target="#meuSlider" data-slide-to="4"></li>
+	                </ol>
+	                <div class="carousel-inner">
+	                    <div class="item active"><img src="images/img1.jpg" alt="Slider 1" /></div>
+	                    <div class="item"><img src="images/img2.jpg" alt ="Slide 2" /></div>
+	                    <div class="item"><img src="images/img3.jpg" alt="Slide 3" /></div>
+	                    <div class="item"><img src="images/img4.jpg" alt="Slide 4" /></div>
+	                    <div class="item"><img src="images/img5.jpg" alt="Slide 5" /></div>
+	                </div>
+	                <a class="left carousel-control" href="#meuSlider" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+	                <a class="right carousel-control" href="#meuSlider" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+	            </div>
+        	</section>
+        </div>
+	<!-- /Banner -->
+
+	<!-- Main -->
+		<div id="page" style="background-color: #008cb2">
+				
+			<!-- Main #e7f6ff -->
+			<div id="main" class="container" style="color: white;">
+
+				<div class="row">
+
+					<div class="3u">
+						<section class="sidebar">
+							<header>
+								<h2>Apresentação</h2>
+							</header>
+							<ul class="branco" >
+								<li><a href="apresentação.html" style="color:white; ">Individualização</a></li>
+								<li><a href="lei.html" style="color:white; ">Lei 13.312</a></li>
+								<li><a href="economia.html" style="color:white; ">Economia</a></li>
+								<li><a href="equipamentos.html" style="color:white; ">Equipamentos</a></li>
+								<li><a href="exemplos.html" style="color:white; ">Exemplos de Leitura</a></li>
+								<li><a href="vantagens.html" style="color:white; ">Vantagens</a></li>
+							</ul>
+						</section>
+					</div>
+				
+					<div class="9u skel-cell-important">
+						<section>
+							<header>
+								<h2 style="padding-bottom: 10px;">Economia</h2>
+								<p>Teste a economia que será feita em seu condomínio com a aquisição da ECOflow:</p>
+							</header>
+						</section>
+						<!-- Botão para disparar o efeito -->
+							<center>
+								<button class="BotaoAzul" onclick="javascript: efeito1();" >Água</button>
+								
+								<button class="BotaoLaranja" onclick="javascript: efeito2();" >Gás</button>
+							</center>
+							<!-- Div alvo do efeito -->
+							<div id="texto" style="display: none; padding-top: 30px;">
+							    	<center>	
+							    	<div class="inputs">
+							    		<h3 ><strong style="color: blue;">ÁGUA</strong></h3>
+							    		<strong >Coloque os Respectivos Valores do seu condomínio:</strong><br>
+							    		Consumo Mensal(Reais):
+										<input type="number" id="num2" onchange="cal()" min="number" value="47700" style="color: black;text-align: center;width: 64px; height: 26px;">
+										<br>
+										Porcentagem(%) de Economia:
+										<input type="number" id="num1" value="20" onchange="cal()" min="number" style="color: black;text-align: center;width: 64px; height: 26px;">
+										<br>
+									</div>
+									<div class="gastosantes">
+										<strong >Gastos Atuais</strong>
+										<br>
+										Gasto Mensal:
+										<p id="gmensal" class="numgrande" >R$47000</p>
+										Gasto Anual:
+										<p id="ganual" class="numgrande">R$572400</p><br>
+									</div>
+									<div class="gastosdepois">
+										<strong >Gastos com ECOflow</strong>
+										<br>
+										Gasto Mensal:
+										<p id="mensalg" class="numgrande">R$38160</p>
+										Gasto Anual:
+										<p id="anualg" class="numgrande">R$457920</p><br>
+									</div>
+									<div class="economia">
+										<strong>ECONOMIA</strong>
+										<br>
+										Economia Mensal:
+										<p id="emensal" class="numgrande">R$9540</p>
+										Economia Anual:
+										<p id="eanual" class="numgrande" style="padding-bottom: 10px;">R$114480</p>
+									</div>
+									</center>
+							</div>
+							<!-- Div alvo do efeito 2 -->
+							<div id="texto2" style="display: none;  padding-top: 30px;">
+							    		  	<center>	
+							    	<div class="inputs">
+							    		<h3 ><strong style="color: #eb7312;">GÁS</strong></h3>
+							    		<strong >Coloque os Respectivos Valores do seu condomínio:</strong><br>
+							    		Consumo Mensal(Reais):
+										<input type="number" id="num22" onchange="cal1()" min="number" value="28512" style="color: black;text-align: center;width: 64px; height: 26px;">
+										<br>
+										Porcentagem(%) de Economia:
+										<input type="number" id="num11" value="26" onchange="cal1()" min="number" style="color: black;text-align: center;width: 64px; height: 26px;">
+										<br>
+									</div>
+									<div class="gastosantes">
+										<strong >Gastos Atuais</strong>
+										<br>
+										Gasto Mensal:
+										<p id="gmensal1" class="numgrande" >R$28512</p>
+										Gasto Anual:
+										<p id="ganual1" class="numgrande">R$342144</p><br>
+									</div>
+									<div class="gastosdepois">
+										<strong >Gastos com ECOflow</strong>
+										<br>
+										Gasto Mensal:
+										<p id="mensalg1" class="numgrande">R$21098</p>
+										Gasto Anual:
+										<p id="anualg1" class="numgrande">R$253186</p><br>
+									</div>
+									<div class="economia">
+										<strong>ECONOMIA</strong>
+										<br>
+										Economia Mensal:
+										<p id="emensal1" class="numgrande">R$7413</p>
+										Economia Anual:
+										<p id="eanual1" class="numgrande" style="padding-bottom: 10px;">R$88957</p>
+									</div>
+									</center>
+							</div>
+							    
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	<!-- /Main -->
+		<footer style="background: white repeat; padding-top: 14px;">
+			<div  id="footerchamada" class="container" style="padding-bottom: 50px; ">
+				<div class="row">
+					<div class="3u">
+
+						<img src="images/logocontato.png">
+					</div>
+					<div class="2u">
+						<div class="mouseover">
+							<strong style="color: #008cb2;">MAPA DO SITE</strong>
+							<br><a href="index.html">Home</a>
+							<br><a href="apresentação.html">Apresentação</a>
+							<br><a href="#footerchamada" >Contato</a>
+							<br><a href="http://ecoflow-gratis.umbler.net/login/validaLogin.php" >Login</a>
+						</div>
+					</div>
+					<div class="3u">
+						<address class="text-center">
+						<strong style="color: #008cb2;" >Contato ECOFlow</strong><br>
+						contato@ecoflow.net<br>
+						
+						Tel.: (35)3622-7522
+						</address>
+					</div>
+				</div>
+			</div>
+		</footer>
+			<div class="copyright" style="background-color: #008cb2;">
+				<div class="container">
+					<!--Rodape´da pagina web-->
+					<div class="row hidden-print">
+						<div class="branco">	
+							@Copyright 2017 - Ecoflow - Todos os direitos reservados.
+						</div>
+					</div>
+				</div>
+			</div>
+	<!--script contas-->
+		<script>
+			function cal()
+				{
+					var z = parseFloat(document.getElementById("num2").value);
+					var Porcentagem = parseFloat(document.getElementById("num1").value);
+					var h = z * 12;
+					var economiamensal = z *Porcentagem/100;
+					var economiaanual = 12*economiamensal;
+					var gastomensaleco = z - economiamensal;
+					var gastoanualeco = h - economiaanual;
+				 	document.getElementById("gmensal").innerHTML ='R$' + parseInt(z);
+					document.getElementById("ganual").innerHTML ='R$' + parseInt(h);
+					document.getElementById("mensalg").innerHTML ='R$' +parseInt(gastomensaleco);
+					document.getElementById("anualg").innerHTML ='R$' + parseInt(gastoanualeco);
+					document.getElementById("emensal").innerHTML ='R$' + parseInt(economiamensal);
+					document.getElementById("eanual").innerHTML ='R$' +parseInt(economiaanual);
+				}
+			function cal1()
+				{
+					var z = parseFloat(document.getElementById("num22").value);
+					var Porcentagem = parseFloat(document.getElementById("num11").value);
+					var h = z * 12;
+					var economiamensal = z *Porcentagem/100;
+					var economiaanual = 12*economiamensal;
+					var gastomensaleco = z - economiamensal;
+					var gastoanualeco = h - economiaanual;
+				 	document.getElementById("gmensal1").innerHTML ='R$' + parseInt(z);
+					document.getElementById("ganual1").innerHTML ='R$' + parseInt(h);
+					document.getElementById("mensalg1").innerHTML ='R$' +parseInt(gastomensaleco);
+					document.getElementById("anualg1").innerHTML ='R$' + parseInt(gastoanualeco);
+					document.getElementById("emensa1").innerHTML ='R$' + parseInt(economiamensal);
+					document.getElementById("eanual1").innerHTML ='R$' +parseInt(economiaanual);
+				}
+			function efeito1(){
+       			//Armazena o ID da div em uma váriavel chamada mostrar_div
+ 				// mostrar_div pode ser mudado para um nome a sua escolha
+        		var mostrar_div = document.getElementById('texto');
+        		var x = document.getElementById('texto2');
+				
+				x.style.display = 'none';
+
+				 // condição para ele mostrar e esconder de acordo com o estado atual
+				 if(mostrar_div.style.display == 'none'){
+				        //caso o display do elemento for none ele muda para block
+				        mostrar_div.style.display = 'block';
+				        }else{
+				        //se não será none
+							 mostrar_div.style.display = 'none';
+						}
+				}	
+
+			function efeito2(){
+       			//Armazena o ID da div em uma váriavel chamada mostrar_div
+ 				// mostrar_div pode ser mudado para um nome a sua escolha
+        		var mostrar_div = document.getElementById('texto2');
+        		var y = document.getElementById('texto');
+        		
+        		y.style.display = 'none';
+
+				 // condição para ele mostrar e esconder de acordo com o estado atual
+				 if(mostrar_div.style.display == 'none'){
+				        //caso o display do elemento for none ele muda para block
+				        mostrar_div.style.display = 'block';
+				        }else{
+				        //se não será none
+							 mostrar_div.style.display = 'none';
+						}
+				}	
+		</script>
+	</body>
+</html>
