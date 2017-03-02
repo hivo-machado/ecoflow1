@@ -63,7 +63,7 @@ include_once('../conexao.php');
 	<!--Coluna da imagem do grupo-->
 	<div class="col-sm-7 col-xs-7">
 		<?php  if($tipo == 'usuario'){ ?>
-			<a href="../relatorio/graficoMes.php">
+			<a href="../relatorio/relatorioMes.php">
 		<?php }else{ ?>
 			<a href="../relatorio/listaPlanta.php">
 		<?php } ?>

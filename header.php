@@ -85,10 +85,10 @@
 					<?php if($_SESSION['tipo'] == 'usuario'){ ?>
 						<!--Opção relatorio-->
 				        <li>
-				           	<a href="../relatorio/graficoMes.php">Mês</a>
+				           	<a href="../relatorio/relatorioMes.php">Mês</a>
 				        </li>
 				        <li>
-				            <a href="../relatorio/graficoAno.php">Ano</a>
+				            <a href="../relatorio/relatorioAno.php">Ano</a>
 				        </li>
 			       	<?php } ?>
 

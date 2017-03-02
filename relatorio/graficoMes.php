@@ -1,18 +1,18 @@
-<?php 
-  include_once("../header.php");
-  include_once("../validar.php");
+<?php
+  include_once("../conexao.php");
   include_once("funcaoMes.php"); // php com funções
 ?>
 
 <?php 
-  //função para verificar se esta logado
-  valida();
- ?>
-
-<?php 
   // Variaveis da sessão
+  session_start();
   $id_unidade = $_SESSION['id_unidade'];
   $nome = $_SESSION['nome'];
+
+  //Variavel POST
+  $mes = $_POST['mes'];
+  $dia = $_POST['dia'];
+  $ano = $_POST['ano'];
 
   //vetor nome dos meses
   $meses = array(
@@ -29,19 +29,6 @@
     'Novembro',
     'Dezembro'
   );
-
-  //Iniciar time zone
-  date_default_timezone_set('America/Sao_Paulo');
-
-  if(isset($_POST['mes'])){
-    $mes = $_POST['mes'];
-    $dia = $_POST['dia'];
-    $ano = $_POST['ano'];
-  }else{
-    $dia = 1;
-    $mes = date("n"); // mes sem 0 a esquerda
-    $ano = date("Y");  
-  }
 
   //Numero de dias do mes
   $numDiasMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
@@ -91,67 +78,14 @@
       ]
   };
 
-  window.onload = function(){
-    var ctx = document.getElementById("GraficoLine").getContext("2d");
-    var LineChart = new Chart.Line(ctx, {data: data, options: options});
-  };
+  
+  var ctx = document.getElementById("GraficoLine").getContext("2d");
+  var LineChart = new Chart.Line(ctx, {data: data, options: options});
+  
   </script>
 
 
 <section class="area-grafico">
-
-  <!--Cabeçalho da pagina-->
-  <div class="row">
-    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-      <div class="page-header">
-        <h1><?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h1>
-      </div>
-    </div>
-  </div>
-
-  <!--Campo selecionaveis-->
-  <div class="row hidden-print">
-    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-      <form class="form-inline" method="POST" action="graficoMes.php">
-          <div class="form-group form-group-sm">
-            <label for="dia">Dia</label>
-            <select class="form-control" id="dia" name="dia" onchange="this.form.submit()">
-              <?php
-                $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
-                for($i = 1; $i <= $numDiaMes; $i++){
-                  if($i == $dia) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>          
-          </div>
-          <div class="form-group form-group-sm">
-            <label for="mes">Mês</label>
-            <select class="form-control" id="mes" name="mes" onchange="this.form.submit()">
-              <?php 
-                for($i = 1; $i <= 12; $i++){
-                  if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
-          </div>
-          <div class="form-group form-group-sm">
-            <label for="ano">Ano</label>
-            <select class="form-control" id="ano" name="ano" onchange="this.form.submit()">
-              <?php
-                $numAno = date("Y");
-                for($i = 2016; $i <= $numAno; $i++){
-                  if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
-          </div>
-          
-      </form>
-    </div>
-  </div>
 
   <!-- Div do plota grafico -->
   <div class="row marge-grafico">
@@ -163,7 +97,7 @@
   <!--Consumo Total do mês-->
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-      <h3> Consumo total do mês: <?php echo $total ?> </h3>
+      <h3>Consumo Total de <?php echo $meses[$mes].': '.$total.' m³' ?> </h3>
     </div>
   </div>
   
@@ -177,58 +111,12 @@
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
-        <h1><?php echo $meses[$mes] ?><small> unidade: <?php echo $nome ?></small></h1>
+        <h1>Consumo<small> unidade: <?php echo $nome ?></small></h1>
       </div>
     </div>
   </div>
 
-  <!--Campo selecionaveis-->
-  <div class="row hidden-print">
-    <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-      <form class="form-inline" method="POST" action="graficoMes.php">
-      
-          <div class="form-group form-group-sm">
-            <label for="dia1">Dia</label>
-            <select class="form-control" id="dia1" name="dia" onchange="this.form.submit()">
-              <?php
-                $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
-                for($i = 1; $i <= $numDiaMes; $i++){
-                  if($i == $dia) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>          
-          </div>
-
-          <div class="form-group form-group-sm">
-            <label for="mes1">Mês</label>
-            <select class="form-control" id="mes1" name="mes" onchange="this.form.submit()">
-              <?php 
-                for($i = 1; $i <= 12; $i++){
-                  if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
-          </div>
-
-          <div class="form-group form-group-sm">
-            <label for="ano1">Ano</label>
-            <select class="form-control" id="ano1" name="ano" onchange="this.form.submit()">
-              <?php
-                $numAno = date("Y");
-                for($i = 2016; $i <= $numAno; $i++){
-                  if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
-          </div>
-          
-      </form>
-    </div>
-  </div>
-
+ 
   <!--Tabela de consumo do ano-->
   <div class="row marge-tabela">
     <div class="col-sm-6 col-sm-offset-3">
@@ -262,15 +150,4 @@
     </div>
   </div>
 
-  <!--Botão imprimir-->
-  <div class="row hidden-print hidden-xs">
-    <div class="col-sm-2 col-sm-offset-8">
-      <form>
-        <button type="button" class="btn btn-primary" name="imprimir" value="Imprimir" onclick="window.print();"><span class="glyphicon glyphicon-print" arian-hidden="true"></span> Imprimir</button>
-      </form>
-    </div>
-  </div>
-
 </section>
-
-<?php include_once("../footer.php") ?>
