@@ -67,7 +67,7 @@
 <div class="row">
   <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
     <div class="page-header">
-      <h1>Consumo<small> unidade: <?php echo $nome ?></small></h1>
+      <h1>Consumo do Ano<small> unidade: <?php echo $nome ?></small></h1>
     </div>
   </div>
 </div>
