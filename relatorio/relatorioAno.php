@@ -94,6 +94,7 @@
   </div>
 </div>
 
+<!--Local dos relatorios grafico e tabela-->
 <div id="relatorio">
   <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
 </div>

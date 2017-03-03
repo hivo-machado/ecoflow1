@@ -1,1 +1,0 @@
-oi japa seu xeroso
