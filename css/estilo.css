@@ -40,7 +40,7 @@ footer{
 	position: absolute;
 	width: 100%;
 	bottom: 0px;
-	padding: 10px 0px 10px 0px;
+	padding: 2px 0px 10px 0px;
 	color: white;
 	background-color: #2a6496;
 }
@@ -97,12 +97,12 @@ footer{
 }
 
 /*--------------------------------Rodapé--------------------------------*/
-a.email-rodape:link, a.email-rodape:visited{
+a.link-rodape:link, a.link-rodape:visited{
 	color: #fff;
 	text-decoration: none;
 }
 
-a.email-rodape:hover, a.email-rodape:active{
+a.link-rodape:hover, a.link-rodape:active{
 	color: #000;
 	text-decoration: underline;
 }
@@ -150,3 +150,8 @@ a.email-rodape:hover, a.email-rodape:active{
 }
 
 /*========================================= Tipografia =========================================*/
+
+/*--------------------------------Rodapé--------------------------------*/
+.rodape-topo{
+	font-size: 20px;
+}
