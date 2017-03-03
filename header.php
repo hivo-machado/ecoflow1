@@ -61,15 +61,10 @@
 
 		      </button>
 		      <!--Logo e link na brand-->
-		      <?php if($_SESSION['tipo'] != 'admin'){ ?>
-		      	<a href="../home/home.php" class="navbar-brand">
-		      <?php }else{ ?>
-		      	<a href="../home/homeAdmin.php" class="navbar-brand">
-		      <?php } ?>
-		      	<div id="barnav-link">
-		      		<img alt="Brand" src="../img/ECOFlow.ico" id="imgbrand">
-		      		<strong>ECO</strong>flow
-		      	</div>
+	      	<div id="barnav-link">
+	      		<img alt="Brand" src="../index.html" id="imgbrand">
+	      		<strong>ECO</strong>flow
+	      	</div>
 		      </a>
 		    </div>
 
