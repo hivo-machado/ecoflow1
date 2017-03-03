@@ -38,6 +38,17 @@
 		</footer>
 
 	</div><!--fecha  div tudo-->
+
+	<!--Scroll suave para link interno-->
+	<script>
+    	var $doc = $('html, body');
+		$('a[href^="#"]').click(function() {
+		    $doc.animate({
+		        scrollTop: $( $.attr(this, 'href') ).offset().top
+		    }, 500);
+		    return false;
+		});
+    </script>
 	
 </body>
 </html>

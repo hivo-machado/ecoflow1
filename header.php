@@ -40,7 +40,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 <body>
 
@@ -220,7 +219,9 @@
 	<!--Tag para o conteudo da pagina-->
 	<div class="container" id="conteudo">
 
-		<div id="topo"></div>
+		<div style="display: none">
+			<div id="topo">Topo</div>
+		</div>
 
 		<!--Menssagem de Alerta-->
 		 <div class="row">

@@ -24,7 +24,12 @@
 <script>
 
   $(document).ready(function(){
-    $('#dia').change(function() {
+
+    $('#dia').change(function(){submitForm()});
+    $('#mes').change(function(){submitForm()});
+    $('#ano').change(function(){submitForm()});
+
+    function submitForm(){
       $.ajax({
         url:'graficoMes.php',
         type: 'POST',
@@ -40,41 +45,8 @@
         }
       });
       return false;
-    });
-    $('#mes').change(function() {
-      $.ajax({
-        url:'graficoMes.php',
-        type: 'POST',
-        data: $('#data').serialize(),
-        success: function(data){
-          $('#relatorio').html(data);
-        },
-        beforeSend: function(){
-          $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
-      });
-      return false;
-    });
-    $('#ano').change(function() {
-      $.ajax({
-        url:'graficoMes.php',
-        type: 'POST',
-        data: $('#data').serialize(),
-        success: function(data){
-          $('#relatorio').html(data);
-        },
-        beforeSend: function(){
-          $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
-      });
-      return false;
-    });
+    }
+
   });
 
   window.onload = function(){
