@@ -61,8 +61,9 @@
 
 		      </button>
 		      <!--Logo e link na brand-->
+		    <a href="../index.html" class="navbar-brand">  
 	      	<div id="barnav-link">
-	      		<img alt="Brand" src="../index.html" id="imgbrand">
+	      		<img alt="Brand" src="../img/ECOFlow.ico" id="imgbrand">
 	      		<strong>ECO</strong>flow
 	      	</div>
 		      </a>
