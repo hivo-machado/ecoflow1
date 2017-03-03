@@ -1,15 +1,15 @@
 <?php 
 	include('../conexao.php');
-  	include_once("funcaoMesPlanta.php");
+  	include_once("funcaoPlanta.php");
 
 	//varivel POST
 	$id_planta = $_POST['id_planta'];
 	$diaInicio = $_POST['diaInicio'];
 	$mesInicio = $_POST['mesInicio'];
 	$anoInicio = $_POST['anoInicio'];
-    $diaFim = $_POST['diaFim'];
-    $mesFim = $_POST['mesFim'];
-    $anoFim = $_POST['anoFim'];
+  $diaFim = $_POST['diaFim'];
+  $mesFim = $_POST['mesFim'];
+  $anoFim = $_POST['anoFim'];
 
 	//Chamda das funções
 	$consumos = consumo($con, $id_planta, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);

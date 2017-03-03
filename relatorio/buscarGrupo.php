@@ -34,6 +34,9 @@
         <a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
           <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir
         </a>
+        <a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo
+        </a>
       </td>            
     </tr>
     <?php

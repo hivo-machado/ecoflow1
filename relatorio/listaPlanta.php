@@ -55,7 +55,7 @@ include_once("../validar.php");
               <td onclick="botao('<?php echo "plantaConsumo.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->nome ?></td>
               <td>
                 <a href="plantaConsumo.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
-                  <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir
+                  <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo
                 </a>
               </td>            
             </tr>
