@@ -23,6 +23,12 @@ include_once("../validar.php");
           data: $('#form').serialize(),
           success: function(data){
             $('#tabela').html(data);
+          },
+          beforeSend: function(){
+          $('#carregando').css({display:"block"});
+          },
+          complete: function(){
+            $('#carregando').css({display:"none"});
           }
         });
         return false;
@@ -63,7 +69,9 @@ include_once("../validar.php");
   <div class="row marge-tabela">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <!--Div para receber o resultado do formulario em Ajax-->
-      <div id="tabela"></div>
+      <div id="tabela">
+        <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
+      </div>
     </div>
   </div>
 
