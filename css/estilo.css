@@ -28,12 +28,12 @@ body{
 #tudo{
 	min-height: 100%;
 	position: relative;
+	background-color: white;
 }
 
 #conteudo{
 	height: 100%;
 	padding: 60px 30px 205px 30px;
-	background-color: white;
 }
 
 footer{
@@ -119,7 +119,7 @@ a.link-rodape:hover, a.link-rodape:active{
 	height: 30px;
 	position: fixed;
 	bottom: 25px;
-	right: 25px;
+	right: 35px;
 }
 /*--------------------------------Tabelas--------------------------------*/
 .tabela{
