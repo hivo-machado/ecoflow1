@@ -1,12 +1,13 @@
+			<!--Botão para voltar ao top-->
+			<div class="row hidden-print text-center button-topo">
+				<a class="link-rodape" href="#topo" title="Voltar ao topo da página">
+					<span class="glyphicon glyphicon-menu-up rodape-topo" aria-hidden="true"></span>
+				</a>
+			</div>
 		</div><!--Fecha div container-->
 
 		<footer>
 			<div class="container-fluid">
-				<div class="row hidden-print text-center">
-					<a class="link-rodape" href="#topo" title="Voltar ao topo da página">
-						<span class="glyphicon glyphicon-menu-up rodape-topo" aria-hidden="true"></span>
-					</a>
-				</div>
 				<!--Rodape´da pagina web-->
 				<div class="row hidden-print">
 					<div class="col-sm-12 col-xs-12">
