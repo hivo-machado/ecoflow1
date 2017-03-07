@@ -15,14 +15,20 @@
 	$mesFim = $_POST['mesFim'];
 	$diaFim = $_POST['diaFim'];
 
+	//Consultar planta
+	$result = mysqli_query($con, "SELECT * from planta WHERE idecoflow = '$id'");
+	$planta = mysqli_fetch_object($result);
+
+	$nome = $planta->nome;
+
 	//Consulta o Banco de dados e retorna vetor com nome da unidade e consumo
 	$consumos = consumo($con, $id, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
 
-	//Total de consumo da consulta
+	//Calcula o total de consumo
 	$total = consumoTotal($consumos);
 
 	// Nome do Arquivo do Excel que será gerado
-	$arquivo = 'Planta_'.$id.'_'.$diaInicio.'-'.$mesInicio.'-'.$anoInicio.'_'.$diaFim.'-'.$mesFim.'-'.$anoFim.'.xls';
+	$arquivo = $nome.' '.$diaInicio.'-'.$mesInicio.'-'.$anoInicio.' '.$diaFim.'-'.$mesFim.'-'.$anoFim.'.xls';
 
 	// Instanciamos a classe
 	$objPHPExcel = new PHPExcel();
@@ -59,7 +65,7 @@
 	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($total * 1000 , 0, '', '') );
 
 	// Podemos renomear o nome das planilha atual, lembrando que um único arquivo pode ter várias planilhas
-	$objPHPExcel->getActiveSheet()->setTitle('Planta-'.$id);
+	$objPHPExcel->getActiveSheet()->setTitle($nome);
 
 	// Cabeçalho do arquivo para ele baixar
 	header('Content-Type: application/vnd.ms-excel');
