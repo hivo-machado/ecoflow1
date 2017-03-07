@@ -253,7 +253,7 @@
 
     <!--Form para download dos dados em excel-->
     <div class="col-sm-2">
-	   <form  method="POST" action="downloadTabela.php">
+	   <form  method="POST" action="plantaDownload.php">
 
         <!--Input text oculto com id_planta-->
         <div class="form-group sr-only">
