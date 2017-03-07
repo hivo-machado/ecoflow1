@@ -145,7 +145,10 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="../relatorio/listaPlanta.php">Consumo</a>
+				            	<a href="../relatorio/listaPlanta.php">Consumo por Torre</a>
+				            </li>
+				            <li>
+				            	<a href="../relatorio/grupoConsumo.php">Consumo por Grupo</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li relatorio-->

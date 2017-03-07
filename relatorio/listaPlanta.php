@@ -31,7 +31,7 @@ include_once("../validar.php");
 <div class="row">
   <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
     <div class="page-header">
-      <h2>Torres <small><?php echo $grupo->nome_grupo ?></small></h2>
+      <h2>Grupo <small><?php echo $grupo->nome_grupo ?></small></h2>
     </div>
     </div>
 </div>
