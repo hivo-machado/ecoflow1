@@ -1,6 +1,6 @@
 <?php 
 	 include_once("../conexao.php");
-	 include_once("funcaoMesPlanta.php");
+	 include_once("funcaoPlanta.php");
 
 	 //Variavel POST
 	$id = $_POST['id_planta'];
@@ -53,5 +53,4 @@
 
 
 	echo $tabela;
-
 ?>
