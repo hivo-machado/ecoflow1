@@ -42,9 +42,9 @@ include_once("funcoes.php");
 			<div class="form-group">
 				<label for="login" class="col-sm-4 control-label">Novo Login</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login" maxlength="20" required 
-					pattern="[A-Za-z0-9._]{1,20}$" 
-					title="Verifique os caracteres válidos a-z, A-Z, 0-9, '.' e '_'.">
+					<input type="text" class="form-control" id="login" name="login" placeholder="Novo Login" minlength="6" maxlength="20" required 
+					pattern="[A-Za-z0-9._]{6,20}$" 
+					title="Verifique os caracteres válidos a-z, A-Z, 0-9, '.' e '_' com 6 a 20 caracteres.">
 				</div>
 			</div>
 			<div class="form-group">
