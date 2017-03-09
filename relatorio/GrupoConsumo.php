@@ -78,7 +78,7 @@
       return false;
     };
   });
-   /*
+   
   //metodo para enviar a form quando terminar de carregar a pagina
   window.onload = function(){
     $.ajax({
@@ -98,7 +98,6 @@
     copia();
     return false;
   };
-  */
 
   //Copia os dados para outra form de download
   function copia(){

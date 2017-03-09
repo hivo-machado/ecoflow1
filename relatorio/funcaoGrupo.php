@@ -19,7 +19,7 @@
 		$dateFim = date_create($dataFim);
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
-		$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE id_planta = $id");
+		$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE id_grupo = $id AND tipo = 'usuario'");
 
 		//Percorre todas as unidade da planta
 		while ( $usuario = mysqli_fetch_object($usuarios) ) {
@@ -40,7 +40,7 @@
 			}
 
 			$cont++;
-		}
+		}//fim while
 
 		return $listConsumo = array($listUniNome, $listUniConsumo);
 	}
