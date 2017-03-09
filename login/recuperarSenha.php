@@ -19,10 +19,10 @@
 			<strong>Login: </strong>$usuario->login<br> 
 			<strong>Senha: </strong>$usuario->senha<br>
 			<br>
-			Entre em nosso site <a href='ecoflow-gratis.umbler.net'>Ecoflow</a>
+			Entre em nosso site <a href='ecoflow.000webhostapp.com'>Ecoflow</a>
 			<br>
 			<a href='ecoflow-gratis.umbler.net'>
-				<img src='ecoflow-gratis.umbler.net/img/ECOFlow.jpg' alt='Logo Ecoflow' height='34.5' width='199'>
+				<img src='ecoflow.000webhostapp.com/img/ECOFlow.jpg' alt='Logo Ecoflow' height='34.5' width='199'>
 			</a>
 			";
 			$menssagem = wordwrap($menssagem, 70);

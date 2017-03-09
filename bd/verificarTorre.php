@@ -87,7 +87,7 @@
 			<br> 
 			$str
 			<br>
-			Entre em nosso site <a href='ecoflow-gratis.umbler.net'>Ecoflow</a>
+			Entre em nosso site <a href='ecoflow.000webhostapp.com'>Ecoflow</a>
 			<br>
 			";
 			$menssagem = wordwrap($menssagem, 70);
@@ -107,7 +107,7 @@
 			Data: $dataAnt<br>
 			<br> 
 			$strUni
-			Entre em nosso site <a href='ecoflow-gratis.umbler.net'>Ecoflow</a>
+			Entre em nosso site <a href='ecoflow.000webhostapp.com'>Ecoflow</a>
 			<br>
 			";
 			$menssagem = wordwrap($menssagem, 70);
