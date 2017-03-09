@@ -15,7 +15,7 @@
 	$mesFim = $_POST['mesFim'];
 	$diaFim = $_POST['diaFim'];
 
-	//Consultar planta
+	//Consultar Grupo
 	$result = mysqli_query($con, "SELECT * from grupo WHERE id = '$id'");
 	$grupo = mysqli_fetch_object($result);
 

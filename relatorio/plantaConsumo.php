@@ -255,60 +255,29 @@
     <div class="col-sm-2">
 	   <form  method="POST" action="plantaDownload.php">
 
-        <!--Input text oculto com id_planta-->
-        <div class="form-group sr-only">
-          <label for="id_planta" class="col-sm-4 control-label">ID Planta</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="id_planta_D" name="id_planta">
-          </div>
-        </div>
+        <div class="sr-only">
 
-        <!--Input text oculto com data inicio-->
-        <div class="form-group sr-only">
-          <label for="diaInicio_D" class="col-sm-4 control-label">Dia Inicio</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="diaInicio_D" name="diaInicio">
-          </div>
-        </div>
+          <!--Input text oculto com id_planta-->
+          <input type="text" class="form-control" id="id_planta_D" name="id_planta">
 
-        <!--Input text oculto com mes inicio-->
-        <div class="form-group sr-only">
-          <label for="mesInicio_D" class="col-sm-4 control-label">Mês Inicio</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="mesInicio_D" name="mesInicio">
-          </div>
-        </div>
+          <!--Input text oculto com data inicio-->
+          <input type="text" class="form-control" id="diaInicio_D" name="diaInicio">
 
-        <!--Input text oculto com ano inicio-->
-        <div class="form-group sr-only">
-          <label for="anoInicio_D" class="col-sm-4 control-label">Ano Inicio</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="anoInicio_D" name="anoInicio">
-          </div>
-        </div>
+          <!--Input text oculto com mes inicio-->
+          <input type="text" class="form-control" id="mesInicio_D" name="mesInicio">
 
-        <!--Input text oculto com dia fim-->
-        <div class="form-group sr-only">
-          <label for="diaFim_D" class="col-sm-4 control-label">Dia Fim</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="diaFim_D" name="diaFim">
-          </div>
-        </div>
+          <!--Input text oculto com ano inicio-->
+          <input type="text" class="form-control" id="anoInicio_D" name="anoInicio">
 
-        <!--Input text oculto com mes fim-->
-        <div class="form-group sr-only">
-          <label for="mesFim_D" class="col-sm-4 control-label">Mês Fim</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="mesFim_D" name="mesFim">
-          </div>
-        </div>
+          <!--Input text oculto com dia fim-->
+          <input type="text" class="form-control" id="diaFim_D" name="diaFim">
 
-        <!--Input text oculto com ano fim-->
-        <div class="form-group sr-only">
-          <label for="anoFim_D" class="col-sm-4 control-label">Ano Fim</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" id="anoFim_D" name="anoFim">
-          </div>
+          <!--Input text oculto com mes fim-->
+          <input type="text" class="form-control" id="mesFim_D" name="mesFim">
+
+          <!--Input text oculto com ano fim-->
+          <input type="text" class="form-control" id="anoFim_D" name="anoFim">
+
         </div>
 
         <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt" arian-hidden="true"></span> Download</button>

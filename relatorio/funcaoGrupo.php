@@ -19,9 +19,10 @@
 		$dateFim = date_create($dataFim);
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
+		//Seleciona todos os usuario de um grupo de perfil usuario
 		$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE id_grupo = $id AND tipo = 'usuario'");
 
-		//Percorre todas as unidade da planta
+		//Percorre todas as unidade do grupo
 		while ( $usuario = mysqli_fetch_object($usuarios) ) {
 			//Seleciona a leitura inicial da unidade
 			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo ASC, hora ASC LIMIT 1");
@@ -43,7 +44,7 @@
 		}//fim while
 
 		return $listConsumo = array($listUniNome, $listUniConsumo);
-	}
+	}//Fim da função
 
 	// Função para consumo total do mês
 	function consumoTotal($consumos){
