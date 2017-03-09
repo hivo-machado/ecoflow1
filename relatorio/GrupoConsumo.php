@@ -11,11 +11,12 @@
   $id = $_SESSION['id'];
 	$tipo = $_SESSION['tipo'];
 
-  if( isset($_SESSION['id_grupo']) ){
-    $id_grupo = $_SESSION['id_grupo'];
-  }else{
+  if( isset( $_GET['id_grupo']) ){
     //varivel GET
     $id_grupo = $_GET['id_grupo'];
+  }else{
+    //variavel sessão
+    $id_grupo = $_SESSION['id_grupo'];
   }
 
   //Seleciona usuario
