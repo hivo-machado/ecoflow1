@@ -1067,3 +1067,11 @@
 	{
 		font-size: 30px;
 	}
+	#corzera{
+		 
+		  border: 1px solid  #008cb2 !important;
+		  background-color:  #008cb2 !important;
+	}
+	#corzera2{
+		color: #008cb2;
+	}
