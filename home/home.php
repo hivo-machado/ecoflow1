@@ -73,33 +73,46 @@ include_once('../conexao.php');
 
 	<!--Coluna de endereço do grupo-->
 	<div class="col-sm-5 col-xs-5">
+		<div class="col-sm-8">
+			<h2>Menu</h2>
+			<ul class="nav nav-pills nav-stacked">
+			  <li role="presentation" class="active"><a href="#">Home</a></li>
+			  <?php if($tipo == 'usuario'){ ?>
+			  	<li role="presentation"><a href="../relatorio/relatorioMes.php">Consumo Mês</a></li>
+			  	<li role="presentation"><a href="../relatorio/relatorioAno.php">Consumo Ano</a></li>
+			  <?php } ?>
+			  <?php if($tipo == 'sind'){ ?>
+			  	<li role="presentation"><a href="../relatorio/listaPlanta.php">Consumo por Torre</a></li>
+			  	<li role="presentation"><a href="../relatorio/grupoConsumo.php">Consumo por Grupo</a></li>
+			  <?php } ?>
+			</ul>
+		</div>
+	</div>
 
+</div>
+
+<div class="row" id="grupo-info">
+
+	<div class="row">
+		<div class="col-sm-12 col-xs-12">
+			<address>
+				<strong>Endereço</strong><br>
+				<?php echo $rua.' '.$numero.' - '.$bairro?><br>
+				<?php echo $cidade.', '.$estado.' '.$cep ?><br>
+				<abbr title="Telefone">Tel.:</abbr> <?php echo $telefone ?>
+			</address>
+		</div>
+	</div>
+
+	<!--Verifica se esta logado como sindico-->
+	<?php if($tipo == 'sind'){ ?>
 		<div class="row">
 			<div class="col-sm-12 col-xs-12">
-				<address>
-					<strong>Endereço</strong><br>
-					<?php echo $rua.' '.$numero.' - '.$bairro?><br>
-					<?php echo $cidade.', '.$estado.' '.$cep ?><br>
-					<abbr title="Telefone">Tel.:</abbr> <?php echo $telefone ?>
-				</address>
+				<a class="btn btn-primary" href="../grupo/alteraGrupo.php" role="button">Alterar dados</a>
+				<span id="helpBlock" class="help-block">Alterar nome, foto e endereço.</span>
 			</div>
 		</div>
-
-		<!--Verifica se esta logado como sindico-->
-		<?php 
-			if($tipo == 'sind'){
-		?>
-			<div class="row">
-				<div class="col-sm-12 col-xs-12">
-					<a class="btn btn-primary" href="../grupo/alteraGrupo.php" role="button">Alterar dados</a>
-					<span id="helpBlock" class="help-block">Alterar nome, foto e endereço.</span>
-				</div>
-			</div>
-		 <?php
-			}
-		?>
-
-	</div>
+	 <?php } ?>
 
 </div>
 

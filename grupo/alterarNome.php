@@ -14,7 +14,7 @@
 			// Pasta onde o arquivo vai ser salvo
 			$_UP['pasta'] = '../img/grupo/';
 			// Tamanho máximo do arquivo (em Bytes)
-			$_UP['tamanho'] = 1024 * 1024 * 5; // 2Mb
+			$_UP['tamanho'] = 1024 * 1024 * 5; // 5Mb
 			// Array com as extensões permitidas
 			$_UP['extensoes'] = array('jpg', 'png', 'jpeg');
 			// Array com os tipos de erros de upload do PHP

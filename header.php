@@ -79,16 +79,23 @@
 					<!--Menu Usuario-->
 					<?php if($_SESSION['tipo'] == 'usuario'){ ?>
 						<!--Opção relatorio-->
-				        <li>
-				           	<a href="../relatorio/relatorioMes.php">Mês</a>
+						<li>
+				           	<a href="../home/home.php">Home</a>
 				        </li>
 				        <li>
-				            <a href="../relatorio/relatorioAno.php">Ano</a>
+				           	<a href="../relatorio/relatorioMes.php">Consumo Mês</a>
+				        </li>
+				        <li>
+				            <a href="../relatorio/relatorioAno.php">Consumo Ano</a>
 				        </li>
 			       	<?php } ?>
 
 			       	<!--Menu ADM-->
 			        <?php if($_SESSION['tipo'] == 'admin'){ ?>
+
+			        	<li>
+				           	<a href="../home/homeAdmin.php">Home</a>
+				        </li>
 
 			        	<!--Opção relatorio-->
 						<li class="dropdown">
@@ -136,6 +143,8 @@
 
 			       <!--Menu Sindico-->
 			       <?php if($_SESSION['tipo'] == 'sind'){ ?>
+
+			       		<li> <a href="../home/home.php">Home</a> </li>
 
 				         <!--Opção relatorio-->
 						<li class="dropdown">
