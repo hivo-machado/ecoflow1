@@ -24,6 +24,7 @@
 <script>
 
   $(document).ready(function(){
+
     $('#ano').change(function() {
       $.ajax({
         url:'graficoAno.php',
@@ -41,25 +42,28 @@
       });
       return false;
     });
-  });
 
-  window.onload = function(){
-    $.ajax({
-      url:'graficoAno.php',
-      type: 'POST',
-      data: $('#data').serialize(),
-      success: function(data){
-        $('#relatorio').html(data);
-      },
-      beforeSend: function(){
-        $('#carregando').css({display:"block"});
-      },
-      complete: function(){
-        $('#carregando').css({display:"none"});
-      }
-    });
-    return false;
-  };
+    function iniciarPagina(){
+      $.ajax({
+        url:'graficoAno.php',
+        type: 'POST',
+        data: $('#data').serialize(),
+        success: function(data){
+          $('#relatorio').html(data);
+        },
+        beforeSend: function(){
+          $('#carregando').css({display:"block"});
+        },
+        complete: function(){
+          $('#carregando').css({display:"none"});
+        }
+      });
+      return false;
+    };
+
+    iniciarPagina();
+
+  });
   
 </script>
 

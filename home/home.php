@@ -61,7 +61,7 @@ include_once('../conexao.php');
 <div class="row" id="grupo-info">
 
 	<!--Coluna da imagem do grupo-->
-	<div class="col-sm-7 col-xs-7">
+	<div class="col-sm-7 col-xs-12">
 		<?php  if($tipo == 'usuario'){ ?>
 			<a href="../relatorio/relatorioMes.php">
 		<?php }else{ ?>
@@ -72,7 +72,7 @@ include_once('../conexao.php');
 	</div>
 
 	<!--Coluna de endereço do grupo-->
-	<div class="col-sm-5 col-xs-5">
+	<div class="col-sm-5 col-xs-6">
 		<div class="col-sm-8">
 			<h2>Menu</h2>
 			<ul class="nav nav-pills nav-stacked">
@@ -89,30 +89,18 @@ include_once('../conexao.php');
 		</div>
 	</div>
 
-</div>
-
-<div class="row" id="grupo-info">
-
-	<div class="row">
-		<div class="col-sm-12 col-xs-12">
-			<address>
-				<strong>Endereço</strong><br>
-				<?php echo $rua.' '.$numero.' - '.$bairro?><br>
-				<?php echo $cidade.', '.$estado.' '.$cep ?><br>
-				<abbr title="Telefone">Tel.:</abbr> <?php echo $telefone ?>
-			</address>
-		</div>
+	<div class="col-sm-12 col-xs-6">
+		<address>
+			<strong>Endereço</strong><br>
+			<?php echo $rua.' '.$numero.' - '.$bairro?><br>
+			<?php echo $cidade.', '.$estado.' '.$cep ?><br>
+			<abbr title="Telefone">Tel.:</abbr> <?php echo $telefone ?>
+		</address>
+		<?php if($tipo == 'sind'){ ?>
+			<a class="btn btn-primary" href="../grupo/alteraGrupo.php" role="button">Alterar dados</a>
+			<span id="helpBlock" class="help-block">Alterar nome, foto e endereço.</span>
+		<?php } ?>
 	</div>
-
-	<!--Verifica se esta logado como sindico-->
-	<?php if($tipo == 'sind'){ ?>
-		<div class="row">
-			<div class="col-sm-12 col-xs-12">
-				<a class="btn btn-primary" href="../grupo/alteraGrupo.php" role="button">Alterar dados</a>
-				<span id="helpBlock" class="help-block">Alterar nome, foto e endereço.</span>
-			</div>
-		</div>
-	 <?php } ?>
 
 </div>
 

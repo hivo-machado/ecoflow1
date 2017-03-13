@@ -34,30 +34,18 @@
   //Seleciona grupo
 	$result = mysqli_query($con, "SELECT * FROM grupo WHERE id = '$id_grupo'");
 	$grupo = mysqli_fetch_object($result);
-	
-	
-	//Iniciar time zone
-	date_default_timezone_set('America/Sao_Paulo');
-
-	
-  $diaInicio = 1;
-  $mesInicio = date("n");
-  $anoInicio = date("Y"); 
-  $diaFim = $diaInicio;
-  $mesFim = $mesInicio + 1;
-  $anoFim = $anoInicio;
  ?>
 
  <script>
    $(document).ready(function(){
 
     //chamada da função submitForm
-    $('#diaInicio').change(function(){submitForm()});
-    $('#mesInicio').change(function(){submitForm()});
-    $('#anoInicio').change(function(){submitForm()});
-    $('#diaFim').change(function(){submitForm()});
-    $('#mesFim').change(function(){submitForm()});
-    $('#anoFim').change(function(){submitForm()});
+    $('#diaInicio').change(function(){submitForm(); verificarData()});
+    $('#mesInicio').change(function(){submitForm(); mudarDiaInicio(); verificarData()});
+    $('#anoInicio').change(function(){submitForm(); mudarDiaInicio(); verificarData()});
+    $('#diaFim').change(function(){submitForm(); verificarData()});
+    $('#mesFim').change(function(){submitForm(); mudarDiaFim(); verificarData()});
+    $('#anoFim').change(function(){submitForm(); mudarDiaFim(); verificarData()});
 
     //função submit para tabela 
     function submitForm(){
@@ -78,38 +66,158 @@
       copia();
       return false;
     };
-  });
-   
-  //metodo para enviar a form quando terminar de carregar a pagina
-  window.onload = function(){
-    $.ajax({
-      url:'grupoTabela.php',
-      type: 'POST',
-      data: $('#form').serialize(),
-      success: function(data){
-        $('#tabela').html(data);
-      },
-      beforeSend: function(){
-        $('#carregando').css({display:"block"});
-      },
-      complete: function(){
-        $('#carregando').css({display:"none"});
-      }
-    });
-    copia();
-    return false;
-  };
 
-  //Copia os dados para outra form de download
-  function copia(){
-    document.getElementById('id_grupo_D').value = document.getElementById('id_grupo').value;
-    document.getElementById('diaInicio_D').value = document.getElementById('diaInicio').value;
-    document.getElementById('mesInicio_D').value = document.getElementById('mesInicio').value;
-    document.getElementById('anoInicio_D').value = document.getElementById('anoInicio').value;
-    document.getElementById('diaFim_D').value = document.getElementById('diaFim').value;
-    document.getElementById('mesFim_D').value = document.getElementById('mesFim').value;
-    document.getElementById('anoFim_D').value = document.getElementById('anoFim').value;
-  }
+    //Copia os dados para formulario de download
+    function iniciarPagina(){
+      $.ajax({
+        url:'grupoTabela.php',
+        type: 'POST',
+        data: $('#form').serialize(),
+        success: function(data){
+          $('#tabela').html(data);
+        },
+        beforeSend: function(){
+          $('#carregando').css({display:"block"});
+        },
+        complete: function(){
+          $('#carregando').css({display:"none"});
+        }
+      });
+      copia();
+      return false;
+    };
+
+    //Copia os dados para formulario de download
+    function copia(){
+      $('#id_grupo_D').val( $('#id_grupo').val() ); 
+      $('#diaInicio_D').val( $('#diaInicio').val() );
+      $('#mesInicio_D').val( $('#mesInicio').val() );
+      $('#anoInicio_D').val( $('#anoInicio').val() );
+      $('#diaFim_D').val( $('#diaFim').val() );
+      $('#mesFim_D').val( $('#mesFim').val() );
+      $('#anoFim_D').val( $('#anoFim').val() );
+    };
+
+    //Mudar preenchimento do select dia quando mudar mes e ano
+    function mudarDiaInicio(){
+      var i;
+      var opcao;
+      var diaInicio = $('#diaInicio').val();
+      var mesInicio = $('#mesInicio').val();
+      var anoInicio = $('#anoInicio').val();
+      var ultimoDiaInicio = (new Date(anoInicio, mesInicio, 0)).getDate();
+      //limpar as opções
+      $('#diaInicio').empty();
+
+      //Preencher option do diaInicio
+      for(i = 1; i <= ultimoDiaInicio; i++ ){
+        if(i == diaInicio) var seleciona = ' selected '; else seleciona = '';
+        opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+        $('#diaInicio').append(opcao);
+      }
+    }
+
+    //Mudar preenchimento do select dia quando mudar mes e ano
+    function mudarDiaFim(){
+      var i;
+      var opcao;
+      var diaFim = $('#diaFim').val();
+      var mesFim = $('#mesFim').val();
+      var anoFim = $('#anoFim').val();
+      var ultimoDiaFim = (new Date(anoFim, mesFim, 0)).getDate();
+      //limpar as opções
+      $('#diaFim').empty();
+
+      //Preencher option do diaFim
+      for(i = 1; i <= ultimoDiaFim; i++ ){
+        if(i == diaFim) var seleciona = ' selected '; else seleciona = '';
+        opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+        $('#diaFim').append(opcao);
+      }
+    }
+
+    function verificarData(){
+      var dataInicio = new Data($('#anoInicio').val() + '-' + $('#mesInicio').val() + '-' + $('#diaInicio').val());
+      var dataFim = new Data($('#anoFim').val() + '-' + $('#mesFim').val() + '-' + $('#diaFim').val());
+
+      alert(dataInicio + ' ' + dataFim);
+      /*
+      var diaInicio = $('#diaInicio').val();
+      var mesInicio = $('#mesInicio').val();
+      var anoInicio = $('#anoInicio').val();
+      var diaFim = $('#diaFim').val();
+      var mesFim = $('#mesFim').val();
+      var anoFim = $('#anoFim').val();
+
+      if(anoInicio > anoFim){
+        $('#anoFim').val( $('#anoInicio').val() );
+      }else if(mesInicio > mesFim){
+        $('#mesFim').val();
+      }
+      */
+    }
+
+    //Data inicial
+    var dataAtual = new Date();
+    var mesInicio = dataAtual.getMonth() + 1;
+    var anoInicio = dataAtual.getFullYear();
+
+    var dataFim = dataAtual;
+    dataFim.setMonth(dataFim.getMonth() + 1);
+    var mesFim = dataFim.getMonth() + 1;
+    var anoFim = dataFim.getFullYear();
+
+    var i;
+    var opcao;
+    var ultimoDiaInicio = (new Date(anoInicio, mesInicio, 0)).getDate();
+    var ultimoDiaFim = (new Date(anoFim, mesFim, 0)).getDate();
+
+    //Preencher option do diaInicio
+    for(i = 1; i <= ultimoDiaInicio; i++ ){
+      if(i == 1) var seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#diaInicio').append(opcao);
+    }
+
+    //Preencher option do mesInicio
+    for(i = 1; i <= 12; i++ ){
+      if(i == mesInicio) var seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#mesInicio').append(opcao);
+    }
+
+    //Preencher option do anoInicio
+    for(i = 2016; i <= anoInicio; i++ ){
+      if(i == anoInicio) var seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#anoInicio').append(opcao);
+    }
+
+    //Preencher option do diaFim
+    for(i = 1; i <= ultimoDiaFim; i++ ){
+      if(i == 1) var seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#diaFim').append(opcao);
+    }
+
+    //Preencher option do mesInicio
+    for(i = 1; i <= 12; i++ ){
+      if(i == mesFim) var seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#mesFim').append(opcao);
+    }
+
+    //Preencher option do anoInicio
+    for(i = 2016; i <= anoFim; i++ ){
+      if(i == anoFim) var seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#anoFim').append(opcao);
+    }
+
+    iniciarPagina();
+
+  });//fim document
+
  </script>
 
  <!--Cabeçalho da tabela-->
@@ -144,40 +252,17 @@
 
           <div class="form-group form-group-sm">
             <label for="diaInicio">Dia</label>
-            <select class="form-control" id="diaInicio" name="diaInicio">
-              <?php
-                $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mesInicio, $anoInicio);
-                for($i = 1; $i <= $numDiaMes; $i++){
-                  if($i == $diaInicio) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>          
+            <select class="form-control" id="diaInicio" name="diaInicio"></select>          
           </div>
 
           <div class="form-group form-group-sm">
             <label for="mesInicio">Mês</label>
-            <select class="form-control" id="mesInicio" name="mesInicio">
-              <?php 
-                for($i = 1; $i <= 12; $i++){
-                  if($i == $mesInicio) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
+            <select class="form-control" id="mesInicio" name="mesInicio"></select>      
           </div>
 
           <div class="form-group form-group-sm">
             <label for="anoInicio">Ano</label>
-            <select class="form-control" id="anoInicio" name="anoInicio">
-              <?php
-                $numAno = date("Y");
-                for($i = 2016; $i <= $numAno; $i++){
-                  if($i == $anoInicio) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
+            <select class="form-control" id="anoInicio" name="anoInicio"></select>      
           </div>
 
         </div>
@@ -193,40 +278,17 @@
         
           <div class="form-group form-group-sm">
             <label for="diaFim">Dia</label>
-            <select class="form-control" id="diaFim" name="diaFim">
-              <?php
-                $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mesFim, $anoFim);
-                for($i = 1; $i <= $numDiaMes; $i++){
-                  if($i == $diaFim) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>          
+            <select class="form-control" id="diaFim" name="diaFim"></select>          
           </div>
 
           <div class="form-group form-group-sm">
             <label for="mesFim">Mês</label>
-            <select class="form-control" id="mesFim" name="mesFim">
-              <?php 
-                for($i = 1; $i <= 12; $i++){
-                  if($i == $mesFim) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
+            <select class="form-control" id="mesFim" name="mesFim"></select>      
           </div>
 
           <div class="form-group form-group-sm">
             <label for="anoFim">Ano</label>
-            <select class="form-control" id="anoFim" name="anoFim">
-              <?php
-                $numAno = date("Y");
-                for($i = 2016; $i <= $numAno; $i++){
-                  if($i == $anoFim) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
+            <select class="form-control" id="anoFim" name="anoFim"></select>      
           </div>
 
         </div>
@@ -234,7 +296,7 @@
           
       </form>
     </div>
-  </div>
+  </div><!--Fim do campo selecionavel-->
 
   <!--Tabela de consumo do mes-->
   <div class="row marge-tabela">
@@ -254,32 +316,32 @@
       </form>
     </div>
 
-    <!--Form para download dos dados em excel-->
+    <!--Formulario de download em excel-->
     <div class="col-sm-2">
 	   <form  method="POST" action="grupoDownload.php">
 
         <div class="sr-only">
 
           <!--Input text oculto com id_grupo-->
-          <input type="text" class="form-control" id="id_grupo_D" name="id_grupo">
+          <input type="text" id="id_grupo_D" name="id_grupo" value="">
          
           <!--Input text oculto com data inicio-->
-          <input type="text" class="form-control" id="diaInicio_D" name="diaInicio">
+          <input type="text" id="diaInicio_D" name="diaInicio" value="">
 
           <!--Input text oculto com mes inicio-->
-          <input type="text" class="form-control" id="mesInicio_D" name="mesInicio">
+          <input type="text" id="mesInicio_D" name="mesInicio" value="">
 
           <!--Input text oculto com ano inicio-->
-          <input type="text" class="form-control" id="anoInicio_D" name="anoInicio">
+          <input type="text" id="anoInicio_D" name="anoInicio" value="">
 
           <!--Input text oculto com dia fim-->
-          <input type="text" class="form-control" id="diaFim_D" name="diaFim">
+          <input type="text" id="diaFim_D" name="diaFim" value="">
 
           <!--Input text oculto com mes fim-->
-          <input type="text" class="form-control" id="mesFim_D" name="mesFim">
+          <input type="text" id="mesFim_D" name="mesFim" value="">
 
           <!--Input text oculto com ano fim-->
-          <input type="text" class="form-control" id="anoFim_D" name="anoFim">
+          <input type="text" id="anoFim_D" name="anoFim" value="">
 
         </div>
 
