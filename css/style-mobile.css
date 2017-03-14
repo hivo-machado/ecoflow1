@@ -253,6 +253,7 @@
 	#banner_mobile
 	{
 		display: inherit !important;
+		max-height: 100%;
 	}
 	#exem
 	{
@@ -320,4 +321,8 @@
 	{
 		width: 100%;
 		
+	}
+	#mobilecontato
+	{
+		text-align: center;
 	}

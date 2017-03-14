@@ -25,7 +25,7 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=0.5,maximum-scale=4"> <!-- escala mobile -->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=0.5,maximum-scale=4">
 	</head>
 	<body class="left-sidebar">
 
@@ -42,7 +42,7 @@
 					<nav id="nav">
 						<ul>
 							<li><a href="index.html">Home</a></li>
-							<li class="active"><a href="apresentacao.html" >Apresentação</a></li>
+							<li><a href="apresentacao.html" >Apresentação</a></li>
 							<div class="nav_mobile">
 								<li><a href="lei.html">Lei 13.312</a></li>
 								<li><a href="economia.html">Economia</a></li>
@@ -50,7 +50,7 @@
 								<li><a href="exemplos.html">Leitura</a></li>
 								<li><a href="vantagens.html">Vantagens</a></li>
 							</div>
-							<li><a href="#footerchamada">Contato</a></li>
+							<li class="active"><a href="#footerchamada">Contato</a></li>
 							<li><a href="login/validaLogin.php">LOGIN</a></li>
 						</ul>
 					</nav>
@@ -84,7 +84,6 @@
         </div>
 		
 	<!-- /Banner -->
-
 	<!-- Main -->
 		<div id="page" style="background-color: #008cb2">
 				
@@ -92,49 +91,48 @@
 			<div id="main" class="container" style="color: white;">
 
 				<div class="row">
-
-					<div class="3u">
-						<section class="sidebar">
-							<header>
-								<h2>Apresentação</h2>
-							</header>
-							<ul class="branco" >
-								<li><a href="apresentacao.html" style="color:white; ">Individualização</a></li>
-								<li><a href="lei.html" style="color:white; ">Lei 13.312</a></li>
-								<li><a href="economia.html" style="color:white; ">Economia</a></li>
-								<li><a href="equipamentos.html" style="color:white; ">Equipamentos</a></li>
-								<li><a href="exemplos.html" style="color:white; ">Exemplos de Leitura</a></li>
-								<li><a href="vantagens.html" style="color:white; ">Vantagens</a></li>
-							</ul>
-						</section>
-					</div>
-				
-					<div class="9u skel-cell-important">
-						<section>
-							<header>
-								<h2 style="padding-bottom: 10px;">Vantagens</h2>
-								<span style="padding-top: 50px;">
-								Comparando sistema cabeado x rádios:
-								</span>
-							</header>
-
-							<p>
-								<h1><li style="list-style-type: disc;"><strong style="color:white; ">Menor custo de implantação</strong> </li></h1>
-								<p>Cada remota cabeada pode monitorar vários medidores, enquanto que no sistema de rádios cada medidor precisa ter seu próprio rádio, como acumulador de contagem.</p>
-								<h1><li style="list-style-type: disc;"> <strong style="color:white;">Sistema Ecoflow não necessitade computador</strong> </li></h1>
-								<p>Toda instalação Ecoflow possui a unidade mestre com display, possibilitando a consulta de leitura a qualquer medidor, sem limite de número de consultas.</p>
-								<h1><li style="list-style-type: disc;"> <strong style="color:white;">Sistemas de rádios possuem baterias internas </strong></li></h1>
-								<p>Tem uma vida útil diretamente proporcional ao número de leituras feitas nesse medidor. </p>
-								<h1><li style="list-style-type: disc;"> <strong style="color:white;">Rádios precisam ser substituídos de tempos em tempos </strong></li></h1>
-								<p>Após o esgotamento das baterias, os rádios devem ser trocados, pois a bateria é blindada dentro do seus invólucros, o que acarreta um alto custo de manutenção do sistema.</p>
-								<h1><li style="list-style-type: disc;"> <strong style="color:white;">Rádios sofrem com as interferências eletromagnéticas </strong></li></h1>
-								<p>Interferências de frequências próximas as usadas pelos sistemas de rádios:  celulares, WIFI e outras, reduzem sensivelmente a autonomia das baterias, pois “acordam” frequentemente os rádios do seu modo “stand-by”.</p>
-								<h1><li style="list-style-type: disc;"> <strong style="color:white;">Fabricado no Brasil com tecnologia industrial</strong> </li></h1>
-								<p>Os sistemas de rádios são importados de outros países, e no Brasil sua potencia é reduzida para atender as normas da Anatel, diferente das estrangeiras.   Por isso, em muitos casos, esses rádios apresentam dificuldades de leituras, acarretando o uso de “repetidores”.  Estes repetidores se tornam o elo fraco da rede, pois, por eles, passam grande parte das leituras, ocasionando o desgaste prematuro de suas baterias.</p>
-							</p>
-						</section>
-					</div>
-					
+						<div class="4u" style="padding-right: : 100px;">
+							<form>
+								<h2 style="font-size: 18px;">DADOS DO CONDOMÍNIO:</h2><br>
+									<input type="checkbox" name="aguafria" style="margin-left:  10px;">
+									Água Fria
+									<input type="checkbox" name="aguaquente" style="margin-left: 10px;">
+									Água Quente
+									<input type="checkbox" name="gas" style="margin-left: 10px;">
+									Gás
+								<br>
+									Nome do Condomínio:<br> <input class="inputcss" type="text" name="nomecond" >
+								<br>Número Total de Torres: <br><input class="inputcss" type="text" name="numtorres" >
+								<br>Número de Andares por Torre:<br> <input class="inputcss" type="text" name="numpavtorre" >
+								<br>Número de Unidades por Andar:<br> <input class="inputcss" type="text" name="numunpav" >
+								<br>
+								
+							</form>
+						</div>
+						<div class="4u">
+							<form>	
+								<h2 style="font-size: 18px;">DADOS PESSOAIS:</h2><br><br>
+									Nome Completo:<br> <input class="inputcss" type="text" name="nomecond" >
+								<br>Endereço:<br> <input class="inputcss" type="text" name="numtorres" >
+								<br>Cargo/Função: <br><input class="inputcss" type="text" name="numpavtorre" >
+								<br>Cidade/UF:<br> <input class="inputcss" type="text" name="numunpav" >
+								<br>
+							</form>
+						</div>
+						<div class="4u">
+							<form>	<br><br>
+								<h2 style="font-size: 18px;"></h2><br>
+									Email:<br> <input class="inputcss" type="text" name="nomecond">
+								<br>Telefone Fixo:<br> <input class="inputcss" type="text" name="numtorres">
+								<br>Telofone Celular: <br><input class="inputcss" type="text" name="numpavtorre" >
+								<br>Observações Gerais:<br> <input class="inputcss" type="text" name="numunpav">
+								<br>
+							</form>
+						</div>
+						<div class="12u">
+							<div style="text-align:center;margin: auto;margin-top: 40px;"><button class="buttontent" style="color:#016c89;text-align: center;background-color: white; " >Envie-nos seus dados e receba um pré-orçamento</button></div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -175,7 +173,6 @@
 		</footer>
 			<div class="copyright" style="background-color: #008cb2;">
 				<div class="container">
-					<!--Rodape´da pagina web-->
 					<div class="row hidden-print">
 						<div class="branco">	
 								  @Copyright 2017 - Ecoflow - Todos os direitos reservados.
@@ -186,6 +183,3 @@
 	<!--fecha  div tudo-->
 	</body>
 </html>
-
-	
-	
