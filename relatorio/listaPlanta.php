@@ -3,9 +3,6 @@ include_once("../header.php");
 include_once("../validar.php");
 ?>
 
-<!--Link para funções-->
-<script type="text/javascript" src="../js/funcoes.js"></script>
-
 <?php 
 	//função para verificar se esta logado
 	valida();
@@ -51,8 +48,8 @@ include_once("../validar.php");
 
             <?php while($planta = mysqli_fetch_object($result)){ ?>
             <tr>              
-              <td onclick="botao('<?php echo "plantaConsumo.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->idecoflow ?></td>
-              <td onclick="botao('<?php echo "plantaConsumo.php?id_planta=".$planta->idecoflow ?>')"><?php echo $planta->nome ?></td>
+              <td><?php echo $planta->idecoflow ?></td>
+              <td><?php echo $planta->nome ?></td>
               <td>
                 <a href="plantaConsumo.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
                   <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo

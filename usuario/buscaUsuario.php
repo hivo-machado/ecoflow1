@@ -3,9 +3,6 @@ include_once("../header.php");
 include_once("../validar.php");
 ?>
 
-<!--Link para funções-->
-<script type="text/javascript" src="../js/funcoes.js"></script>
-
 <?php 
   //função para verificar se esta logado
   valida();

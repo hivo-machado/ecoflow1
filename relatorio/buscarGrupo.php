@@ -25,11 +25,11 @@
         while($grupos = mysqli_fetch_object($result)){
     ?>
     <tr>              
-      <td onclick="botao('<?php echo  "listaPlanta.php?id_grupo=".$grupos->id ?>');"><?php echo $grupos->id ?></td>
-      <td onclick="botao('<?php echo  "listaPlanta.php?id_grupo=".$grupos->id ?>');"><?php echo $grupos->nome ?></td>
-      <td onclick="botao('<?php echo  "listaPlanta.php?id_grupo=".$grupos->id ?>');"><?php echo $grupos->nome_grupo ?></td>
-      <td onclick="botao('<?php echo  "listaPlanta.php?id_grupo=".$grupos->id ?>');"><?php echo $grupos->cidade ?></td>
-      <td onclick="botao('<?php echo  "listaPlanta.php?id_grupo=".$grupos->id ?>');"><?php echo $grupos->estado ?></td>
+      <td><?php echo $grupos->id ?></td>
+      <td><?php echo $grupos->nome ?></td>
+      <td><?php echo $grupos->nome_grupo ?></td>
+      <td><?php echo $grupos->cidade ?></td>
+      <td><?php echo $grupos->estado ?></td>
       <td>
         <a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
           <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir

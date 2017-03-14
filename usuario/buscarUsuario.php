@@ -28,14 +28,14 @@
         while($usuarios = mysqli_fetch_object($result)){
     ?>
     <tr>              
-      <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->id ?></td>
-      <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->id_unidade ?></td>
-      <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->nome ?></td>
-      <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->login ?></td>
-      <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->planta ?></td>
-      <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->grupo ?></td>
-      <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->tipo ?></td>
-      <td onclick="botao('<?php echo  "alteraUsuario.php?id_usuario=".$usuarios->id ?>');"><?php echo $usuarios->status ?></td>
+      <td><?php echo $usuarios->id ?></td>
+      <td><?php echo $usuarios->id_unidade ?></td>
+      <td><?php echo $usuarios->nome ?></td>
+      <td><?php echo $usuarios->login ?></td>
+      <td><?php echo $usuarios->planta ?></td>
+      <td><?php echo $usuarios->grupo ?></td>
+      <td><?php echo $usuarios->tipo ?></td>
+      <td><?php echo $usuarios->status ?></td>
       <td>
         <a href="alteraUsuario.php?id_usuario=<?php echo $usuarios->id ?>" class="btn btn-primary btn-xs">
           <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

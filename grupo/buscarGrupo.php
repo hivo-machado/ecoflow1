@@ -30,16 +30,16 @@
       while($grupos = mysqli_fetch_object($result)){
   ?>
   <tr>              
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->id ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->nome ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->nome_grupo ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->rua ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->numero ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->bairro ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->cidade ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->estado ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->cep ?></td>
-    <td onclick="botao('<?php echo "alteraGrupo.php?id_grupo=".$grupos->id ?>')"><?php echo $grupos->telefone ?></td>
+    <td><?php echo $grupos->id ?></td>
+    <td><?php echo $grupos->nome ?></td>
+    <td><?php echo $grupos->nome_grupo ?></td>
+    <td><?php echo $grupos->rua ?></td>
+    <td><?php echo $grupos->numero ?></td>
+    <td><?php echo $grupos->bairro ?></td>
+    <td><?php echo $grupos->cidade ?></td>
+    <td><?php echo $grupos->estado ?></td>
+    <td><?php echo $grupos->cep ?></td>
+    <td><?php echo $grupos->telefone ?></td>
     <td>
       <a href="alteraGrupo.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
