@@ -40,15 +40,13 @@
    $(document).ready(function(){
 
     //chamada da função submitForm
-    $('#diaInicio').change(function(){submitForm(); verificarData()});
-    $('#mesInicio').change(function(){submitForm(); mudarDiaInicio(); verificarData()});
-    $('#anoInicio').change(function(){submitForm(); mudarDiaInicio(); verificarData()});
-    $('#diaFim').change(function(){submitForm(); verificarData()});
-    $('#mesFim').change(function(){submitForm(); mudarDiaFim(); verificarData()});
-    $('#anoFim').change(function(){submitForm(); mudarDiaFim(); verificarData()});
+    $('#mesInicio').change(function(){ mudarDiaInicio(); });
+    $('#anoInicio').change(function(){ mudarDiaInicio(); });
+    $('#mesFim').change(function(){ mudarDiaFim(); });
+    $('#anoFim').change(function(){ mudarDiaFim(); });
 
     //função submit para tabela 
-    function submitForm(){
+    $('#form').submit( function(){
       $.ajax({
         url:'grupoTabela.php',
         type: 'POST',
@@ -65,9 +63,10 @@
       });
       copia();
       return false;
-    };
+    });
+   
 
-    //Copia os dados para formulario de download
+    //Inicia com formulario do dia atual
     function iniciarPagina(){
       $.ajax({
         url:'grupoTabela.php',
@@ -88,8 +87,7 @@
     };
 
     //Copia os dados para formulario de download
-    function copia(){
-      $('#id_grupo_D').val( $('#id_grupo').val() ); 
+    function copia(){ 
       $('#diaInicio_D').val( $('#diaInicio').val() );
       $('#mesInicio_D').val( $('#mesInicio').val() );
       $('#anoInicio_D').val( $('#anoInicio').val() );
@@ -115,7 +113,7 @@
         opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
         $('#diaInicio').append(opcao);
       }
-    }
+    };
 
     //Mudar preenchimento do select dia quando mudar mes e ano
     function mudarDiaFim(){
@@ -134,82 +132,62 @@
         opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
         $('#diaFim').append(opcao);
       }
-    }
-
-    function verificarData(){
-      var dataInicio = new Data($('#anoInicio').val() + '-' + $('#mesInicio').val() + '-' + $('#diaInicio').val());
-      var dataFim = new Data($('#anoFim').val() + '-' + $('#mesFim').val() + '-' + $('#diaFim').val());
-
-      alert(dataInicio + ' ' + dataFim);
-      /*
-      var diaInicio = $('#diaInicio').val();
-      var mesInicio = $('#mesInicio').val();
-      var anoInicio = $('#anoInicio').val();
-      var diaFim = $('#diaFim').val();
-      var mesFim = $('#mesFim').val();
-      var anoFim = $('#anoFim').val();
-
-      if(anoInicio > anoFim){
-        $('#anoFim').val( $('#anoInicio').val() );
-      }else if(mesInicio > mesFim){
-        $('#mesFim').val();
-      }
-      */
-    }
+    };
 
     //Data inicial
     var dataAtual = new Date();
-    var mesInicio = dataAtual.getMonth() + 1;
+    var mesInicio = dataAtual.getMonth() + 1;//Ajusta mês de 0-11 para 1-12
     var anoInicio = dataAtual.getFullYear();
 
     var dataFim = dataAtual;
-    dataFim.setMonth(dataFim.getMonth() + 1);
-    var mesFim = dataFim.getMonth() + 1;
+    dataFim.setMonth(dataFim.getMonth() + 1); // Soma 1 mes
+    var mesFim = dataFim.getMonth() + 1;//Ajusta mês de 0-11 para 1-12
     var anoFim = dataFim.getFullYear();
 
     var i;
     var opcao;
+    var seleciona;
     var ultimoDiaInicio = (new Date(anoInicio, mesInicio, 0)).getDate();
     var ultimoDiaFim = (new Date(anoFim, mesFim, 0)).getDate();
 
     //Preencher option do diaInicio
     for(i = 1; i <= ultimoDiaInicio; i++ ){
-      if(i == 1) var seleciona = ' selected '; else seleciona = '';
+      if(i == 1) seleciona = ' selected '; else seleciona = '';
       opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
       $('#diaInicio').append(opcao);
     }
 
     //Preencher option do mesInicio
     for(i = 1; i <= 12; i++ ){
-      if(i == mesInicio) var seleciona = ' selected '; else seleciona = '';
+      if(i == mesInicio) seleciona = ' selected '; else seleciona = '';
       opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
       $('#mesInicio').append(opcao);
     }
 
     //Preencher option do anoInicio
     for(i = 2016; i <= anoInicio; i++ ){
-      if(i == anoInicio) var seleciona = ' selected '; else seleciona = '';
+      if(i == anoInicio) seleciona = ' selected '; else seleciona = '';
       opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
       $('#anoInicio').append(opcao);
     }
 
     //Preencher option do diaFim
     for(i = 1; i <= ultimoDiaFim; i++ ){
-      if(i == 1) var seleciona = ' selected '; else seleciona = '';
+      if(i == 1) seleciona = ' selected '; else seleciona = '';
       opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
       $('#diaFim').append(opcao);
     }
 
     //Preencher option do mesInicio
     for(i = 1; i <= 12; i++ ){
-      if(i == mesFim) var seleciona = ' selected '; else seleciona = '';
+      if(i == mesFim) seleciona = ' selected '; else seleciona = '';
       opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
       $('#mesFim').append(opcao);
     }
 
     //Preencher option do anoInicio
     for(i = 2016; i <= anoFim; i++ ){
-      if(i == anoFim) var seleciona = ' selected '; else seleciona = '';
+      if(i == anoFim) seleciona = ' selected '; else seleciona = '';
       opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
       $('#anoFim').append(opcao);
     }
@@ -291,9 +269,13 @@
             <select class="form-control" id="anoFim" name="anoFim"></select>      
           </div>
 
+          <div class="form-group form-group-sm">
+            <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
+          </div>
+
         </div>
       </div>
-          
+
       </form>
     </div>
   </div><!--Fim do campo selecionavel-->
@@ -323,7 +305,7 @@
         <div class="sr-only">
 
           <!--Input text oculto com id_grupo-->
-          <input type="text" id="id_grupo_D" name="id_grupo" value="">
+          <input type="text" class="form-control" id="id_grupo" name="id_grupo" value=<?php echo $id_grupo ?>>
          
           <!--Input text oculto com data inicio-->
           <input type="text" id="diaInicio_D" name="diaInicio" value="">

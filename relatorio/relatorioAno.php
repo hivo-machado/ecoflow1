@@ -61,6 +61,22 @@
       return false;
     };
 
+    //Data inicial
+    var dataAtual = new Date();
+    var mes = dataAtual.getMonth() + 1;//Ajusta mês de 0-11 para 1-12
+    var ano = dataAtual.getFullYear();
+
+    var i;
+    var opcao;
+    var seleciona;
+
+     //Preencher option do ano
+    for(i = 2016; i <= ano; i++ ){
+      if(i == ano) seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#ano').append(opcao);
+    }
+
     iniciarPagina();
 
   });
@@ -83,15 +99,7 @@
 
         <div class="form-group form-group-sm">
           <label for="ano">Ano</label>
-          <select class="form-control" id="ano" name="ano">
-            <?php
-              $numAno = date("Y");
-              for($i = 2016; $i <= $numAno; $i++){
-                if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
-                echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-              }
-             ?>
-          </select>      
+          <select class="form-control" id="ano" name="ano"></select>      
         </div>
 
     </form>

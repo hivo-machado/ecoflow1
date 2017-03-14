@@ -25,9 +25,9 @@
 
   $(document).ready(function(){
 
-    $('#dia').change(function(){submitForm()});
-    $('#mes').change(function(){submitForm()});
-    $('#ano').change(function(){submitForm()});
+    $('#dia').change(function(){submitForm(); });
+    $('#mes').change(function(){submitForm(); mudarDia(); });
+    $('#ano').change(function(){submitForm(); mudarDia(); });
 
     function submitForm(){
       $.ajax({
@@ -65,6 +65,56 @@
       return false;
     };
 
+    //Mudar preenchimento do select dia quando mudar mes e ano
+    function mudarDia(){
+      var i;
+      var opcao;
+      var dia = $('#dia').val();
+      var mes = $('#mes').val();
+      var ano = $('#ano').val();
+      var ultimoDia = (new Date(ano, mes, 0)).getDate();
+      //limpar as opções
+      $('#dia').empty();
+
+      //Preencher option do dia
+      for(i = 1; i <= ultimoDia; i++ ){
+        if(i == dia) var seleciona = ' selected '; else seleciona = '';
+        opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+        $('#dia').append(opcao);
+      }
+    };
+
+    //Data inicial
+    var dataAtual = new Date();
+    var mes = dataAtual.getMonth() + 1;//Ajusta mês de 0-11 para 1-12
+    var ano = dataAtual.getFullYear();
+
+    var i;
+    var opcao;
+    var seleciona;
+    var ultimoDia = (new Date(ano, mes, 0)).getDate();
+
+    //Preencher option do dia
+    for(i = 1; i <= ultimoDia; i++ ){
+      if(i == 1) seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#dia').append(opcao);
+    }
+
+    //Preencher option do mes
+    for(i = 1; i <= 12; i++ ){
+      if(i == mes) seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#mes').append(opcao);
+    }
+
+    //Preencher option do ano
+    for(i = 2016; i <= ano; i++ ){
+      if(i == ano) seleciona = ' selected '; else seleciona = '';
+      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
+      $('#ano').append(opcao);
+    }
+
     iniciarPagina();
 
   });
@@ -86,38 +136,15 @@
       <form id="data" class="form-inline" method="POST" action="">
           <div class="form-group form-group-sm">
             <label for="dia">Dia</label>
-            <select class="form-control" id="dia" name="dia">
-              <?php
-                $numDiaMes = cal_days_in_month(CAL_GREGORIAN, $mes, $ano);
-                for($i = 1; $i <= $numDiaMes; $i++){
-                  if($i == $dia) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>          
+            <select class="form-control" id="dia" name="dia"></select>          
           </div>
           <div class="form-group form-group-sm">
             <label for="mes">Mês</label>
-            <select class="form-control" id="mes" name="mes">
-              <?php 
-                for($i = 1; $i <= 12; $i++){
-                  if($i == $mes) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
+            <select class="form-control" id="mes" name="mes"></select>      
           </div>
           <div class="form-group form-group-sm">
             <label for="ano">Ano</label>
-            <select class="form-control" id="ano" name="ano">
-              <?php
-                $numAno = date("Y");
-                for($i = 2016; $i <= $numAno; $i++){
-                  if($i == $ano) $seleciona = 'selected'; else $seleciona = '';
-                  echo '<option value="'.$i.'"'.$seleciona.'>'.$i.'</option>';
-                }
-               ?>
-            </select>      
+            <select class="form-control" id="ano" name="ano"></select>      
           </div>
           
       </form>
