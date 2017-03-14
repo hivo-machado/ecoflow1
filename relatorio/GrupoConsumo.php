@@ -48,7 +48,7 @@
     //função submit para tabela 
     $('#form').submit( function(){
       $.ajax({
-        url:'grupoTabela.php',
+        url:'grupoTabelaConsumo.php',
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
@@ -69,7 +69,7 @@
     //Inicia com formulario do dia atual
     function iniciarPagina(){
       $.ajax({
-        url:'grupoTabela.php',
+        url:'grupoTabelaConsumo.php',
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
