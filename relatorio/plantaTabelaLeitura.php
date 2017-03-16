@@ -1,14 +1,14 @@
 <?php 
 	include('../conexao.php');
-  include_once("funcaoGrupo.php");
+  include_once("funcaoPlanta.php");
 
 	//varivel POST
-	$id_grupo = $_POST['id_grupo'];
-	$data = $_POST['data'];
+  $id_planta = $_POST['id_planta'];
+  $data = $_POST['data'];
   $hora = $_POST['hora'];
 
-	//Chamada das funções
-	$leituras = leitura($con, $id_grupo, $data, $hora);
+  //Chamada das funções
+  $leituras = leitura($con, $id_planta, $data, $hora);
  ?>
 
 

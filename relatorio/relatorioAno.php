@@ -24,26 +24,11 @@
 <script>
 
   $(document).ready(function(){
-
-    $('#ano').change(function() {
-      $.ajax({
-        url:'graficoAno.php',
-        type: 'POST',
-        data: $('#data').serialize(),
-        success: function(data){
-          $('#relatorio').html(data);
-        },
-        beforeSend: function(){
-          $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
-      });
-      return false;
+    submit();
+    return false;
     });
 
-    function iniciarPagina(){
+    function submit(){
       $.ajax({
         url:'graficoAno.php',
         type: 'POST',
@@ -77,7 +62,7 @@
       $('#ano').append(opcao);
     }
 
-    iniciarPagina();
+    submit();
 
   });
   

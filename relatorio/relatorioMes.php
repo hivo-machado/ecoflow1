@@ -30,24 +30,11 @@
     $('#ano').change(function(){submitForm(); mudarDia(); });
 
     function submitForm(){
-      $.ajax({
-        url:'graficoMes.php',
-        type: 'POST',
-        data: $('#data').serialize(),
-        success: function(data){
-          $('#relatorio').html(data);
-        },
-        beforeSend: function(){
-          $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
-      });
+      submit();
       return false;
     }
 
-    function iniciarPagina(){
+    function submit(){
       $.ajax({
         url:'graficoMes.php',
         type: 'POST',
@@ -115,7 +102,7 @@
       $('#ano').append(opcao);
     }
 
-    iniciarPagina();
+    submit();
 
   });
   

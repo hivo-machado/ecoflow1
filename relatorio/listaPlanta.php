@@ -54,6 +54,9 @@ include_once("../validar.php");
                 <a href="plantaConsumo.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
                   <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo
                 </a>
+                <a href="plantaLeitura.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
+                  <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Leitura
+                </a>
               </td>            
             </tr>
             <?php } ?>

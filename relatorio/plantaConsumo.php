@@ -32,16 +32,6 @@
 		$planta = mysqli_fetch_object($result);
 	}
 	
-	//Iniciar time zone
-	date_default_timezone_set('America/Sao_Paulo');
-
-	
-  $diaInicio = 1;
-  $mesInicio = date("n");
-  $anoInicio = date("Y"); 
-  $diaFim = $diaInicio;
-  $mesFim = $mesInicio + 1;
-  $anoFim = $anoInicio;
  ?>
 
  <script>
@@ -55,28 +45,14 @@
 
     //função submit para tabela 
     $('#form').submit( function(){
-      $.ajax({
-        url:'plantaTabela.php',
-        type: 'POST',
-        data: $('#form').serialize(),
-        success: function(data){
-          $('#tabela').html(data);
-        },
-        beforeSend: function(){
-          $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
-      });
-      copia();
+      submit();
       return false;
     });
 
     //Inicia com formulario do dia atual
-    function iniciarPagina(){
+    function submit(){
       $.ajax({
-        url:'plantaTabela.php',
+        url:'plantaTabelaConsumo.php',
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
@@ -199,7 +175,7 @@
       $('#anoFim').append(opcao);
     }
 
-    iniciarPagina();
+    submit();
 
   });//Fim document
 

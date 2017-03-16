@@ -47,27 +47,13 @@
 
     //função submit para tabela 
     $('#form').submit( function(){
-      $.ajax({
-        url:'grupoTabelaConsumo.php',
-        type: 'POST',
-        data: $('#form').serialize(),
-        success: function(data){
-          $('#tabela').html(data);
-        },
-        beforeSend: function(){
-          $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
-      });
-      copia();
+      submit();
       return false;
     });
    
 
     //Inicia com formulario do dia atual
-    function iniciarPagina(){
+    function submit(){
       $.ajax({
         url:'grupoTabelaConsumo.php',
         type: 'POST',
@@ -192,7 +178,7 @@
       $('#anoFim').append(opcao);
     }
 
-    iniciarPagina();
+    submit();
 
   });//fim document
 

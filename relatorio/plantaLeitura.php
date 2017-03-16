@@ -1,39 +1,37 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
+?>
 
+<?php 
 	//valida-se esta logado como Administrador ou sindico
 	validaAdminSind();
  ?>
 
 <?php 
 	//variavel SESSAO
-  $id = $_SESSION['id'];
 	$tipo = $_SESSION['tipo'];
+	$id_grupo = $_SESSION['id_grupo'];
 
-  if( isset( $_GET['id_grupo']) ){
-    //varivel GET
-    $id_grupo = $_GET['id_grupo'];
-  }else{
-    //variavel sessão
-    $id_grupo = $_SESSION['id_grupo'];
-  }
+  //varivel GET
+  $id_planta = $_GET['id_planta'];
 
-  //Seleciona usuario
-  $result = mysqli_query($con, "SELECT * FROM usuario WHERE id = '$id' AND id_grupo = '$id_grupo'");
-  $usuario = mysqli_fetch_object($result);
+	//Seleciona planta
+	$result = mysqli_query($con, "SELECT * FROM planta WHERE idecoflow = '$id_planta' AND id_grupo_fk = '$id_grupo'");
+	$planta = mysqli_fetch_object($result);
 
 	//Verificação para perfil sindico
 	if($tipo == 'sind'){
-		//Verifica-se usuario pertence ao grupo senão usuario tentando acesso indevido
-		if(!isset($usuario)){
-			echo '<meta http-equiv="refresh" content="0;URL=../home/home.php?error=Acesso indevido." />';
+		//Verifica-se planta pertence a grupo senão usuario tentando acesso indevido
+		if(!isset($planta)){
+			echo '<meta http-equiv="refresh" content="0;URL=listaPlanta.php?error=Acesso indevido." />';
 		}
+	}else{
+		//Seleciona planta
+		$result = mysqli_query($con, "SELECT * FROM planta WHERE idecoflow = '$id_planta'");
+		$planta = mysqli_fetch_object($result);
 	}
 	
-  //Seleciona grupo
-	$result = mysqli_query($con, "SELECT * FROM grupo WHERE id = '$id_grupo'");
-	$grupo = mysqli_fetch_object($result);
  ?>
 
  <script>
@@ -47,7 +45,7 @@
 
     function submit(){
       $.ajax({
-        url:'grupoTabelaLeitura.php',
+        url:'plantaTabelaLeitura.php',
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
@@ -81,7 +79,7 @@
 
     submit();
 
-  });//fim document
+  });//Fim document
 
  </script>
 
@@ -89,7 +87,7 @@
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
-        <h1>Consumo<small> Grupo: <?php echo $grupo->nome ?></small></h1>
+        <h1>Consumo<small> Torre: <?php echo $planta->nome ?></small></h1>
       </div>
     </div>
   </div>
@@ -98,15 +96,14 @@
   <div class="row hidden-print">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <form id="form" class="form-inline" method="POST" action="">
-
         <div class="col-sm-5 col-sm-offset-1 col-xs-4 col-xs-offset-1">
 
-          <!--Input text oculto com id_grupo-->
+          <!--Input text oculto com id_planta-->
           <div class="form-group sr-only">
-            <label for="id_grupo" class="col-sm-4 control-label">ID Grupo*</label>
+            <label for="id_planta" class="col-sm-4 control-label">ID Planta</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" id="id_grupo" name="id_grupo"
-              value=<?php echo $id_grupo ?>>
+              <input type="text" class="form-control" id="id_planta" name="id_planta"
+              value=<?php echo $id_planta ?>>
             </div>
           </div>
 
@@ -125,10 +122,9 @@
           </div>
 
         </div>
-
       </form>
     </div>
-  </div><!--Fim do campo selecionavel-->
+  </div>
 
   <!--Tabela de consumo do mes-->
   <div class="row marge-tabela">
@@ -143,7 +139,9 @@
 
     <!--Botão imprimir-->
     <div class="col-sm-2 col-sm-offset-8 hidden-xs">
-      <button type="button" class="btn btn-primary" name="imprimir" value="Imprimir" onclick="window.print();"><span class="glyphicon glyphicon-print" arian-hidden="true"></span> Imprimir</button>
+      <form>
+        <button type="button" class="btn btn-primary" name="imprimir" value="Imprimir" onclick="window.print();"><span class="glyphicon glyphicon-print" arian-hidden="true"></span> Imprimir</button>
+      </form>
     </div>
 
   </div>
