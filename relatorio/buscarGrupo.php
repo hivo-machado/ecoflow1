@@ -37,6 +37,9 @@
         <a href="grupoConsumo.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
           <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo
         </a>
+        <a href="grupoLeitura.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
+          <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Leitura
+        </a>
       </td>            
     </tr>
     <?php

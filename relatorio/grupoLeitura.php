@@ -39,14 +39,10 @@
  <script>
    $(document).ready(function(){
 
-    //chamada da função submitForm
-    $('#mes').change(function(){ mudarDia(); });
-    $('#ano').change(function(){ mudarDia(); });
-
     //função submit para tabela 
     $('#form').submit( function(){
       $.ajax({
-        url:'grupoTabela.php',
+        url:'grupoTabelaLeitura.php',
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
@@ -61,77 +57,6 @@
       });
       return false;
     });
-   
-
-    //Inicia com formulario do dia atual
-    function iniciarPagina(){
-      $.ajax({
-        url:'grupoTabela.php',
-        type: 'POST',
-        data: $('#form').serialize(),
-        success: function(data){
-          $('#tabela').html(data);
-        },
-        beforeSend: function(){
-          $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
-      });
-      return false;
-    };
-
-    //Mudar preenchimento do select dia quando mudar mes e ano
-    function mudarDia(){
-      var i;
-      var opcao;
-      var dia = $('#dia').val();
-      var mes = $('#mes').val();
-      var ano = $('#ano').val();
-      var ultimoDia = (new Date(ano, mes, 0)).getDate();
-      //limpar as opções
-      $('#dia').empty();
-
-      //Preencher option do dia
-      for(i = 1; i <= ultimoDia; i++ ){
-        if(i == dia) var seleciona = ' selected '; else seleciona = '';
-        opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
-        $('#dia').append(opcao);
-      }
-    };
-
-    //Data inicial
-    var dataAtual = new Date();
-    var mes = dataAtual.getMonth() + 1;//Ajusta mês de 0-11 para 1-12
-    var ano = dataAtual.getFullYear();
-
-    var i;
-    var opcao;
-    var seleciona;
-    var ultimoDia = (new Date(ano, mes, 0)).getDate();
-
-    //Preencher option do dia
-    for(i = 1; i <= ultimoDia; i++ ){
-      if(i == 1) seleciona = ' selected '; else seleciona = '';
-      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
-      $('#dia').append(opcao);
-    }
-
-    //Preencher option do mes
-    for(i = 1; i <= 12; i++ ){
-      if(i == mes) seleciona = ' selected '; else seleciona = '';
-      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
-      $('#mes').append(opcao);
-    }
-
-    //Preencher option do ano
-    for(i = 2016; i <= ano; i++ ){
-      if(i == ano) seleciona = ' selected '; else seleciona = '';
-      opcao = $('<option value="'+i+'"'+seleciona+'>'+i+'</option>');
-      $('#ano').append(opcao);
-
-    iniciarPagina();
 
   });//fim document
 
@@ -151,9 +76,7 @@
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <form id="form" class="form-inline" method="POST" action="">
 
-      <div class="col-sm-5 col-sm-offset-1 col-xs-4 col-xs-offset-1">
-
-        <div class="row">
+        <div class="col-sm-5 col-sm-offset-1 col-xs-4 col-xs-offset-1">
 
           <!--Input text oculto com id_grupo-->
           <div class="form-group sr-only">
@@ -165,18 +88,13 @@
           </div>
 
           <div class="form-group form-group-sm">
-            <label for="dia">Dia</label>
-            <select class="form-control" id="dia" name="dia"></select>          
+            <label for="data">Data</label>
+            <input type="date" class="form-control" id="data" name="data" required>        
           </div>
 
           <div class="form-group form-group-sm">
-            <label for="mes">Mês</label>
-            <select class="form-control" id="mes" name="mes"></select>      
-          </div>
-
-          <div class="form-group form-group-sm">
-            <label for="ano">Ano</label>
-            <select class="form-control" id="ano" name="ano"></select>      
+            <label for="hora">Hora</label>
+            <input type="time" class="form-control" id="hora" name="hora" required>        
           </div>
 
           <div class="form-group form-group-sm">
@@ -184,8 +102,6 @@
           </div>
 
         </div>
-      </div>
-
 
       </form>
     </div>

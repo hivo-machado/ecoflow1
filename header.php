@@ -105,7 +105,7 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="../relatorio/buscaGrupo.php">Consumo</a>
+				            	<a href="../relatorio/buscaGrupo.php">Consumo e Leitura</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li relatorio-->
