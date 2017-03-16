@@ -25,14 +25,9 @@
 
   $(document).ready(function(){
 
-    $('#dia').change(function(){submitForm(); });
-    $('#mes').change(function(){submitForm(); mudarDia(); });
-    $('#ano').change(function(){submitForm(); mudarDia(); });
-
-    function submitForm(){
-      submit();
-      return false;
-    }
+    $('#dia').change(function(){submit()(); });
+    $('#mes').change(function(){submit()(); mudarDia(); });
+    $('#ano').change(function(){submit()(); mudarDia(); });
 
     function submit(){
       $.ajax({

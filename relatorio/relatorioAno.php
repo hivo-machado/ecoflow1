@@ -24,9 +24,8 @@
 <script>
 
   $(document).ready(function(){
-    submit();
-    return false;
-    });
+    
+    $('#ano').change(function(){submit();});
 
     function submit(){
       $.ajax({
