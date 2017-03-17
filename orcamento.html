@@ -26,6 +26,24 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=0.5,maximum-scale=4">
+
+		<script>
+			$(document).ready(function(){
+				//função submit para tabela 
+			    $('#form').submit( function(){
+			      $.ajax({
+			        url:'enviarOrcamento.php',
+			        type: 'POST',
+			        data: $('#form').serialize(),
+			        success: function(data){
+			          $('#tabela').html(data);
+			          alert('pré-orçamento enviado com sucesso.');
+			        }
+			      });
+			      return false;
+			    });
+			});
+		</script>
 	</head>
 	<body class="left-sidebar">
 
@@ -90,50 +108,48 @@
 			<!-- Main #e7f6ff -->
 			<div id="main" class="container" style="color: white;">
 
-				<div class="row">
+				<form id="form" method="POST" action="">
+					<div class="row">
 						<div class="4u" style="padding-right: : 100px;">
-							<form>
 								<h2 style="font-size: 18px;">DADOS DO CONDOMÍNIO:</h2><br>
-									<input type="checkbox" name="aguafria" style="margin-left:  10px;">
+									<input type="checkbox" name="aguafria" style="margin-left:  10px;" value="Água Fria" checked>
 									Água Fria
-									<input type="checkbox" name="aguaquente" style="margin-left: 10px;">
+									<input type="checkbox" name="aguaquente" style="margin-left: 10px;" value="Água Quente">
 									Água Quente
-									<input type="checkbox" name="gas" style="margin-left: 10px;">
+									<input type="checkbox" name="gas" style="margin-left: 10px;" value="Gás">
 									Gás
+								<br>Nome do Condomínio:<br> <input class="inputcss" type="text" name="nomecond" required>
+								<br>Número Total de Torres: <br><input class="inputcss" type="number" name="numtorres" required>
+								<br>Número de Andares por Torre:<br> <input class="inputcss" type="number" name="numpavtorre" required>
+								<br>Número de Unidades por Andar:<br> <input class="inputcss" type="number" name="numunpav" required>
 								<br>
-									Nome do Condomínio:<br> <input class="inputcss" type="text" name="nomecond" >
-								<br>Número Total de Torres: <br><input class="inputcss" type="text" name="numtorres" >
-								<br>Número de Andares por Torre:<br> <input class="inputcss" type="text" name="numpavtorre" >
-								<br>Número de Unidades por Andar:<br> <input class="inputcss" type="text" name="numunpav" >
-								<br>
-								
-							</form>
 						</div>
 						<div class="4u">
-							<form>	
 								<h2 style="font-size: 18px;">DADOS PESSOAIS:</h2><br><br>
-									Nome Completo:<br> <input class="inputcss" type="text" name="nomecond" >
-								<br>Endereço:<br> <input class="inputcss" type="text" name="numtorres" >
-								<br>Cargo/Função: <br><input class="inputcss" type="text" name="numpavtorre" >
-								<br>Cidade/UF:<br> <input class="inputcss" type="text" name="numunpav" >
+									Nome Completo:<br> <input class="inputcss" type="text" name="nome" required>
+								<br>Endereço:<br> <input class="inputcss" type="text" name="endereco" required>
+								<br>Cargo/Função: <br><input class="inputcss" type="text" name="cargo" required>
+								<br>Cidade/UF:<br> <input class="inputcss" type="text" name="cidade" required>
 								<br>
-							</form>
 						</div>
 						<div class="4u">
-							<form>	<br><br>
+							<br><br>
 								<h2 style="font-size: 18px;"></h2><br>
-									Email:<br> <input class="inputcss" type="text" name="nomecond">
-								<br>Telefone Fixo:<br> <input class="inputcss" type="text" name="numtorres">
-								<br>Telofone Celular: <br><input class="inputcss" type="text" name="numpavtorre" >
-								<br>Observações Gerais:<br> <input class="inputcss" type="text" name="numunpav">
+									Email:<br> <input class="inputcss" type="email" name="email" required>
+								<br>Telefone Fixo:<br> <input class="inputcss" type="tel" name="telfixo" required>
+								<br>Telefone Celular: <br><input class="inputcss" type="tel" name="telcel" >
+								<br>Observações Gerais:<br> <input class="inputcss" type="text" name="obs">
 								<br>
-							</form>
 						</div>
 						<div class="12u">
-							<div style="text-align:center;margin: auto;margin-top: 40px;"><button class="buttontent" style="color:#016c89;text-align: center;background-color: white; " >Envie-nos seus dados e receba um pré-orçamento</button></div>
+							<div style="text-align:center;margin: auto;margin-top: 40px;">
+								<button type="submit" class="buttontent" style="color:#016c89;text-align: center;background-color: white; " >
+									Envie-nos seus dados e receba um pré-orçamento
+								</button>
+							</div>
 						</div>
-					</form>
-				</div>
+					</div>
+				<form>
 			</div>
 		</div>
 	<!-- /Main -->
