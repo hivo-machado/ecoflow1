@@ -67,12 +67,17 @@
     var mes = dataAtual.getMonth() + 1;//Ajusta mês de 0-11 para 1-12
     var ano = dataAtual.getFullYear();
     var hora = dataAtual.getHours();
+    
     //formata o dia
     if (dia.toString().length == 1)
       dia = "0"+dia;
     //formata o mes
     if (mes.toString().length == 1)
       mes = "0"+mes;
+    //formatar hora
+    if (hora.toString().length == 1)
+      hora = "0"+hora;
+
     //insere valores no input data e hora
     $('#data').val(ano + '-' + mes + '-' + dia);
     $('#hora').val(hora + ':00');
