@@ -2,16 +2,14 @@
 //Conexão com banco de dados
 include_once("../conexao.php");
 
-
-// lista com links para arquvios xml
-$arquivos = array( 'http://ecoflow.ind.br/rest?groupId=2&login=suportti&password=suportti','http://ecoflow.ind.br/rest?groupId=3&login=vector&password=vector1234');
+$result = mysqli_query($con, "SELECT * FROM xml");
 
 // loop para os links
-foreach ($arquivos as $arquivo) {
+while ( $links =  mysqli_fetch_object($result) ) {
 		// Tempo de execução maxima do programa 120 seg.
 		ini_set('max_execution_time',120);
 
-		$xml = simplexml_load_file($arquivo);
+		$xml = simplexml_load_file($links->link);
 	
 	// loop para grupos
 	foreach ($xml->grupo as $grupo){

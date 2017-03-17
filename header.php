@@ -117,6 +117,9 @@
 				          	<span class="caret"></span>			          
 				          	</a>
 				          <ul class="dropdown-menu">
+				          	<li>
+				            	<a href="../grupo/criaGrupo.php">Adicionar novo grupo</a>
+				            </li>
 				            <li>
 				            	<a href="../grupo/buscaGrupo.php">Buscar e Alterar grupo</a>
 				            </li>
