@@ -117,9 +117,6 @@
 				          	<span class="caret"></span>			          
 				          	</a>
 				          <ul class="dropdown-menu">
-				          	<li>
-				            	<a href="../grupo/criaGrupo.php">Adicionar novo grupo</a>
-				            </li>
 				            <li>
 				            	<a href="../grupo/buscaGrupo.php">Buscar e Alterar grupo</a>
 				            </li>
@@ -141,6 +138,22 @@
 				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
+
+				        <!--Opção Grupos-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Banco de Dados
+				          	<span class="caret"></span>			          
+				          	</a>
+				          <ul class="dropdown-menu">
+				          	<li>
+				            	<a href="../bd/criaGrupo.php">Adicionar novo grupo</a>
+				            </li>
+				            <li>
+				            	<a href="../bd/buscaGrupo.php">Buscar e Altera grupo</a>
+				            </li>
+				          </ul>
+				        </li><!--Fecha li grupo-->
 
 			       <?php } ?>
 
