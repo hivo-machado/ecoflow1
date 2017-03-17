@@ -65,7 +65,7 @@
 
     //data inicial
     var dataAtual = new Date();
-    var dia = dataAtual.getDay();
+    var dia = dataAtual.getDate();
     var mes = dataAtual.getMonth() + 1;//Ajusta mês de 0-11 para 1-12
     var ano = dataAtual.getFullYear();
     var hora = dataAtual.getHours();
