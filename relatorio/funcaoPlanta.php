@@ -79,11 +79,12 @@
 		//Percorre todas as unidade do grupo
 		while ( $usuario = mysqli_fetch_object($usuarios) ) {
 			//Seleciona a leitura inicial da unidade
-			$res = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo = '$tempo' AND hora <= '$hora' ORDER BY hora DESC LIMIT 1");
+			$res = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo <= '$tempo' AND hora <= '$hora' ORDER BY tempo DESC, hora DESC LIMIT 1");
 			$unidade = mysqli_fetch_object($res);
 
 			$listUniNome[$cont] = $usuario->nome;
 			if(isset($unidade)){
+				$listData[$cont] = $unidade->tempo;
 				$listHora[$cont] = $unidade->hora;
 				$listUniLeitura[$cont] = number_format( $unidade->leitura, 3, '.', '');
 			}else{
@@ -93,7 +94,7 @@
 			$cont++;
 		}//fim while
 
-		return $listLeitura = array($listUniNome, $listHora, $listUniLeitura);
+		return $listLeitura = array($listUniNome, $listData, $listHora, $listUniLeitura);
 	}//Fim da função
 
 ?>

@@ -19,6 +19,7 @@
   <table class="table table-bordered table-striped tabela table-hover table-condensed">
     <tr>
       <th class="tabela-nome-coluna">Unidade</th>
+      <th class="tabela-nome-coluna">Data</th>
       <th class="tabela-nome-coluna">Hora</th>
       <th class="tabela-nome-coluna">Consumo (m³)</th>
     </tr>
@@ -28,6 +29,7 @@
       <td><?php echo $leituras[0][$i] ?></td>
       <td><?php echo $leituras[1][$i] ?></td>
       <td><?php echo $leituras[2][$i] ?></td>
+      <td><?php echo $leituras[3][$i] ?></td>
     </tr>
     <?php } ?>
     
