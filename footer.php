@@ -14,7 +14,8 @@
 						<address class="text-center">
 						  	<strong>Contato ECOFlow</strong><br>
 						  	<a class="link-rodape" href="mailto:contato@ecoflow.net.br"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span> contato@ecoflow.net.br</a><br>
-						  	<abbr title="Telefone">Tel.:</abbr> (35) 3622-7522
+						  	<abbr title="Telefone">Tel.:</abbr> (35) 3622-7522 <br>
+						  	<abbr title="Telefone">Cel.:</abbr> (35) 9 8875-8875
 						</address>	
 					</div>
 
@@ -32,6 +33,7 @@
 						<strong>Contato ECOFlow</strong><br>
 						contato@ecoflow.net.br<br>
 						Tel.: (35) 3622-7522
+						Cel.: (35) 98875-8875
 						</address>
 					</div>
 				</div>

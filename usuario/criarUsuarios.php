@@ -11,7 +11,7 @@ include_once("../conexao.php");
 	if(mysqli_num_rows($Usuarios)){
 		while ($usuario = mysqli_fetch_object($Usuarios)) {
 			//verifica se usuario não existe
-			$resUsuario = mysqli_query($con,"SELECT * from usuario where id_unidade = '$usuario->idecoflow' ");
+			$resUsuario = mysqli_query($con,"SELECT * from usuario where nome = '$usuario->nome' ");
 			$objUsuario = mysqli_fetch_object($resUsuario);
 			if(!isset($objUsuario)){
 				//Insere novo usuario
