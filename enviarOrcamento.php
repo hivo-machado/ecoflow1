@@ -27,7 +27,7 @@
 		$orcamento .= ','.$gas;
 	}
 
-	$sendemail = 'contato@ecoflow.br';
+	$sendemail = 'contato@ecoflow.net.br';
 
 	//envia e-email com login e senha
 	$assunto = "Pré Orçamento";
