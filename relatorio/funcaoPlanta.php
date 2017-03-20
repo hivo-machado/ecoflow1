@@ -19,16 +19,16 @@
 		$dateFim = date_create($dataFim);
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
-		$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE id_planta = $id");
+		$usuarios = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = $id AND servico = '0' GROUP BY idecoflow");
 
 		//Percorre todas as unidade da planta
 		while ( $usuario = mysqli_fetch_object($usuarios) ) {
 			//Seleciona a leitura inicial da unidade
-			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo ASC, hora ASC LIMIT 1");
+			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo ASC, hora ASC LIMIT 1");
 			$unidadeInicio = mysqli_fetch_object($resInicio);
 
 			//Seleciona a leitura final da unidade
-			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo DESC, hora ASC LIMIT 1");
+			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo DESC, hora ASC LIMIT 1");
 			$unidadeFim = mysqli_fetch_object($resFim);
 
 
@@ -74,12 +74,12 @@
 		$tempo =  date_format($date, 'Y-m-d');// Formato de data para BD
 
 		//Seleciona todos os usuario de um grupo de perfil usuario
-		$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE id_planta = $id");
+		$usuarios = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = $id AND servico = '0' GROUP BY idecoflow");
 
 		//Percorre todas as unidade do grupo
 		while ( $usuario = mysqli_fetch_object($usuarios) ) {
 			//Seleciona a leitura inicial da unidade
-			$res = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND servico = '0' AND tempo <= '$tempo' AND hora <= '$hora' ORDER BY tempo DESC, hora DESC LIMIT 1");
+			$res = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '0' AND tempo <= '$tempo' AND hora <= '$hora' ORDER BY tempo DESC, hora DESC LIMIT 1");
 			$unidade = mysqli_fetch_object($res);
 
 			$listUniNome[$cont] = $usuario->nome;
@@ -88,6 +88,8 @@
 				$listHora[$cont] = $unidade->hora;
 				$listUniLeitura[$cont] = number_format( $unidade->leitura, 3, '.', '');
 			}else{
+				$listData[$cont] = 0;
+				$listHora[$cont] = 0;
 				$listUniLeitura[$cont] = 0;
 			}
 
