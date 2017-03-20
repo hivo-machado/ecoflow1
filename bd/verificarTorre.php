@@ -93,6 +93,7 @@
 			$menssagem = wordwrap($menssagem, 70);
 			$headers = "Content-type: text/html; charset=utf-8\r\n";
 			$headers .= "From: <noreplay@ecoflow.com>\r\n";
+			$headers .= "Return-Path: <noreplay@ecoflow.com>\r\n";
 			mail($email, $assunto, $menssagem, $headers);
 			
 			echo $menssagem;
@@ -113,6 +114,7 @@
 			$menssagem = wordwrap($menssagem, 70);
 			$headers = "Content-type: text/html; charset=utf-8\r\n";
 			$headers .= "From: <noreplay@ecoflow.com>\r\n";
+			$headers .= "Return-Path: <noreplay@ecoflow.com>\r\n";
 			mail($email, $assunto, $menssagem, $headers);
 
 			echo $menssagem;
