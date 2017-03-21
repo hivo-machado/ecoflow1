@@ -1,7 +1,7 @@
 <?php 
 
 	//Função para cosumo por mes
-	function consumo($con, $id, $ano){
+	function consumo($con, $nome, $servico, $ano){
 		//Iniciar time zone
 		date_default_timezone_set('America/Sao_Paulo');
 
@@ -16,8 +16,12 @@
 		$dateFim = date_create($dataFim);
 		$tempoFim =  date_format($dateFim, 'Y-m-d');
 
+		//Seleciona usuario pelo nome para procurar ID
+		$result = mysqli_query($con, "SELECT * FROM unidade WHERE nome = '$nome' LIMIT 1");
+		$usuario = mysqli_fetch_object($result);
+
 		//Primeira leitura do Ano (Janeiro)
-		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo BETWEEN '$tempoInicio' and '$tempoFim' ORDER by tempo, hora LIMIT 1");
+		$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$usuario->idecoflow' and servico = '$servico' and tempo BETWEEN '$tempoInicio' and '$tempoFim' ORDER by tempo, hora LIMIT 1");
 		$unidade = mysqli_fetch_object($result);
 
 		//Verifica se existe uma leitura caso não exista consumo é 0
@@ -38,7 +42,7 @@
 			$dateFim->add(new DateInterval("P1M")); // Soma um mes
 			$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
-			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo BETWEEN '$tempoInicio' and '$tempoFim' ORDER by tempo, hora LIMIT 1");
+			$result = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$usuario->idecoflow' and servico = '$servico' and tempo BETWEEN '$tempoInicio' and '$tempoFim' ORDER by tempo, hora LIMIT 1");
 			$unidade = mysqli_fetch_object($result);
 
 			//Verifica se existe uma leitura
@@ -62,7 +66,7 @@
 				$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
 				//Procura ultima leitura do mes aanterior
-				$resUltimo = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$id' and servico = '0' and tempo BETWEEN '$tempoInicio' and '$tempoFim' ORDER by tempo DESC, hora ASC LIMIT 1");
+				$resUltimo = mysqli_query($con, "SELECT * from unidade WHERE idecoflow = '$usuario->idecoflow' and servico = '$servico' and tempo BETWEEN '$tempoInicio' and '$tempoFim' ORDER by tempo DESC, hora ASC LIMIT 1");
 				$unidadeUltimo = mysqli_fetch_object($resUltimo);
 
 				//Senão encontrar uma leitura consumo = 0

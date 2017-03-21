@@ -36,6 +36,7 @@
   $consumosAguaQuente = consumo($con, $nome, 1, $ano, $mes, $dia);
   //Consumo Total do mes
   $totalAguaFria = consumoTotal($consumosAguaFria, $ano, $mes);
+  $totalAguaQuente = consumoTotal($consumosAguaQuente, $ano, $mes);
 
 ?>
 
@@ -53,49 +54,49 @@
       labels: <?php echo qtdDias($consumosAguaFria, $ano, $mes ); ?>,
       datasets: [
         {
-          label: "Água Quente",
-          fill: true,
-          lineTension: 0.1,
-          backgroundColor: "rgba( 217, 83, 79,0.4)",
-          borderColor: "rgba( 217, 83, 79,1)",
-          borderCapStyle: 'butt',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: "rgba(  217, 83, 79,1)",
-          pointBackgroundColor: "#ffffff",
-          pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(255,255,255,1)",
-          pointHoverBorderColor: "rgba( 217, 83, 79,1)",
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          pointStyle: "circle",
-          data: <?php echo consumoGrafico($consumosAguaQuente, $ano, $mes ); ?>,
-          spanGaps: false,
-        },
-        {
           label: "Água Fria",
           fill: true,
           lineTension: 0.1,
-          backgroundColor: "rgba(77,144,254,0.4)",
+          backgroundColor: "transparent",
           borderColor: "rgba(77,144,254,1)",
+          borderWidth: 4,
           borderCapStyle: 'butt',
           borderDash: [],
           borderDashOffset: 0.0,
           borderJoinStyle: 'miter',
           pointBorderColor: "rgba(77,144,254,1)",
-          pointBackgroundColor: "#ffffff",
           pointBorderWidth: 1,
-          pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(255,255,255,1)",
-          pointHoverBorderColor: "rgba(77,144,254,1)",
-          pointHoverBorderWidth: 2,
           pointRadius: 1,
           pointHitRadius: 10,
           pointStyle: "circle",
+          pointHoverRadius: 4,
+          pointHoverBackgroundColor: "rgba(77,144,254,1)",
+          pointHoverBorderColor: "rgba(77,144,254,1)",
+          pointHoverBorderWidth: 2,
           data: <?php echo consumoGrafico($consumosAguaFria, $ano, $mes ); ?>,
+          spanGaps: false,
+        },
+        {
+          label: "Água Quente",
+          fill: true,
+          lineTension: 0.1,
+          backgroundColor: "transparent",
+          borderColor: "rgba( 217, 83, 79,1)",
+          borderWidth: 4,
+          borderCapStyle: 'butt',
+          borderDash: [],
+          borderDashOffset: 0.0,
+          borderJoinStyle: 'miter',
+          pointBorderColor: "rgba(  217, 83, 79,1)",
+          pointBorderWidth: 1,
+          pointRadius: 1,
+          pointHitRadius: 10,
+          pointStyle: "circle",
+          pointHoverRadius: 4,
+          pointHoverBackgroundColor: "rgba(217, 83, 79,1)",
+          pointHoverBorderColor: "rgba( 217, 83, 79,1)",
+          pointHoverBorderWidth: 2,
+          data: <?php echo consumoGrafico($consumosAguaQuente, $ano, $mes ); ?>,
           spanGaps: false,
         }
       ]
@@ -120,7 +121,7 @@
   <!--Consumo Total do mês-->
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-      <h3>Consumo Total de <?php echo $meses[$mes].': '.$totalAguaFria.' m³' ?> </h3>
+      <h3>Total de <?php echo $meses[$mes].': '.($totalAguaFria + $totalAguaQuente).' m³' ?> </h3>
     </div>
   </div>
   
@@ -150,22 +151,28 @@
           <table class="table table-bordered table-striped tabela table-hover table-condensed">
             <tr>
               <th class="tabela-nome-coluna">Dia</th>
-              <th class="tabela-nome-coluna">Consumo (m³)</th>
+              <th class="tabela-nome-coluna">Agua Fria (m³)</th>
+              <th class="tabela-nome-coluna">Agua Quente (m³)</th>
+              <th class="tabela-nome-coluna">SUBTOTAL</th>
             </tr>
 
             <?php
               for($i = 1; $i <= $numDiasMes; $i++){
             ?>
             <tr>
-              <td><?php echo date('d/m/Y',strtotime($consumosAguaFria[1][$i]) ) ?></td>
-              <td><?php echo $consumosAguaFria[0][$i] ?></td>
+              <td><?= date('d/m/Y',strtotime($consumosAguaFria[1][$i]) ) ?></td>
+              <td><?= $consumosAguaFria[0][$i] ?></td>
+              <td><?= $consumosAguaQuente[0][$i] ?></td>
+              <td><?= $consumosAguaFria[0][$i] + $consumosAguaQuente[0][$i] ?></td>
             </tr>
             <?php
              } 
             ?>
             <tr class="info">
               <td><strong>TOTAL</strong></td>
-              <td><?php echo $totalAguaFria ?></td>
+              <td><?= $totalAguaFria ?></td>
+              <td><?= $totalAguaQuente ?></td>
+              <td><?= $totalAguaFria + $totalAguaQuente ?></td>
             </tr>
           </table>
         </div>

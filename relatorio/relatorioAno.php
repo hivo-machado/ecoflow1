@@ -11,7 +11,6 @@
 
 <?php 
   // Variaveis da sessão
-  $id_unidade = $_SESSION['id_unidade'];
   $nome = $_SESSION['nome'];
 ?>
 
