@@ -1,7 +1,6 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-  include_once("funcaoMes.php"); // php com funções
 ?>
 
 <?php
@@ -9,7 +8,6 @@
   valida();
 
   // Variaveis da sessão
-  $id_unidade = $_SESSION['id_unidade'];
   $nome = $_SESSION['nome'];
 
 ?>

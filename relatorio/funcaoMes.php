@@ -1,7 +1,7 @@
 <?php
 
 	//Retorna string com consumo diario de um mês
-	function consumo($con, $id, $ano, $mes, $dia = 1){
+	function consumo($con, $nome, $servico, $ano, $mes, $dia = 1){
 		//Iniciar time zone
 		date_default_timezone_set('America/Sao_Paulo');
 		//iniciar variavel
@@ -21,8 +21,12 @@
 		$dateFim->add(new DateInterval("P1M")); // Soma um mes
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
+		//Seleciona usuario pelo nome para procurar ID
+		$result = mysqli_query($con, "SELECT * FROM unidade WHERE nome = '$nome' LIMIT 1");
+		$usuario = mysqli_fetch_object($result);
+
 		//Seleciona as primeiras leituras de cada dia
-		$result = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$id' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' GROUP BY tempo ORDER BY tempo ASC");
+		$result = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '$servico' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' GROUP BY tempo ORDER BY tempo ASC");
 		
 		//Percorre todos os resultado do SELECT
 		while( $unidade = mysqli_fetch_object($result) ){
@@ -106,7 +110,7 @@
 		}
 
 		return $cosumo = array($listaConsumo, $listaData);
-	}
+	}//Fim da função
 
 	//Retorna string com consumo diario de um mês para grafico
 	function consumoGrafico($consumo, $ano, $mes){
