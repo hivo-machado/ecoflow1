@@ -12,13 +12,6 @@
   $id_unidade = $_SESSION['id_unidade'];
   $nome = $_SESSION['nome'];
 
-  //Iniciar time zone
-  date_default_timezone_set('America/Sao_Paulo');
-  
-  $dia = 1;
-  $mes = date("n"); // mes sem 0 a esquerda
-  $ano = date("Y");
-
 ?>
 
 <script>

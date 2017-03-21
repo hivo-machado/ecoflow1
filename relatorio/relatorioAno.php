@@ -13,12 +13,6 @@
   // Variaveis da sessão
   $id_unidade = $_SESSION['id_unidade'];
   $nome = $_SESSION['nome'];
-
-  //Iniciar time zone
-  date_default_timezone_set('America/Sao_Paulo');
-
-  $ano = date("Y");
-
 ?>
 
 <script>
