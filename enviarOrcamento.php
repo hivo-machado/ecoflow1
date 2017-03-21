@@ -21,13 +21,13 @@
 		$orcamento .= $aguafria;
 	}
 	if(isset($aguaquente)){
-		$orcamento .= ','.$aguaquente;
+		$orcamento .= ', '.$aguaquente;
 	}
 	if(isset($gas)){
-		$orcamento .= ','.$gas;
+		$orcamento .= ', '.$gas;
 	}
 
-	$sendemail = 'contato@ecoflow.net.br, admin@ecoflow.net.br';
+	$sendemail = 'contato@ecoflow.net.br, vectoramerico@gmail.com';
 
 	//envia e-email com login e senha
 	$assunto = "Pré Orçamento";

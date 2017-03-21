@@ -26,7 +26,8 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=0.5,maximum-scale=4">
-
+		 <!--Link para mascara dos input-->
+		<script src="js/mascara.js"></script>
 		<script>
 			$(document).ready(function(){
 				//função submit para tabela 
@@ -80,7 +81,7 @@
 	<!-- Banner -->
 		<div >
 			<section id="sliderhome">
-	            <div id="meuSlider" class="carousel slide" data-interval="5000"  data-ride="carousel">
+	            <div id="meuSlider" class="carousel slide" data-interval="7000"  data-ride="carousel">
 	                <ol class="carousel-indicators">
 	                    <li data-target="#meuSlider" data-slide-to="0" class="active" class="corzera"></li>
 	                    <li data-target="#meuSlider" data-slide-to="1" class="corzera"></li>
@@ -135,9 +136,18 @@
 						<div class="4u">
 							<br><br>
 								<h2 style="font-size: 18px;"></h2><br>
-									Email:<br> <input class="inputcss" type="email" name="email" required>
-								<br>Telefone Fixo:<br> <input class="inputcss" type="tel" name="telfixo" required>
-								<br>Telefone Celular: <br><input class="inputcss" type="tel" name="telcel" >
+									Email:<br> <input class="inputcss" type="email" name="email" 
+									minlength="5" maxlength="40" required autofocus
+									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+									title="E-mail inválido." 
+									required>
+								<br>Telefone Fixo:<br><input type="text" class="inputcss" name="telfixo" maxlength="15" 
+									title="Verifique o telefone com seguinte formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX"
+									OnKeyPress="mascara( this, mtel );" 
+									required>
+								<br>Telefone Celular: <br><input type="text" class="inputcss" name="telcel" maxlength="15" 
+									title="Verifique o telefone com seguinte formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX"
+									OnKeyPress="mascara( this, mtel );">
 								<br>Observações Gerais:<br> <input class="inputcss" type="text" name="obs">
 								<br>
 						</div>
