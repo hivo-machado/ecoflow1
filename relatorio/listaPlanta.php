@@ -21,7 +21,7 @@ include_once("../validar.php");
 	$result = mysqli_query($con, "SELECT * FROM grupo WHERE id = '$id_grupo'");
 	$grupo = mysqli_fetch_object($result);
 
-	$result = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id_grupo'");
+	$result = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id_grupo' ORDER BY idecoflow");
 ?>
 
  <!--Cabeçalho da pagina-->

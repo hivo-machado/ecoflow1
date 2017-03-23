@@ -1,6 +1,6 @@
 <?php 
 	include('../conexao.php');
-  	include_once("funcaoPlanta.php");
+  include_once("funcaoPlanta.php");
 
 	//varivel POST
 	$id_planta = $_POST['id_planta'];

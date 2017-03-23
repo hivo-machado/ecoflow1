@@ -1,10 +1,10 @@
 <?php 
 	include_once("../conexao.php");
-	include_once("funcaoGrupo.php");
+	include_once("funcaoPlanta.php");
 	include_once("../php/Classes/PHPExcel.php");
 
 	//variavel
-	$cont = 2;
+	$planilha = 0;
 
 	//Variavel POST
 	$id = $_POST['id_grupo'];
@@ -19,53 +19,65 @@
 	$result = mysqli_query($con, "SELECT * from grupo WHERE id = '$id'");
 	$grupo = mysqli_fetch_object($result);
 
-	$nome = $grupo->nome;
-
-	//Consulta o Banco de dados e retorna vetor com nome da unidade e consumo
-	$consumos = consumo($con, $id, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
-
-	//Calcula o total de consumo
-	$total = consumoTotal($consumos);
-
+	//Consultar plantas
+	$plantas = mysqli_query($con, "SELECT * FROM `planta` WHERE id_grupo_fk = '$id' ORDER BY nome");
+	
 	// Nome do Arquivo do Excel que será gerado
-	$arquivo = $nome.' '.$diaInicio.'-'.$mesInicio.'-'.$anoInicio.' '.$diaFim.'-'.$mesFim.'-'.$anoFim.'.xls';
+	$arquivo = $grupo->nome.' '.$diaInicio.'-'.$mesInicio.'-'.$anoInicio.' '.$diaFim.'-'.$mesFim.'-'.$anoFim.'.xls';
 
 	// Instanciamos a classe
 	$objPHPExcel = new PHPExcel();
 
-	// Definimos o estilo da fonte
-	$objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
-	$objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
+	//Loop por planta
+	while( $planta = mysqli_fetch_object($plantas) ){
+		$cont = 2;
 
-	// Criamos as colunas
-	$objPHPExcel->setActiveSheetIndex(0)
-	            ->setCellValue('A1', 'Unidade' )
-	            ->setCellValue('B1', 'Consumo' );
+		// Criando uma nova planilha dentro do arquivo
+		$objPHPExcel->createSheet();
 
-	// Podemos configurar diferentes larguras paras as colunas como padrão
-	$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
-	$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
-	$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
-	$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+		//Consulta o Banco de dados e retorna vetor com nome da unidade e consumo
+		$consumos = consumo($con, $planta->idecoflow, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
 
-	//loop de todas as unidades
-	for($i = 0; $i < count($consumos[0]); $i++){
+		//Calcula o total de consumo
+		$total = consumoTotal($consumos);
+
+		// Criamos as colunas
+		$objPHPExcel->setActiveSheetIndex($planilha)
+		            ->setCellValue('A1', 'Unidade' )
+		            ->setCellValue('B1', 'Consumo' );
+
+		// Definimos o estilo da fonte
+		$objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
+		$objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
+
+		// Podemos configurar diferentes larguras paras as colunas como padrão
+		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+
+		//loop de todas as unidades
+		for($i = 0; $i < count($consumos[0]); $i++){
+			// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumos[0][$i]);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($consumos[1][$i] * 1000, 0, '', '') );
+			$cont++;
+		}
+
+		// Definimos o estilo da fonte
+		$objPHPExcel->getActiveSheet()->getStyle('A'.$cont)->getFont()->setBold(true);
+		$objPHPExcel->getActiveSheet()->getStyle('B'.$cont)->getFont()->setBold(true);
+		
 		// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumos[0][$i]);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($consumos[1][$i] * 1000, 0, '', '') );
-		$cont++;
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, 'TOTAL');
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($total * 1000 , 0, '', '') );
+
+		// Podemos renomear o nome das planilha atual, lembrando que um único arquivo pode ter várias planilhas
+		$objPHPExcel->getActiveSheet()->setTitle($planta->nome);
+
+		$planilha++;
 	}
 
-	// Definimos o estilo da fonte
-	$objPHPExcel->getActiveSheet()->getStyle('A'.$cont)->getFont()->setBold(true);
-	$objPHPExcel->getActiveSheet()->getStyle('B'.$cont)->getFont()->setBold(true);
-	
-	// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, 'TOTAL');
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($total * 1000 , 0, '', '') );
-
-	// Podemos renomear o nome das planilha atual, lembrando que um único arquivo pode ter várias planilhas
-	$objPHPExcel->getActiveSheet()->setTitle($nome);
+	// Define a planilha como ativa sendo a primeira, assim quando abrir o arquivo será a que virá aberta como padrão
+	$objPHPExcel->setActiveSheetIndex(0);
 
 	// Cabeçalho do arquivo para ele baixar
 	header('Content-Type: application/vnd.ms-excel');

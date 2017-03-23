@@ -1,12 +1,10 @@
-<?php 
+<?php
   include_once("../header.php");
   include_once("../validar.php");
 
 	//valida-se esta logado como Administrador ou sindico
 	validaAdminSind();
- ?>
 
-<?php 
 	//variavel SESSAO
   $id = $_SESSION['id'];
 	$tipo = $_SESSION['tipo'];
@@ -59,7 +57,7 @@
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
-          $('#tabela').html(data);
+          $('#tabelas').html(data);
         },
         beforeSend: function(){
           $('#carregando').css({display:"block"});
@@ -268,24 +266,24 @@
 
   <!--Tabela de consumo do mes-->
   <div class="row marge-tabela">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div id="tabela">
-        <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
-      </div>
+    <div id="tabelas">
+      <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
     </div>
   </div>
 
   <div class="row hidden-print">
 
     <!--Botão imprimir-->
+    <!--
     <div class="col-sm-2 col-sm-offset-6 hidden-xs">
-      <form>
+      <form class="sr-only">
         <button type="button" class="btn btn-primary" name="imprimir" value="Imprimir" onclick="window.print();"><span class="glyphicon glyphicon-print" arian-hidden="true"></span> Imprimir</button>
       </form>
     </div>
+    -->
 
     <!--Formulario de download em excel-->
-    <div class="col-sm-2">
+    <div class="col-sm-2 col-sm-offset-10">
 	   <form  method="POST" action="grupoDownload.php">
 
         <div class="sr-only">
