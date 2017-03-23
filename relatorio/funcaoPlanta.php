@@ -19,7 +19,7 @@
 		$dateFim = date_create($dataFim);
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
-		$usuarios = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = $id AND servico = '0' GROUP BY idecoflow");
+		$usuarios = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = $id AND servico = '0' GROUP BY idecoflow ORDER BY nome");
 
 		//Percorre todas as unidade da planta
 		while ( $usuario = mysqli_fetch_object($usuarios) ) {
