@@ -82,12 +82,37 @@
 						<li>
 				           	<a href="../home/home.php">Home</a>
 				        </li>
-				        <li>
-				           	<a href="../relatorioCliente/relatorioMes.php">Consumo Mês</a>
-				        </li>
-				        <li>
-				            <a href="../relatorioCliente/relatorioAno.php">Consumo Ano</a>
-				        </li>
+				        
+				        <!--Opção relatorio-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Relatório Água
+				          	<span class="caret"></span>
+				          </a>
+				          <ul class="dropdown-menu">
+				            <li>
+				           		<a href="../relatorioCliente/relatorioMesAgua.php">Consumo Água do Mês</a>
+					        </li>
+					        <li>
+					            <a href="../relatorioCliente/relatorioAnoAgua.php">Consumo Água do Ano</a>
+					        </li>
+				          </ul>
+				        </li><!--Fecha li relatorio-->
+				        <!--Opção relatorio-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Relatório Gás
+				          	<span class="caret"></span>
+				          </a>
+				          <ul class="dropdown-menu">
+				            <li>
+				           		<a href="../relatorioCliente/relatorioMesGas.php">Consumo Gás do Mês</a>
+					        </li>
+					        <li>
+					            <a href="../relatorioCliente/relatorioAnoGas.php">Consumo Gás do Ano</a>
+					        </li>
+				          </ul>
+				        </li><!--Fecha li relatorio-->
 			       	<?php } ?>
 
 			       	<!--Menu ADM-->

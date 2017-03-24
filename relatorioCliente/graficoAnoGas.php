@@ -12,11 +12,9 @@
   $ano = $_POST['ano'];
 
   //Vetor consumo do ano
-  $consumosAguaFria = consumo($con, $nome, 0, $ano);
-  $consumosAguaQuente = consumo($con, $nome, 1, $ano);
+  $consumosGas = consumo($con, $nome, 2, $ano);
   //Total consumo do ano
-  $totalAguaFria = consumoTotal($consumosAguaFria);
-  $totalAguaQuente = consumoTotal($consumosAguaQuente);
+  $totalGas = consumoTotal($consumosGas);
 
   //vetor nome dos meses
   $meses = array(
@@ -49,45 +47,24 @@
       labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
       datasets: [
         {
-          label: "Água Fria",
+          label: "Gás",
           fill: true,
           lineTension: 0,
           backgroundColor: "transparent",
-          borderColor: "rgba(77,144,254,1)",
+          borderColor: "rgb(92,184,92)",
           borderWidth: 4,
           borderCapStyle: 'butt',
           borderJoinStyle: 'miter',
-          pointBorderColor: "rgba(77,144,254,1)",
+          pointBorderColor: "rgb(92,184,92)",
           pointBorderWidth: 1,
           pointRadius: 1,
           pointHitRadius: 10,
           pointStyle: "circle",
           pointHoverRadius: 4,
-          pointHoverBackgroundColor: "rgba(77,144,254,1)",
-          pointHoverBorderColor: "rgba(77,144,254,1)",
+          pointHoverBackgroundColor: "rgb(92,184,92)",
+          pointHoverBorderColor: "rgb(92,184,92)",
           pointHoverBorderWidth: 2,
-          data: <?= consumoGrafico($con, $consumosAguaFria, $ano); ?>,
-          spanGaps: false,
-        },
-        {
-          label: "Água Quente",
-          fill: true,
-          lineTension: 0,
-          backgroundColor: "transparent",
-          borderColor: "rgba( 217, 83, 79,1)",
-          borderWidth: 4,
-          borderCapStyle: 'butt',
-          borderJoinStyle: 'miter',
-          pointBorderColor: "rgba(  217, 83, 79,1)",
-          pointBorderWidth: 1,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          pointStyle: "circle",
-          pointHoverRadius: 4,
-          pointHoverBackgroundColor: "rgba(217, 83, 79,1)",
-          pointHoverBorderColor: "rgba( 217, 83, 79,1)",
-          pointHoverBorderWidth: 2,
-          data: <?= consumoGrafico($con, $consumosAguaQuente, $ano); ?>,
+          data: <?= consumoGrafico($con, $consumosGas, $ano); ?>,
           spanGaps: false,
         }
       ]
@@ -110,7 +87,7 @@
   <!--Consumo Total do Ano-->
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
-      <h3>Total de <?php echo $ano.': '.($totalAguaFria + $totalAguaQuente).' m³' ?></h3>
+      <h3>Total de <?php echo $ano.': '.$totalGas.' m³' ?></h3>
     </div>
   </div>
 
@@ -122,7 +99,7 @@
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
-        <h1>Consumo do Ano<small> unidade: <?php echo $nome ?></small></h1>
+        <h1>Consumo Gás<small> unidade: <?php echo $nome ?></small></h1>
       </div>
     </div>
   </div>
@@ -131,16 +108,14 @@
   <div class="row marge-tabela">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="panel panel-primary">
-        <div class="panel-heading tabela-titulo"><strong>Consumo Mensal de Água no Ano de <?php echo $ano ?></strong></div>
+        <div class="panel-heading tabela-titulo"><strong>Consumo Mensal de Gás no Ano de <?php echo $ano ?></strong></div>
         <!-- Tabela -->
         <div class="table-responsive">
           <table class="table table-bordered table-striped table-hover table-condensed tabela">
             <tr>
               <th class="tabela-nome-coluna">#</th>
               <th class="tabela-nome-coluna">Mês</th> 
-              <th class="tabela-nome-coluna">Água Fria (m³)</th>
-              <th class="tabela-nome-coluna">Água Quente (m³)</th>
-              <th class="tabela-nome-coluna">SUBTOTAL</th>
+              <th class="tabela-nome-coluna">Gás (m³)</th>
             </tr>
 
             <?php
@@ -149,18 +124,14 @@
             <tr>
               <td><?= $i ?></td>
               <td><?= $meses[$i] ?></td> 
-              <td><?= $consumosAguaFria[$i] ?></td>
-              <td><?= $consumosAguaQuente[$i] ?></td>
-              <td><?= $consumosAguaFria[$i] + $consumosAguaQuente[$i] ?></td>
+              <td><?= $consumosGas[$i] ?></td>
             </tr>
             <?php
              } 
             ?>
             <tr class="info">
               <td colspan="2"><strong>TOTAL</strong></td>
-              <td><?= $totalAguaFria ?></td>
-              <td><?= $totalAguaQuente ?></td>
-              <td><?= $totalAguaFria + $totalAguaQuente ?></td>
+              <td><?= $totalGas ?></td>
             </tr>
           </table>
         </div>

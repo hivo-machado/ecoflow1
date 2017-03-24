@@ -63,9 +63,9 @@ include_once('../conexao.php');
 	<!--Coluna da imagem do grupo-->
 	<div class="col-sm-7 col-xs-12">
 		<?php  if($tipo == 'usuario'){ ?>
-			<a href="../relatorio/relatorioMes.php">
+			<a href="../relatorioCliente/relatorioMesAgua.php">
 		<?php }else{ ?>
-			<a href="../relatorio/listaPlanta.php">
+			<a href="../relatorioAdm/listaPlanta.php">
 		<?php } ?>
 			<img src=<?php echo '../img/grupo/'.$imagem ?> alt="Nome do Empredimento" class="img-responsive img-thumbnail" id="img-grupo">
 		</a>
@@ -78,8 +78,10 @@ include_once('../conexao.php');
 			<ul class="nav nav-pills nav-stacked">
 			  <li role="presentation" class="active"><a href="#">Home</a></li>
 			  <?php if($tipo == 'usuario'){ ?>
-			  	<li role="presentation"><a href="../relatorioCliente/relatorioMes.php">Consumo Mês</a></li>
-			  	<li role="presentation"><a href="../relatorioCliente/relatorioAno.php">Consumo Ano</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioMesAgua.php">Consumo Água do Mês</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioAnoAgua.php">Consumo Água do Ano</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioMesGas.php">Consumo Gás do Mês</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioAnoGas.php">Consumo Gás do Ano</a></li>
 			  <?php } ?>
 			  <?php if($tipo == 'sind'){ ?>
 			  	<li role="presentation"><a href="../relatorioAdm/listaPlanta.php">Consumo Água e Gás por Torre</a></li>
