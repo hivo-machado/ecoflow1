@@ -1190,3 +1190,28 @@
 .telalei{
 		margin: 0 120px 0 120px;
 	}
+.tentcinza{
+  /*opacidade*/
+  opacity: 0.75;
+  -moz-opacity: 0.75;
+  filter: alpha(opacity=75);
+  -webkit-filter: opacity(0.75);
+  /*filtro P/B*/
+  filter: gray;
+  /* IE6-9 */
+  -webkit-filter: grayscale(100%);
+  /* Chrome 19+ & Safari 6+ */
+  /*qualidade*/
+  image-rendering: auto;
+}
+.tentcinza:hover {
+  opacity: 1;
+  -moz-opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-filter: opacity(1);
+  filter: none;
+  /* Firefox 10+ */
+  -webkit-filter: grayscale(0%);
+  /* Chrome 19+ & Safari 6+ */
+  image-rendering: auto;
+}
