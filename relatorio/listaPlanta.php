@@ -56,7 +56,7 @@ include_once("../validar.php");
                 </a>
                 <?php if( $_SESSION['tipo'] == 'admin' ){ ?>
                 <a href="plantaLeitura.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
-                  <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Leitura
+                  <span class="glyphicon glyphicon-list-alt" aria-hidden="true"> </span> Leitura
                 </a>
                 <?php } ?>
               </td>            

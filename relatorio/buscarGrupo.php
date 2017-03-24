@@ -32,13 +32,13 @@
       <td><?php echo $grupos->estado ?></td>
       <td>
         <a href="listaPlanta.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
-          <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Abrir
+          <span class="glyphicon glyphicon-folder-open" aria-hidden="true"> </span> Torres
         </a>
         <a href="grupoConsumo.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
           <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo
         </a>
         <a href="grupoLeitura.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
-          <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Leitura
+          <span class="glyphicon glyphicon-list-alt" aria-hidden="true"> </span> Leitura
         </a>
       </td>            
     </tr>
