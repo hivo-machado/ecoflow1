@@ -53,7 +53,7 @@
     //Inicia com formulario do dia atual
     function submit(){
       $.ajax({
-        url:'grupoTabelaConsumo.php',
+        url:'grupoTabelaConsumoAgua.php',
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
@@ -186,7 +186,7 @@
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
-        <h1>Consumo<small> Grupo: <?php echo $grupo->nome ?></small></h1>
+        <h1>Consumo Água<small> Grupo: <?php echo $grupo->nome ?></small></h1>
       </div>
     </div>
   </div>
@@ -284,7 +284,7 @@
 
     <!--Formulario de download em excel-->
     <div class="col-sm-2 col-sm-offset-10">
-	   <form  method="POST" action="grupoDownload.php">
+	   <form  method="POST" action="grupoDownloadAgua.php">
 
         <div class="sr-only">
 

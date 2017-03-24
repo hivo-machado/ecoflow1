@@ -1,5 +1,5 @@
 <?php 
-	function consumo($con, $id, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim){
+	function consumo($con, $id, $servico, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim){
 		//Iniciar time zone
 		date_default_timezone_set('America/Sao_Paulo');
 
@@ -19,16 +19,16 @@
 		$dateFim = date_create($dataFim);
 		$tempoFim =  date_format($dateFim, 'Y-m-d'); // Formato de data para BD
 
-		$usuarios = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = $id AND servico = '0' GROUP BY idecoflow ORDER BY nome");
+		$usuarios = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = $id AND servico = '$servico' GROUP BY idecoflow ORDER BY nome");
 
 		//Percorre todas as unidade da planta
 		while ( $usuario = mysqli_fetch_object($usuarios) ) {
 			//Seleciona a leitura inicial da unidade
-			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo ASC, hora ASC LIMIT 1");
+			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '$servico' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo ASC, hora ASC LIMIT 1");
 			$unidadeInicio = mysqli_fetch_object($resInicio);
 
 			//Seleciona a leitura final da unidade
-			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '0' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo DESC, hora ASC LIMIT 1");
+			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '$servico' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo DESC, hora ASC LIMIT 1");
 			$unidadeFim = mysqli_fetch_object($resFim);
 
 
@@ -36,7 +36,7 @@
 			if (isset($unidadeFim)||(isset($unidadeInicio))) {
 				$listUniConsumo[$cont] = number_format($unidadeFim->leitura - $unidadeInicio->leitura, 3, '.', '');
 			}else{
-				$listUniConsumo[$cont] = number_format(0, 3, '.', '');;
+				$listUniConsumo[$cont] = 0;
 			}
 
 			$cont++;

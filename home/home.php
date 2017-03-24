@@ -78,12 +78,13 @@ include_once('../conexao.php');
 			<ul class="nav nav-pills nav-stacked">
 			  <li role="presentation" class="active"><a href="#">Home</a></li>
 			  <?php if($tipo == 'usuario'){ ?>
-			  	<li role="presentation"><a href="../relatorio/relatorioMes.php">Consumo Mês</a></li>
-			  	<li role="presentation"><a href="../relatorio/relatorioAno.php">Consumo Ano</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioMes.php">Consumo Mês</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioAno.php">Consumo Ano</a></li>
 			  <?php } ?>
 			  <?php if($tipo == 'sind'){ ?>
-			  	<li role="presentation"><a href="../relatorio/listaPlanta.php">Consumo por Torre</a></li>
-			  	<li role="presentation"><a href="../relatorio/grupoConsumo.php">Consumo por Grupo</a></li>
+			  	<li role="presentation"><a href="../relatorioAdm/listaPlanta.php">Consumo Água e Gás por Torre</a></li>
+			  	<li role="presentation"><a href="../relatorioAdm/grupoConsumoAgua.php">Consumo Água por Grupo</a></li>
+			  	<li role="presentation"><a href="../relatorioAdm/grupoConsumoGas.php">Consumo Gás por Grupo</a></li>
 			  <?php } ?>
 			</ul>
 		</div>

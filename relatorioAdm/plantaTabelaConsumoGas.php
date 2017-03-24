@@ -12,7 +12,7 @@
   $anoFim = $_POST['anoFim'];
 
 	//Chamada das funções
-	$consumos = consumo($con, $id_planta, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
+	$consumos = consumo($con, $id_planta, 2, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
 	$total = consumoTotal($consumos);
  ?>
 

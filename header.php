@@ -83,10 +83,10 @@
 				           	<a href="../home/home.php">Home</a>
 				        </li>
 				        <li>
-				           	<a href="../relatorio/relatorioMes.php">Consumo Mês</a>
+				           	<a href="../relatorioCliente/relatorioMes.php">Consumo Mês</a>
 				        </li>
 				        <li>
-				            <a href="../relatorio/relatorioAno.php">Consumo Ano</a>
+				            <a href="../relatorioCliente/relatorioAno.php">Consumo Ano</a>
 				        </li>
 			       	<?php } ?>
 
@@ -105,7 +105,7 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="../relatorio/buscaGrupo.php">Consumo e Leitura</a>
+				            	<a href="../relatorioAdm/buscaGrupo.php">Consumo e Leitura</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li relatorio-->
@@ -170,10 +170,13 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="../relatorio/listaPlanta.php">Consumo por Torre</a>
+				            	<a href="../relatorioAdm/listaPlanta.php">Consumo Água e Gás por Torre</a>
 				            </li>
 				            <li>
-				            	<a href="../relatorio/grupoConsumo.php">Consumo por Grupo</a>
+				            	<a href="../relatorioAdm/grupoConsumoAgua.php">Consumo Água por Grupo</a>
+				            </li>
+				            <li>
+				            	<a href="../relatorioAdm/grupoConsumoGas.php">Consumo Gás por Grupo</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li relatorio-->

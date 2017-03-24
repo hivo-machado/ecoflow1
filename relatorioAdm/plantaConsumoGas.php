@@ -52,7 +52,7 @@
     //Inicia com formulario do dia atual
     function submit(){
       $.ajax({
-        url:'plantaTabelaConsumo.php',
+        url:'plantaTabelaConsumoGas.php',
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
@@ -185,7 +185,7 @@
   <div class="row">
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <div class="page-header">
-        <h1>Consumo<small> Torre: <?php echo $planta->nome ?></small></h1>
+        <h1>Consumo Gás<small> Torre: <?php echo $planta->nome ?></small></h1>
       </div>
     </div>
   </div>
@@ -283,7 +283,7 @@
 
     <!--Form para download dos dados em excel-->
     <div class="col-sm-2">
-	   <form  method="POST" action="plantaDownload.php">
+	   <form  method="POST" action="plantaDownloadGas.php">
 
         <div class="sr-only">
 

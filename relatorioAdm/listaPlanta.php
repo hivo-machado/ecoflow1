@@ -51,8 +51,11 @@ include_once("../validar.php");
               <td><?php echo $planta->idecoflow ?></td>
               <td><?php echo $planta->nome ?></td>
               <td>
-                <a href="plantaConsumo.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
-                  <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo
+                <a href="plantaConsumoAgua.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
+                  <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo Água
+                </a>
+                <a href="plantaConsumoGas.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
+                  <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo Gás
                 </a>
                 <?php if( $_SESSION['tipo'] == 'admin' ){ ?>
                 <a href="plantaLeitura.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">

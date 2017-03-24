@@ -20,7 +20,7 @@
 	$grupo = mysqli_fetch_object($result);
 
 	//Consultar plantas
-	$plantas = mysqli_query($con, "SELECT * FROM `planta` WHERE id_grupo_fk = '$id' ORDER BY nome");
+	$plantas = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id' ORDER BY nome");
 	
 	// Nome do Arquivo do Excel que será gerado
 	$arquivo = $grupo->nome.' '.$diaInicio.'-'.$mesInicio.'-'.$anoInicio.' '.$diaFim.'-'.$mesFim.'-'.$anoFim.'.xls';
@@ -36,7 +36,7 @@
 		$objPHPExcel->createSheet();
 
 		//Consulta o Banco de dados e retorna vetor com nome da unidade e consumo
-		$consumos = consumo($con, $planta->idecoflow, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
+		$consumos = consumo($con, $planta->idecoflow, 2, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
 
 		//Calcula o total de consumo
 		$total = consumoTotal($consumos);

@@ -22,7 +22,7 @@
 	$nome = $planta->nome;
 
 	//Consulta o Banco de dados e retorna vetor com nome da unidade e consumo
-	$consumos = consumo($con, $id, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
+	$consumos = consumo($con, $id, 2, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
 
 	//Calcula o total de consumo
 	$total = consumoTotal($consumos);

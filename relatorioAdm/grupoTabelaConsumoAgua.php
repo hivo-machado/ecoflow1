@@ -21,8 +21,12 @@
     $cont++;
 
     //Chamada das funções
-    $consumos = consumo($con, $planta->idecoflow, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
-    $total = consumoTotal($consumos);
+    $consumosAguaFria = consumo($con, $planta->idecoflow, 0, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
+    $totalAguaFria = consumoTotal($consumosAguaFria);
+    $consumosAguaQuente = consumo($con, $planta->idecoflow, 1, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
+    $totalAguaQuente = consumoTotal($consumosAguaQuente);
+
+    //Criar um linhas para cada 3 tabelas
     if( $cont == 1) echo "<div class='row'>";
  ?>
 
@@ -35,19 +39,25 @@
       <table class="table table-bordered table-striped tabela table-hover table-condensed">
         <tr>
           <th class="tabela-nome-coluna">Unidade</th>
-          <th class="tabela-nome-coluna">Consumo (m³)</th>
+          <th class="tabela-nome-coluna">Agua Fria (m³)</th>
+          <th class="tabela-nome-coluna">Agua Quente (m³)</th>
+          <th class="tabela-nome-coluna">SubTotal</th>
         </tr>
 
-        <?php for($i = 0; $i < count($consumos[0]); $i++){ ?>
+        <?php for($i = 0; $i < count($consumosAguaFria[0]); $i++){ ?>
         <tr>
-          <td><?php echo $consumos[0][$i] ?></td>
-          <td><?php echo $consumos[1][$i] ?></td>
+          <td><?= $consumosAguaFria[0][$i] ?></td>
+          <td><?= $consumosAguaFria[1][$i] ?></td>
+          <td><?= $consumosAguaQuente[1][$i] ?></td>
+          <td><?= $consumosAguaFria[1][$i] + $consumosAguaQuente[1][$i] ?></td>
         </tr>
         <?php } ?>
         
         <tr class="info">
           <td><strong>TOTAL</strong></td>
-          <td><?php echo $total ?></td>
+          <td><?= $totalAguaFria ?></td>
+          <td><?= $totalAguaQuente ?></td>
+          <td><?= $totalAguaFria + $totalAguaQuente ?></td>
         </tr>
       </table>
     </div>
@@ -55,7 +65,8 @@
 
 </div>
 
-<?php 
+<?php
+  //Fechar linha para cada 3 tabelas
   if( $cont == 3){
    echo "</div>";
    $cont = 0;
