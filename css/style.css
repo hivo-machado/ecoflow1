@@ -1085,6 +1085,19 @@
 	#corzera2{
 		color: #008cb2;
 	}
+	#help{
+		min-height: 112px;
+		max-width: 362px;
+	}
+	#help textarea:focus {
+	    box-shadow: 0 0 0 0;
+	    border: 0 none;
+	    outline: 0;
+	    border-bottom-width: 1px;
+	    border-bottom-color: white;
+	    border-bottom-style: solid;
+	    color: white;
+	} 
 	.inputcss{
 		width: 100%;
 	    margin: auto;
@@ -1094,6 +1107,8 @@
 	    border-bottom-color: white;
 	    border-bottom-style: solid;
 	    margin-bottom: 5px;
+	    max-height: 112px;
+
 
 	}
 	.inputcss textarea:focus, input:focus, select:focus {
