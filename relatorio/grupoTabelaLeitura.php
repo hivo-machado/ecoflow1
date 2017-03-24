@@ -3,12 +3,13 @@
   include_once("funcaoGrupo.php");
 
 	//varivel POST
-	$id_grupo = $_POST['id_grupo'];
+  $id_grupo = $_POST['id_grupo'];
+	$servico = $_POST['servico'];
 	$data = $_POST['data'];
   $hora = $_POST['hora'];
 
 	//Chamada das funções
-	$leituras = leitura($con, $id_grupo, $data, $hora);
+	$leituras = leitura($con, $id_grupo, $servico, $data, $hora);
  ?>
 
 
