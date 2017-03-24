@@ -4,11 +4,12 @@
 
 	//varivel POST
   $id_planta = $_POST['id_planta'];
+  $servico = $_POST['servico'];
   $data = $_POST['data'];
   $hora = $_POST['hora'];
 
   //Chamada das funções
-  $leituras = leitura($con, $id_planta, $data, $hora);
+  $leituras = leitura($con, $id_planta, $servico, $data, $hora);
  ?>
 
 

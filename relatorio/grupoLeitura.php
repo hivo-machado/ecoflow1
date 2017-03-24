@@ -104,8 +104,6 @@
     <div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
       <form id="form" class="form-inline" method="POST" action="">
 
-        <div class="col-sm-5 col-sm-offset-1 col-xs-4 col-xs-offset-1">
-
           <!--Input text oculto com id_grupo-->
           <div class="form-group sr-only">
             <label for="id_grupo" class="col-sm-4 control-label">ID Grupo*</label>
@@ -113,6 +111,15 @@
               <input type="text" class="form-control" id="id_grupo" name="id_grupo"
               value=<?php echo $id_grupo ?>>
             </div>
+          </div>
+
+          <div class="form-group form-group-sm">
+            <label for="servico">Serviço</label>
+            <select class="form-control" id="servico" name="servico">
+              <option value="0" selected>Água Fria</option>
+              <option value="1" >Água Quente</option>
+              <option value="2" >Gás</option>
+            </select>        
           </div>
 
           <div class="form-group form-group-sm">
@@ -128,8 +135,6 @@
           <div class="form-group form-group-sm">
             <button type="submit" class="btn btn-primary btn-sm">Aplicar</button>
           </div>
-
-        </div>
 
       </form>
     </div>
