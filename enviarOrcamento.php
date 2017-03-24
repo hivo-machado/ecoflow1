@@ -16,7 +16,6 @@
 	$telfixo = $_POST['telfixo'];
 	$telcel = $_POST['telcel'];
 	$obs = $_POST['obs'];
-	$obs2 = $_POST['obs2'];
 
 	$orcamento = null;
 
@@ -30,7 +29,7 @@
 		$orcamento .= ', '.$gas;
 	}
 
-	$sendemail = 'contato@ecoflow.net.br, vectoramerico@gmail.com';
+	$sendemail = 'contato@ecoflow.net.br, vectoramerico@gmail.com, noreplay@ecoflow.net.br';
 
 	//envia e-email com login e senha
 	$assunto = "Pré Orçamento";
@@ -48,13 +47,12 @@
 	<strong>Endereço: </strong>$endereco<br>
 	<strong>Cargo/Função: </strong>$cargo<br>
 	<strong>Cidade: </strong>$cidade<br>
-	<strong>Estado:</strong>$estado<br>
+	<strong>Estado: </strong>$estado<br>
 	<br> 
 	<strong>Email: </strong>$email <br> 
 	<strong>Telefone Fixo: </strong>$telfixo<br>
 	<strong>Telefone Celular: </strong>$telcel<br>
 	<strong>Observações Gerais: </strong>$obs<br>
-	$obs2
 	<br>
 	<br>
 	<strong>Obs: </strong>Não responter este e-mail.<br>

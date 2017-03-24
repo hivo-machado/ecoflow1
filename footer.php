@@ -13,9 +13,9 @@
 					<div class="col-sm-12 col-xs-12">
 						<address class="text-center">
 						  	<strong>Contato ECOFlow</strong><br>
-						  	<a class="link-rodape" href="mailto:contato@ecoflow.net.br"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span> contato@ecoflow.net.br</a><br>
-						  	<abbr title="Telefone">Tel.:</abbr> (35) 3622-7522 <br>
-						  	<abbr title="Telefone">Cel.:</abbr> (35) 9 8875-8875
+						  	<a class="link-rodape" href="mailto:contato@ecoflow.net.br"><abbr title="E-mail"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span></abbr> contato@ecoflow.net.br</a><br>
+						  	<abbr title="Telefone"><span class="glyphicon glyphicon-earphone" arian-hidden="true"></span></abbr> (35) 3622-7522 <br>
+						  	<abbr title="Celular"><span class="glyphicon glyphicon-phone" arian-hidden="true"></span></abbr> (35) 9 8875-8875
 						</address>	
 					</div>
 
