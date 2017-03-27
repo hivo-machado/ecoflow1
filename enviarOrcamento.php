@@ -29,7 +29,7 @@
 		$orcamento .= ', '.$gas;
 	}
 
-	$sendemail = 'afraniocoli@gmail.com, vectoramerico@gmail.com, vinicius.eh@outlook.com';
+	$sendemail = 'afraniocoli@gmail.com, vectoramerico@gmail.com';
 
 	//envia e-email com login e senha
 	$assunto = "Pré Orçamento";
