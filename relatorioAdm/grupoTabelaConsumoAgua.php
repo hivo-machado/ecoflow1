@@ -44,12 +44,23 @@
           <th class="tabela-nome-coluna">SubTotal</th>
         </tr>
 
-        <?php for($i = 0; $i < count($consumosAguaFria[0]); $i++){ ?>
+        <?php for($i = 0; $i < count($consumosAguaFria[0]); $i++){ 
+          $j = $i;
+          //Verifica unidade são as mesma de agua fria e quente
+          if($consumosAguaFria[0][$i] != $consumosAguaQuente[0][$i]){
+            for($k = 0; $k < count($consumosAguaQuente[0]); $k++){
+              if($consumosAguaFria[0][$i] == $consumosAguaQuente[0][$k]){
+                $j = $k;
+              }
+            }
+          }
+        ?>
         <tr>
           <td><?= $consumosAguaFria[0][$i] ?></td>
           <td><?= $consumosAguaFria[1][$i] ?></td>
-          <td><?= $consumosAguaQuente[1][$i] ?></td>
-          <td><?= $consumosAguaFria[1][$i] + $consumosAguaQuente[1][$i] ?></td>
+          <td><?= $consumosAguaQuente[1][$j] ?></td>
+          <td><?= $consumosAguaFria[1][$i] + $consumosAguaQuente[1][$j] ?></td>
+
         </tr>
         <?php } ?>
         
