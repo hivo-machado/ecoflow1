@@ -29,7 +29,7 @@
 		$orcamento .= ', '.$gas;
 	}
 
-	$sendemail = 'contato@ecoflow.net.br, vectoramerico@gmail.com, noreplay@ecoflow.net.br';
+	$sendemail = 'afraniocoli@gmail.com, vectoramerico@gmail.com, vinicius.eh@outlook.com';
 
 	//envia e-email com login e senha
 	$assunto = "Pré Orçamento";
@@ -60,8 +60,7 @@
 	";
 	$menssagem = wordwrap($menssagem, 70);
 	$headers = "Content-type: text/html; charset=utf-8\r\n";
-	$headers .= "From: <noreplay@ecoflow.com>\r\n";
-	$headers .= "Return-Path: <noreplay@ecoflow.com>\r\n";
+	$headers .= "From: <noreplay@ecoflow.net.br>\r\n";
 	mail($sendemail, $assunto, $menssagem, $headers);
 
  ?>

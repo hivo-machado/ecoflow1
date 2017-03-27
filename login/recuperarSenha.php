@@ -19,16 +19,15 @@
 			<strong>Login: </strong>$usuario->login<br> 
 			<strong>Senha: </strong>$usuario->senha<br>
 			<br>
-			Entre em nosso site <a href='ecoflow.000webhostapp.com'>Ecoflow</a>
+			Entre em nosso site <a href='www.ecoflow.net.br'>Ecoflow</a>
 			<br>
-			<a href='ecoflow.000webhostapp'>
-				<img src='ecoflow.000webhostapp.com/img/ECOFlow.jpg' alt='Logo Ecoflow' height='34.5' width='199'>
+			<a href='www.ecoflow.net.br'>
+				<img src='www.ecoflow.net.br/img/ECOFlow.jpg' alt='Logo Ecoflow' height='34.5' width='199'>
 			</a>
 			";
 			$menssagem = wordwrap($menssagem, 70);
 			$headers = "Content-type: text/html; charset=utf-8\r\n";
-			$headers .= "From: <noreplay@ecoflow.com>\r\n";
-			$headers .= "Return-Path: <noreplay@ecoflow.com>\r\n";
+			$headers .= "From: <noreplay@ecoflow.net.br>\r\n";
 			mail($email, $assunto, $menssagem, $headers);
 		}
 		

@@ -87,13 +87,12 @@
 			<br> 
 			$str
 			<br>
-			Entre em nosso site <a href='ecoflow.000webhostapp.com'>Ecoflow</a>
+			Entre em nosso site <a href='www.ecoflow.net.br'>Ecoflow</a>
 			<br>
 			";
 			$menssagem = wordwrap($menssagem, 70);
 			$headers = "Content-type: text/html; charset=utf-8\r\n";
-			$headers .= "From: <noreplay@ecoflow.com>\r\n";
-			$headers .= "Return-Path: <noreplay@ecoflow.com>\r\n";
+			$headers .= "From: <noreplay@ecoflow.net.br>\r\n";
 			mail($email, $assunto, $menssagem, $headers);
 			
 			echo $menssagem;
@@ -108,13 +107,12 @@
 			Data: $dataAnt<br>
 			<br> 
 			$strUni
-			Entre em nosso site <a href='ecoflow.000webhostapp.com'>Ecoflow</a>
+			Entre em nosso site <a href='www.ecoflow.net.br'>Ecoflow</a>
 			<br>
 			";
 			$menssagem = wordwrap($menssagem, 70);
 			$headers = "Content-type: text/html; charset=utf-8\r\n";
-			$headers .= "From: <noreplay@ecoflow.com>\r\n";
-			$headers .= "Return-Path: <noreplay@ecoflow.com>\r\n";
+			$headers .= "From: <noreplay@ecoflow.net.br>\r\n";
 			mail($email, $assunto, $menssagem, $headers);
 
 			echo $menssagem;
