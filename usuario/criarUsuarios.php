@@ -6,7 +6,7 @@ include_once("../conexao.php");
 	$status = 'ativo';
 	
 	//Busca todos os usuarios
-	$Usuarios = mysqli_query($con,"SELECT DISTINCT un.idecoflow, un.nome, gr.id grupo, pl.idecoflow planta FROM unidade un, planta pl, grupo gr WHERE un.id_planta_fk = pl.idecoflow AND pl.id_grupo_fk = gr.id");
+	$Usuarios = mysqli_query($con,"SELECT DISTINCT un.idecoflow, un.nome, gr.id, pl.idecoflow FROM unidade un, planta pl, grupo gr WHERE un.id_planta_fk = pl.idecoflow AND pl.id_grupo_fk = gr.id");
 
 	if(mysqli_num_rows($Usuarios)){
 		while ($usuario = mysqli_fetch_object($Usuarios)) {

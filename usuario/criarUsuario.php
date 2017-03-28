@@ -15,23 +15,32 @@
 
 	//Confirma-se as senhas são iguais
 	if($senha == $repetirSenha){
-		//busca o nome de login
+		//busca por login
 		$result = mysqli_query($con, "SELECT * FROM usuario where login = '$login'");
 		$usuario = mysqli_fetch_object($result);
 
-		//Verifica se já não existe um login com mesmo nome
+		//Verifica se já não existe um login igual
 		if( !isset($usuario) ){
-			if( ($grupo != null)&&($tipo == 'sind') ){
-				mysqli_query($con, "INSERT INTO usuario(id_grupo, login, senha, nome, tipo, status) VALUES ('$grupo', '$login', '$senha', '$nome', '$tipo', '$status')");
-				header("Location: criaUsuario.php?success=Usuario síndico criado com sucesso.");
-			}else if( $tipo == 'admin' ){
-				mysqli_query($con, "INSERT INTO usuario(login, senha, nome, tipo, status) VALUES ('$login', '$senha', '$nome', '$tipo', '$status')");
-				header("Location: criaUsuario.php?success=Usuario administrador criado com sucesso.");
+			//busca por nome
+			$result = mysqli_query($con, "SELECT * FROM usuario where nome = '$nome'");
+			$usuario = mysqli_fetch_object($result);
+
+			//Verifica se já não existe um usuario com mesmo nome
+			if( !isset($usuario) ){
+				if( ($grupo != null)&&($tipo == 'sind') ){
+					mysqli_query($con, "INSERT INTO usuario(id_grupo, login, senha, nome, tipo, status) VALUES ('$grupo', '$login', '$senha', '$nome', '$tipo', '$status')");
+					header("Location: criaUsuario.php?success=Usuario síndico criado com sucesso.");
+				}else if( $tipo == 'admin' ){
+					mysqli_query($con, "INSERT INTO usuario(login, senha, nome, tipo, status) VALUES ('$login', '$senha', '$nome', '$tipo', '$status')");
+					header("Location: criaUsuario.php?success=Usuario administrador criado com sucesso.");
+				}else{
+					header("Location: criaUsuario.php?error=Usuario do tipo Síndico precisa de um grupo.");
+				}
 			}else{
-				header("Location: criaUsuario.php?error=Usuario do tipo Síndico precisa de um grupo.");
+				header("Location: criaUsuario.php?error=Nome já existe.");
 			}
 		}else{
-			header("Location: criaUsuario.php?error=Nome de login já existe.");
+			header("Location: criaUsuario.php?error=Login já existe.");
 		}
 
 	}else{
