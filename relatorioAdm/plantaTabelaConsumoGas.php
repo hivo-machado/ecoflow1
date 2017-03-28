@@ -27,10 +27,10 @@
         <th class="tabela-nome-coluna">Consumo (m³)</th>
       </tr>
 
-      <?php for($i = 0; $i < count($consumos[0]); $i++){ ?>
+      <?php for($i = 0; $i < count($consumos); $i++){ ?>
       <tr>
-        <td><?php echo $consumos[0][$i] ?></td>
-        <td><?php echo $consumos[1][$i] ?></td>
+        <td><?php echo $consumos[$i][0] ?></td>
+        <td><?php echo $consumos[$i][1] ?></td>
       </tr>
       <?php } ?>
       

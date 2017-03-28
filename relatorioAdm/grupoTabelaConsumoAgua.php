@@ -25,6 +25,8 @@
     $totalAguaFria = consumoTotal($consumosAguaFria);
     $consumosAguaQuente = consumo($con, $planta->idecoflow, 1, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
     $totalAguaQuente = consumoTotal($consumosAguaQuente);
+    //valor nulo
+    $consumosAguaQuente[] = array(0, 0);
 
     //Criar um linhas para cada 3 tabelas
     if( $cont == 1) echo "<div class='row'>";
@@ -44,22 +46,20 @@
           <th class="tabela-nome-coluna">SubTotal</th>
         </tr>
 
-        <?php for($i = 0; $i < count($consumosAguaFria[0]); $i++){ 
-          $j = $i;
+        <?php for($i = 0; $i < count($consumosAguaFria); $i++){ 
+          $j = count($consumosAguaQuente) - 1;
           //Verifica unidade são as mesma de agua fria e quente
-          if($consumosAguaFria[0][$i] != $consumosAguaQuente[0][$i]){
-            for($k = 0; $k < count($consumosAguaQuente[0]); $k++){
-              if($consumosAguaFria[0][$i] == $consumosAguaQuente[0][$k]){
-                $j = $k;
-              }
+          for($k = 0; $k < count($consumosAguaQuente) - 1; $k++){
+            if( strcmp($consumosAguaFria[$i][0],$consumosAguaQuente[$k][0]) == 0){
+              $j = $k;
             }
           }
         ?>
         <tr>
-          <td><?= $consumosAguaFria[0][$i] ?></td>
-          <td><?= $consumosAguaFria[1][$i] ?></td>
-          <td><?= $consumosAguaQuente[1][$j] ?></td>
-          <td><?= $consumosAguaFria[1][$i] + $consumosAguaQuente[1][$j] ?></td>
+          <td><?= $consumosAguaFria[$i][0] ?></td>
+          <td><?= $consumosAguaFria[$i][1] ?></td>
+          <td><?= $consumosAguaQuente[$j][1] ?></td>
+          <td><?= $consumosAguaFria[$i][1] + $consumosAguaQuente[$j][1] ?></td>
 
         </tr>
         <?php } ?>

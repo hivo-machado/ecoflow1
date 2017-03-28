@@ -3,7 +3,7 @@
   include_once("funcaoPlanta.php");
 
   //varivel POST
-  $id_planta = $_POST['id_grupo'];
+  $id_grupo = $_POST['id_grupo'];
   $diaInicio = $_POST['diaInicio'];
   $mesInicio = $_POST['mesInicio'];
   $anoInicio = $_POST['anoInicio'];
@@ -15,7 +15,7 @@
   $cont = 0;
 
   //Plantas do grupo
-  $plantas = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id_planta' ORDER BY nome");
+  $plantas = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id_grupo' ORDER BY nome");
 
   while($planta = mysqli_fetch_object($plantas) ){
     $cont++;
@@ -38,10 +38,10 @@
           <th class="tabela-nome-coluna">Consumo (m³)</th>
         </tr>
 
-        <?php for($i = 0; $i < count($consumos[0]); $i++){ ?>
+        <?php for($i = 0; $i < count($consumos); $i++){ ?>
         <tr>
-          <td><?php echo $consumos[0][$i] ?></td>
-          <td><?php echo $consumos[1][$i] ?></td>
+          <td><?php echo $consumos[$i][0] ?></td>
+          <td><?php echo $consumos[$i][1] ?></td>
         </tr>
         <?php } ?>
         

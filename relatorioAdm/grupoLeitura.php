@@ -142,20 +142,9 @@
 
   <!--Tabela de consumo do mes-->
   <div class="row marge-tabela">
-    <div class="col-sm-6 col-sm-offset-3">
-      <div id="tabela">
-        <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
-      </div>
+    <div id="tabela">
+      <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
     </div>
-  </div>
-
-  <div class="row hidden-print">
-
-    <!--Botão imprimir-->
-    <div class="col-sm-2 col-sm-offset-8 hidden-xs">
-      <button type="button" class="btn btn-primary" name="imprimir" value="Imprimir" onclick="window.print();"><span class="glyphicon glyphicon-print" arian-hidden="true"></span> Imprimir</button>
-    </div>
-
   </div>
 
  <?php include_once("../footer.php") ?>

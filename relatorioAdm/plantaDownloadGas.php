@@ -49,10 +49,10 @@
 	$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
 
 	//loop de todas as unidades
-	for($i = 0; $i < count($consumos[0]); $i++){
+	for($i = 0; $i < count($consumos); $i++){
 		// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumos[0][$i]);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($consumos[1][$i] * 1000, 0, '', '') );
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumos[$i][0]);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($consumos[$i][1] * 1000, 0, '', '') );
 		$cont++;
 	}
 

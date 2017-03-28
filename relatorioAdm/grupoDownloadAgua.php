@@ -43,6 +43,9 @@
 		$totalAguaFria = consumoTotal($consumosAguaFria);
 		$totalAguaQuente = consumoTotal($consumosAguaQuente);
 
+		//valor nulo
+    	$consumosAguaQuente[] = array(0, 0);
+
 
 		// Criamos as colunas
 		$objPHPExcel->setActiveSheetIndex($planilha)
@@ -64,21 +67,19 @@
 		$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
 
 		//loop de todas as unidades
-		for($i = 0; $i < count($consumosAguaFria[0]); $i++){
-			$j = $i;
-			//Verifica unidade são as mesma de agua fria e quente
-	        if($consumosAguaFria[0][$i] != $consumosAguaQuente[0][$i]){
-	            for($k = 0; $k < count($consumosAguaQuente[0]); $k++){
-		            if($consumosAguaFria[0][$i] == $consumosAguaQuente[0][$k]){
-		            	$j = $k;
-		            }
+		for($i = 0; $i < count($consumosAguaFria); $i++){
+			$j = count($consumosAguaQuente) - 1;
+	        //Verifica unidade são as mesma de agua fria e quente
+	        for($k = 0; $k < count($consumosAguaQuente) - 1; $k++){
+	            if( strcmp($consumosAguaFria[$i][0],$consumosAguaQuente[$k][0]) == 0){
+	            	$j = $k;
 	            }
 	        }
 			// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumosAguaFria[0][$i]);
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($consumosAguaFria[1][$i] * 1000, 0, '', '') );
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, number_format($consumosAguaQuente[1][$j] * 1000, 0, '', '') );
-			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, number_format( ($consumosAguaFria[1][$i] + $consumosAguaQuente[1][$j]) * 1000, 0, '', '') );
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumosAguaFria[$i][0]);
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($consumosAguaFria[$i][1] * 1000, 0, '', '') );
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, number_format($consumosAguaQuente[$j][1] * 1000, 0, '', '') );
+			$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, number_format( ($consumosAguaFria[$i][1] + $consumosAguaQuente[$j][1]) * 1000, 0, '', '') );
 			$cont++;
 		}
 

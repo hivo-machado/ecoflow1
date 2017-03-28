@@ -5,12 +5,7 @@
 		date_default_timezone_set('America/Sao_Paulo');
 
 		//Variavel
-		$listUniNome = null;
-		$listData = null;
-		$listHora = null;
-		$listUniLeitura = null;
-		$listLeitura = null;
-		$cont = 0;
+		$listLeitura = array();
 
 		//Data do Inicio do intervalo
 		$data = date("Y-m-d",strtotime(str_replace('/','-', $data)));
@@ -26,21 +21,14 @@
 			$res = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '$servico' AND tempo <= '$tempo' AND hora <= '$hora' ORDER BY tempo DESC, hora DESC LIMIT 1");
 			$unidade = mysqli_fetch_object($res);
 
-			$listUniNome[$cont] = $usuario->nome;
 			if(isset($unidade)){
-				$listData[$cont] = $unidade->tempo;
-				$listHora[$cont] = $unidade->hora;
-				$listUniLeitura[$cont] = number_format( $unidade->leitura, 3, '.', '');
+				$listLeitura[] = array($usuario->nome, $unidade->tempo, $unidade->hora, number_format( $unidade->leitura, 3, '.', ''));
 			}else{
-				$listData[$cont] = 0;
-				$listHora[$cont] = 0;
-				$listUniLeitura[$cont] = 0;
+				$listLeitura[] = array($usuario->nome, 0, 0, 0);
 			}
-
-			$cont++;
 		}//fim while
 
-		return $listLeitura = array($listUniNome, $listData, $listHora, $listUniLeitura);
+		return $listLeitura;
 	}//Fim da função
 
 	

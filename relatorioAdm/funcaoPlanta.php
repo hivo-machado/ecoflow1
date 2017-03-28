@@ -4,10 +4,7 @@
 		date_default_timezone_set('America/Sao_Paulo');
 
 		//Variavel
-		$listUniNome = null;
-		$listUniConsumo = null;
-		$listConsumo = null;
-		$cont = 0;
+		$listConsumo = array();
 
 		//Data do Inicio do intervalo
 		$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$anoInicio.'-'.$mesInicio.'-'.$diaInicio)));
@@ -31,18 +28,14 @@
 			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '$servico' AND tempo BETWEEN '$tempoInicio' AND '$tempoFim' ORDER BY tempo DESC, hora ASC LIMIT 1");
 			$unidadeFim = mysqli_fetch_object($resFim);
 
-
-			$listUniNome[$cont] = $usuario->nome;
 			if (isset($unidadeFim)||(isset($unidadeInicio))) {
-				$listUniConsumo[$cont] = number_format($unidadeFim->leitura - $unidadeInicio->leitura, 3, '.', '');
+				$listConsumo[] = array( $usuario->nome, number_format($unidadeFim->leitura - $unidadeInicio->leitura, 3, '.', '') );
 			}else{
-				$listUniConsumo[$cont] = 0;
+				$listConsumo[] = array( $usuario->nome, 0 );
 			}
-
-			$cont++;
 		}
 
-		return $listConsumo = array($listUniNome, $listUniConsumo);
+		return $listConsumo;
 	}
 
 	// Função para consumo total do mês
@@ -50,8 +43,8 @@
 		$total = 0; //String para retonar dias e consumos
 
 		//loop para soma total
-		for($i = 0; $i < count($consumos[0]); $i++){
-			$total += $consumos[1][$i];
+		for($i = 0; $i < count($consumos); $i++){
+			$total += $consumos[$i][1];
 		}
 
 		return $total;
@@ -62,12 +55,7 @@
 		date_default_timezone_set('America/Sao_Paulo');
 
 		//Variavel
-		$listUniNome = null;
-		$listData = null;
-		$listHora = null;
-		$listUniLeitura = null;
-		$listLeitura = null;
-		$cont = 0;
+		$listLeitura = array();
 
 		//Data do Inicio do intervalo
 		$data = date("Y-m-d",strtotime(str_replace('/','-', $data)));
@@ -83,21 +71,14 @@
 			$res = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->idecoflow' AND servico = '$servico' AND tempo <= '$tempo' AND hora <= '$hora' ORDER BY tempo DESC, hora DESC LIMIT 1");
 			$unidade = mysqli_fetch_object($res);
 
-			$listUniNome[$cont] = $usuario->nome;
 			if(isset($unidade)){
-				$listData[$cont] = $unidade->tempo;
-				$listHora[$cont] = $unidade->hora;
-				$listUniLeitura[$cont] = number_format( $unidade->leitura, 3, '.', '');
+				$listLeitura[] = array($usuario->nome, $unidade->tempo, $unidade->hora, number_format( $unidade->leitura, 3, '.', '') );
 			}else{
-				$listData[$cont] = 0;
-				$listHora[$cont] = 0;
-				$listUniLeitura[$cont] = 0;
+				$listLeitura[] = array($usuario->nome, 0, 0, 0 );
 			}
-
-			$cont++;
 		}//fim while
 
-		return $listLeitura = array($listUniNome, $listData, $listHora, $listUniLeitura);
+		return $listLeitura;
 	}//Fim da função
 
 ?>
