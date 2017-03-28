@@ -1,7 +1,8 @@
-<?php include_once("conexao.php"); //conexão para banco de dados ?>
-<?php session_start(); ?>
-
 <?php 
+	//include_once("forcehttps.php"); // forçar conexão SSL
+ 	include_once("conexao.php"); //conexão para banco de dados 
+ 	session_start(); 
+
 	if ( !isset($_SESSION['tipo']) ){
 		$_SESSION['tipo'] = null;
 	}

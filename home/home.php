@@ -2,12 +2,11 @@
 include_once("../header.php"); 
 include_once('../validar.php');
 include_once('../conexao.php');
-?>
 
-<?php 
-	//função para verificar se esta logado
-	valida();
- ?>
+//função para verificar se esta logado
+valida();
+
+?>
 
  <?php
  	//Varival de sessão
