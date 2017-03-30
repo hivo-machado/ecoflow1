@@ -32,6 +32,9 @@
 	<!--Links para grafico Chart-->
 	<script src="../js/Chart.min.js"></script>
 
+	<!--Links para Ordenar Tabela-->
+	<script type="text/javascript" src="../js/jquery.tablesorter.js"></script> 
+
 	<!--CSS do site-->
 	<link rel="stylesheet"  href="../css/estilo.css">
 
