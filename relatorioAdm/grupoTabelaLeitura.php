@@ -37,10 +37,10 @@
 
         <?php for($i = 0; $i < count($leituras); $i++){ ?>
         <tr>
-          <td><?php echo $leituras[$i][0] ?></td>
-          <td><?php echo $leituras[$i][1] ?></td>
-          <td><?php echo $leituras[$i][2] ?></td>
-          <td><?php echo $leituras[$i][3] ?></td>
+          <td><?= $leituras[$i][0] ?></td>
+          <td><?= date('d/m/Y',strtotime($leituras[$i][1]) ) ?></td>
+          <td><?= $leituras[$i][2] ?></td>
+          <td><?= $leituras[$i][3] ?></td>
         </tr>
         <?php } ?>
         
