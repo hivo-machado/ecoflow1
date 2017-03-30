@@ -84,6 +84,12 @@
     $('#data').val(ano + '-' + mes + '-' + dia);
     $('#hora').val(hora + ':00');
 
+    //Valor maximo e minimo
+    $('#data').attr({
+      'min' : '2016-11-01', 
+      'max' : ano + '-' + mes + '-' + dia
+    });
+
     submit();
 
   });//fim document
@@ -124,7 +130,7 @@
 
           <div class="form-group form-group-sm">
             <label for="data">Data</label>
-            <input type="date" class="form-control" id="data" name="data" required>        
+            <input type="date" class="form-control" id="data" name="data" min="2016-11-01" required>        
           </div>
 
           <div class="form-group form-group-sm">

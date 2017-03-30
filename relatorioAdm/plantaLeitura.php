@@ -82,6 +82,12 @@
     $('#data').val(ano + '-' + mes + '-' + dia);
     $('#hora').val(hora + ':00');
 
+    //Valor maximo e minimo
+    $('#data').attr({
+      'min' : '2016-11-01', 
+      'max' : ano + '-' + mes + '-' + dia
+    });
+
     submit();
 
   });//Fim document
