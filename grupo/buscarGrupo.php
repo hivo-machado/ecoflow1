@@ -20,17 +20,17 @@
 <table id="tabela-grupo" class="table table-bordered table-striped tabela table-hover table-condensed">
   <thead>
     <tr>
-      <th class="tabela-nome-coluna">ID <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-      <th class="tabela-nome-coluna">Nome <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>   
-      <th class="tabela-nome-coluna">Nome Grupo <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-      <th class="tabela-nome-coluna">Rua <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>   
-      <th class="tabela-nome-coluna">Nº <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>   
-      <th class="tabela-nome-coluna">Bairro <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-      <th class="tabela-nome-coluna">Cidade <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-      <th class="tabela-nome-coluna">UF <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-      <th class="tabela-nome-coluna">CEP <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-      <th class="tabela-nome-coluna">Telefone <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-      <th class="tabela-nome-coluna">Ação</th>
+      <th>ID <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+      <th>Nome <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>   
+      <th>Nome Grupo <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+      <th>Rua <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>   
+      <th>Nº <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>   
+      <th>Bairro <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+      <th>Cidade <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+      <th>UF <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+      <th>CEP <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+      <th>Telefone <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+      <th>Ação</th>
     </tr>
   </thead>
   <tbody>

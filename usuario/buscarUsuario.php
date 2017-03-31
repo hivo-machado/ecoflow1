@@ -20,15 +20,15 @@
   <table id="tabela-usuario" class="table table-bordered table-striped tabela table-hover table-condensed">
     <thead>
       <tr>
-        <th class="tabela-nome-coluna">ID <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Idecoflow <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Nome <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Login <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Planta <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Grupo <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Perfil <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Status <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Ação</th>
+        <th>ID <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Idecoflow <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Nome <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Login <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Planta <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Grupo <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Perfil <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Status <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Ação</th>
       </tr>
     </thead>
     <tbody>

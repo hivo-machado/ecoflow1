@@ -137,6 +137,11 @@ a.link-rodape:hover, a.link-rodape:active{
 	margin-bottom: 10px;
 }
 
+#icone-tabela{
+	float: right;
+	padding: 3px;
+}
+
 /*--------------------------------Grafico--------------------------------*/
 
 .marge-grafico{

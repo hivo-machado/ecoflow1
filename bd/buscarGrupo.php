@@ -20,10 +20,10 @@
   <table id="tabela-grupo" class="table table-bordered table-striped tabela table-hover table-condensed">
     <thead>
       <tr>
-        <th class="tabela-nome-coluna">ID <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Nome <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>   
-        <th class="tabela-nome-coluna">Link <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
-        <th class="tabela-nome-coluna">Ação</th>
+        <th>ID <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Nome <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>   
+        <th>Link <span id="icone-tabela" class="glyphicon glyphicon-sort" aria-hidden="true"></span></th>
+        <th>Ação</th>
       </tr>
     </thead>
     <tbody>
