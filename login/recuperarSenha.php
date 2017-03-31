@@ -67,7 +67,7 @@
 					<strong>Senha:</strong> 2222<!--$usuario->senha--><br>
 				</div>
 				<div id='contato'>
-					<strong>Contato Ecoflow</strong><br>
+					<h4>Contato Ecoflow</h4>
 					<br>
 					<strong>Tel.:</strong> (35) 3622-7522<br>
 					<strong>Cel.:</strong> (35) 98875-8875<br>
