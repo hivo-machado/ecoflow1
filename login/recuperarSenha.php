@@ -63,8 +63,8 @@
 					<h4>Recuperar Senha</h4>
 					Nós recuperamos o login e senha para você.<br>
 					<br>
-					<strong>Login:</strong> 2222<!--$usuario->login--><br> 
-					<strong>Senha:</strong> 2222<!--$usuario->senha--><br>
+					<strong>Login:</strong> $usuario->login<br> 
+					<strong>Senha:</strong> $usuario->senha<br>
 				</div>
 				<div id='contato'>
 					<h4>Contato Ecoflow</h4>

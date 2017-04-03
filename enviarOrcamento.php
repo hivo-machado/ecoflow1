@@ -31,6 +31,7 @@
 
 	$sendemail = 'afraniocoli@gmail.com, vectoramerico@gmail.com';
 
+
 	//envia e-email com login e senha
 	$assunto = "Pré Orçamento";
 	$menssagem = "
