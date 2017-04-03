@@ -53,6 +53,7 @@
 					$leituraAnt = $unidade->leitura;
 				}else{
 					$consumo = $unidade->leitura - $leituraAnt;
+					if($consumo < 0 ) $consumo = 0; //Consumo negativo será igual a zero
 					$leituraAnt = $unidade->leitura;
 				}
 			}else{// caso não encontre uma leitura procura ultima leitura do mes
@@ -72,6 +73,7 @@
 				//Senão encontrar uma leitura consumo = 0
 				if(isset($unidadeUltimo)){
 					$consumo = $unidadeUltimo->leitura - $leituraAnt;
+					if($consumo < 0 ) $consumo = 0; //Consumo negativo será igual a zero
 					$leituraAnt = 0;
 				}else{
 					$consumo = 0;
