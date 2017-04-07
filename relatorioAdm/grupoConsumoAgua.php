@@ -266,8 +266,10 @@
 
   <!--Tabela de consumo do mes-->
   <div class="row marge-tabela">
-    <div id="tabelas">
-      <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
+    <div class="col-sm-12 col-xs-12">
+      <div id="tabelas">
+        <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
+      </div>
     </div>
   </div>
 

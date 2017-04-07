@@ -41,8 +41,8 @@
       <table class="table table-bordered table-striped tabela table-hover table-condensed">
         <tr>
           <th class="tabela-nome-coluna">Unidade</th>
-          <th class="tabela-nome-coluna">Agua Fria (m³)</th>
-          <th class="tabela-nome-coluna">Agua Quente (m³)</th>
+          <th class="tabela-nome-coluna">Água Fria (m³)</th>
+          <th class="tabela-nome-coluna">Água Quente (m³)</th>
           <th class="tabela-nome-coluna">SubTotal</th>
         </tr>
 
