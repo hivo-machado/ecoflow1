@@ -4,8 +4,7 @@
 					<span class="glyphicon glyphicon-menu-up rodape-topo" aria-hidden="true"></span>
 				</a>
 			</div>
-
-		</div>	
+			
 		</div><!--Fecha div container-->
 
 		<div class="footer">
