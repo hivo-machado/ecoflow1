@@ -65,11 +65,11 @@
 		      </button>
 		      <!--Logo e link na brand-->
 		    <a href="../index.html" class="navbar-brand">  
-	      	<div id="barnav-link">
-	      		<img alt="Brand" src="../img/ECOFlow.ico" id="imgbrand">
-	      		<strong>ECO</strong>flow
-	      	</div>
-		      </a>
+		      	<div id="barnav-link">
+		      		<img alt="Brand" src="../img/ECOFlow.ico" id="imgbrand">
+		      		<strong>ECO</strong>flow
+		      	</div>
+		    </a>
 		    </div>
 
 		    <!--Menu da navbar-->
@@ -277,7 +277,8 @@
 	</nav> <!--Fim da navbar-->
 
 	<!--Tag para o conteudo da pagina-->
-	<div class="container" id="conteudo">
+	<div class="container">
+	<div id="conteudo">
 
 		<div style="display: none">
 			<div id="topo">Topo</div>

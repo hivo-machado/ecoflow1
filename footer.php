@@ -4,42 +4,48 @@
 					<span class="glyphicon glyphicon-menu-up rodape-topo" aria-hidden="true"></span>
 				</a>
 			</div>
+
+		</div>	
 		</div><!--Fecha div container-->
 
-		<footer>
-			<div class="container-fluid">
-				<!--Rodape´da pagina web-->
-				<div class="row hidden-print">
-					<div class="col-sm-12 col-xs-12">
-						<address class="text-center">
-						  	<strong>Contato ECOFlow</strong><br>
-						  	<abbr title="E-mail"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span> : </abbr><a class="link-rodape" href="mailto:contato@ecoflow.net.br">contato@ecoflow.net.br</a><br>
-						  	<abbr title="Telefone"><span class="glyphicon glyphicon-earphone" arian-hidden="true"></span> : </abbr> (12) 3042-0282 <br>
-						  	<abbr title="Telefone"><span class="glyphicon glyphicon-earphone" arian-hidden="true"></span> : </abbr> (35) 3622-7522 <br>
-						  	<!--<abbr title="Celular"><span class="glyphicon glyphicon-phone" arian-hidden="true"></span> : </abbr>-->
-						</address>	
-					</div>
-
+		<div class="footer">
+			<div class="container">
+				<div class=" col-sm-12 col-xs-12">
+	
+					<!--Rodape´da pagina web-->
 					<div class="row hidden-print">
-						<div class="col-sm-12 col-xs-12 text-center">
-							<strong>ECOflow</strong> - Todos os direitos reservados.<br>
+						<div class="col-sm-12 col-xs-12">
+							<address class="text-center">
+							  	<strong>Contato ECOFlow</strong><br>
+							  	<abbr title="E-mail"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span> : </abbr><a class="link-rodape" href="mailto:contato@ecoflow.net.br">contato@ecoflow.net.br</a><br>
+							  	<abbr title="Telefone"><span class="glyphicon glyphicon-earphone" arian-hidden="true"></span> : </abbr> (12) 3042-0282 <br>
+							  	<abbr title="Telefone"><span class="glyphicon glyphicon-earphone" arian-hidden="true"></span> : </abbr> (35) 3622-7522 <br>
+							  	<!--<abbr title="Celular"><span class="glyphicon glyphicon-phone" arian-hidden="true"></span> : </abbr>-->
+							</address>	
+						</div>
+
+						<div class="row hidden-print">
+							<div class="col-sm-12 col-xs-12 text-center">
+								<strong>ECOflow</strong> - Todos os direitos reservados.<br>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<!--Rodapé para impressão-->
-				<div class="row visible-print-block">
-					<div class="col-sm-12">
-						<address class="text-center">
-						<strong>Contato ECOFlow</strong><br>
-						contato@ecoflow.net.br<br>
-						Tel.: (12) 3042 0282 <br>
-						Tel.: (35) 3622-7522 <br>
-						</address>
+					<!--Rodapé para impressão-->
+					<div class="row visible-print-block">
+						<div class="col-sm-12">
+							<address class="text-center">
+							<strong>Contato ECOFlow</strong><br>
+							contato@ecoflow.net.br<br>
+							Tel.: (12) 3042 0282 <br>
+							Tel.: (35) 3622-7522 <br>
+							</address>
+						</div>
 					</div>
+
 				</div>
 			</div>
-		</footer>
+		</div>
 
 	</div><!--fecha  div tudo-->
 

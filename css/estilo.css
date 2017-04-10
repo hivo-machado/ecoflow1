@@ -11,7 +11,7 @@ html, body{
 }
 
 body{
-	overflow-x: hidden;
+	/*overflow-x: hidden;*/
 }
 
 /*Imagem para background
@@ -36,10 +36,12 @@ body{
 	padding: 60px 30px 205px 30px;
 }
 
-footer{
+.footer{
 	position: absolute;
-	width: 100%;
 	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	margin: 0px;
 	padding: 2px 0px 10px 0px;
 	color: white;
 	background-color: #2a6496;
