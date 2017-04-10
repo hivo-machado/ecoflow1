@@ -277,7 +277,8 @@
 	</nav> <!--Fim da navbar-->
 
 	<!--Tag para o conteudo da pagina-->
-	<div class="container" id="conteudo">
+	<div id="conteudo">
+		<div class="container">
 
 		<div style="display: none">
 			<div id="topo">Topo</div>

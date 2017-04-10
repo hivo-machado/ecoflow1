@@ -5,9 +5,10 @@
 				</a>
 			</div>
 			
+			</div>
 		</div><!--Fecha div container-->
 
-		<div class="footer">
+		<div id="footer">
 			<div class="container">
 				<div class=" col-sm-12 col-xs-12">
 	

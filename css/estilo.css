@@ -33,10 +33,11 @@ body{
 
 #conteudo{
 	height: 100%;
-	padding: 60px 30px 205px 30px;
+	padding: 60px 0px 205px 0px;
+	margin: 0px;
 }
 
-.footer{
+#footer{
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
@@ -51,7 +52,7 @@ body{
 @media(max-width: 768px){
 	#conteudo{
 		margin: 0px;
-		padding: 60px 5px 205px 5px;
+		padding: 60px 0px 205px 0px;
 	}
 }
 
