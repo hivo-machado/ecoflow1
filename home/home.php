@@ -25,13 +25,8 @@ valida();
 	$telefone = '(00) 00000-0000';
 	$imagem = 'sem-imagem.jpg';
 
-	if($tipo == 'usuario'){
-		//Select para informações do grupo
-		$result = mysqli_query($con, "SELECT * FROM grupo LEFT JOIN planta on planta.id_grupo_fk = grupo.id LEFT JOIN unidade on unidade.id_planta_fk = planta.idecoflow WHERE unidade.idecoflow = '$id_unidade' LIMIT 1");
-	}else{
-		$result = mysqli_query($con, "SELECT * FROM grupo where id = '$id_grupo'");
-	}
-
+	$result = mysqli_query($con, "SELECT * FROM grupo where id = '$id_grupo'");
+	
 	//variaveis
 	if( $grupo = mysqli_fetch_object($result) ){
 		if($grupo->nome_grupo != null) $nome = $grupo->nome_grupo;
