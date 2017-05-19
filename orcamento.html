@@ -114,7 +114,7 @@
 
 				<form id="form" method="POST" action="" enctype="multipart/form-data">
 					<div class="row">
-						<div class="4u" style="padding-right: : 100px;">
+						<div class="6u" style="padding-right: : 100px;">
 								<h2 style="font-size: 18px;">DADOS DO CONDOMÍNIO:</h2><br>
 									<input type="checkbox" name="aguafria" style="margin-left:  10px;" value="Água Fria" checked>
 									Água Fria
@@ -124,35 +124,26 @@
 									Gás
 								<br>Nome do Condomínio:<br> <div class="linhamenor"><input class="inputcss" type="text" name="nomecond" required></div>
 								<br>Número Total de Torres: <br><div class="linhamenor"><input class="inputcss" type="number" name="numtorres" required></div>
-								<br>Número de Andares por Torre:<br> <div class="linhamenor"><input class="inputcss" type="number" name="numpavtorre" required></div>
-								<br>Número de Unidades por Andar:<br> <div class="linhamenor"><input class="inputcss" type="number" name="numunpav" required></div>
 								<br>Número Total de Unidades:<br><div class="linhamenor"> <input class="inputcss" type="number" name="numunidades" required></div>
+								<br>Endereço:<br><div class="linhamenor"> <input class="inputcss" type="text" name="endereco" required></div>
 						</div>
-						<div class="4u">
+						<div class="6u">
 								<h2 style="font-size: 18px;">DADOS PESSOAIS:</h2><br><br>
 									Nome Completo:<br><div class="linhamenor"> <input class="inputcss" type="text" name="nome" required></div>
-								<br>Endereço:<br><div class="linhamenor"> <input class="inputcss" type="text" name="endereco" required></div>
 								<br>Cargo/Função: <br><div class="linhamenor"><input class="inputcss" type="text" name="cargo" ></div>
-								<br>Cidade:<br><div class="linhamenor"> <input class="inputcss" type="text" name="cidade" required></div>
-								<br>Estado:<div class="linhamenor"><input class="inputcss" type="text" name="estado" required></div>
-						</div>
-						<div class="4u">
-							<br><br>
-								<h2 style="font-size: 18px;"></h2><br>
+								<br>Telefone Celular: <br><div class="linhamenor"><input type="text" class="inputcss" name="telcel" maxlength="15" 
+									title="Verifique o telefone com seguinte formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX"
+									OnKeyPress="mascara( this, mtel );"></div>
+								
+								<br>
 									Email:<br><div class="linhamenor"> <input class="inputcss" type="email" name="email" 
 									minlength="5" maxlength="40" required autofocus
 									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
 									title="E-mail inválido." 
 									required></div>
-								<br>Telefone Fixo:<br><div class="linhamenor"><input type="text" class="inputcss" name="telfixo" maxlength="15" 
-									title="Verifique o telefone com seguinte formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX"
-									OnKeyPress="mascara( this, mtel );"></div>
-								<br>Telefone Celular: <br><div class="linhamenor"><input type="text" class="inputcss" name="telcel" maxlength="15" 
-									title="Verifique o telefone com seguinte formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX"
-									OnKeyPress="mascara( this, mtel );"></div>
-								<br>Observações Gerais:<br> <div class="linhamenor"><textarea class="inputcss" id="help" rows="4" name="obs"></textarea></div>
 								<div>Foto do Condomínio:<input type="file" name="arquivo" accept="image/*"></div>
 						</div>
+						
 						<div class="12u">
 							<div style="text-align:center;margin: auto;margin-top: 40px;">
 								<div class="linhamenor">
