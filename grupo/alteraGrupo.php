@@ -65,7 +65,7 @@ include_once("../validar.php");
 			<div class="form-group">
 				<label for="foto" class="col-sm-4 control-label">Foto</label>
 				<div class="col-sm-8">
-					<input type="file" id="foto" name="arquivo">
+					<input type="file" id="foto" name="arquivo" accept="image/*">
 				</div>
 			</div>
 

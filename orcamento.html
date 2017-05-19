@@ -35,7 +35,10 @@
 			      $.ajax({
 			        url:'enviarOrcamento.php',
 			        type: 'POST',
-			        data: $('#form').serialize(),
+			        cache: false,
+    				contentType: false,
+    				processData: false,
+			        data: new FormData(this),
 			        success: function(data){
 			          $('#tabela').html(data);
 			          alert('pré-orçamento enviado com sucesso.');
@@ -109,7 +112,7 @@
 			<!-- Main #e7f6ff -->
 			<div id="main" class="container" style="color: white;">
 
-				<form id="form" method="POST" action="">
+				<form id="form" method="POST" action="" enctype="multipart/form-data">
 					<div class="row">
 						<div class="4u" style="padding-right: : 100px;">
 								<h2 style="font-size: 18px;">DADOS DO CONDOMÍNIO:</h2><br>
@@ -148,7 +151,7 @@
 									title="Verifique o telefone com seguinte formato (XX) XXXX-XXXX ou (XX) 9XXXX-XXXX"
 									OnKeyPress="mascara( this, mtel );"></div>
 								<br>Observações Gerais:<br> <div class="linhamenor"><textarea class="inputcss" id="help" rows="4" name="obs"></textarea></div>
-								<div>Foto:<input type="file" id="foto" name="arquivo"></div>
+								<div>Foto do Condomínio:<input type="file" name="arquivo" accept="image/*"></div>
 						</div>
 						<div class="12u">
 							<div style="text-align:center;margin: auto;margin-top: 40px;">

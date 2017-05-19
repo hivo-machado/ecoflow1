@@ -1086,7 +1086,7 @@
 		color: #008cb2;
 	}
 	#help{
-		min-height: 112px;
+		min-height: 52px;
 		max-width: 362px;
 	}
 	#help textarea:focus {
@@ -1107,7 +1107,7 @@
 	    border-bottom-color: white;
 	    border-bottom-style: solid;
 	    margin-bottom: 5px;
-	    max-height: 112px;
+	    max-height: 52px;
 
 
 	}
