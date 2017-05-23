@@ -30,6 +30,7 @@
 		<script src="js/mascara.js"></script>
 		<script>
 			$(document).ready(function(){
+				
 				//função submit para tabela 
 			    $('#form').submit( function(){
 			      $.ajax({
@@ -39,14 +40,49 @@
     				contentType: false,
     				processData: false,
 			        data: new FormData(this),
-			        success: function(data){
-			          $('#tabela').html(data);
-			          alert('pré-orçamento enviado com sucesso.');
+			        success: function(data){			          	
+			          	alert('pré-orçamento enviado com sucesso.');
+			        },
+			        error:function(){
+			        	alert('Erro ao enviar pré-orçamento. Tente novamente.');
 			        }
+
 			      });
+
 			      return false;
+
 			    });
+
+			    $('#arquivo').change( function(){
+	    			if( !validoFormato( $('#arquivo').val() ) ){
+	    				$('#arquivo').val("")
+	    				alert( "Imagem inválida. Imagem aceita nos seguintes formtatos: jpg, jpeg, png, gif." );
+	    			}
+	    		});
+
+	    		function validoFormato(arquivo){
+					var extensoes, ext, valido;
+					extensoes = new Array('.jpg', '.png', '.jpeg', '.gif');
+
+					ext = arquivo.substring(arquivo.lastIndexOf(".")).toLowerCase();
+					valido = false;
+
+					for(var i = 0; i <= arquivo.length; i++){
+						if(extensoes[ i ] == ext){
+							valido = true;
+							break;
+						}
+					}
+
+					if(valido){
+						return true;
+					}
+					return false;
+				};
+
 			});
+
+
 		</script>
 	</head>
 	<body class="left-sidebar">
@@ -141,14 +177,14 @@
 									pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
 									title="E-mail inválido." 
 									required></div>
-								<div>Foto do Condomínio:<input type="file" name="arquivo" accept="image/*"></div>
+								<div>Foto do Condomínio:<input type="file" id="arquivo" name="arquivo" accept="image/*"></div>
 						</div>
 						
 						<div class="12u">
 							<div style="text-align:center;margin: auto;margin-top: 40px;">
 								<div class="linhamenor">
 									<button type="submit" class="buttontent" style="color:#016c89;text-align: center;background-color: white; " >
-										Envie-nos seus dados e receba um pré-orçamento
+									  Envie-nos seus dados e receba um pré-orçamento
 									</button>
 								</div>
 							</div>
