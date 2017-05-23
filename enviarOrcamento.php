@@ -28,7 +28,8 @@ if(isset($gas)){
 
 //pego os dados enviados pelo formulario
 $nome_from = "Ecoflow";
-$email_to = "vinicius.eh@outlook.com";
+//$email_to = "vinicius.eh@outlook.com";
+$email_to = 'afraniocoli@gmail.com, vectoramerico@gmail.com';
 $assunto = "Pré-Orçamento";
 $email_from = "noreplay@ecoflow.net.br";
 $mensagem = $headerEmail."
