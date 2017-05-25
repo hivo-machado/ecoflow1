@@ -30,9 +30,10 @@
 		<script src="js/mascara.js"></script>
 		<script>
 			$(document).ready(function(){
-				
+
 				//função submit para tabela 
 			    $('#form').submit( function(){
+			    	$('#enviar').prop("disabled", true);
 			      $.ajax({
 			        url:'enviarOrcamento.php',
 			        type: 'POST',
@@ -40,13 +41,14 @@
     				contentType: false,
     				processData: false,
 			        data: new FormData(this),
-			        success: function(data){			          	
-			          	alert('pré-orçamento enviado com sucesso.');
+			        success: function(data){
+			          	$('#enviar').prop("disabled", false);
+			          	alert(data);
 			        },
 			        error:function(){
+			        	$('#enviar').prop("disabled", false);
 			        	alert('Erro ao enviar pré-orçamento. Tente novamente.');
 			        }
-
 			      });
 
 			      return false;
@@ -183,7 +185,7 @@
 						<div class="12u">
 							<div style="text-align:center;margin: auto;margin-top: 40px;">
 								<div class="linhamenor">
-									<button type="submit" class="buttontent" style="color:#016c89;text-align: center;background-color: white; " >
+									<button type="submit" id="enviar" class="buttontent" style="color:#016c89;text-align: center;background-color: white; " >
 									  Envie-nos seus dados e receba um pré-orçamento
 									</button>
 								</div>

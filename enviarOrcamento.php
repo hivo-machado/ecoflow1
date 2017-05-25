@@ -1,9 +1,22 @@
 <?php
 include_once('corpoEmail.php');
 
-$aguafria = $_POST['aguafria'];
-$aguaquente = $_POST['aguaquente'];
-$gas = $_POST['gas'];
+
+
+
+
+$orcamento = null;
+
+if(isset($_POST['aguafria']) ){
+	$orcamento .= $_POST['aguafria'];
+}
+if(isset($_POST['aguaquente']) ){
+	$orcamento .= ', '.$_POST['aguaquente'];
+}
+if(isset($_POST['gas']) ){
+	$orcamento .= ', '.$_POST['gas'];
+}
+
 $nomecond = $_POST['nomecond'];
 $numtorres = $_POST['numtorres'];
 $numunidades = $_POST['numunidades'];
@@ -12,19 +25,6 @@ $endereco = $_POST['endereco'];
 $cargo = $_POST['cargo'];
 $email = $_POST['email'];
 $telcel = $_POST['telcel'];
-
-
-$orcamento = null;
-
-if(isset($aguafria)){
-	$orcamento .= $aguafria;
-}
-if(isset($aguaquente)){
-	$orcamento .= ', '.$aguaquente;
-}
-if(isset($gas)){
-	$orcamento .= ', '.$gas;
-}
 
 //pego os dados enviados pelo formulario
 $nome_from = "Ecoflow";
@@ -62,7 +62,8 @@ if(file_exists($arquivo["tmp_name"]) and !empty($arquivo)){
 	$_UP['extensoes'] = array('jpg', 'png', 'jpeg', 'gif');
 
 	// Faz a verificação da extensão do arquivo
-	$extensao = strtolower(end(explode('.', $_FILES['arquivo']['name'])));
+	$tmpNome = explode('.', $_FILES['arquivo']['name']);
+	$extensao = strtolower(end($tmpNome));
 	if (array_search($extensao, $_UP['extensoes']) === false) {
 		echo "Por favor, envie arquivos com as seguintes extensões: jpg, png ou jpeg";
 		exit;
