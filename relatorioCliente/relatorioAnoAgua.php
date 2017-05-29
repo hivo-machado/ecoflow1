@@ -1,15 +1,11 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-  include_once("funcaoAno.php"); //php com funções
-?>
+  include_once("funcaoAno.php");
 
-<?php 
   //função para verificar se esta logado
   valida();
- ?>
 
-<?php 
   // Variaveis da sessão
   $nome = $_SESSION['nome'];
 ?>

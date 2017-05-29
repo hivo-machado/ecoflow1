@@ -1,9 +1,7 @@
 <?php 
   include_once("../header.php");
   include_once("../validar.php");
-?>
 
-<?php
   //função para verificar se esta logado
   valida();
 

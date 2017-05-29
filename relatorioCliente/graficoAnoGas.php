@@ -1,11 +1,11 @@
 <?php 
   include_once("../conexao.php");
   include_once("funcaoAno.php"); //php com funções
-?>
 
-<?php 
   // Variaveis da sessão
-  session_start();
+  if (!isset($_SESSION)) {
+    session_start();
+  }
   $nome = $_SESSION['nome'];
 
   //Varivel POST
