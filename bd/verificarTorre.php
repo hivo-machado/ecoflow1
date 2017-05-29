@@ -2,8 +2,8 @@
 	//Atividade CRON para verificar se todas as torres ou unidades estão online
 
 	//Conexão com banco de dados
-	include_once("../conexao.php");
-	include_once("../corpoEmail.php");
+	include_once("/home/ecofl253/public_html/conexao.php");
+	include_once("/home/ecofl253/public_html/corpoEmail.php");
 
 	//E-mail
 	$email = 'vectoramerico@gmail.com, lucineia@vector.eng.br, v1n1c1u5_1@hotmail.com';

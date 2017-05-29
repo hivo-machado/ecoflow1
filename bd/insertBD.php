@@ -1,6 +1,6 @@
 <?php
 //Conexão com banco de dados
-include_once("../conexao.php");
+include_once("/home/ecofl253/public_html/conexao.php");
 
 $result = mysqli_query($con, "SELECT * FROM xml");
 
