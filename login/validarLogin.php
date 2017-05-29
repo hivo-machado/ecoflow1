@@ -1,10 +1,15 @@
-<?php include_once("../conexao.php") ?>
-
 <?php 
+	include_once("../conexao.php");
 
-	session_unset();
-	session_destroy();
-	session_start();
+
+	if (!isset($_SESSION)) {
+		session_start();
+	}else{
+		session_unset();
+		session_destroy();
+		session_start();
+	}
+
 	
 	$login  = $_POST['login'];
 	$senha  = $_POST['senha'];
