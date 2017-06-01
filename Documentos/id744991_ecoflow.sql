@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 21-Mar-2017 às 13:50
--- Versão do servidor: 10.1.16-MariaDB
--- PHP Version: 7.0.9
+-- Host: localhost:3306
+-- Generation Time: May 26, 2017 at 05:38 PM
+-- Server version: 10.1.20-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `grupo`
+-- Table structure for table `grupo`
 --
 
 CREATE TABLE `grupo` (
@@ -43,7 +43,7 @@ CREATE TABLE `grupo` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `planta`
+-- Table structure for table `planta`
 --
 
 CREATE TABLE `planta` (
@@ -55,7 +55,7 @@ CREATE TABLE `planta` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `unidade`
+-- Table structure for table `unidade`
 --
 
 CREATE TABLE `unidade` (
@@ -67,12 +67,12 @@ CREATE TABLE `unidade` (
   `medidor` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `servico` tinyint(1) DEFAULT NULL,
   `leitura` float DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Table structure for table `usuario`
 --
 
 CREATE TABLE `usuario` (
@@ -86,12 +86,12 @@ CREATE TABLE `usuario` (
   `email` varchar(40) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tipo` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `status` varchar(15) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `xml`
+-- Table structure for table `xml`
 --
 
 CREATE TABLE `xml` (
@@ -147,22 +147,12 @@ ALTER TABLE `xml`
 -- AUTO_INCREMENT for table `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1076;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1075;
 --
 -- AUTO_INCREMENT for table `xml`
 --
 ALTER TABLE `xml`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `planta`
---
-ALTER TABLE `planta`
-  ADD CONSTRAINT `grupo_fk` FOREIGN KEY (`id_grupo_fk`) REFERENCES `grupo` (`id`);
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
