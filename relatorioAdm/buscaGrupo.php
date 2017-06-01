@@ -21,14 +21,14 @@ include_once("../validar.php");
           success: function(data){
           $('#tabela').css({display:"block"});
           $('#tabela').html(data);
-        },
-        beforeSend: function(){
-          $('#tabela').css({display:"none"});
-          $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
+          },
+          beforeSend: function(){
+            $('#tabela').css({display:"none"});
+            $('#carregando').css({display:"block"});
+          },
+          complete: function(){
+            $('#carregando').css({display:"none"});
+          }
         });
         return false;
       });

@@ -19,14 +19,16 @@ include_once("../validar.php");
         type: 'GET',
         data: $('#form').serialize(),
         success: function(data){
+          $('#tabela').css({display:"block"});
           $('#tabela').html(data);
-        },
-        beforeSend: function(){
-        $('#carregando').css({display:"block"});
-        },
-        complete: function(){
-          $('#carregando').css({display:"none"});
-        }
+          },
+          beforeSend: function(){
+            $('#tabela').css({display:"none"});
+            $('#carregando').css({display:"block"});
+          },
+          complete: function(){
+            $('#carregando').css({display:"none"});
+          }
       });
       return false;
     });
@@ -65,9 +67,11 @@ include_once("../validar.php");
   <!--Tabela de resultado da busca-->
   <div class="row marge-tabela">
     <div class="col-sm-12 col-xs-12">
+      <div>
+        <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
+      </div>
       <!--Div para receber o resultado do formulario em Ajax-->
       <div id="tabela">
-        <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
       </div>
     </div>
   </div>
