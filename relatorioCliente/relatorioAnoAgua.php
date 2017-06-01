@@ -22,9 +22,11 @@
         type: 'POST',
         data: $('#data').serialize(),
         success: function(data){
+          $('#relatorio').css({display:"block"});
           $('#relatorio').html(data);
         },
         beforeSend: function(){
+          $('#relatorio').css({display:"none"});
           $('#carregando').css({display:"block"});
         },
         complete: function(){
@@ -80,8 +82,10 @@
 </div>
 
 <!--Local dos relatorios grafico e tabela-->
-<div id="relatorio">
+<div>
   <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
+</div>
+<div id="relatorio">
 </div>
 
 <!--Botão imprimir-->
