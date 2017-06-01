@@ -57,9 +57,11 @@
         type: 'POST',
         data: $('#form').serialize(),
         success: function(data){
+          $('#tabelas').css({display:"block"});
           $('#tabelas').html(data);
         },
         beforeSend: function(){
+          $('#tabelas').css({display:"none"});
           $('#carregando').css({display:"block"});
         },
         complete: function(){
@@ -267,8 +269,10 @@
   <!--Tabela de consumo do mes-->
   <div class="row marge-tabela">
     <div class="col-sm-12 col-xs-12">
-      <div id="tabelas">
+      <div>
         <center><img src="../img/loader.gif" style="display: none" id="carregando"></center>
+      </div>
+      <div id="tabelas">
       </div>
     </div>
   </div>
