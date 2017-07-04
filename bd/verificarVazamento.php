@@ -8,7 +8,7 @@
 	//include('../corpoEmail.php');
 
 	//Razão pelo consumo medio
-	define("RAZAO", 2);
+	define("RAZAO", 0.5);
 
 	//E-mail
 	//define("EMAIL", "vectoramerico@gmail.com, lucineia@vector.eng.br, v1n1c1u5_1@hotmail.com");
@@ -72,7 +72,7 @@
 	  		}
 
 	  		//Alerta de consumo fora do padrão
-	  		if($consumoDia > $consumoMedio * RAZAO){
+	  		if($consumoDia < $consumoMedio * RAZAO){
 
 	  			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
 
@@ -112,11 +112,11 @@
   	
   	if($idecoflow != ""){
   		//envia e-email
-			$assunto = "Consumo excessivo";
+			$assunto = "Possível vazamento";
 			$menssagem = $headerEmail."
-				<h4>Consumo excessivo</h4>
+				<h4>Possível vazamento</h4>
 				Data: $dataDiaAnterior<br>
-				O sistema verificou consumo anormal dos seguintes idecoflow:<br>
+				O sistema verificou um pequeno vazamento dos seguintes idecoflow:<br>
 				<br> 
 				$idecoflow
 				<br>
