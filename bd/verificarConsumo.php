@@ -18,8 +18,8 @@
   	date_default_timezone_set('America/Sao_Paulo');
 	
 	//Data mes atual
-  	//$tempoAtual = strtotime( date('Y-m-d') );
-  	$tempoAtual = strtotime( '30-06-2017' );
+  	$tempoAtual = strtotime( date('Y-m-d') );
+  	//$tempoAtual = strtotime( '30-06-2017' );
   	$dataAtual =  date_format( date_create( date('Y-m-d', $tempoAtual) ),'Y-m-d' );
 
   	//Data do dia anterior
