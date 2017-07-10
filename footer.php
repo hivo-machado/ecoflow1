@@ -37,8 +37,9 @@
 							<address class="text-center">
 							<strong>Contato ECOFlow</strong><br>
 							contato@ecoflow.net.br<br>
-							Tel.: (12) 3042 0282 <br>
-							Tel.: (35) 3622-7522 <br>
+							Cel.: (12) 99667-8875<br>
+							Cel.: (35) 98875-8875<br>
+  							Tel.: (35) 3622-7522<br>
 							</address>
 						</div>
 					</div>
