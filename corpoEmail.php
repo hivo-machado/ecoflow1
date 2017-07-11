@@ -53,7 +53,8 @@
 		</div>
 			<div id='contato'>
 				<h4>Contato Ecoflow</h4>
-				<strong>Tel.:</strong> (12) 3042-0282<br>
+				<strong>Cel.:</strong> (12) 99667-8875<br>
+				<strong>Cel.:</strong> (35) 98875-8875<br>
 				<strong>Tel.:</strong> (35) 3622-7522<br>
 				<strong>E-mail:</strong> <a href='mailto:contato@ecoflow.net.br'>contato@ecoflow.net.br</a><br>
 				<strong>Site:</strong> <a href='www.ecoflow.net.br'>Ecoflow</a>
