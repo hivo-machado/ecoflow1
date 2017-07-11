@@ -2,13 +2,13 @@
 	//Atividade CRON para verificar se não existe consumo excessivo
 
 	//Conexão com banco de dados
-	include_once("/home/ecofl253/public_html/conexao.php");
-	include_once("/home/ecofl253/public_html/corpoEmail.php");
-	//include('../conexao.php');
-	//include('../corpoEmail.php');
+	//include_once("/home/ecofl253/public_html/conexao.php");
+	//include_once("/home/ecofl253/public_html/corpoEmail.php");
+	include('../conexao.php');
+	include('../corpoEmail.php');
 
 	//Razão pelo consumo medio
-	define("RAZAO", 2);
+	define("RAZAO", 3.5);
 
 	//E-mail
 	//define("EMAIL", "vectoramerico@gmail.com, lucineia@vector.eng.br, v1n1c1u5_1@hotmail.com");
@@ -18,8 +18,8 @@
   	date_default_timezone_set('America/Sao_Paulo');
 	
 	//Data mes atual
-  	$tempoAtual = strtotime( date('Y-m-d') );
-  	//$tempoAtual = strtotime( '30-06-2017' );
+  	//$tempoAtual = strtotime( date('Y-m-d') );
+  	$tempoAtual = strtotime( '29-06-2017' );
   	$dataAtual =  date_format( date_create( date('Y-m-d', $tempoAtual) ),'Y-m-d' );
 
   	//Data do dia anterior
@@ -72,33 +72,20 @@
 	  		}
 
 	  		//Alerta de consumo fora do padrão
-	  		if($consumoDia > $consumoMedio * RAZAO){
+	  		if( ($consumoDia > $consumoMedio * RAZAO) && ($consumoMedio > 0) ){
 
 	  			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
 
 	  			$unidadeAnterior = mysqli_fetch_object($unidades);
 	  			$leituraAnterior = $unidadeAnterior->leitura;
-	  			$alerta = true;
 
-	  			while ($unidade = mysqli_fetch_object($unidades) ){
-	  				$leitura = $unidade->leitura;
-	  				$consumo = $leituraAnterior - $leitura;
-	  				//echo ' Anterior: ', $leituraAnterior, ' atual: ', $leitura;
-	  				$leituraAnterior = $leitura;
-
-	  				if ($consumo == 0) $alerta = false;
-	  			}
-
-	  			if($alerta){
-	  				//echo 'Consumo dia: ', $consumoDia;
-	  				//echo ' - Media: ', $consumoMedio;
-	  				echo ' - ID: ', $unidadeMesAnterior->idecoflow;
-		  			echo ' - ALERTA';
-		  			echo '<br>';
-		  			//vetor com idEcoflow dos alerta de cosumo excessivo
-		  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
-		  			$cont++;
-	  			}
+	  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
+	  			echo 'Consumo dia: ', $consumoDia;
+	  			echo ' - Media: ', $consumoMedio;
+	  			echo ' - ID: ', $unidadeMesAnterior->idecoflow;
+		  		//echo ' - ALERTA';
+		  		echo '<br>';
+		  		$cont++;
 
 	  		}
 	  		
@@ -116,7 +103,7 @@
 			$menssagem = $headerEmail."
 				<h4>Consumo excessivo</h4>
 				Data: $dataDiaAnterior<br>
-				O sistema verificou consumo anormal dos seguintes idecoflow:<br>
+				O sistema verificou um consumo excessivo dos seguintes idecoflow:<br>
 				<br> 
 				$idecoflow
 				<br>
