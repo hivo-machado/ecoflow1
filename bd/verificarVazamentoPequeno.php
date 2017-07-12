@@ -2,13 +2,13 @@
 	//Atividade CRON para verificar se não existe consumo excessivo
 
 	//Conexão com banco de dados
-	//include_once("/home/ecofl253/public_html/conexao.php");
-	//include_once("/home/ecofl253/public_html/corpoEmail.php");
-	include('../conexao.php');
-	include('../corpoEmail.php');
+	include_once("/home/ecofl253/public_html/conexao.php");
+	include_once("/home/ecofl253/public_html/corpoEmail.php");
+	//include('../conexao.php');
+	//include('../corpoEmail.php');
 
-	//Razão pelo consumo medio
-	define("RAZAO", 0.5);
+	// Tempo de execução maxima do programa 10 min.
+	ini_set('max_execution_time', 600);
 
 	//E-mail
 	//define("EMAIL", "vectoramerico@gmail.com, lucineia@vector.eng.br, v1n1c1u5_1@hotmail.com");
@@ -18,101 +18,85 @@
   	date_default_timezone_set('America/Sao_Paulo');
 	
 	//Data mes atual
-  	//$tempoAtual = strtotime( date('Y-m-d') );
-  	$tempoAtual = strtotime( '30-06-2017' );
+  	$tempoAtual = strtotime( date('Y-m-d') );
+  	//$tempoAtual = strtotime( '30-06-2017' );
   	$dataAtual =  date_format( date_create( date('Y-m-d', $tempoAtual) ),'Y-m-d' );
 
   	//Data do dia anterior
 	$tempoAnterior = strtotime('-1 day', $tempoAtual);
 	$dataDiaAnterior =  date_format( date_create( date('Y-m-d', $tempoAnterior) ),'Y-m-d' );
 
-  	//Data de 3 meses anterior
-	$tempoAnterior = strtotime('-1 month', $tempoAtual);
-	$dataMesAnterior =  date_format( date_create( date('Y-m-d', $tempoAnterior) ),'Y-m-d' );
-
-	echo "Tempo Atual: ", $dataAtual, " Tempo dia anterior: ", $dataDiaAnterior, " Tempo mes anterior: ", $dataMesAnterior, "<br>";
+	echo "Tempo Atual: ", $dataAtual, " Tempo dia anterior: ", $dataDiaAnterior, " Tempo mes anterior: ", "<br>";
 
   	//Pesquisa todos usuario do tipo usuario e ativos
   	$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE tipo = 'usuario' AND status = 'ativo' AND id_unidade IS NOT null");
 
-  	//vetor com idEcoflow dos alerta de cosumo excessivo
+  	//String com idEcoflow dos alertas
   	$idecoflow = "";
   	$cont = 0;
 
   	
   	while ($usuario = mysqli_fetch_object($usuarios) ){
-  		//echo 'ID: ', $usuario->id_unidade;
 
-		//Leitura atual
-		$unidadeMesAtualSelect = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataAtual' AND servico = '0' ORDER BY tempo DESC, hora ASC LIMIT 1");
-  		$unidadeAtual = mysqli_fetch_object($unidadeMesAtualSelect);
 
-  		if($unidadeAtual != null){
-  			
-			//Leitura do dia anterior
-			$unidadeDiaAnteriorSelect = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora ASC LIMIT 1");
-	  		$unidadeDiaAnterior = mysqli_fetch_object($unidadeDiaAnteriorSelect);	  		
-	  		
-	  		if($unidadeDiaAnterior != null){
+		//Seleciona todas as leituras do dia anterior
+  		$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
+  		$unidadeAnterior = mysqli_fetch_object($unidades);
 
-	  			//Leitura no mes anterior
-				$unidadeMesAnteriorSelect = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo <= '$dataMesAnterior' AND servico = '0' ORDER BY tempo DESC, hora ASC LIMIT 1");
-		  		$unidadeMesAnterior = mysqli_fetch_object($unidadeMesAnteriorSelect);
+  		if($unidadeAnterior != null){
 
-		  		//Calcula quantidade de dias *Recalcular caso não exista leitura exatamente no dia
-				$segundos = strtotime($unidadeAtual->tempo) - strtotime($unidadeMesAnterior->tempo);
-				$dias = floor($segundos / (60 * 60 * 24) );
+	  		$leituraAnterior = $unidadeAnterior->leitura;
+	  		$alerta = true;
+	  		$contConsumo = 0;
 
-				//Calcular media de consumo dos ultimos meses
-				$consumoMedio = ($unidadeAtual->leitura - $unidadeMesAnterior->leitura) / $dias;
+			//Calcula consumo por intervalo de hora (2h/2h ou 6h/6h) no dia
+	  		while ($unidade = mysqli_fetch_object($unidades) ){
+	  			$leitura = $unidade->leitura;
+	  			$consumo[$contConsumo] = number_format($leituraAnterior - $leitura, 3, '.', '');
+	  			$leituraAnterior = $leitura;
 
-				//Consumo do dia anterior
-	  			$consumoDia = $unidadeAtual->leitura - $unidadeDiaAnterior->leitura;
-
+	  			if ($consumo[$contConsumo] == 0) $alerta = false;
+	  			$contConsumo++;
 	  		}
 
-	  		//Alerta de consumo fora do padrão
-	  		if($consumoDia < $consumoMedio * RAZAO){
+	  		if($alerta){
+				//ordena o vetor
+	  			sort($consumo); 
+				//Conta quantidade de consumo no vetor
+	  			$qtdConsumo = count($consumo);
+				//inicia a variavel contador de menor consumo
+	  			$qtdMenorConsumo = 0;
 
-	  			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
-
-	  			$unidadeAnterior = mysqli_fetch_object($unidades);
-	  			$leituraAnterior = $unidadeAnterior->leitura;
-	  			$alerta = true;
-
-	  			while ($unidade = mysqli_fetch_object($unidades) ){
-	  				$leitura = $unidade->leitura;
-	  				$consumo = $leituraAnterior - $leitura;
-	  				//echo ' Anterior: ', $leituraAnterior, ' atual: ', $leitura;
-	  				$leituraAnterior = $leitura;
-
-	  				if ($consumo == 0) $alerta = false;
+				//Conta quantidade de vezes que menor leitura-se repete
+	  			for($i = 0; $i < $qtdConsumo; $i++){
+	  				if($consumo[0] == $consumo[$i]) $qtdMenorConsumo++;
+					//echo $consumo[$i], '<br>';
 	  			}
 
-	  			if($alerta){
-	  				//echo 'Consumo dia: ', $consumoDia;
-	  				//echo ' - Media: ', $consumoMedio;
-	  				echo ' - ID: ', $unidadeMesAnterior->idecoflow;
-		  			echo ' - ALERTA';
-		  			echo '<br>';
-		  			//vetor com idEcoflow dos alerta de cosumo excessivo
-		  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
-		  			$cont++;
+	  			if($qtdMenorConsumo > 2){
+					//echo 'Consumo dia: ', $consumoDia;
+					//echo ' - Media: ', $consumoMedio;
+	  				echo ' - ID: ', $usuario->id_unidade;
+	  				echo ' - ALERTA';
+	  			//String com idEcoflow dos alertas
+	  				$idecoflow .= $usuario->id_unidade."<br>";
+	  				$cont++;
 	  			}
-
+	  			echo ' Quantidade vezes: ', $qtdMenorConsumo;
+	  			echo '<br>';
 	  		}
-	  		
-	  		//echo '<br>';
 
   		}
 
   	}
 
+
   	echo "quantidade alerta: ", $cont;
   	
+  	//Envia e-mail com os alertas
   	if($idecoflow != ""){
   		//envia e-email
-			$assunto = "Possível pequeno vazamento";
+			$assunto = "Possivel pequeno vazamento";
 			$menssagem = $headerEmail."
 				<h4>Possível pequeno vazamento</h4>
 				Data: $dataDiaAnterior<br>

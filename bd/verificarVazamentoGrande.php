@@ -7,6 +7,9 @@
 	//include('../conexao.php');
 	//include('../corpoEmail.php');
 
+	// Tempo de execução maxima do programa 10 min.
+	ini_set('max_execution_time',600);
+
 	//Razão pelo consumo medio
 	define("RAZAO", 2);
 
@@ -69,40 +72,41 @@
 				//Consumo do dia anterior
 	  			$consumoDia = $unidadeAtual->leitura - $unidadeDiaAnterior->leitura;
 
+
+		  		//Alerta de consumo fora do padrão
+		  		if($consumoDia > $consumoMedio * RAZAO){
+
+		  			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
+
+		  			$unidadeAnterior = mysqli_fetch_object($unidades);
+		  			$leituraAnterior = $unidadeAnterior->leitura;
+		  			$alerta = true;
+
+		  			while ($unidade = mysqli_fetch_object($unidades) ){
+		  				$leitura = $unidade->leitura;
+		  				$consumo = $leituraAnterior - $leitura;
+		  				//echo ' Anterior: ', $leituraAnterior, ' atual: ', $leitura;
+		  				$leituraAnterior = $leitura;
+
+		  				if ($consumo == 0) $alerta = false;
+		  			}
+
+		  			if($alerta){
+		  				//echo 'Consumo dia: ', $consumoDia;
+		  				//echo ' - Media: ', $consumoMedio;
+		  				//echo ' - ID: ', $unidadeMesAnterior->idecoflow;
+			  			//echo ' - ALERTA';
+			  			//echo '<br>';
+			  			//vetor com idEcoflow dos alerta de cosumo excessivo
+			  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
+			  			$cont++;
+		  			}
+
+		  		}
+
+	  			echo '<br>';
+
 	  		}
-
-	  		//Alerta de consumo fora do padrão
-	  		if($consumoDia > $consumoMedio * RAZAO){
-
-	  			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
-
-	  			$unidadeAnterior = mysqli_fetch_object($unidades);
-	  			$leituraAnterior = $unidadeAnterior->leitura;
-	  			$alerta = true;
-
-	  			while ($unidade = mysqli_fetch_object($unidades) ){
-	  				$leitura = $unidade->leitura;
-	  				$consumo = $leituraAnterior - $leitura;
-	  				//echo ' Anterior: ', $leituraAnterior, ' atual: ', $leitura;
-	  				$leituraAnterior = $leitura;
-
-	  				if ($consumo == 0) $alerta = false;
-	  			}
-
-	  			if($alerta){
-	  				//echo 'Consumo dia: ', $consumoDia;
-	  				//echo ' - Media: ', $consumoMedio;
-	  				//echo ' - ID: ', $unidadeMesAnterior->idecoflow;
-		  			//echo ' - ALERTA';
-		  			//echo '<br>';
-		  			//vetor com idEcoflow dos alerta de cosumo excessivo
-		  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
-		  			$cont++;
-	  			}
-
-	  		}
-	  		
-	  		//echo '<br>';
 
   		}
 
@@ -112,7 +116,7 @@
   	
   	if($idecoflow != ""){
   		//envia e-email
-			$assunto = "Possível vazamento";
+			$assunto = "Possivel vazamento";
 			$menssagem = $headerEmail."
 				<h4>Possível vazamento</h4>
 				Data: $dataDiaAnterior<br>

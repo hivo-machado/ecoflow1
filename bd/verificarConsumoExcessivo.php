@@ -2,10 +2,13 @@
 	//Atividade CRON para verificar se não existe consumo excessivo
 
 	//Conexão com banco de dados
-	//include_once("/home/ecofl253/public_html/conexao.php");
-	//include_once("/home/ecofl253/public_html/corpoEmail.php");
-	include('../conexao.php');
-	include('../corpoEmail.php');
+	include_once("/home/ecofl253/public_html/conexao.php");
+	include_once("/home/ecofl253/public_html/corpoEmail.php");
+	//include('../conexao.php');
+	//include('../corpoEmail.php');
+
+	// Tempo de execução maxima do programa 10 min.
+	ini_set('max_execution_time',600);
 
 	//Razão pelo consumo medio
 	define("RAZAO", 3.5);
@@ -18,8 +21,8 @@
   	date_default_timezone_set('America/Sao_Paulo');
 	
 	//Data mes atual
-  	//$tempoAtual = strtotime( date('Y-m-d') );
-  	$tempoAtual = strtotime( '29-06-2017' );
+  	$tempoAtual = strtotime( date('Y-m-d') );
+  	//$tempoAtual = strtotime( '30-06-2017' );
   	$dataAtual =  date_format( date_create( date('Y-m-d', $tempoAtual) ),'Y-m-d' );
 
   	//Data do dia anterior
@@ -69,27 +72,27 @@
 				//Consumo do dia anterior
 	  			$consumoDia = $unidadeAtual->leitura - $unidadeDiaAnterior->leitura;
 
+
+		  		//Alerta de consumo fora do padrão
+		  		if( ($consumoDia > $consumoMedio * RAZAO) && ($consumoMedio > 0) ){
+
+		  			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
+
+		  			$unidadeAnterior = mysqli_fetch_object($unidades);
+		  			$leituraAnterior = $unidadeAnterior->leitura;
+
+		  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
+		  			echo 'Consumo dia: ', $consumoDia;
+		  			echo ' - Media: ', $consumoMedio;
+		  			echo ' - ID: ', $unidadeMesAnterior->idecoflow;
+			  		//echo ' - ALERTA';
+			  		echo '<br>';
+			  		$cont++;
+
+		  		}
+		  		
+		  		//echo '<br>';
 	  		}
-
-	  		//Alerta de consumo fora do padrão
-	  		if( ($consumoDia > $consumoMedio * RAZAO) && ($consumoMedio > 0) ){
-
-	  			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
-
-	  			$unidadeAnterior = mysqli_fetch_object($unidades);
-	  			$leituraAnterior = $unidadeAnterior->leitura;
-
-	  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
-	  			echo 'Consumo dia: ', $consumoDia;
-	  			echo ' - Media: ', $consumoMedio;
-	  			echo ' - ID: ', $unidadeMesAnterior->idecoflow;
-		  		//echo ' - ALERTA';
-		  		echo '<br>';
-		  		$cont++;
-
-	  		}
-	  		
-	  		//echo '<br>';
 
   		}
 
