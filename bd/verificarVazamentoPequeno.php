@@ -38,52 +38,59 @@
   	
   	while ($usuario = mysqli_fetch_object($usuarios) ){
 
+  		//Primeira Leitura do dia atual
+		$unidadeMesAtualSelect = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataAtual' AND servico = '0' ORDER BY tempo DESC, hora ASC LIMIT 1");
+  		$unidadeAtual = mysqli_fetch_object($unidadeMesAtualSelect);
 
-		//Seleciona todas as leituras do dia anterior
-  		$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
-  		$unidadeAnterior = mysqli_fetch_object($unidades);
+  		if($unidadeAtual != null){
 
-  		if($unidadeAnterior != null){
+			//Seleciona todas as leituras do dia anterior
+	  		$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
 
-	  		$leituraAnterior = $unidadeAnterior->leitura;
-	  		$alerta = true;
-	  		$contConsumo = 0;
+	  		if($unidades != null){
 
-			//Calcula consumo por intervalo de hora (2h/2h ou 6h/6h) no dia
-	  		while ($unidade = mysqli_fetch_object($unidades) ){
-	  			$leitura = $unidade->leitura;
-	  			$consumo[$contConsumo] = number_format($leituraAnterior - $leitura, 3, '.', '');
-	  			$leituraAnterior = $leitura;
+		  		$leituraAnterior = $unidadeAtual->leitura;
+		  		$alerta = true;
+		  		$contConsumo = 0;
 
-	  			if ($consumo[$contConsumo] == 0) $alerta = false;
-	  			$contConsumo++;
-	  		}
+				//Calcula consumo por intervalo de hora (2h/2h ou 6h/6h) no dia
+		  		while ($unidade = mysqli_fetch_object($unidades) ){
+		  			$leitura = $unidade->leitura;
+		  			$consumo[$contConsumo] = number_format($leituraAnterior - $leitura, 3, '.', '');
+		  			$leituraAnterior = $leitura;
 
-	  		if($alerta){
-				//ordena o vetor
-	  			sort($consumo); 
-				//Conta quantidade de consumo no vetor
-	  			$qtdConsumo = count($consumo);
-				//inicia a variavel contador de menor consumo
-	  			$qtdMenorConsumo = 0;
+		  			if ($consumo[$contConsumo] == 0) $alerta = false;
+		  			$contConsumo++;
+		  		}
 
-				//Conta quantidade de vezes que menor leitura-se repete
-	  			for($i = 0; $i < $qtdConsumo; $i++){
-	  				if($consumo[0] == $consumo[$i]) $qtdMenorConsumo++;
-					//echo $consumo[$i], '<br>';
-	  			}
+		  		if($alerta){
+					//ordena o vetor
+		  			sort($consumo); 
+					//Conta quantidade de consumo no vetor
+		  			$qtdConsumo = count($consumo);
+					//inicia a variavel contador de menor consumo
+		  			$qtdMenorConsumo = 0;
 
-	  			if($qtdMenorConsumo > 2){
-					//echo 'Consumo dia: ', $consumoDia;
-					//echo ' - Media: ', $consumoMedio;
-	  				echo ' - ID: ', $usuario->id_unidade;
-	  				echo ' - ALERTA';
-	  			//String com idEcoflow dos alertas
-	  				$idecoflow .= $usuario->id_unidade."<br>";
-	  				$cont++;
-	  			}
-	  			echo ' Quantidade vezes: ', $qtdMenorConsumo;
-	  			echo '<br>';
+					//Conta quantidade de vezes que menor leitura-se repete
+		  			for($i = 0; $i < $qtdConsumo; $i++){
+		  				if($consumo[0] == $consumo[$i]) $qtdMenorConsumo++;
+						echo $consumo[$i], '<br>';
+		  			}
+		  				
+		  			echo ' - ID: ', $usuario->id_unidade;
+
+		  			if($qtdMenorConsumo > 2){
+						//echo 'Consumo dia: ', $consumoDia;
+						//echo ' - Media: ', $consumoMedio;
+		  				echo ' - ALERTA';
+		  			//String com idEcoflow dos alertas
+		  				$idecoflow .= $usuario->id_unidade."<br>";
+		  				$cont++;
+		  			}
+		  			echo ' Quantidade vezes: ', $qtdMenorConsumo;
+		  			echo '<br>';
+		  		}
+
 	  		}
 
   		}

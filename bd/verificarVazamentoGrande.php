@@ -78,14 +78,14 @@
 
 		  			$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
 
-		  			$unidadeAnterior = mysqli_fetch_object($unidades);
-		  			$leituraAnterior = $unidadeAnterior->leitura;
+		  			$leituraAnterior = $unidadeAtual->leitura;
 		  			$alerta = true;
 
 		  			while ($unidade = mysqli_fetch_object($unidades) ){
 		  				$leitura = $unidade->leitura;
 		  				$consumo = $leituraAnterior - $leitura;
-		  				//echo ' Anterior: ', $leituraAnterior, ' atual: ', $leitura;
+		  				//echo ' Anterior: ', $leituraAnterior, ' atual: ', $leitura, '<br>';
+		  				echo $consumo,'<br>';
 		  				$leituraAnterior = $leitura;
 
 		  				if ($consumo == 0) $alerta = false;
@@ -94,9 +94,8 @@
 		  			if($alerta){
 		  				//echo 'Consumo dia: ', $consumoDia;
 		  				//echo ' - Media: ', $consumoMedio;
-		  				//echo ' - ID: ', $unidadeMesAnterior->idecoflow;
-			  			//echo ' - ALERTA';
-			  			//echo '<br>';
+		  				echo ' - ID: ', $unidadeMesAnterior->idecoflow;
+			  			echo ' - ALERTA';
 			  			//vetor com idEcoflow dos alerta de cosumo excessivo
 			  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
 			  			$cont++;

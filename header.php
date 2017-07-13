@@ -150,7 +150,7 @@
 				          	</a>
 				          <ul class="dropdown-menu">
 				            <li>
-				            	<a href="../grupo/buscaGrupo.php">Buscar e Alterar grupo</a>
+				            	<a href="../grupo/buscaGrupo.php">Alterar grupo</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li grupo-->
@@ -166,7 +166,7 @@
 				            	<a href="../usuario/criaUsuario.php">Criar novo usuário</a>
 				            </li>
 				            <li>
-				            	<a href="../usuario/buscaUsuario.php">Buscar e alterar usuário</a>
+				            	<a href="../usuario/buscaUsuario.php">Alterar usuário</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
@@ -182,7 +182,7 @@
 				            	<a href="../bd/criaGrupo.php">Adicionar novo grupo</a>
 				            </li>
 				            <li>
-				            	<a href="../bd/buscaGrupo.php">Buscar e Altera grupo</a>
+				            	<a href="../bd/buscaGrupo.php">Altera grupo</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li grupo-->
