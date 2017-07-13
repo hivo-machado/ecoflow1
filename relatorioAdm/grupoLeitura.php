@@ -70,6 +70,7 @@
     var dia = dataAtual.getDate();
     var mes = dataAtual.getMonth() + 1;//Ajusta mês de 0-11 para 1-12
     var ano = dataAtual.getFullYear();
+    dataAtual.setHours(dataAtual.getHours() + 1);//Soma 1h a hora atual
     var hora = dataAtual.getHours();
     
     //formata o dia
