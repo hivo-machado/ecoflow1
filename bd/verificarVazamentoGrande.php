@@ -29,7 +29,7 @@
 	$tempoAnterior = strtotime('-1 day', $tempoAtual);
 	$dataDiaAnterior =  date_format( date_create( date('Y-m-d', $tempoAnterior) ),'Y-m-d' );
 
-  	//Data de 3 meses anterior
+  	//Data de 1 meses anterior
 	$tempoAnterior = strtotime('-1 month', $tempoAtual);
 	$dataMesAnterior =  date_format( date_create( date('Y-m-d', $tempoAnterior) ),'Y-m-d' );
 
@@ -38,15 +38,14 @@
   	//Pesquisa todos usuario do tipo usuario e ativos
   	$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE tipo = 'usuario' AND status = 'ativo' AND id_unidade IS NOT null");
 
-  	//vetor com idEcoflow dos alerta de cosumo excessivo
+  	//String com idEcoflow dos alertas
   	$idecoflow = "";
   	$cont = 0;
 
   	
   	while ($usuario = mysqli_fetch_object($usuarios) ){
-  		//echo 'ID: ', $usuario->id_unidade;
 
-		//Leitura atual
+		//Primeira Leitura do dia atual
 		$unidadeMesAtualSelect = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataAtual' AND servico = '0' ORDER BY tempo DESC, hora ASC LIMIT 1");
   		$unidadeAtual = mysqli_fetch_object($unidadeMesAtualSelect);
 
