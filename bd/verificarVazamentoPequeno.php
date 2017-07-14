@@ -47,11 +47,12 @@
 			//Seleciona todas as leituras do dia anterior
 	  		$unidades = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$usuario->id_unidade' AND tempo = '$dataDiaAnterior' AND servico = '0' ORDER BY hora DESC");
 
-	  		if($unidades != null){
+	  		if($unidades->num_rows > 0){
 
 		  		$leituraAnterior = $unidadeAtual->leitura;
 		  		$alerta = true;
 		  		$contConsumo = 0;
+		  		$consumo = null;
 
 				//Calcula consumo por intervalo de hora (2h/2h ou 6h/6h) no dia
 		  		while ($unidade = mysqli_fetch_object($unidades) ){
@@ -65,7 +66,7 @@
 
 		  		if($alerta){
 					//ordena o vetor
-		  			sort($consumo); 
+		  			sort($consumo);
 					//Conta quantidade de consumo no vetor
 		  			$qtdConsumo = count($consumo);
 					//inicia a variavel contador de menor consumo
@@ -74,12 +75,13 @@
 					//Conta quantidade de vezes que menor leitura-se repete
 		  			for($i = 0; $i < $qtdConsumo; $i++){
 		  				if($consumo[0] == $consumo[$i]) $qtdMenorConsumo++;
-						echo $consumo[$i], '<br>';
+						echo $consumo[$i], ' ';
 		  			}
+		  			echo '<br>';
 		  				
 		  			echo ' - ID: ', $usuario->id_unidade;
 
-		  			if($qtdMenorConsumo > 2){
+		  			if($qtdMenorConsumo > 1){
 						//echo 'Consumo dia: ', $consumoDia;
 						//echo ' - Media: ', $consumoMedio;
 		  				echo ' - ALERTA';
