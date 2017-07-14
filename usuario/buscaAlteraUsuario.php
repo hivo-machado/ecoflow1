@@ -15,7 +15,7 @@ include_once("../validar.php");
   $(function(){
     $('#form').submit(function(){
       $.ajax({
-        url:'buscarUsuario.php',
+        url:'buscarAlteraUsuario.php',
         type: 'GET',
         data: $('#form').serialize(),
         success: function(data){

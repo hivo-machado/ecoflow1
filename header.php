@@ -166,7 +166,7 @@
 				            	<a href="../usuario/criaUsuario.php">Criar novo usuário</a>
 				            </li>
 				            <li>
-				            	<a href="../usuario/buscaUsuario.php">Alterar usuário</a>
+				            	<a href="../usuario/buscaAlteraUsuario.php">Alterar usuário</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
