@@ -168,6 +168,9 @@
 				            <li>
 				            	<a href="../usuario/buscaAlteraUsuario.php">Alterar usuário</a>
 				            </li>
+				            <li>
+				            	<a href="../usuario/buscaUsuario.php">Pesquisar usuário</a>
+				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
 
