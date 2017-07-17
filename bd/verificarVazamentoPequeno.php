@@ -10,6 +10,9 @@
 	// Tempo de execução maxima do programa 10 min.
 	ini_set('max_execution_time', 600);
 
+	//Quantidade minima de vezes que o menor consumo deve repetir
+	define("QTDMINCONSUMO", 3);
+
 	//E-mail
 	//define("EMAIL", "vectoramerico@gmail.com, lucineia@vector.eng.br, v1n1c1u5_1@hotmail.com");
 	define("EMAIL", "v1n1c1u5_1@hotmail.com");
@@ -81,7 +84,7 @@
 		  				
 		  			echo ' - ID: ', $usuario->id_unidade;
 
-		  			if($qtdMenorConsumo > 1){
+		  			if($qtdMenorConsumo >= QTDMINCONSUMO){
 						//echo 'Consumo dia: ', $consumoDia;
 						//echo ' - Media: ', $consumoMedio;
 		  				echo ' - ALERTA';

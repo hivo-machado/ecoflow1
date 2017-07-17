@@ -11,7 +11,7 @@
 	ini_set('max_execution_time',600);
 
 	//Razão pelo consumo medio
-	define("RAZAO", 2);
+	define("RAZAO", 3);
 
 	//E-mail
 	//define("EMAIL", "vectoramerico@gmail.com, lucineia@vector.eng.br, v1n1c1u5_1@hotmail.com");
