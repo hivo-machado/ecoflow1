@@ -50,9 +50,9 @@ include_once("../validar.php");
 	<div class="col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0">
 		<form id="form" method="GET" action="">
         
-      <label for="busca" class="col-sm-2 col-xs-12">Pesquisar</label>
+      <label for="busca" class="col-sm-12 col-xs-12">Pesquisar</label>
 
-      <div class="col-sm-10 col-xs-12">
+      <div class="col-sm-12 col-xs-12">
         <div class="input-group">
           <input type="search" class="form-control" id="busca" name="busca" placeholder="Buscar por ID, Idecolfow, Nome, Login, Planta, Grupo" autofocus value = "<?php if(isset($_GET['busca']) ) echo $_GET['busca'] ?>" >
           <span class="input-group-btn">
@@ -61,9 +61,11 @@ include_once("../validar.php");
         </div>        
       </div>
 
-      <div class="col-sm-3 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+      <h5 for="busca" class="col-sm-12 col-xs-12"><strong>Filtros</strong></h5>
 
-        <label>Perfil </label>
+      <div class="col-sm-3 col-sm-offset-0 col-xs-12 col-xs-offset-0">
+
+        <!--<h5>Perfil: </h5>-->
 
         <div class="radio">
           <label>
@@ -94,7 +96,7 @@ include_once("../validar.php");
 
       <div class="col-sm-3 col-xs-12">
 
-      <label>Status </label>
+      <!--<h5>Status: </h5>-->
 
         <div class="radio">
           <label>
