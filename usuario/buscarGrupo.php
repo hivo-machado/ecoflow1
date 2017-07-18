@@ -43,6 +43,9 @@
           <a href="grupoListaUsuario.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
             <span class="glyphicon glyphicon-list-alt" aria-hidden="true"> </span> Lista
           </a>
+          <a href="grupoDownloadUsuario.php?id_grupo=<?php echo $grupos->id ?>" class="btn btn-primary btn-xs">
+            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"> </span> Download
+          </a>
         </td>            
       </tr>
       <?php

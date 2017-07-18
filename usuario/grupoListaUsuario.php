@@ -61,8 +61,8 @@
           while($planta = mysqli_fetch_object($plantas) ){
             $cont++;
 
-            //Chamada das funções
-            $usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE id_planta = '$planta->idecoflow' AND tipo LIKE 'usuario' AND status = 'ativo'");
+            //Seleciona todos os usuarios da planta ativos com perfil usuario
+            $usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE id_planta = '$planta->idecoflow' AND tipo LIKE 'usuario' AND status = 'ativo' ORDER BY nome");
             if( $cont == 1) echo "<div class='row'>";
          ?>
 
@@ -78,7 +78,7 @@
                   <th class="tabela-nome-coluna">Senha</th>
                 </tr>
 
-                <?php while( $usuario = mysqli_fetch_object($usuarios)){ ?>
+                <?php while( $usuario = mysqli_fetch_object($usuarios) ){ ?>
                 <tr>
                   <td><?= $usuario->nome ?></td>
                   <td><?= $usuario->login ?></td>
@@ -101,5 +101,14 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-sm-2 col-sm-offset-10 col-xs-5 col-xs-offset-7">
+      <a href="grupoDownloadUsuario.php?id_grupo=<?php echo $id_grupo ?>" class="btn btn-primary">
+        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"> </span> Download
+      </a>
+    </div>
+  </div>
+  
 
  <?php include_once("../footer.php") ?>
