@@ -87,7 +87,7 @@ include_once("../validar.php");
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="perfil" id="optionsRadios1" value="" checked>
+            <input type="radio" name="perfil" id="optionsRadios1" value="%" checked>
             Todos
           </label>
         </div>
@@ -112,7 +112,7 @@ include_once("../validar.php");
         </div>
         <div class="radio">
           <label>
-            <input type="radio" name="status" id="optionsRadios1" value="" checked>
+            <input type="radio" name="status" id="optionsRadios1" value="%" checked>
             Todos
           </label>
         </div>
