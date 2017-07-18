@@ -171,6 +171,9 @@
 				            <li>
 				            	<a href="../usuario/buscaUsuario.php">Pesquisar usuário</a>
 				            </li>
+				            <li>
+				            	<a href="../usuario/buscaGrupo.php">Lista de usuário</a>
+				            </li>
 				          </ul>
 				        </li><!--Fecha li usuarios-->
 
