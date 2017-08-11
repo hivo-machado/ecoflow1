@@ -72,15 +72,15 @@ valida();
 			<ul class="nav nav-pills nav-stacked">
 			  <li role="presentation" class="active"><a href="#">Home</a></li>
 			  <?php if($tipo == 'usuario'){ ?>
-			  	<li role="presentation"><a href="../relatorioCliente/relatorioMesAgua.php">Consumo Água do Mês</a></li>
-			  	<li role="presentation"><a href="../relatorioCliente/relatorioAnoAgua.php">Consumo Água do Ano</a></li>
-			  	<li role="presentation"><a href="../relatorioCliente/relatorioMesGas.php">Consumo Gás do Mês</a></li>
-			  	<li role="presentation"><a href="../relatorioCliente/relatorioAnoGas.php">Consumo Gás do Ano</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioMesAgua.php">Consumo de Água do Mês</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioAnoAgua.php">Consumo de Água do Ano</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioMesGas.php">Consumo de Gás do Mês</a></li>
+			  	<li role="presentation"><a href="../relatorioCliente/relatorioAnoGas.php">Consumo de Gás do Ano</a></li>
 			  <?php } ?>
 			  <?php if($tipo == 'sind'){ ?>
-			  	<li role="presentation"><a href="../relatorioAdm/listaPlanta.php">Consumo Água e Gás por Torre</a></li>
-			  	<li role="presentation"><a href="../relatorioAdm/grupoConsumoAgua.php">Consumo Água por Grupo</a></li>
-			  	<li role="presentation"><a href="../relatorioAdm/grupoConsumoGas.php">Consumo Gás por Grupo</a></li>
+			  	<li role="presentation"><a href="../relatorioAdm/listaPlanta.php">Consumo de Água e Gás por Torre</a></li>
+			  	<li role="presentation"><a href="../relatorioAdm/grupoConsumoAgua.php">Consumo de Água por Grupo</a></li>
+			  	<li role="presentation"><a href="../relatorioAdm/grupoConsumoGas.php">Consumo de Gás por Grupo</a></li>
 			  <?php } ?>
 			</ul>
 		</div>

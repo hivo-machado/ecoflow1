@@ -98,10 +98,10 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				           		<a href="../relatorioCliente/relatorioMesAgua.php">Consumo Água do Mês</a>
+				           		<a href="../relatorioCliente/relatorioMesAgua.php">Consumo de Água do Mês</a>
 					        </li>
 					        <li>
-					            <a href="../relatorioCliente/relatorioAnoAgua.php">Consumo Água do Ano</a>
+					            <a href="../relatorioCliente/relatorioAnoAgua.php">Consumo de Água do Ano</a>
 					        </li>
 				          </ul>
 				        </li><!--Fecha li relatorio-->
@@ -113,10 +113,10 @@
 				          </a>
 				          <ul class="dropdown-menu">
 				            <li>
-				           		<a href="../relatorioCliente/relatorioMesGas.php">Consumo Gás do Mês</a>
+				           		<a href="../relatorioCliente/relatorioMesGas.php">Consumo de Gás do Mês</a>
 					        </li>
 					        <li>
-					            <a href="../relatorioCliente/relatorioAnoGas.php">Consumo Gás do Ano</a>
+					            <a href="../relatorioCliente/relatorioAnoGas.php">Consumo de Gás do Ano</a>
 					        </li>
 				          </ul>
 				        </li><!--Fecha li relatorio-->
