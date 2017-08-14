@@ -3,7 +3,7 @@
 	//Verifica-se esta logando
 	function valida(){
 		if(!isset ($_SESSION['id']) && !isset($_SESSION['login']) && !isset($_SESSION['nome']) && !isset( $_SESSION['tipo']) ){
-			echo '<meta http-equiv="refresh" content="0;URL=../login/validaLogin.php?error=Usuário não logado." />';
+			echo '<meta http-equiv="refresh" content="0;URL=../login?error=Usuário não logado." />';
 		}
 	}
 

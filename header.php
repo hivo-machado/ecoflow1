@@ -242,7 +242,7 @@
 					<?php if( !isset($_SESSION["id"])){ ?>
 						<!--Menu para deslogado-->
 						<li>
-							<a id="barnav-link" href="../login/validaLogin.php"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
+							<a id="barnav-link" href="../login"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar</a>
 						</li>
 
 					<?php }else{ ?>
