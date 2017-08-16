@@ -107,7 +107,7 @@
 
 			  	//Verifica se consumo do dia e excessivo
 			  	if($consumoAtual > $mediaAcima * RAZAO){
-			  		$idecoflow .= $usuario->id_unidade + "<br>";
+			  		$idecoflow .= $usuario->id_unidade."<br>";
 
 		  			echo "<br>Idecolfow: ", $usuario->id_unidade, "<br>";
 			  		print_r( $consumos );
