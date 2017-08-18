@@ -2,10 +2,10 @@
 	//Atividade CRON para verificar se não existe consumo excessivo
 
 	//Conexão com banco de dados
-	//include_once("/home/ecofl253/public_html/conexao.php");
-	//include_once("/home/ecofl253/public_html/corpoEmail.php");
-	include('../conexao.php');
-	include('../corpoEmail.php');
+	include_once("/home/ecofl253/public_html/conexao.php");
+	include_once("/home/ecofl253/public_html/corpoEmail.php");
+	//include('../conexao.php');
+	//include('../corpoEmail.php');
 
 	// Tempo de execução maxima do programa 10 min.
 	ini_set('max_execution_time',600);
@@ -13,7 +13,7 @@
 	//Razão pelo consumo medio
 	define("RAZAO", 2);
 
-	//Numero de Serviço 0 - agua fria, 1 - agua quente, 2 - gas
+	//Numero de Serviço, 0 - agua fria, 1 - agua quente, 2 - gas
 	define("SERVICO", 0);
 
 	//E-mail
@@ -22,10 +22,13 @@
 
 	//Fuso horario
   	date_default_timezone_set('America/Sao_Paulo');
+
+
+  	//***********************************************************************************************************************
 	
 	//Data mes atual
-  	//$tempoAtual = strtotime( date('Y-m-d') );
-  	$tempoAtual = strtotime( '30-06-2017' );
+  	$tempoAtual = strtotime( date('Y-m-d') );
+  	//$tempoAtual = strtotime( '30-06-2017' );
   	$dataAtual =  date_format( date_create( date('Y-m-d', $tempoAtual) ),'Y-m-d' );
 
   	//Data do dia anterior
@@ -65,21 +68,20 @@
 			  	rsort( $consumos );
 
 			  	$soma = 0;
-			  	$contZero = 0;
+			  	$contConsumo = 0;
 			  	//Soma consumos
 			  	foreach( $consumos as $consumo ){
 			  		//Verifica se consumo é positivo 
 			  		if($consumo > 0){
 			  			$soma += $consumo;
-			  		}else{ //Caso exista consumo incorreto ou consumo = 0
-			  			$contZero ++;
+			  			$contConsumo ++;
 			  		}
 			  	}
 
-			  	$divisor = count( $consumos ) - $contZero;
-			  	//Calcula o divisor caso não exista nehuma leitura maior que 0
-			  	if( $divisor != 0 ){
-			  		$media = $soma / ( $divisor );
+			  	$qtdConsumo = $contConsumo;
+			  	//Calcula a quantidade de consumo caso não exista nehuma leitura maior que zero
+			  	if( $qtdConsumo != 0 ){
+			  		$media = $soma / ( $qtdConsumo );
 			  	}else{
 			  		$media = $soma / 1;
 			  	}
@@ -105,8 +107,8 @@
 			  	//Calculo o consumo do dia atual
 			  	$consumoAtual = $unidadeAtual->leitura - $unidadeDiaAnterior->leitura;
 
-			  	//Verifica se consumo do dia e excessivo
-			  	if($consumoAtual > $mediaAcima * RAZAO){
+			  	//Verifica se consumo do dia esta acima da media alta e se media alta é maior que zero
+			  	if($consumoAtual > $mediaAcima * RAZAO && $mediaAcima > 0){
 			  		$idecoflow .= $usuario->id_unidade."<br>";
 
 		  			echo "<br>Idecolfow: ", $usuario->id_unidade, "<br>";
@@ -131,7 +133,7 @@
 			$menssagem = $headerEmail."
 				<h4>Possível vazamento</h4>
 				Data: $dataDiaAnterior<br>
-				O sistema verificou um possivel vazamento ou um consumo execessivo dos seguintes idecoflow:<br>
+				O sistema verificou um possivel vazamento ou consumo execessivo dos seguintes idecoflow:<br>
 				<br> 
 				$idecoflow
 				<br>
