@@ -108,9 +108,9 @@
   	//Envia e-mail com os alertas
   	if($idecoflow != ""){
   		//envia e-email
-			$assunto = "Possivel pequeno vazamento";
+			$assunto = "Vazamento pequeno ";
 			$menssagem = $headerEmail."
-				<h4>Possível pequeno vazamento</h4>
+				<h4>Possível vazamento</h4>
 				Data: $dataDiaAnterior<br>
 				O sistema verificou um possível pequeno vazamento nos seguintes idecoflow:<br>
 				<br> 

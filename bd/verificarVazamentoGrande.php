@@ -19,6 +19,9 @@
 
 	//Fuso horario
   	date_default_timezone_set('America/Sao_Paulo');
+
+
+  	//***********************************************************************************************************************
 	
 	//Data mes atual
   	$tempoAtual = strtotime( date('Y-m-d') );
@@ -114,7 +117,7 @@
   	
   	if($idecoflow != ""){
   		//envia e-email
-			$assunto = "Possivel vazamento";
+			$assunto = "Vazamento grande";
 			$menssagem = $headerEmail."
 				<h4>Possível vazamento</h4>
 				Data: $dataDiaAnterior<br>

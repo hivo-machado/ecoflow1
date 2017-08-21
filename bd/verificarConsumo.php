@@ -129,11 +129,11 @@
   	
   	if($idecoflow != ""){
   		//envia e-email
-			$assunto = "Possivel vazamento";
+			$assunto = "Consumo excessivo";
 			$menssagem = $headerEmail."
-				<h4>Possível vazamento</h4>
+				<h4>Consumo excessivo</h4>
 				Data: $dataDiaAnterior<br>
-				O sistema verificou um possivel vazamento ou consumo execessivo dos seguintes idecoflow:<br>
+				O sistema verificou consumo execessivo dos seguintes idecoflow:<br>
 				<br> 
 				$idecoflow
 				<br>
