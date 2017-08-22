@@ -19,6 +19,9 @@
 
 	//Fuso horario
   	date_default_timezone_set('America/Sao_Paulo');
+
+
+  	//***********************************************************************************************************************
 	
 	//Data mes atual
   	$tempoAtual = strtotime( date('Y-m-d') );
@@ -30,6 +33,8 @@
 	$dataDiaAnterior =  date_format( date_create( date('Y-m-d', $tempoAnterior) ),'Y-m-d' );
 
 	echo "Tempo Atual: ", $dataAtual, " Tempo dia anterior: ", $dataDiaAnterior, " Tempo mes anterior: ", "<br>";
+
+	//***********************************************************************************************************************
 
   	//Pesquisa todos usuario do tipo usuario e ativos
   	$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE tipo = 'usuario' AND status = 'ativo' AND id_unidade IS NOT null");

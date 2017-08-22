@@ -38,6 +38,9 @@
 
 	echo "Tempo Atual: ", $dataAtual, " Tempo dia anterior: ", $dataDiaAnterior, " Tempo mes anterior: ", $dataMesAnterior, "<br>";
 
+
+	//***********************************************************************************************************************
+
   	//Pesquisa todos usuario do tipo usuario e ativos
   	$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE tipo = 'usuario' AND status = 'ativo' AND id_unidade IS NOT null");
 

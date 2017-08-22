@@ -109,7 +109,10 @@
 
 			  	//Verifica se consumo do dia esta acima da media alta e se media alta é maior que zero
 			  	if($consumoAtual > $mediaAcima * RAZAO && $mediaAcima > 0){
-			  		$idecoflow .= $usuario->id_unidade."<br>";
+			  		//Quantidade de vezes maior que media
+			  		$qtdVezes = $consumoAtual / $media;
+
+			  		$idecoflow .= $usuario->id_unidade." - ".number_format($qtdVezes, 1, '.', '')."x<br>";
 
 		  			echo "<br>Idecolfow: ", $usuario->id_unidade, "<br>";
 			  		print_r( $consumos );
