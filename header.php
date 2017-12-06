@@ -1,5 +1,5 @@
 <?php 
-	//include_once("forcehttps.php"); // forçar conexão SSL
+	include_once("forcehttps.php"); // forçar conexão SSL
  	include_once("conexao.php"); //conexão para banco de dados
  	
  	if (!isset($_SESSION)) {
