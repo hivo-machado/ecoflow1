@@ -90,25 +90,38 @@
 		  				$leitura = $unidade->leitura;
 		  				$consumo = $leituraAnterior - $leitura;
 		  				//echo ' Anterior: ', $leituraAnterior, ' atual: ', $leitura, '<br>';
-		  				echo $consumo,'<br>';
+		  				//echo $consumo,'<br>';
 		  				$leituraAnterior = $leitura;
 
 		  				if ($consumo == 0) $alerta = false;
 		  			}
 
 		  			if($alerta){
-		  				//echo 'Consumo dia: ', $consumoDia;
-		  				//echo ' - Media: ', $consumoMedio;
 		  				echo ' - ID: ', $unidadeMesAnterior->idecoflow;
 			  			echo ' - ALERTA';
 			  			//vetor com idEcoflow dos alerta de cosumo excessivo
 			  			$idecoflow .= $unidadeMesAnterior->idecoflow."<br>";
 			  			$cont++;
+
+			  			$agua = number_format($consumoDia, 3, '.', '');
+
+			  			//envia e-email
+						$assunto = "[Ecoflow] Consumo execessivo de água fria";
+						$menssagem = $headerEmail."
+							<h4>Consumo execessivo de água fria</h4>
+							O sistema verificou consumo execessivo.<br>
+							<br>
+							Data: $dataDiaAnterior<br>
+							Consumo: $agua<br>
+
+						".$footerEmail;
+						$menssagem = wordwrap($menssagem, 70);
+						$headers = "Content-type: text/html; charset=utf-8\r\n";
+						$headers .= "From: <noreplay@ecoflow.net.br>\r\n";
+						mail($usuario->email, $assunto, $menssagem, $headers);
 		  			}
 
 		  		}
-
-	  			echo '<br>';
 
 	  		}
 
@@ -117,22 +130,21 @@
   	}
 
   	echo "quantidade alerta: ", $cont;
-  	
+  	/*
   	if($idecoflow != ""){
   		//envia e-email
-			$assunto = "Vazamento grande";
-			$menssagem = $headerEmail."
-				<h4>Possível vazamento</h4>
-				Data: $dataDiaAnterior<br>
-				O sistema verificou um possivel vazamento ou um consumo execessivo dos seguintes idecoflow:<br>
-				<br> 
-				$idecoflow
-				<br>
-			".$footerEmail;
-			$menssagem = wordwrap($menssagem, 70);
-			$headers = "Content-type: text/html; charset=utf-8\r\n";
-			$headers .= "From: <noreplay@ecoflow.net.br>\r\n";
-			mail(EMAIL, $assunto, $menssagem, $headers);
-  	}
+		$assunto = "[Ecoflow] Consumo";
+		$menssagem = $headerEmail."
+			<h4>Consumo </h4>
+			Data: $dataDiaAnterior<br>
+			O sistema verificou consumo execessivo.<br>
+			Consumo: $consumo<br>
 
+		".$footerEmail;
+		$menssagem = wordwrap($menssagem, 70);
+		$headers = "Content-type: text/html; charset=utf-8\r\n";
+		$headers .= "From: <noreplay@ecoflow.net.br>\r\n";
+		mail(EMAIL, $assunto, $menssagem, $headers);
+  	}
+	*/
  ?>
