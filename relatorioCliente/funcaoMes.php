@@ -83,7 +83,7 @@
 			}
 
 			$unidadeAnt = $unidade;
-		}
+		}//fim do while
 
 
 		if( $listaConsumo != null){
@@ -95,7 +95,54 @@
 			}			
 		}else{ //caso não exista valor suficiente no SELECT do BD para calcular consumo
 
-			//Iniciando os vetore listaData e listaConsumo
+			//Calculo primeiro dia do mes
+			$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-01')));
+			$dateInicio = date_create($dataInicio);
+			$tempoInicio =  date_format($dateInicio, 'Y-m-d');
+
+			//Calcula ultima dia do mes
+			$dataFim = date("Y-m-t",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.$dia)));
+			$dateFim = date_create($dataFim);
+			$tempoFim =  date_format($dateFim, 'Y-m-d');
+
+			//Ultima leitura anterior
+			$resultAnterior = mysqli_query($con, "SELECT * FROM unidade WHERE tempo <= '$tempoInicio' AND idecoflow = '$usuario->idecoflow' AND servico = '$servico' ORDER by tempo DESC, hora ASC LIMIT 1");
+			$unidadeAnterior = mysqli_fetch_object($resultAnterior);
+
+			$resultPosterior = mysqli_query($con, "SELECT * FROM unidade WHERE tempo >= '$tempoFim' AND idecoflow = '$usuario->idecoflow' AND servico = '$servico' ORDER by tempo ASC, hora ASC LIMIT 1");
+			$unidadePosterior = mysqli_fetch_object($resultPosterior);
+
+			if( $unidadeAnterior != null && $unidadePosterior != null ){
+
+				//Calcula quantidade de dias do intervalo
+				$dataAnterior = date_create($unidadeAnterior->tempo);
+				$dataPosterior = date_create($unidadePosterior->tempo);
+				$diff = date_diff($dataAnterior, $dataPosterior);
+				$dias = $diff->format("%a"); //quantidade de dias sem leitura
+
+				//Calculo do consumo
+				$consumoTotal = $unidadePosterior->leitura - $unidadeAnterior->leitura;
+
+				//Calculo da media de consumo
+				$consumoMedia = number_format($consumoTotal / $dias, 3, '.', '');
+
+				//Iniciando os vetores listaData e listaConsumo
+				$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.'01')));
+				$dateInicio = date_create($dataInicio);
+				$listaData[1] =  date_format($dateInicio, 'Y-m-d');
+				$listaConsumo[1] = $consumoMedia;
+
+				//Preenche a lista toda com media de consumo
+				for($j = 2; $j <= $numDiasMes; $j++){
+						$listaConsumo[$j] = $consumoMedia;
+						$data = strtotime($listaData[($j - 1)]);
+						$date = strtotime('+1 day', $data);
+						$listaData[$j] = date('Y-m-d',$date);
+				}
+
+			}else{
+
+			//Iniciando os vetores listaData e listaConsumo
 			$dataInicio = date("Y-m-d",strtotime(str_replace('/','-',$ano.'-'.$mes.'-'.'01')));
 			$dateInicio = date_create($dataInicio);
 			$listaData[1] =  date_format($dateInicio, 'Y-m-d');
@@ -106,7 +153,9 @@
 					$data = strtotime($listaData[($j - 1)]);
 					$date = strtotime('+1 day', $data);
 					$listaData[$j] = date('Y-m-d',$date);
-			}
+			}	
+
+			}	
 		}
 
 		return $cosumo = array($listaConsumo, $listaData);
