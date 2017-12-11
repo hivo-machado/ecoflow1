@@ -1,6 +1,6 @@
 <?php 
 	//Atividade CRON para verificar se não existe consumo excessivo
-
+	/*
 	//Conexão com banco de dados
 	include_once("/home/ecofl253/public_html/conexao.php");
 	include_once("/home/ecofl253/public_html/corpoEmail.php");
@@ -127,5 +127,5 @@
 			$headers .= "From: <noreplay@ecoflow.net.br>\r\n";
 			mail(EMAIL, $assunto, $menssagem, $headers);
   	}
-
+*/
  ?>

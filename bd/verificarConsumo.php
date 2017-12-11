@@ -1,4 +1,5 @@
 <?php 
+/*
 	//Atividade CRON para verificar se não existe consumo excessivo
 
 	//Conexão com banco de dados
@@ -203,5 +204,5 @@
 		//return $cosumo = array($listaConsumo, $listaData);
 		return $listaConsumo;
 	}//Fim da função
-
+*/
  ?>
