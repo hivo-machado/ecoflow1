@@ -35,7 +35,23 @@ while ( $links =  mysqli_fetch_object($result) ) {
 			}
 			// loop para unidade
 		    foreach ($planta->unidades->unidade as $unidade) {
-		    	// Converte a data para modelo do banco de dados
+
+				$idecoflowUnidade = $unidade->{'id-ecoflow'};
+
+				// verifica se usuario ja existe, senão existir adicionar o novo usuario
+				$resUsuario = mysqli_query($con, "SELECT * FROM usuario WHERE id_unidade = '$idecoflowUnidade'");
+				$objUsuario = mysqli_fetch_object($resUsuario);
+				echo $unidade->{'id-ecoflow'}.'<br>';
+				   if(!isset($objUsuario)){
+					$idecoflowUnidade = $unidade->{'id-ecoflow'};
+					$idecoflowPlanta = $planta->{'id-ecoflow'};
+					$tipo = 'usuario';
+					$status = 'ativo';
+					$sql = "INSERT INTO usuario (id_unidade, id_planta, id_grupo, login, senha, nome, tipo, status) VALUES ('$idecoflowUnidade', '$idecoflowPlanta', '$grupo->id', '$idecoflowUnidade', '$idecoflowUnidade', '$unidade->nome', '$tipo', '$status')";
+					mysqli_query($con, $sql);
+				}
+
+				// Converte a data para modelo do banco de dados
 		    	$data = date("Y-m-d",strtotime(str_replace('/','-',$unidade->timestamp)));
 		    	$date = date_create($data);
 				$tempo =  date_format($date, 'Y-m-d');
