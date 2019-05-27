@@ -1,16 +1,16 @@
 <?php
 //Conexão com banco de dados
-include_once("/home/ecofl253/public_html/conexao.php");
+//include_once("/home/ecofl253/public_html/conexao.php");//hostgator diretorio
+include_once("../conexao.php");
 
 $result = mysqli_query($con, "SELECT * FROM xml");
 
 // loop para os links
 while ( $links =  mysqli_fetch_object($result) ) {
 		// Tempo de execução maxima do programa 120 seg.
-		ini_set('max_execution_time',120);
+		ini_set('max_execution_time',120);//valor original de 120, alterado para teste 
 
 		$xml = simplexml_load_file($links->link);
-	
 	// loop para grupos
 	foreach ($xml->grupo as $grupo){
 		// verifica se grupo ja existe, senão existir adiciona o novo grupo
@@ -43,12 +43,17 @@ while ( $links =  mysqli_fetch_object($result) ) {
 				//Converte para hora
 				$hora = substr($unidade->timestamp,-5);
 
+				//Altera o "," do XML para "."
+				$leitura = (string)$unidade->leitura;
+				$leitura = str_replace("," , "." , $leitura);
+				$leitura = (float)$leitura;
+				
 				//Verifica o medidor se valido para inserção no banco de dados
-				if($unidade->medidor != 'null'){
+				if($unidade->nome != 'null'){
 			    	$idecoflowUnidade = $unidade->{'id-ecoflow'};
 			    	$idecoflowPlanta = $planta->{'id-ecoflow'};
 				    $sql = "INSERT INTO unidade (idecoflow, tempo, hora, id_planta_fk, nome, medidor, servico, leitura) 
-				    VALUES ('$idecoflowUnidade', '$tempo', '$hora', '$idecoflowPlanta', '$unidade->nome', '$unidade->medidor', '$unidade->servico', '$unidade->leitura')";
+				    VALUES ('$idecoflowUnidade', '$tempo', '$hora', '$idecoflowPlanta', '$unidade->nome', '$unidade->medidor', '$unidade->servico', '$leitura')";
 					mysqli_query($con, $sql);
 				}
 		    }
