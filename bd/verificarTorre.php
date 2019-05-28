@@ -6,9 +6,8 @@
 	include_once("/home/ecofl253/public_html/corpoEmail.php");
 
 	//E-mail
-	$email = 'vectoramerico@gmail.com, lucineia@vector.eng.br';
-	//$email = 'v1n1c1u5_1@hotmail.com';
-
+	$email = 'vectoramerico@gmail.com';
+	
 	//Fuso horario
   	date_default_timezone_set('America/Sao_Paulo');
 	
