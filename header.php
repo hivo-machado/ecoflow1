@@ -217,9 +217,11 @@
 				            	<a href="../relatorioAdm/grupoConsumoGas.php">Consumo Gás por Grupo</a>
 										</li>
 										<!--Funcao especial para o grupo Villa Lobos-->
+										<?php if($_SESSION['tipo'] == 'sind' && $_SESSION['id_grupo'] == '3'){ ?>
 										<li>
 										<a href="../relatorioAdm/grupoDownloadTxt.php">Exportar relatório (.txt)</a>
 						 				</li>
+										 <?php } ?>
 				          </ul>
 				        </li><!--Fecha li relatorio-->
 
@@ -234,8 +236,19 @@
 				            	<a href="../grupo/alteraGrupo.php">Alterar Grupo</a>
 				            </li>
 				          </ul>
-				        </li><!--Fecha li usuarios-->
-
+				        </li><!--Fecha li grupos-->
+						<!--Opção Usuario-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Usuários
+				          	<span class="caret"></span>			          
+				          	</a>
+				          <ul class="dropdown-menu">
+				            <li>
+				            	<a href="../usuario/grupoListaUsuario.php">Lista de usuários</a>
+				            </li>
+				          </ul>
+								</li><!--Fecha li usuario-->
 			       <?php } ?>
 
 				</ul>

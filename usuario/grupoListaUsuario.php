@@ -4,18 +4,24 @@
   include('../conexao.php');
 
 	//valida-se esta logado como Administrador ou sindico
-	validaAdmin();
+	validaAdminSind();
  ?>
 
 <?php 
 	//variavel SESSAO
   $id = $_SESSION['id'];
-	$tipo = $_SESSION['tipo'];
+  $tipo = $_SESSION['tipo'];
 
-  if( isset( $_GET['id_grupo']) ){
-    //varivel GET
-    $id_grupo = $_GET['id_grupo'];
+  if($tipo != "sind"){
+    if( isset( $_GET['id_grupo']) ){
+      //varivel GET
+      $id_grupo = $_GET['id_grupo'];
+    }
+  }else{
+    $id_grupo = $_SESSION['id_grupo'];
   }
+
+  
 
 /*
   //Seleciona usuario
