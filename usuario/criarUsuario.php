@@ -10,7 +10,6 @@
 	$tipo = $_POST['tipo'];
 	$status = $_POST['status'];
 
-	$login = ucfirst(strtolower($login));
 	$nome = strtoupper($nome);
 
 	//Confirma-se as senhas são iguais
