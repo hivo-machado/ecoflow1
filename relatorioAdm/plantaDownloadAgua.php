@@ -69,9 +69,9 @@
 	    }
 		// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumosAguaFria[$i][0]);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($consumosAguaFria[$i][1] * 1000, 0, '', '') );
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, number_format($consumosAguaQuente[$j][1] * 1000, 0, '', '') );
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, number_format( ($consumosAguaFria[$i][1] + $consumosAguaQuente[$j][1]) * 1000, 0, '', '') );
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($consumosAguaFria[$i][1], 4));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, round($consumosAguaQuente[$j][1], 4));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, round(($consumosAguaFria[$i][1] + $consumosAguaQuente[$j][1]), 4));
 		$cont++;
 	}
 
@@ -83,9 +83,9 @@
 	
 	// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
 	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, 'TOTAL');
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($totalAguaFria * 1000 , 0, '', '') );
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, number_format($totalAguaQuente * 1000 , 0, '', '') );
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, number_format( ($totalAguaFria + $totalAguaQuente) * 1000 , 0, '', '') );
+	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($totalAguaFria, 4));
+	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, round($totalAguaQuente, 4));
+	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, round(($totalAguaFria + $totalAguaQuente), 4));
 
 	// Podemos renomear o nome das planilha atual, lembrando que um único arquivo pode ter várias planilhas
 	$objPHPExcel->getActiveSheet()->setTitle($nome);
