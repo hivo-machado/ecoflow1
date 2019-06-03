@@ -26,7 +26,7 @@
 
 						<div class="row hidden-print">
 							<div class="col-sm-12 col-xs-12 text-center">
-								<strong>ECOflow</strong> - Todos os direitos reservados.<br>
+								&copy;Copyright 2016<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script> - Ecoflow - Todos os direitos reservados.<br>
 							</div>
 						</div>
 					</div>

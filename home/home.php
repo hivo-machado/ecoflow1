@@ -80,8 +80,12 @@ valida();
 			  <?php if($tipo == 'sind'){ ?>
 			  	<li role="presentation"><a href="../relatorioAdm/listaPlanta.php">Consumo de Água e Gás por Torre</a></li>
 			  	<li role="presentation"><a href="../relatorioAdm/grupoConsumoAgua.php">Consumo de Água por Grupo</a></li>
-			  	<li role="presentation"><a href="../relatorioAdm/grupoConsumoGas.php">Consumo de Gás por Grupo</a></li>
+				<li role="presentation"><a href="../relatorioAdm/grupoConsumoGas.php">Consumo de Gás por Grupo</a></li> 
 			  <?php } ?>
+			  <!--Funcao especial para o grupo Villa Lobos-->
+			  <?php if($tipo == 'sind' && $id_grupo == '3'){ ?>
+				<li role="presentation"><a href="../relatorioAdm/grupoDownloadTxt.php">Exportar relatório (.txt)</a></li>
+				<?php } ?>
 			</ul>
 		</div>
 	</div>
