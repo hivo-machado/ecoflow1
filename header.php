@@ -215,7 +215,11 @@
 				            </li>
 				            <li>
 				            	<a href="../relatorioAdm/grupoConsumoGas.php">Consumo Gás por Grupo</a>
-				            </li>
+										</li>
+										<!--Funcao especial para o grupo Villa Lobos-->
+										<li>
+										<a href="../relatorioAdm/grupoDownloadTxt.php">Exportar relatório (.txt)</a>
+						 				</li>
 				          </ul>
 				        </li><!--Fecha li relatorio-->
 
