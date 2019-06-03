@@ -52,7 +52,7 @@
 	for($i = 0; $i < count($consumos); $i++){
 		// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumos[$i][0]);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($consumos[$i][1] * 1000, 0, '', '') );
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($consumos[$i][1], 4));
 		$cont++;
 	}
 
@@ -62,7 +62,7 @@
 	
 	// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
 	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, 'TOTAL');
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, number_format($total * 1000 , 0, '', '') );
+	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($total, 4));
 
 	// Podemos renomear o nome das planilha atual, lembrando que um único arquivo pode ter várias planilhas
 	$objPHPExcel->getActiveSheet()->setTitle($nome);
