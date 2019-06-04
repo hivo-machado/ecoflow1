@@ -4,8 +4,6 @@
 
 	$id = $_SESSION['id'];
 	$login = $_POST['login'];
-
-	$login = ucfirst(strtolower($login));
 	
 	//busca o nome de login
 	$result = mysqli_query($con, "SELECT * FROM usuario where login = '$login'");
