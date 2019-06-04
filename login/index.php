@@ -31,8 +31,8 @@
 					    	<label for="senha" class="col-sm-2 col-sm-offset-1 col-xs-2 col-xs-offset-1 control-label">Senha</label>
 					    	<div class="col-sm-8 col-xs-8">
 					      		<input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required
-					      		pattern="[\S]{6,20}$"
-										title="verifique se a senha possui tamanho de 6 a 20 caracteres sem espaço em branco.">
+					      		pattern="[\S]{1,20}$"
+										title="Digite sua senha.">
 					    	</div>
 					  	</div>
 					  	<div class="col-sm-3 col-sm-offset-3">
