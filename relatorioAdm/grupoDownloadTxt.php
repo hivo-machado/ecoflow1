@@ -4,12 +4,14 @@
     /*Funcao criada especialmente para o cliente do Villa Lobos*/
 
     //Coleta da data da requisição formato do banco
-    if(date("H") > 13){
-        $dataBancoFim = date("Y-m-d");
+    
+    if(date("d") > 1){
+        $dataBancoFim = date("Y-m-01");
+        $dataBancoInicio = date("Y-m-01", strtotime("-1 months"));
     }else{
-        $dataBancoFim = date("Y-m-d", strtotime("-1 days"));
+        $dataBancoFim = date("Y-m-01", strtotime("-1 months"));
+        $dataBancoInicio = date("Y-m-01", strtotime("-2 months"));
     }
-    $dataBancoInicio = date("Y-m-01");    
     
     $id = '3';
 
@@ -21,20 +23,20 @@
     $arquivo = "$grupo->nome.$dataBancoInicio.$dataBancoFim.txt";
    
     //Consultar plantas 
-    $plantas = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id' ORDER BY nome");//necessita de uma verificacao para leituras realizadas anteriores ao meio dia
+    $plantas = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$id' ORDER BY nome");
     
     // Loop por planta
     while($planta = mysqli_fetch_object($plantas)){        
-        $unidades = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = '$planta->idecoflow' AND tempo = '$dataBancoFim' AND hora LIKE '12:%' ORDER BY nome");
+        $unidades = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = '$planta->idecoflow' AND tempo = '$dataBancoFim' AND hora LIKE '06:%' ORDER BY nome");
 
         // Loop por unidades
         while($unidade = mysqli_fetch_object($unidades)){            
             //Seleciona a leitura inicial da unidade
-			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$unidade->idecoflow' AND tempo = '$dataBancoInicio' AND hora LIKE '12:%'");
+			$resInicio = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$unidade->idecoflow' AND tempo = '$dataBancoInicio' AND hora LIKE '06:%'");
             $unidadeInicio = mysqli_fetch_object($resInicio);
 
 			//Seleciona a leitura final da unidade
-			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$unidade->idecoflow' AND tempo = '$dataBancoFim' AND hora LIKE '12:%'");
+			$resFim = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = '$unidade->idecoflow' AND tempo = '$dataBancoFim' AND hora LIKE '06:%'");
             $unidadeFim = mysqli_fetch_object($resFim);
             
             //TIPO
@@ -82,7 +84,7 @@
             $unidadeCliente = str_pad($unidadeCliente, 6, "0", STR_PAD_LEFT);
 
             //DATA LEITURA
-            $dataCliente = date("29/m/Y");
+            $dataCliente = date("01/m/Y");
 
             //MES
             $mesCliente = date("m");
