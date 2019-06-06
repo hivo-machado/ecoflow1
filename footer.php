@@ -18,7 +18,6 @@
 							<address class="text-center">
 							  	<strong>Contato ECOFlow</strong><br>
 							  	<abbr title="E-mail"><span class="glyphicon glyphicon-envelope" arian-hidden="true"></span></abbr> : <a class="link-rodape" href="mailto:contato@ecoflow.net.br">contato@ecoflow.net.br</a><br>
-							  	<abbr title="Celular"><span class="glyphicon glyphicon-phone" arian-hidden="true"></span></abbr> :  (35) 98875-8875 <br>
 							  	<abbr title="Telefone"><span class="glyphicon glyphicon-earphone" arian-hidden="true"></span></abbr> :  (35) 3622-7522 <br>
 							  	<!--<abbr title="Celular"><span class="glyphicon glyphicon-phone" arian-hidden="true"></span> </abbr> : -->
 							</address>	
@@ -37,7 +36,6 @@
 							<address class="text-center">
 							<strong>Contato ECOFlow</strong><br>
 							contato@ecoflow.net.br<br>
-							Cel.: (35) 98875-8875<br>
   							Tel.: (35) 3622-7522<br>
 							</address>
 						</div>
