@@ -36,10 +36,10 @@ while ( $links =  mysqli_fetch_object($result) ) {
 			// loop para unidade
 		    foreach ($planta->unidades->unidade as $unidade) {
 				//verifica se o usuario e valido antes de tudo
-				if($unidade->nome != 'null' && $unidade->nome != 'NU' && $unidade->nome != 'N U' && $unidade->nome != 'N-U'){
+				if($unidade->nome != 'null' && $unidade->nome != 'NU' && $unidade->nome != 'N U' && $unidade->nome != 'N-U' && $unidade->nome != 'T1-RES1' && $unidade->nome != 'T1-RES2' && $unidade->nome != 'T1-RES3' && $unidade->nome != 'T1-RES4' && $unidade->nome != 'T1-RES5' && $unidade->nome != 'T1-RES6' && $unidade->nome != 'T1-RES7' && $unidade->nome != 'T1-RES8'){
 					$idecoflowUnidade = $unidade->{'id-ecoflow'};
-					$idecoflowPlanta = $planta->{'id-ecoflow'};
-					
+					$idecoflowPlanta = $planta->{'id-ecoflow'};					
+
 					// Converte a data para modelo do banco de dados
 					$data = date("Y-m-d",strtotime(str_replace('/','-',$unidade->timestamp)));
 					$date = date_create($data);
@@ -52,14 +52,42 @@ while ( $links =  mysqli_fetch_object($result) ) {
 					$leitura = (string)$unidade->leitura;
 					$leitura = str_replace("," , "." , $leitura);
 					$leitura = (float)$leitura;
+					
+					// Converte A e G na mesma unidade. Criada somente para resolver o problema da instalação do grupo ISF
+					if($grupo->id == 18){
+						$nome = (string)$unidade->nome;
+						$servico = $unidade->servico;
+						$servicoLetra = $nome[3];
 
-					$sql = "INSERT INTO unidade (idecoflow, tempo, hora, id_planta_fk, nome, medidor, servico, leitura) 
-				    VALUES ('$idecoflowUnidade', '$tempo', '$hora', '$idecoflowPlanta', '$unidade->nome', '$unidade->medidor', '$unidade->servico', '$leitura')";
-					mysqli_query($con, $sql);				
+						if($servicoLetra == 'A'){
+							$nome = str_replace("A" , "" , $nome);
+							$idecoflowGas = $idecoflowUnidade;
 
+							$sql = "INSERT INTO unidade (idecoflow, tempo, hora, id_planta_fk, nome, medidor, servico, leitura) 
+							VALUES ('$idecoflowUnidade', '$tempo', '$hora', '$idecoflowPlanta', '$nome', '$unidade->medidor', '$servico', '$leitura')";
+							mysqli_query($con, $sql);
+
+						}elseif($servicoLetra == 'G'){
+							$nome = str_replace("G" , "" , $nome);
+							$idecoflowUnidade = $idecoflowGas;
+							$servico = 2;
+
+							// Como o banco usa o $idecoflowUnidade, $tempo e $hora como PRIMARY KEY foi necessário a criacao de um offset na hora.
+							$hora .= ":01";
+
+							$sql = "INSERT INTO unidade (idecoflow, tempo, hora, id_planta_fk, nome, medidor, servico, leitura) 
+							VALUES ('$idecoflowUnidade', '$tempo', '$hora', '$idecoflowPlanta', '$nome', '$unidade->medidor', '$servico', '$leitura')";
+							mysqli_query($con, $sql);
+
+						}
+					}else{
+						$sql = "INSERT INTO unidade (idecoflow, tempo, hora, id_planta_fk, nome, medidor, servico, leitura) 
+						VALUES ('$idecoflowUnidade', '$tempo', '$hora', '$idecoflowPlanta', '$unidade->nome', '$unidade->medidor', '$unidade->servico', '$leitura')";
+						mysqli_query($con, $sql);
+					}				
 				}				
 			}				    
-				}
-		    }
-	    }
+		}
+	}
+}
 ?>
