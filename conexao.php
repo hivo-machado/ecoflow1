@@ -7,7 +7,7 @@
 // 	die("Falha na conexão com o banco");
 // }
 
-$con = mysqli_connect("localhost", "root", "suporte", "ecofl253_2017");
+$con = mysqli_connect("localhost", "root", "root", "ecofl253_2017");
 
 if(!$con)
 {
