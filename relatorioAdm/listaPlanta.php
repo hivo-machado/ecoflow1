@@ -63,6 +63,9 @@ include_once("../validar.php");
                   <a href="plantaConsumoAgua.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo Água
                   </a>
+                  <a href="plantaConsumoAguaQuente.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo Água Quente
+                  </a>
                   <a href="plantaConsumoGas.php?id_planta=<?php echo $planta->idecoflow ?>" class="btn btn-primary btn-xs">
                     <span class="glyphicon glyphicon-th-list" aria-hidden="true"> </span> Consumo Gás
                   </a>
