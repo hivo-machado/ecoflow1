@@ -21,36 +21,26 @@
 
 	$nome = $planta->nome;
 
+	//Consulta o Banco de dados e retorna vetor com nome da unidade e consumo
+	$consumos = consumo($con, $id, 0, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
+
+	//Calcula o total de consumo
+	$total = consumoTotal($consumos);
+
 	// Nome do Arquivo do Excel que será gerado
 	$arquivo = $nome.' '.$diaInicio.'-'.$mesInicio.'-'.$anoInicio.' '.$diaFim.'-'.$mesFim.'-'.$anoFim.'.xls';
 
 	// Instanciamos a classe
 	$objPHPExcel = new PHPExcel();
 
-	//Consulta o Banco de dados e retorna vetor com nome da unidade e consumo
-	$consumosAguaFria = consumo($con, $id, 0, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
-	$consumosAguaQuente = consumo($con, $id, 1, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
-
-	//Calcula o total de consumo
-	$totalAguaFria = consumoTotal($consumosAguaFria);
-	$totalAguaQuente = consumoTotal($consumosAguaQuente);
-
-	//Valor Nulo
-	$consumosAguaQuente[] = array(0, 0);
-
+	// Definimos o estilo da fonte
+	$objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
 
 	// Criamos as colunas
 	$objPHPExcel->setActiveSheetIndex(0)
 	            ->setCellValue('A1', 'Unidade' )
-	            ->setCellValue('B1', 'Água Fria' )
-	            ->setCellValue('C1', 'Água Quente' )
-	            ->setCellValue('D1', 'SubTotal' );
-
-	// Definimos o estilo da fonte
-	$objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
-	$objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
-	$objPHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setBold(true);
-	$objPHPExcel->getActiveSheet()->getStyle('D1')->getFont()->setBold(true);
+	            ->setCellValue('B1', 'Consumo' );
 
 	// Podemos configurar diferentes larguras paras as colunas como padrão
 	$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
@@ -59,33 +49,20 @@
 	$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
 
 	//loop de todas as unidades
-	for($i = 0; $i < count($consumosAguaFria); $i++){
-		$j = count($consumosAguaQuente) - 1;
-	    //Verifica unidade são as mesma de agua fria e quente
-	    for($k = 0; $k < count($consumosAguaQuente) - 1; $k++){
-	        if( strcmp($consumosAguaFria[$i][0],$consumosAguaQuente[$k][0]) == 0){
-	          	$j = $k;
-	        }
-	    }
+	for($i = 0; $i < count($consumos); $i++){
 		// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumosAguaFria[$i][0]);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($consumosAguaFria[$i][1], 4));
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, round($consumosAguaQuente[$j][1], 4));
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, round(($consumosAguaFria[$i][1] + $consumosAguaQuente[$j][1]), 4));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumos[$i][0]);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($consumos[$i][1], 4));
 		$cont++;
 	}
 
 	// Definimos o estilo da fonte
 	$objPHPExcel->getActiveSheet()->getStyle('A'.$cont)->getFont()->setBold(true);
 	$objPHPExcel->getActiveSheet()->getStyle('B'.$cont)->getFont()->setBold(true);
-	$objPHPExcel->getActiveSheet()->getStyle('C'.$cont)->getFont()->setBold(true);
-	$objPHPExcel->getActiveSheet()->getStyle('D'.$cont)->getFont()->setBold(true);
 	
 	// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
 	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, 'TOTAL');
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($totalAguaFria, 4));
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, round($totalAguaQuente, 4));
-	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, round(($totalAguaFria + $totalAguaQuente), 4));
+	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($total, 4));
 
 	// Podemos renomear o nome das planilha atual, lembrando que um único arquivo pode ter várias planilhas
 	$objPHPExcel->getActiveSheet()->setTitle($nome);
