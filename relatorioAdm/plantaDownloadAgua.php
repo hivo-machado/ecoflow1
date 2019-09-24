@@ -36,29 +36,47 @@
 	// Definimos o estilo da fonte
 	$objPHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
 	$objPHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('D1')->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('E1')->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('F1')->getFont()->setBold(true);
 
 	// Criamos as colunas
 	$objPHPExcel->setActiveSheetIndex(0)
 	            ->setCellValue('A1', 'Unidade' )
-	            ->setCellValue('B1', 'Consumo' );
+				->setCellValue('B1', 'Leitura inicial' )
+				->setCellValue('C1', 'Data inicial' )
+				->setCellValue('D1', 'Leitura final' )
+				->setCellValue('E1', 'Data final' )
+				->setCellValue('F1', 'Consumo (m³)' );
 
 	// Podemos configurar diferentes larguras paras as colunas como padrão
 	$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
 	$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 	$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
 	$objPHPExcel->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+	$objPHPExcel->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+	$objPHPExcel->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
 
 	//loop de todas as unidades
 	for($i = 0; $i < count($consumos); $i++){
 		// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
 		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, $consumos[$i][0]);
-		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, round($consumos[$i][1], 4));
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(1, $cont, $consumos[$i][1]);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(2, $cont, $consumos[$i][2]);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(3, $cont, $consumos[$i][3]);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(4, $cont, $consumos[$i][4]);
+		$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(5, $cont, round($consumos[$i][5], 4));
 		$cont++;
 	}
 
 	// Definimos o estilo da fonte
 	$objPHPExcel->getActiveSheet()->getStyle('A'.$cont)->getFont()->setBold(true);
 	$objPHPExcel->getActiveSheet()->getStyle('B'.$cont)->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('C'.$cont)->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('D'.$cont)->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('E'.$cont)->getFont()->setBold(true);
+	$objPHPExcel->getActiveSheet()->getStyle('F'.$cont)->getFont()->setBold(true);
 	
 	// Também podemos escolher a posição exata aonde o dado será inserido (coluna, linha, dado);
 	$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow(0, $cont, 'TOTAL');
