@@ -213,6 +213,9 @@
 				            <li>
 				            	<a href="../relatorioAdm/grupoConsumoAgua.php">Consumo Água por Grupo</a>
 				            </li>
+							<li>
+				            	<a href="../relatorioAdm/grupoConsumoAguaQuente.php">Consumo Água Quente por Grupo</a>
+				            </li>
 				            <li>
 				            	<a href="../relatorioAdm/grupoConsumoGas.php">Consumo Gás por Grupo</a>
 										</li>
