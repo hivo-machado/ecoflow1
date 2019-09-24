@@ -29,7 +29,7 @@
 			$unidadeFim = mysqli_fetch_object($resFim);
 
 			if (isset($unidadeFim)||(isset($unidadeInicio))) {
-				$listConsumo[] = array( $usuario->nome, number_format($unidadeFim->leitura - $unidadeInicio->leitura, 3, '.', '') );
+				$listConsumo[] = array( $usuario->nome, number_format($unidadeInicio->leitura, 3, '.', ''), $unidadeInicio->tempo, number_format($unidadeFim->leitura, 3, '.', ''), $unidadeFim->tempo, number_format($unidadeFim->leitura - $unidadeInicio->leitura, 3, '.', '') );
 			}else{
 				$listConsumo[] = array( $usuario->nome, 0 );
 			}

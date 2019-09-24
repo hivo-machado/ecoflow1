@@ -13,7 +13,8 @@
 
 	//Chamada das funções
 	$consumos = consumo($con, $id_planta, 0, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
-	$total = consumoTotal($consumos);
+  $total = consumoTotal($consumos);
+  // print_r($consumos);
  ?>
 
 
@@ -24,6 +25,10 @@
     <table class="table table-bordered table-striped tabela table-hover table-condensed">
       <tr>
         <th class="tabela-nome-coluna">Unidade</th>
+        <th class="tabela-nome-coluna">Leitura inicial</th>
+        <th class="tabela-nome-coluna">Data inicial</th>
+        <th class="tabela-nome-coluna">Leitura final</th>
+        <th class="tabela-nome-coluna">Data final</th>
         <th class="tabela-nome-coluna">Consumo (m³)</th>
       </tr>
 
@@ -31,6 +36,10 @@
       <tr>
         <td><?php echo $consumos[$i][0] ?></td>
         <td><?php echo $consumos[$i][1] ?></td>
+        <td><?php echo $consumos[$i][2] ?></td>
+        <td><?php echo $consumos[$i][3] ?></td>
+        <td><?php echo $consumos[$i][4] ?></td>
+        <td><?php echo $consumos[$i][5] ?></td>
       </tr>
       <?php } ?>
       
