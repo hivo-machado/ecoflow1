@@ -21,7 +21,7 @@
     $cont++;
 
     //Chamada das funções
-    $consumos = consumo($con, $planta->idecoflow, 0, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
+    $consumos = consumo($con, $planta->idecoflow, 1, $anoInicio, $mesInicio, $diaInicio, $anoFim, $mesFim, $diaFim);
     $total = consumoTotal($consumos);
     if( $cont == 1) echo "<div class='row'>";
  ?>
