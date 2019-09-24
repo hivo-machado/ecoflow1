@@ -31,7 +31,7 @@
 			if (isset($unidadeFim)||(isset($unidadeInicio))) {
 				$listConsumo[] = array( $usuario->nome, number_format($unidadeInicio->leitura, 3, '.', ''), $unidadeInicio->tempo, number_format($unidadeFim->leitura, 3, '.', ''), $unidadeFim->tempo, number_format($unidadeFim->leitura - $unidadeInicio->leitura, 3, '.', '') );
 			}else{
-				$listConsumo[] = array( $usuario->nome, 0 );
+				$listConsumo[] = array( $usuario->nome, 0, 0, 0, 0, 0 );
 			}
 		}
 
@@ -44,7 +44,7 @@
 
 		//loop para soma total
 		for($i = 0; $i < count($consumos); $i++){
-			$total += $consumos[$i][1];
+			$total += $consumos[$i][5];
 		}
 
 		return $total;
