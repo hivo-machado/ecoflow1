@@ -74,7 +74,7 @@
 			if(isset($unidade)){
 				$listLeitura[] = array($usuario->nome, $unidade->tempo, $unidade->hora, number_format( $unidade->leitura, 3, '.', '') );
 			}else{
-				$listLeitura[] = array($usuario->nome, 0, 0, 0 );
+				$listLeitura[] = array($usuario->nome, 0, 0, 0, 0, 0);
 			}
 		}//fim while
 

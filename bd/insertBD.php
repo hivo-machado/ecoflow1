@@ -53,6 +53,41 @@ while ( $links =  mysqli_fetch_object($result) ) {
 					$leitura = str_replace("," , "." , $leitura);
 					$leitura = (float)$leitura;
 					
+					//OFFSET PARA UNIDADES DA REMOTA 13 FLORIDA
+					if($idecoflowPlanta == 38){						
+						if($unidade->nome == 'T4-A131'){
+							$leitura = $leitura+7.429;
+						}else if($unidade->nome == 'T4-G131'){
+							$leitura = $leitura+12.92;
+						}else if($unidade->nome == 'T4-A132'){
+							$leitura = $leitura+4.75;							
+						}else if($unidade->nome == 'T4-G132'){
+							$leitura = $leitura+6.55;							
+						}else if($unidade->nome == 'T4-A133'){
+							$leitura = $leitura+0.11;							
+						}else if($unidade->nome == 'T4-A134'){
+							$leitura = $leitura+10.865;							
+						}else if($unidade->nome == 'T4-G134'){
+							$leitura = $leitura+7.38;							
+						}else if($unidade->nome == 'T4-A141'){
+							$leitura = $leitura+1.953;							
+						}else if($unidade->nome == 'T4-G141'){
+							$leitura = $leitura+3.47;							
+						}else if($unidade->nome == 'T4-A142'){
+							$leitura = $leitura+3.693;							
+						}else if($unidade->nome == 'T4-G142'){
+							$leitura = $leitura+6.57;							
+						}else if($unidade->nome == 'T4-A143'){
+							$leitura = $leitura+1.002;							
+						}else if($unidade->nome == 'T4-G143'){
+							$leitura = $leitura+0.39;							
+						}else if($unidade->nome == 'T4-A144'){
+							$leitura = $leitura+2.909;							
+						}else if($unidade->nome == 'T4-G144'){
+							$leitura = $leitura+29.13;						
+						}
+					}
+
 					// Converte A e G na mesma unidade. Criada somente para resolver o problema da instalação do grupo ISF
 					if($grupo->id == 18){
 						$nome = (string)$unidade->nome;
