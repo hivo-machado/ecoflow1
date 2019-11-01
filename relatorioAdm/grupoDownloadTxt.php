@@ -2,6 +2,8 @@
 	include_once("../conexao.php");
     
     /*Funcao criada especialmente para o cliente do Villa Lobos*/
+    /*Esse formato é utilizado em uma plataforma de administração de condominio,
+    mas sem valor não tem utilidade.*/
 
     //Coleta da data da requisição formato do banco
     
