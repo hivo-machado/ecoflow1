@@ -153,18 +153,10 @@
                     
             while($leitura = mysqli_fetch_object($result)){
                 $hora = $d." ".$leitura->hora;
-                ob_start();
                 $stringSql = $sql.$hora.", ".$account_id.", ".$leitura->leitura.", ".$account_id.", ".$plant_id.", ".$p[0].", ".$m.");";
                 echo("$stringSql\n");
             }
         }
-        $backup = "backup".$p[1];
-        $stringDownload = ob_get_contents();
-        ob_end_clean();
-        //Forca o navegador a fazer download do arquivo
-        header("Content-type: text/txt");
-        header("Content-disposition: attachment; filename = $backup");    
-
     }
 
     
