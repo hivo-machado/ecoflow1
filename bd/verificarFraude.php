@@ -21,51 +21,44 @@
     //Data de uma semana anterior
     $tempo1Sem = strtotime('-1 week', $tempoAtual);
     $data1Sem =  date_format( date_create( date('Y-m-d', $tempo1Sem) ),'Y-m-d' );
-    //echo($data1Sem);
 
     //Data de duas semanas anteriores
     $tempo2Sem = strtotime('-2 week', $tempoAtual);
     $data2Sem =  date_format( date_create( date('Y-m-d', $tempo2Sem) ),'Y-m-d' );
-    //echo($data2Sem);
 
-	$grupos = mysqli_query($con, "SELECT * FROM grupo");
-	
 	$arrayFraude = array();
+	
+	$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE 'status' = 'ativo' AND tipo = 'usuario' ORDER BY nome ASC");
+	
+	while($usuario = mysqli_fetch_object($usuarios)){
+		for($n = 0; $n < 3; $n++){
 
-	//Percorre todos os grupos
-	while ( $grupo = mysqli_fetch_object($grupos) ) {
-		
-		$plantas = mysqli_query($con, "SELECT * FROM planta WHERE id_grupo_fk = '$grupo->id'");
-
-		//Percorre todas as plantas
-		while ( $planta = mysqli_fetch_object($plantas) ) {
-
-            $unidades = mysqli_query($con, "SELECT * FROM unidade WHERE id_planta_fk = '$planta->idecoflow' AND tempo = '$dataAnt' AND hora LIKE '06:%' GROUP BY idecoflow");
-		   
-			echo($unidades);
-
-			while ($unidade = mysqli_fetch_object($unidades) ) {
-                
-                //$unidades1Sem = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = $idecoflow AND servico = $servico AND tempo = '$data1Sem' AND hora LIKE '06:%' GROUP BY idecoflow");
-				//echo($unidades1Sem);
-				// $leitura1Sem = $unidades1Sem->leitura;
-                // $unidades2Sem = mysqli_query($con, "SELECT * FROM unidade WHERE idecoflow = $idecoflow AND servico = $servico AND tempo = '$data2Sem' AND hora LIKE '06:%' GROUP BY idecoflow");
-				// $leitura2Sem = $unidades2Sem->leitura;
-				//echo($unidades2Sem);
-				
-				// $testeFraude = $leitura1Sem-$leitura2Sem;
-				//echo($testeFraude);
-
-                // if($leitura1Sem-$leitura2Sem =! 0){
-                //     if($leitura-$leitura1Sem == 0){
-                //         $strUni .= '<strong>Planta: '.$planta->nome.'<br> Unidade: '.$unidade->nome.'('.$servico.')'.'</strong><br><br>';
-                //         echo($strUni);
-                //     }
-                // }				
+			if($n = 0){
+				$servico = 'ÁGUA';
+			}else if($n = 1){
+				$servico = 'ÁGUA QUENTE';
+			}else if($n = 2){
+				$servico = 'GÁS';
 			}
 
-		}//Fecha while planta
-		
-		
-	}// fecha while do grupo
+			$leituras = mysqli_query($con, "SELECT leitura FROM unidade WHERE tempo = $dataAnt AND servico = $n ORDER BY hora ASC");
+			$leitura = mysqli_fetch_object($leituras);
+
+			$leituras1Sem = mysqli_query($con, "SELECT leitura FROM unidade WHERE tempo = $data1Sem AND servico = $n ORDER BY hora ASC");
+			$leitura1Sem = mysqli_fetch_object($leituras1Sem);
+
+			$leituras2Sem = mysqli_query($con, "SELECT leitura FROM unidade WHERE tempo = $data2Sem AND servico = $n ORDER BY hora ASC");
+			$leitura2Sem = mysqli_fetch_object($leituras2Sem);
+
+			$flag2Sem = $leitura - $leitura2Sem;
+			$flag1Sem = $leitura - $leitura1Sem;
+			
+			if($flag2Sem = 0){
+				$arrayFraude[$usuario->nome] = array($servico, 'sem consumo a duas semanas');
+			}else if($flag1Sem = 0){
+				$arrayFraude[$usuario->nome] = array($servico, 'sem consumo a um semana');
+			}
+			
+		}
+	} //while usuarios
  ?>
