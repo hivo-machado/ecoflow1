@@ -19,12 +19,12 @@
     $dataAnt =  date_format( date_create( date('Y-m-d', $tempoAnt) ),'Y-m-d' );
     
     //Data de uma semana anterior
-    $tempo1Sem = strotime('-1 week', $tempoAtual);
+    $tempo1Sem = strtotime('-1 week', $tempoAtual);
     $data1Sem =  date_format( date_create( date('Y-m-d', $tempo1Sem) ),'Y-m-d' );
     echo($data1Sem);
 
     //Data de duas semanas anteriores
-    $tempo2Sem = strotime('-2 week', $tempoAtual);
+    $tempo2Sem = strtotime('-2 week', $tempoAtual);
     $data2Sem =  date_format( date_create( date('Y-m-d', $tempo2Sem) ),'Y-m-d' );
     echo($data2Sem);
 
