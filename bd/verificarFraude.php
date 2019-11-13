@@ -28,15 +28,15 @@
 
 	$arrayFraude = array();
 	
-	$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE 'status' = 'ativo' AND tipo = 'usuario' ORDER BY nome ASC");
+	$usuarios = mysqli_query($con, "SELECT * FROM usuario WHERE status = 'ativo' AND tipo = 'usuario' ORDER BY nome ASC");
 	
 	while($usuario = mysqli_fetch_object($usuarios)){
 		for($n = 0; $n < 3; $n++){
 
 			if($n = 0){
 				$servico = 'ÁGUA';
-			}else if($n = 1){
-				$servico = 'ÁGUA QUENTE';
+			// }else if($n = 1){
+			// 	$servico = 'ÁGUA QUENTE';
 			}else if($n = 2){
 				$servico = 'GÁS';
 			}
@@ -58,7 +58,8 @@
 			}else if($flag1Sem = 0){
 				$arrayFraude[$usuario->nome] = array($servico, 'sem consumo a um semana');
 			}
-			
+			var_dump($arrayFraude);
+
 		}
 	} //while usuarios
  ?>
