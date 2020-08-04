@@ -14,6 +14,7 @@ $database = new Database();
 $db = $database->getConnection();
   
 $medicoes = new Medicoes($db);
+$bateria = new Bateria($db);
   
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
@@ -25,17 +26,19 @@ if($data->type == "uplink"){
         !empty($data->meta->device_addr) &&
         !empty($data->params->payload) 
     ){
-        $nome = array("itc01", "itc02");
+        $nome = array("lora01", "lora02", "lora03", "lora04");
 
         $base = bin2hex(base64_decode($data->params->payload));
-        $medidor1 = hexdec(substr($base, 10, 8))/1000;
-        $medidor2 = hexdec(substr($base, 18, 4))/1000;
-        $leitura = array($medidor1, $medidor2);
+        $medidor1 = hexdec(substr($base, 4, 8));
+        $medidor2 = hexdec(substr($base, 14, 8));
+        $medidor3 = hexdec(substr($base, 24, 8));
+        $medidor4 = hexdec(substr($base, 32, 8));
+        $leitura = array($medidor1, $medidor2, $medidor3, $medidor4);
 
-        $medidor = array("medidor1", "medidor_reverso");
-        $idecoflow = array(61014, 61015);
+        $medidor = array("medidor1", "medidor2", "medidor3", "medidor4");
+        $idecoflow = array(61010, 61011, 61012, 61013);
 
-        for($i = 0; $i < 2; $i++){
+        for($i = 0; $i < 4; $i++){
             // set product property values
 
             //$medicoes->idecoflow = hex2bin($data->meta->device_addr);
@@ -47,7 +50,7 @@ if($data->type == "uplink"){
             $hora .= ":00";
             $medicoes->hora = $hora;
 
-            $medicoes->id_planta_fk = 62;
+            $medicoes->id_planta_fk = 61;
             //$medicoes->nome = "lora01";
             $medicoes->nome = $nome[$i];
             //$medicoes->medidor = "medidor1";
