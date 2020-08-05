@@ -1,11 +1,11 @@
 <?php
 class Medicoes{
   
-    // database connection and table name
+    // Conexao com o database e o nome da tabela
     private $conn;
     private $table_name = "unidade";
   
-    // object properties
+    // Propriedades do objeto
     public $idecoflow;
     public $tempo;
     public $hora;
@@ -15,24 +15,24 @@ class Medicoes{
     public $servico;
     public $leitura;
   
-    // constructor with $db as database connection
+    // Construtor com $db e conexão com o database
     public function __construct($db){
         $this->conn = $db;
     }
 
-    // create product
+    // Criar nova medição
     function create(){
 
-    // query to insert record
+    // Query para inserir a nova linha
     $query = "INSERT INTO
                 " . $this->table_name . "
             SET
                 idecoflow=:idecoflow, tempo=:tempo, hora=:hora, id_planta_fk=:id_planta_fk, nome=:nome, medidor=:medidor, servico=:servico, leitura=:leitura";
 
-    // prepare query
+    // Preparar query
     $stmt = $this->conn->prepare($query);
 
-    // sanitize
+    // Limpeza
     $this->idecoflow=htmlspecialchars(strip_tags($this->idecoflow));
     $this->tempo=htmlspecialchars(strip_tags($this->tempo));
     $this->hora=htmlspecialchars(strip_tags($this->hora));
@@ -42,7 +42,7 @@ class Medicoes{
     $this->servico=htmlspecialchars(strip_tags($this->servico));
     $this->leitura=htmlspecialchars(strip_tags($this->leitura));
 
-    // bind values
+    // Vincular os valores
     $stmt->bindParam(":idecoflow", $this->idecoflow);
     $stmt->bindParam(":tempo", $this->tempo);
     $stmt->bindParam(":hora", $this->hora);
@@ -52,7 +52,7 @@ class Medicoes{
     $stmt->bindParam(":servico", $this->servico);
     $stmt->bindParam(":leitura", $this->leitura);
 
-    // execute query
+    // Executar a query
     if($stmt->execute()){
         return true;
     }
