@@ -1,46 +1,46 @@
 <?php
 class Bateria{
   
-    // database connection and table name
+    // Conexao com o database e o nome da tabela
     private $conn;
     private $table_name = "bateria";
   
-    // object properties
-    public $idecoflow;
-    public $bateria;
+    // Propriedades do objeto
+    public $deviceAddr;
+    public $nivel;
     public $tempo;
     public $hora;
   
-    // constructor with $db as database connection
+    // Construtor com $db e conexão com o database
     public function __construct($db){
         $this->conn = $db;
     }
 
-    // create product
+    // Criar novo nivel da bateria
     function create(){
 
-    // query to insert record
+    // Query para inserir a nova linha
     $query = "INSERT INTO
                 " . $this->table_name . "
             SET
-                idecoflow=:idecoflow, bateria=:bateria, tempo=:tempo, hora=:hora";
+                deviceAddr=:deviceAddr, nivel=:nivel, tempo=:tempo, hora=:hora";
 
-    // prepare query
+    // Preparar query
     $stmt = $this->conn->prepare($query);
 
-    // sanitize
-    $this->idecoflow=htmlspecialchars(strip_tags($this->idecoflow));
-    $this->bateria=htmlspecialchars(strip_tags($this->bateria));
+    // Limpeza
+    $this->deviceAddr=htmlspecialchars(strip_tags($this->deviceAddr));
+    $this->nivel=htmlspecialchars(strip_tags($this->nivel));
     $this->tempo=htmlspecialchars(strip_tags($this->tempo));
     $this->hora=htmlspecialchars(strip_tags($this->hora));
 
-    // bind values
-    $stmt->bindParam(":idecoflow", $this->idecoflow);
-    $stmt->bindParam(":bateria", $this->bateria);
+    // Vincular os valores
+    $stmt->bindParam(":idecoflow", $this->deviceAddr);
+    $stmt->bindParam(":bateria", $this->nivel);
     $stmt->bindParam(":tempo", $this->tempo);
     $stmt->bindParam(":hora", $this->hora);
     
-    // execute query
+    // Executar a query
     if($stmt->execute()){
         return true;
     }
