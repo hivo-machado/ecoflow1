@@ -22,8 +22,9 @@ $data = json_decode(file_get_contents("php://input"));
 if($data->type == "uplink"){
     // make sure data is not empty
     if(
-        !empty($data->meta->time) &&
         !empty($data->meta->device_addr) &&
+        !empty($data->params->radio->hardware->snr) &&
+        !empty($data->params->radio->hardware->rssi) &&
         !empty($data->params->payload) 
     ){
         $nome = array("lora01", "lora02", "lora03", "lora04");
