@@ -10,7 +10,9 @@ CREATE TABLE lorawan_devices (
     modelo varchar(50),
     planta int (11) NOT NULL,
     PRIMARY KEY (device_addr),
+    FOREIGN KEY (planta) REFERENCES planta(idecoflow),
     FOREIGN KEY (modelo) REFERENCES lorawan_modelos(modelo)
+
 );
 
 CREATE TABLE lorawan_unidades (

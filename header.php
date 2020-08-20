@@ -191,6 +191,19 @@
 				            	<a href="../bd/buscaGrupo.php">Altera grupo</a>
 				            </li>
 				          </ul>
+						</li><!--Fecha li grupo-->
+						
+						<!--Opção Grupos-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	LoRaWAN
+				          	<span class="caret"></span>			          
+				          	</a>
+				          <ul class="dropdown-menu">
+							<li>
+				            	<a href="../lorawan/criaGrupo.php">Criar novo grupo</a>
+				            </li>
+				          </ul>
 				        </li><!--Fecha li grupo-->
 
 			       <?php } ?>
