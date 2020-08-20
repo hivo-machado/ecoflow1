@@ -20,7 +20,6 @@
     if($nome != null){
         //Criar novo grupo no banco
         mysqli_query($con, "INSERT INTO grupo(id, nome) VALUES ('$idecoflow', '$nome')");
-        //var_dump($idecoflow);
         header("Location: criaGrupo.php?success=Grupo criado com sucesso.");
     }
 

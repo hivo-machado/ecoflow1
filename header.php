@@ -202,6 +202,9 @@
 				          <ul class="dropdown-menu">
 							<li>
 				            	<a href="../lorawan/criaGrupo.php">Criar novo grupo</a>
+							</li>
+							<li>
+				            	<a href="../lorawan/criaPlanta.php">Criar nova planta</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li grupo-->

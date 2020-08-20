@@ -23,7 +23,7 @@ include_once("../validar.php");
 <!--Formulario -->
 <div class="row">
 	<div class="col-sm-10 col-sm-offset-1">
-		<form class="form-horizontal" method="POST" action="#">
+		<form class="form-horizontal" method="POST" action="criarGrupo.php">
 
 			<div class="form-group">
 				<label for="nome" class="col-sm-4 control-label">Nome*</label>
