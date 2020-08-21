@@ -220,10 +220,10 @@
 				          	</a>
 				          <ul class="dropdown-menu">							
 							<li>
-				            	<a href="../lorawan/criaModelo.php">Cadastrar novo modelo de rádio</a>
+				            	<a href="../modelo/criaModelo.php">Cadastrar novo modelo de rádio</a>
 				            </li>
 							<li>
-				            	<a href="../lorawan/alteraModelo.php">Alterar modelo de rádio</a>
+				            	<a href="../modelo/buscaModelo.php">Alterar modelo de rádio</a>
 							</li>
 				          </ul>
 				        </li><!--Fecha li grupo-->
