@@ -22,7 +22,4 @@
         mysqli_query($con, "INSERT INTO grupo(id, nome) VALUES ('$idecoflow', '$nome')");
         header("Location: criaGrupo.php?success=Grupo criado com sucesso.");
     }
-
-   
-
  ?>

@@ -1,7 +1,7 @@
 CREATE TABLE lorawan_modelos (
     modelo varchar(50) NOT NULL,
     fabricante varchar(50) NOT NULL,    
-    quatidade_medidores int(5) NOT NULL,
+    quantidade_medidores int(5) NOT NULL,
     PRIMARY KEY (modelo)
 );
 

@@ -201,10 +201,13 @@
 				          	</a>
 				          <ul class="dropdown-menu">
 							<li>
-				            	<a href="../lorawan/criaGrupo.php">Criar novo grupo</a>
+				            	<a href="../lorawan/criaGrupo.php">Cadastrar novo grupo</a>
 							</li>
 							<li>
-				            	<a href="../lorawan/criaPlanta.php">Criar nova planta</a>
+				            	<a href="../lorawan/criaPlanta.php">Cadastrar novo planta</a>
+							</li>
+							<li>
+				            	<a href="../lorawan/criaModelo.php">Cadastrar novo modelo de rádio</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li grupo-->
