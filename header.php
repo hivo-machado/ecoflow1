@@ -225,6 +225,18 @@
 							<li>
 				            	<a href="../modelo/buscaModelo.php">Alterar modelo de rádio</a>
 							</li>
+							<li>
+				            	<a href="../device/criaDevice.php">Cadastrar novo device</a>
+							</li>
+							<!-- <li>
+				            	<a href="../modelo/buscaModelo.php">Alterar device</a>
+							</li> -->
+							<li>
+				            	<a href="../lorawan_unidades/criaUnidade.php">Cadastrar nova unidade</a>
+							</li>
+							<!-- <li>
+				            	<a href="../modelo/buscaModelo.php">Alterar unidade</a>
+							</li> -->
 				          </ul>
 				        </li><!--Fecha li grupo-->
 

@@ -20,14 +20,14 @@ CREATE TABLE lorawan_unidades (
     medidor int(10) NOT NULL,
     servico tinyint(1) NOT NULL,
     device_addr varchar(15),
-    PRIMARY KEY (nome),
+    PRIMARY KEY (nome, medidor, device_addr),
     FOREIGN KEY (device_addr) REFERENCES lorawan_devices(device_addr)
 );
 
 CREATE TABLE lorawan_idecoflow (
     idecoflow varchar(15) NOT NULL,
     nome varchar(20),
-    PRIMARY KEY (idecoflow),
+    PRIMARY KEY (idecoflow, nome),
     FOREIGN KEY (nome) REFERENCES lorawan_unidades(nome)
 );
 
