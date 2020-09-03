@@ -45,7 +45,7 @@ for($j = 2; $j <= $highestRow; $j++){
 //Calcular o total com a margem de 1.9
 $sheet->setCellValueByColumnAndRow(9, 1, 'Total c/ margem');
 for($k = 2; $k <= $highestRow; $k++){
-    $margem = '=H'.$k.'*1.9';
+    $margem = '=I'.$k.'*1.9';
     $sheet->setCellValueByColumnAndRow(9, $k, $margem);
 }
 

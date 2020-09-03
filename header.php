@@ -237,6 +237,9 @@
 							<!-- <li>
 				            	<a href="../modelo/buscaModelo.php">Alterar unidade</a>
 							</li> -->
+							<li>
+				            	<a href="../relatorioLorawan/relatorioDevice.php">Relatório do device</a>
+							</li>
 				          </ul>
 				        </li><!--Fecha li grupo-->
 
