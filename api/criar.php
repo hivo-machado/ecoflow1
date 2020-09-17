@@ -81,6 +81,3 @@ if($json->type == "uplink"){
     echo json_encode(array("message" => "ACK"));
 }
 ?>
-
-
-
