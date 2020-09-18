@@ -1,83 +1,140 @@
 <?php
+// required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
-// include("/home/ecofl253/public_html/conexao_pdo.php");
-// include("/home/ecofl253/public_html/lorawan/medicoes.php");
-// include("/home/ecofl253/public_html/lorawan/bateria.php");
-// include("/home/ecofl253/public_html/lorawan/payloadItc.php");
-// include("/home/ecofl253/public_html/lorawan/payloadBup.php");
+date_default_timezone_set('America/Sao_Paulo');
 
-include("/srv/http/ecoflow.net.br/conexao_pdo.php");
-include("/srv/http/ecoflow.net.br/lorawan/api/medicoes.php");
-include("/srv/http/ecoflow.net.br/lorawan/api/bateria.php");
-include("/srv/http/ecoflow.net.br/lorawan/api/payloadItc.php");
-include("/srv/http/ecoflow.net.br/lorawan/api/payloadBup.php");
+include("../conexao_pdo.php");
+include("leituras.php");
+include("payloadBup.php");
+include("payloadKhomp.php");
+include("query.php");
+include("status.php");
 
 $database = new Database();
 $db = $database->getConnection();
   
-$medicoes = new Medicoes($db);
-$bateria = new Bateria($db);
+$leituras = new Leituras($db);
+$status = new Status($db);
+  
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
 
-$json = json_decode(file_get_contents("php://input"));
-
-if($json->type == "uplink"){
+if($data->type == "uplink"){
+    // make sure data is not empty
     if(
-        !empty($json->meta->device_addr) &&
-        !empty($json->params->radio->hardware->snr) &&
-        !empty($json->params->radio->hardware->rssi) &&
-        !empty($json->params->payload)
-        ){  
-            //idecoflow sendo gerado a partir do device_addr
-            $idecoflow = $json->meta->device_addr;
+        !empty($data->meta->device_addr) &&
+        !empty($data->params->payload) 
+    ){
+        //variaveis recebidas do radio
+        $device_addr = $data->meta->device_addr;
+        $rssi = $data->params->radio->hardware->rssi;
+        $snr = $data->params->radio->hardware->snr;
+        $payload = $data->params->payload;
 
-            //Variáveis de qualidade do sinal
-            $snr = $json->params->radio->hardware->snr;
-            $rssi = $json->params->radio->hardware->rssi;
+        //variaveis de tempo e hora
+        $tempo = date('Y-m-d');
+        $hora = date('H:i');
 
-            //Variáveis de tempo do servidor
-            $tempo = date("Y-m-d");
-            $hora = date("H:i");
+        //Coletar modelo, planta, nome, medidor, servico
+        $device = query_device($device_addr);
+        $unidades = query_unidades($device_addr);
 
-            //Payload decodificado para hexadecimal
-            $payload = bin2hex(base64_decode($json->params->payload));
-            
-            //$leituras = converterItc($payload);
-            $leituras = converterBup($payload);
-
-            //Enviar status do dispositivo
-
-            //Enviar medições
-            for($i=0; $i < count($leituras); $i++){
-                
-                $medicoes->idecoflow = $idecoflow."-".$i;
-                $medicoes->tempo = $tempo;
-                $medicoes->hora = $hora;
-
-                $medicoes->id_planta_fk = $leituras[$i][4];
-                $medicoes->nome = $leituras[$i][3];
-                $medicoes->servico = $leituras[$i][2];                
-                $medicoes->medidor = $leituras[$i][1];
-                $medicoes->leitura = $leituras[$i][0];
-
-                if($medicoes->create()){                    
-                    http_response_code(201);
-                    echo json_encode(array("message" => "Medicao foi importada."));
-                } else {
-                    http_response_code(200);
-                    echo json_encode(array("message" => var_dump($medicoes)));
-                }
-            }            
-        } else {
-            http_response_code(400);
-            echo json_encode(array("message" => "Problema ao importar medicao. Falta informacao."));
+        $modelo = $device[0]['modelo'];
+        $planta = $device[0]['planta'];
+        
+        //Converter o payload para pegar as leituras e nivel_bateria baseado no modelo do rádio
+        switch ($modelo) {
+            case "PLCD.019-006":
+                $payloadConvertido = converterBup($payload);
+                $k = 4;
+                break;
+            case "ITC100":
+                $payloadConvertido = converterKhomp($payload);
+                $k = 1;
+                break;
         }
-} else {
-    http_response_code(200);
-    echo json_encode(array("message" => "ACK"));
-}
+        
+        //Montar status para ser enviado
+        $status->device_addr = $device_addr;
+        $status->tempo = $tempo;
+        $status->hora = $hora.":00";
+        $status->snr = $snr;
+        $status->rssi = $rssi;
+        $status->nivel_bateria = $payloadConvertido[0];
+
+        //Montar as leituras para serem enviadas
+        for($i = 0; $i < $k; $i++){
+
+            $nome = $unidades[$i]['nome'];;
+            $medidor = $unidades[$i]['medidor'];
+            $servico = $unidades[$i]['servico'];
+            $idecoflow = $unidades[$i]['idecoflow'];
+
+            for($j = 1; $j <= $k; $j++){
+                if($medidor = $payloadConvertido[$j][1]){
+                    $leitura = $payloadConvertido[$j][1];
+                }
+            }
+
+            if($servico = 0){
+                $hora_fim = $hora.":00";
+
+            }elseif($servico = 1){
+                $hora_fim = $hora.":01";
+
+            }elseif($servico = 2){
+                $hora_fim = $hora.":02";
+            }
+
+            //Montar leitura
+            $leituras->idecoflow = $idecoflow;
+            $leituras->tempo = $tempo;
+            $leituras->hora = $hora_fim;
+            $leituras->id_ecoflow_fk = $planta;
+            $leituras->nome = $nome;
+            $leituras->medidor = $medidor;
+            $leituras->servico = $servico;
+            $leituras->leitura = $leitura;
+
+
+            // create the product
+            if($leituras->createLeituras() && $status->createStatus()){
+        
+                // set response code - 201 created
+                http_response_code(201);
+        
+                // tell the user
+                echo json_encode(array("message" => "Medicao foi importada."));
+            }
+    
+            // if unable to create the product, tell the user
+            else{
+        
+                // set response code - 503 service unavailable
+                http_response_code(200);
+        
+                // tell the user
+                echo json_encode(array("message" => "Problema ao importar medicao."));
+                }
+            }
+        }       
+            
+            // tell the user data is incomplete
+            else{
+            
+                // set response code - 400 bad request
+                http_response_code(400);
+            
+                // tell the user
+            echo json_encode(array("message" => "Problema ao importar medicao. Falta informacao."));
+            }
+            } else {
+            http_response_code(200);
+            echo json_encode(array("message" => "ACK"));
+            }
 ?>
