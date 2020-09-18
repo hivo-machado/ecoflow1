@@ -32,7 +32,7 @@ include_once("../validar.php");
 		<form class="form-horizontal" method="POST" action="criarDevice.php">
 
 			<div class="form-group">
-				<label for="id" class="col-sm-4 control-label">ID*</label>
+				<label for="id" class="col-sm-4 control-label">DEVICE_EUI**</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control" id="id" name="id" required autofocus
 					maxlength="20"
@@ -67,7 +67,7 @@ include_once("../validar.php");
 							}
 						 ?>
                      </select>
-                     <span id="helpBlock" class="help-block">* Campos obrigatórios.</span>
+                     <span id="helpBlock" class="help-block">*Campos obrigatórios. **Igual ao IOT Openlabs com tudo minúsculo</span>
 				</div>
 			</div>
 			
