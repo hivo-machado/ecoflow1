@@ -149,11 +149,30 @@
 				          	<span class="caret"></span>			          
 				          	</a>
 				          <ul class="dropdown-menu">
+						  	<li>
+				            	<a href="../grupo/criaGrupo.php">Cadastrar novo grupo</a>
+							</li>
 				            <li>
 				            	<a href="../grupo/buscaGrupo.php">Alterar grupo</a>
 				            </li>
 				          </ul>
 				        </li><!--Fecha li grupo-->
+
+						<!--Opção Grupos-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	Plantas
+				          	<span class="caret"></span>			          
+				          	</a>
+				          <ul class="dropdown-menu">
+						  	<li>
+				            	<a href="../planta/criaPlanta.php">Cadastrar nova planta</a>
+							</li>
+							<li>
+				            	<a href="../planta/buscaPlanta.php">Alterar planta</a>
+							</li>
+				          </ul>
+						</li><!--Fecha li grupo-->
 				        
 						<!--Opção Usuarios-->
 						<li class="dropdown">
@@ -185,11 +204,42 @@
 				          	</a>
 				          <ul class="dropdown-menu">
 				          	<li>
-				            	<a href="../bd/criaGrupo.php">Adicionar novo grupo</a>
+				            	<a href="../bd/criaGrupo.php">Adicionar novo XML</a>
 				            </li>
 				            <li>
-				            	<a href="../bd/buscaGrupo.php">Altera grupo</a>
+				            	<a href="../bd/buscaGrupo.php">Alterar XML</a>
 				            </li>
+				          </ul>
+						</li><!--Fecha li grupo-->
+												
+						<!--Opção Grupos-->
+						<li class="dropdown">
+				          <a href="#" class="dropdown-toggle" id="barnav-link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+				          	LoRaWAN
+				          	<span class="caret"></span>			          
+				          	</a>
+				          <ul class="dropdown-menu">							
+							<li>
+				            	<a href="../modelo/criaModelo.php">Cadastrar novo modelo de rádio</a>
+				            </li>
+							<li>
+				            	<a href="../modelo/buscaModelo.php">Alterar modelo de rádio</a>
+							</li>
+							<li>
+				            	<a href="../device/criaDevice.php">Cadastrar novo device</a>
+							</li>
+							<!-- <li>
+				            	<a href="../modelo/buscaModelo.php">Alterar device</a>
+							</li> -->
+							<li>
+				            	<a href="../lorawan_unidades/criaUnidade.php">Cadastrar nova unidade</a>
+							</li>
+							<!-- <li>
+				            	<a href="../modelo/buscaModelo.php">Alterar unidade</a>
+							</li> -->
+							<li>
+				            	<a href="../relatorioLorawan/relatorioDevice.php">Relatório do device</a>
+							</li>
 				          </ul>
 				        </li><!--Fecha li grupo-->
 

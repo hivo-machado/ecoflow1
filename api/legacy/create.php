@@ -8,7 +8,6 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include("/home/ecofl253/public_html/conexao_pdo.php");
 include("/home/ecofl253/public_html/lorawan/medicoes.php");
-include("/home/ecofl253/public_html/lorawan/bateria.php");
 
   
 $database = new Database();
@@ -23,59 +22,48 @@ $data = json_decode(file_get_contents("php://input"));
 if($data->type == "uplink"){
     // make sure data is not empty
     if(
-        !empty($data->meta->time) &&
         !empty($data->meta->device_addr) &&
+        !empty($data->params->radio->hardware->snr) &&
+        !empty($data->params->radio->hardware->rssi) &&
         !empty($data->params->payload) 
     ){
-        // $nome = array("itc01", "itc02");
-
-        // $base = bin2hex(base64_decode($data->params->payload));
-        // $medidor1 = hexdec(substr($base, 10, 8))/1000;
-        // $medidor2 = hexdec(substr($base, 18, 4))/1000;
-        // $leitura = array($medidor1, $medidor2);
-
-        // $medidor = array("medidor1", "medidor_reverso");
-        // $idecoflow = array(61014, 61015);
-
-        $nome = "itc03";
+        $nome = array("lora01", "lora02", "lora03", "lora04");
 
         $base = bin2hex(base64_decode($data->params->payload));
-        $medidor1 = hexdec(substr($base, 10, 8))/1000;
-        $leitura = $medidor1;
+        $medidor1 = hexdec(substr($base, 4, 8));
+        $medidor2 = hexdec(substr($base, 14, 8));
+        $medidor3 = hexdec(substr($base, 24, 8));
+        $medidor4 = hexdec(substr($base, 32, 8));
+        $leitura = array($medidor1, $medidor2, $medidor3, $medidor4);
 
-        $medidor = "medidor";
-        $idecoflow = 61016;
+        $medidor = array("medidor1", "medidor2", "medidor3", "medidor4");
+        $idecoflow = array(61010, 61011, 61012, 61013);
 
-        //for($i = 0; $i < 2; $i++){
+        for($i = 0; $i < 4; $i++){
             // set product property values
 
             //$medicoes->idecoflow = hex2bin($data->meta->device_addr);
 
-            $medicoes->idecoflow = $idecoflow;
+            $medicoes->idecoflow = $idecoflow[$i];
 
             $medicoes->tempo = date("Y-m-d", $data->meta->time);
             $hora = date("H:i", $data->meta->time);
             $hora .= ":00";
             $medicoes->hora = $hora;
 
-            $medicoes->id_planta_fk = 62;
+            $medicoes->id_planta_fk = 61;
             //$medicoes->nome = "lora01";
-            $medicoes->nome = $nome;
+            $medicoes->nome = $nome[$i];
             //$medicoes->medidor = "medidor1";
-            $medicoes->medidor = $medidor;
+            $medicoes->medidor = $medidor[$i];
             $medicoes->servico = 0;            
 
             //$medicoes->leitura = $base2;
-            $medicoes->leitura = $leitura;
-            
-            $bateria->idecoflow = $idecoflow;
-            $bateria->tempo = date("Y-m-d", $data->meta->time);
-            $bateria->hora = $hora;
-            $bateria->bateria = hexdec(substr($base, 4, 2));
-
+            $medicoes->leitura = $leitura[$i];
+        
         
             // create the product
-            if($medicoes->create() && $bateria->create()){
+            if($medicoes->create()){
         
                 // set response code - 201 created
                 http_response_code(201);
@@ -94,7 +82,7 @@ if($data->type == "uplink"){
                 echo json_encode(array("message" => "Problema ao importar medicao."));
             }
         }        
-    //}
+    }
     
     // tell the user data is incomplete
     else{
